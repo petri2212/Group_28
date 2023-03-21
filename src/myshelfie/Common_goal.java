@@ -33,9 +33,9 @@ public class Common_goal {
 			BookshelfObject object2 = library[5][0];
 			BookshelfObject object3 = library[0][5];
 			
-			if(object0!=null&&object1!=null&&object2!=null&&object3!=null) {
+			if(object0.name()!=null&&object1.name()!=null&&object2.name()!=null&&object3.name()!=null) {
 				
-				if(object0==object1&&object1==object2&&object2==object3) {
+				if(object0.name()==object1.name()&&object1.name()==object2.name()&&object2.name()==object3.name()) {
 					cont++;
 					
 				}	
