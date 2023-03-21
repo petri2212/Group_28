@@ -15,6 +15,12 @@ public class Common_goal {
 	
 	public int Checkcommon(int card, BookshelfObject[][] library) {
 		int cont = 0; //used to assign points to the first, second, third, fourth place
+		BookshelfObject object0 = null;
+		BookshelfObject object1 = null;
+		BookshelfObject object2 = null;
+		BookshelfObject object3 = null;
+		//BookshelfObject object4 = null;
+		//BookshelfObject object5 = null;
 		
 		switch (card) {
 		case 0:
@@ -28,10 +34,10 @@ public class Common_goal {
 				//}	
 				
 			//}
-			BookshelfObject object0 = library[0][0];
-			BookshelfObject object1 = library[0][4];
-			BookshelfObject object2 = library[5][0];
-			BookshelfObject object3 = library[0][5];
+			object0 = library[0][0];
+			object1 = library[0][4];
+			object2 = library[5][0];
+			object3 = library[0][5];
 			
 			if(object0.name()!=null&&object1.name()!=null&&object2.name()!=null&&object3.name()!=null) {
 				
@@ -54,8 +60,47 @@ public class Common_goal {
 			
 			break;
 		case 5:
+			int contCats=0;
+			int contBooks=0;
+			int contGames=0;
+			int contFrames=0;
+			int contTrophy=0;
+			int contPlants=0;
+			
+			for(int row=0; row < library.length; row++){
+				for(int col = 0; col < library[0].length; col++) {
+					
+					 object0 = library[row][col];
+					 
+					 if(object0.name()!=null) {
+						 	
+						 	if(object0.name()=="CAT") {
+						 		contCats++;
+							 
+						 	}else if(object0.name()=="BOOK") {
+						 		contBooks++;
+						 	}else if(object0.name()=="GAMES") {
+						 		contGames++;
+						 	}else if(object0.name()=="FRAME") {
+						 		contFrames++;
+						 	}else if(object0.name()=="TROPHY") {
+						 		contTrophy++;
+						 	}else {
+						 		contPlants++;
+						 	}
+						 		
+						}	
+								
+				
+				}	
+			
+			}
+			
+			if(contCats==8||contBooks==8||contGames==8||contFrames==8||contTrophy==8||contPlants==8)
+				cont++;
 			
 			break;
+
 		case 6:
 			
 			break;
@@ -77,8 +122,8 @@ public class Common_goal {
 			break;
 		}
 		
-		return cont;
 		
+		return cont;
 		
 		
 		
