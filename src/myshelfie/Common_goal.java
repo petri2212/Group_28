@@ -35,18 +35,17 @@ public class Common_goal {
 				
 			//}
 			object0 = library[0][0];
-			object1 = library[0][4];
-			object2 = library[5][0];
-			object3 = library[0][5];
+			object1 = library[4][0];
+			object2 = library[0][5];
+			object3 = library[4][5];
 			
-			if(object0.name()!=null&&object1.name()!=null&&object2.name()!=null&&object3.name()!=null) {
+			if(object0 != null && object1 != null && object2 !=null && object3 !=null) {
 				
-				if(object0.name()==object1.name()&&object1.name()==object2.name()&&object2.name()==object3.name()) {
+				if(object0.name()==object1.name() && object1.name()==object2.name() && object2.name()==object3.name()) {
 					cont++;
 					
 				}	
 			}
-			
 			break;
 			
 		case 2:
@@ -125,11 +124,6 @@ public class Common_goal {
 		
 		return cont;
 		
-		
-		
-		
-		
-	}
-	
 
+}
 }
