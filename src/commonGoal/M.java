@@ -13,7 +13,8 @@ public class M implements CommonGoal{
 	@Override
 	public void Description() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Five tiles of the same type forming an X.\r\n"
+				+ "");
 	}
 
 }

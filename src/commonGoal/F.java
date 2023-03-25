@@ -56,7 +56,9 @@ public class F implements CommonGoal {
 	@Override
 	public void Description() {
 		// TODO Auto-generated method stub
-		System.out.println("");
+		System.out.println("Eight tiles of the same type. There’s no\r\n"
+				+ "restriction about the position of these\r\n"
+				+ "tiles.");
 	}
 	
 
