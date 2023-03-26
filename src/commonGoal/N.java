@@ -7,7 +7,65 @@ public class N implements CommonGoal {
 	@Override
 	public int Checkcommon(BookshelfObject[][] library) {
 		// TODO Auto-generated method stub
-		return 0;
+		int result=0;
+		
+		int cont=0;
+		BookshelfObject object0 = null;
+		BookshelfObject object1 = null;
+		int i=1;
+		int j=3;
+		if(library[0][0]==null && library[0][4]==null) {
+			if(library[1][4]==null) {
+				for(int row = 1; row < 6; row++) {
+					for(int col = 0; col < i; col++)
+					{	
+						object0 = library[row][col];
+						if (i<5) {
+						object1 = library[row][i];
+						}else {
+							object1=null;
+						}
+							if(object0!=null && object1==null) {
+								cont++;
+								}else {
+									return 0;
+								}
+						}
+					i++;
+				
+					}
+				
+			}else if(library[1][0]==null) {
+				for(int row = 1; row < 6; row++) {
+					for(int col = 4; col > j; col--)
+					{	
+						object0 = library[row][col];
+						
+						if (j>=0) {
+							object1 = library[row][j];
+						}else {
+							object1=null;
+						}
+						
+						if(object0!=null && object1==null) {
+							cont++;
+						}else {
+							return 0;
+								}
+						
+					}
+					j--;
+				
+					}
+			}	
+			
+		}
+		
+		if(cont==15) {
+			result++;
+		}
+		
+		return result;
 	}
 
 	@Override
