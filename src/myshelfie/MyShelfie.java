@@ -1,14 +1,29 @@
 package myshelfie;
 
 //import commonGoal.CommonGoal;
-//import commonGoal.A;
-
+//import java.util.Scanner;
 public class MyShelfie
 {
 	public static void main(String[] args)
 	{
-		//A a = new A();
-		//a.Description();
+		
+		
+		
+		
+		
 	
 	}
+	
+	
 }
+/*
+ * int a=0;
+		boolean f;
+		//a=sc.nextInt();
+		
+		Extratcards b=new Extratcards();
+		CommonGoal goal;
+		goal=b.extractCommon();
+		
+		goal.Description();*/
+ 
