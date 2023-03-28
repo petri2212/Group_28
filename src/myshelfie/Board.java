@@ -41,4 +41,24 @@ public class Board
 				}
 			}
 	}
+
+	/**
+	 * Returns the number of rows of the Board.
+	 *
+	 * @return the number of rows as an integer
+	 */
+	public int rowCount()
+	{
+		return livingroom.length;
+	}
+
+	/**
+	 * Returns the number of columns of the Board.
+	 *
+	 * @return the number of columns as an integer
+	 */
+	public int colCount()
+	{
+		return livingroom[0].length;
+	}
 }
