@@ -16,6 +16,10 @@ public class Board
 	private Tile tile3p() { return new Tile(TileType.THREE_DOTS); }
 	private Tile tile4p() { return new Tile(TileType.FOUR_DOTS); }
 
+	/**
+	 * A Map representing the game board composed with tiles.
+	 * The livingroom indexing goes as 0,0 from top-left corner to 8,8 bottom-right corner.
+	 */
 	private final Tile[][] livingroom =
     {
     	{null,	   null,	 null,	   tile3p(), tile4p(), null,     null,     null,     null    },
@@ -29,6 +33,9 @@ public class Board
     	{null,     null,     null,     null,     tile4p(), tile3p(), null,     null,     null    },
     };
 
+	/**
+	 * Randomly fill the livingroom with objects picked from the pool.
+	 */
 	public void FillLivingroomWithObjects()
 	{
 		for(int row = 0; row < livingroom.length; row++)
