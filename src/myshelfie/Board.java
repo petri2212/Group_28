@@ -61,4 +61,16 @@ public class Board
 	{
 		return livingroom[0].length;
 	}
+
+    /**
+     * Returns the Tile at coordinates row and col in the livingroom 2D array.
+     *
+     * @param row the row index
+     * @param col the column index
+     * @return    the Tile at the given coordinates
+     */
+	public Tile getTile(int row, int col)
+	{
+		return livingroom[row][col];
+	}
 }
