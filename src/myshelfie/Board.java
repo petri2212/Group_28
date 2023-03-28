@@ -1,5 +1,7 @@
 package myshelfie;
 
+import java.util.ArrayList;
+
 public class Board
 {
 	private final int playersNumber;
@@ -72,5 +74,39 @@ public class Board
 	public Tile getTile(int row, int col)
 	{
 		return livingroom[row][col];
+	}
+
+	/**
+	 * Returns a list of BookshelfObject representing the objects selected by the user.
+	 * The coordinates are the indices row and col of the livingroom 2D array.
+	 *
+	 * @param coords a list of two integers representing row and col indices
+	 * @return 		 a list of the selected BookshelfObject
+	 */
+	public ArrayList<BookshelfObject> pickObjects(ArrayList<int[]> coords)
+	{
+		final int rowIndex = 0;
+		final int colIndex = 1;
+		ArrayList<BookshelfObject> objects = new ArrayList<>();
+
+		for(int[] coord : coords)
+		{
+			int row = coord[rowIndex];
+			int col = coord[colIndex];
+			try
+			{
+				Tile tile = livingroom[row][col];
+
+				// TODO: adds valid pick check; rule of one-empty-space before picking an object
+
+				objects.add(tile.getBookshelfObject());
+			}
+			catch(ArrayIndexOutOfBoundsException e)
+			{
+				System.out.println(e);
+			}
+		}
+
+		return objects;
 	}
 }
