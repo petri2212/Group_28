@@ -2,6 +2,8 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import utils.MatrixCoords;
+
 import java.util.ArrayList;
 
 public class CommonGoal_ThreeColumns extends CommonGoal {
@@ -35,9 +37,9 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 		int validColsCount = 0;
 		ArrayList<BookshelfObject> objects = new ArrayList<BookshelfObject>();
 
-		for(int c = 0; c < Bookshelf.COLS_NUMBER; c++) {
-			for(int r = 0; r < Bookshelf.ROWS_NUMBER; r++) {
-				BookshelfObject object = bookshelf.get(r, c);
+		for(int c = 0; c < bookshelf.getCols(); c++) {
+			for(int r = 0; r < bookshelf.getRows(); r++) {
+				BookshelfObject object = bookshelf.get(new MatrixCoords(r, c));
 
 				if(!objects.contains(object)) {
 					objects.add(object);

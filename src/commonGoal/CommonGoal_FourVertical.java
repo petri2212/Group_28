@@ -38,8 +38,8 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	 */
 	@Override
 	public int check(Bookshelf bookshelf) {
-		int rows = Bookshelf.ROWS_NUMBER;
-		int cols = Bookshelf.COLS_NUMBER;
+		int rows = bookshelf.getRows();
+		int cols = bookshelf.getCols();
 		Queue<MatrixCoords> queue = new LinkedList<>();
 		boolean[][] visited = new boolean[rows][cols];
 		int objectsCount = 0;
@@ -47,7 +47,7 @@ public class CommonGoal_FourVertical extends CommonGoal {
 
 	    for(int r = 0; r < rows; r++)
 	        for(int c = 0; c < cols; c++) {
-	        	BookshelfObject refObject = bookshelf.get(r, c);
+	        	BookshelfObject refObject = bookshelf.get(new MatrixCoords(r, c));
 	        	objectsCount = 0;
 
 	            if((refObject != null) && (!visited[r][c])) {
@@ -87,7 +87,7 @@ public class CommonGoal_FourVertical extends CommonGoal {
 		adjacentObjectsPos.add(new MatrixCoords(r++, c));
 
 		for(MatrixCoords pos : adjacentObjectsPos) {
-			BookshelfObject object = bookshelf.get(pos.r, pos.c);
+			BookshelfObject object = bookshelf.get(pos);
 			if ((object == refObject) && (!queue.contains(pos))) {
 				queue.add(pos);
 			}

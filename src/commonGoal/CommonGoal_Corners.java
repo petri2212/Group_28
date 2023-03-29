@@ -2,6 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import utils.MatrixCoords;
 
 public class CommonGoal_Corners extends CommonGoal {
 
@@ -11,17 +12,13 @@ public class CommonGoal_Corners extends CommonGoal {
 	}
 
 	@Override
-	public int check(Bookshelf library) {
+	public int check(Bookshelf bookshelf) {
 		// TODO Auto-generated method stub
 		int cont=0;
-		BookshelfObject object0 = null;
-		BookshelfObject object1 = null;
-		BookshelfObject object2 = null;
-		BookshelfObject object3 = null;
-		object0 = library[0][0];
-		object1 = library[0][4];
-		object2 = library[5][0];
-		object3 = library[0][5];
+		BookshelfObject object0 = bookshelf.get(new MatrixCoords(0, 0));
+		BookshelfObject object1 = bookshelf.get(new MatrixCoords(0, 4));
+		BookshelfObject object2 = bookshelf.get(new MatrixCoords(5, 0));
+		BookshelfObject object3 = bookshelf.get(new MatrixCoords(0, 5));
 		
 		if(object0!=null && object1!=null && object2!=null && object3!=null) {
 			

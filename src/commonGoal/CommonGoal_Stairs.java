@@ -1,7 +1,9 @@
 package commonGoal;
 
+import javafx.print.Printer.MarginType;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import utils.MatrixCoords;
 
 public class CommonGoal_Stairs extends CommonGoal {
 
@@ -11,7 +13,7 @@ public class CommonGoal_Stairs extends CommonGoal {
 	}
 
 	@Override
-	public int check(Bookshelf library) {
+	public int check(Bookshelf bookshelf) {
 		// TODO Auto-generated method stub
 		int result=0;
 		
@@ -20,14 +22,18 @@ public class CommonGoal_Stairs extends CommonGoal {
 		BookshelfObject object1 = null;
 		int i=1;
 		int j=3;
-		if(library[0][0]==null && library[0][4]==null) {
-			if(library[1][4]==null) {
-				for(int row = 1; row < 6; row++) {
-					for(int col = 0; col < i; col++)
-					{	
-						object0 = library[row][col];
+		BookshelfObject objA = bookshelf.get(new MatrixCoords(0, 0));
+		BookshelfObject objB = bookshelf.get(new MatrixCoords(0, 4));
+		BookshelfObject objC = bookshelf.get(new MatrixCoords(1, 4));
+		BookshelfObject objD = bookshelf.get(new MatrixCoords(1, 0));
+
+		if(objA == null && objB == null) {
+			if(objC == null) {
+				for(int row = 1; row < bookshelf.getRows(); row++) {
+					for(int col = 0; col < i; col++) {
+						object0 = bookshelf.get(new MatrixCoords(row, col));
 						if (i<5) {
-						object1 = library[row][i];
+						object1 = bookshelf.get(new MatrixCoords(row, i));
 						}else {
 							object1=null;
 						}
@@ -41,14 +47,13 @@ public class CommonGoal_Stairs extends CommonGoal {
 				
 					}
 				
-			}else if(library[1][0]==null) {
+			}else if(objD == null) {
 				for(int row = 1; row < 6; row++) {
-					for(int col = 4; col > j; col--)
-					{	
-						object0 = library[row][col];
+					for(int col = 4; col > j; col--) {
+						object0 = bookshelf.get(new MatrixCoords(row, col));
 						
 						if (j>=0) {
-							object1 = library[row][j];
+							object1 = bookshelf.get(new MatrixCoords(row, j));
 						}else {
 							object1=null;
 						}

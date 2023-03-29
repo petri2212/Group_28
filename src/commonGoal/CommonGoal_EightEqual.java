@@ -2,6 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import utils.MatrixCoords;
 
 public class CommonGoal_EightEqual extends CommonGoal {
 
@@ -11,7 +12,7 @@ public class CommonGoal_EightEqual extends CommonGoal {
 	}
 
 	@Override
-	public int check(Bookshelf library) {
+	public int check(Bookshelf bookshelf) {
 		// TODO Auto-generated method stub
 		int cont=0;
 		
@@ -24,10 +25,10 @@ public class CommonGoal_EightEqual extends CommonGoal {
 		
 		BookshelfObject object0 = null;
 		
-		for(int row=0; row < library.length; row++){
-			for(int col = 0; col < library[0].length; col++) {
+		for(int row=0; row < bookshelf.getRows(); row++){
+			for(int col = 0; col < bookshelf.getCols(); col++) {
 				
-				 object0 = library[row][col];
+				 object0 = bookshelf.get(new MatrixCoords(row, col));
 				 
 				 if(object0.name()!=null) {
 					 	
