@@ -5,8 +5,8 @@ import commonGoal.CommonGoal;
 import commonGoal.A;
 import commonGoal.B;
 import commonGoal.C;
-import commonGoal.D;
-import commonGoal.E;
+import commonGoal.CommonGoals_fourVertical;
+import commonGoal.CommonGoals_threeColumns;
 import commonGoal.F;
 import commonGoal.G;
 import commonGoal.H;
@@ -49,11 +49,11 @@ public class Extratcards {
 			break;
 			
 		case 3:
-			goal=new D();
+			goal=new CommonGoals_fourVertical();
 			break;
 			
 		case 4:
-			goal=new E();
+			goal=new CommonGoals_threeColumns();
 			break;
 			
 		case 5:

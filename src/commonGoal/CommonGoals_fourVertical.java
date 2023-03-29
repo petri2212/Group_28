@@ -2,7 +2,7 @@ package commonGoal;
 
 import myshelfie.BookshelfObject;
 
-public class D implements CommonGoal {
+public class CommonGoals_fourVertical implements CommonGoal {
 
 	@Override
 	public int Checkcommon(BookshelfObject[][] library) {
