@@ -1,20 +1,15 @@
 package commonGoal;
 
-import myshelfie.BookshelfObject;
+import myshelfie.Bookshelf;
 
-public interface CommonGoal {
+public abstract class CommonGoal {
 	
+	String description;
 	
+	public abstract int checkCommon(Bookshelf library);
 	
-	
-	
-	public int Checkcommon(BookshelfObject[][] library);
-	
-	public void Description();
-	/*public void print() {
+	public String getDescription() {
 		
-		System.out.println("questo è il goal: "+this.val);
-		
-	}*/
-
+		return this.description;
+	}
 }
