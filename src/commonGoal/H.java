@@ -1,22 +1,24 @@
 package commonGoal;
 
+import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class H implements CommonGoal {
+public class H extends CommonGoal {
 
 	@Override
-	public int Checkcommon(BookshelfObject[][] library) {
+	public int checkCommon(Bookshelf library) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void Description() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		System.out.println("Four lines each formed by 5 tiles of\r\n"
+		String desc="Four lines each formed by 5 tiles of\r\n"
 				+ "maximum three different types. One\r\n"
 				+ "line can show the same or a different\r\n"
-				+ "combination of another line.");
+				+ "combination of another line.";
+		return desc;
 	}
 
 }

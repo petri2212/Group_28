@@ -1,11 +1,12 @@
 package commonGoal;
 
+import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class N implements CommonGoal {
+public class N extends CommonGoal {
 
 	@Override
-	public int Checkcommon(BookshelfObject[][] library) {
+	public int checkCommon(Bookshelf library) {
 		// TODO Auto-generated method stub
 		int result=0;
 		
@@ -69,13 +70,14 @@ public class N implements CommonGoal {
 	}
 
 	@Override
-	public void Description() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		System.out.println("Five columns of increasing or decreasing\r\n"
+		String desc="Five columns of increasing or decreasing\r\n"
 				+ "height. Starting from the first column on\r\n"
 				+ "the left or on the right, each next column\r\n"
 				+ "must be made of exactly one more tile.\r\n"
-				+ "Tiles can be of any type. ");
+				+ "Tiles can be of any type. ";
+		return desc;
 	}
 
 }

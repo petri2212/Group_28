@@ -1,11 +1,12 @@
 package commonGoal;
 
+import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class F implements CommonGoal {
+public class F extends CommonGoal {
 
 	@Override
-	public int Checkcommon(BookshelfObject[][] library) {
+	public int checkCommon(Bookshelf library) {
 		// TODO Auto-generated method stub
 		int cont=0;
 		
@@ -54,12 +55,11 @@ public class F implements CommonGoal {
 	}
 
 	@Override
-	public void Description() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		System.out.println("Eight tiles of the same type. There’s no\r\n"
+		String desc="Eight tiles of the same type. There’s no\r\n"
 				+ "restriction about the position of these\r\n"
-				+ "tiles.");
+				+ "tiles.";
+		return desc;
 	}
-	
-
 }
