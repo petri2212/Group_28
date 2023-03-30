@@ -229,7 +229,57 @@ public class Extratcards {
 	}
 	
 	
-	
+public int checkPersonal(BookshelfObject[][] finishedLib,BookshelfObject[][] extractedLib) {
+		
+		int cont=0;
+		BookshelfObject object0 = null;
+		BookshelfObject object1 = null;
+		for(int row = 0; row < finishedLib.length; row++)
+			for(int col = 0; col < finishedLib.length; col++)
+			{	
+				object0 = finishedLib[row][col];
+				object1 = extractedLib[row][col];
+				
+				if(object0!=null && object1!=null) {
+					
+					if(object0.name()==object1.name()) {
+						cont++;
+						
+					}
+					
+				}
+				
+			}
+		
+		
+		int points=0;
+		switch(cont) {
+		
+		case 0:
+			points=0;
+			break;
+		case 1:
+			points=cont;
+			break;	
+		case 2:
+			points=cont;
+			break;
+		case 3:
+			points=cont+1;
+			break;
+		case 4:
+			points=cont+2;
+			break;
+		case 5:
+			points=cont+4;
+			break;
+		case 6:
+			points=cont+6;
+			break;
+		}
+		
+		return points;
+	}
 	
 	
 	
