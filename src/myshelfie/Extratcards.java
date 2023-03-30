@@ -1,108 +1,68 @@
 package myshelfie;
 
+import java.util.ArrayList;
 import java.util.Random;
 import commonGoal.CommonGoal;
-import commonGoal.A;
-import commonGoal.B;
-import commonGoal.C;
+import commonGoal.CommonGoals_SixSeparateGroupsOfTwoObj;
+import commonGoal.CommonGoals_FourGroupsFourObjSameObj;
+import commonGoal.CommonGoals_Corners;
 import commonGoal.CommonGoals_fourVertical;
 import commonGoal.CommonGoals_threeColumns;
-import commonGoal.F;
-import commonGoal.G;
-import commonGoal.H;
-import commonGoal.I;
-import commonGoal.L;
-import commonGoal.M;
-import commonGoal.N;
+import commonGoal.CommonGoals_eightEqual;
+import commonGoal.CommonGoals_Diagonal;
+import commonGoal.CommonGoals_FourLinesThreeDiffrentObj;
+import commonGoal.CommonGoals_TwoColumsSixDiffrentObj;
+import commonGoal.CommonGoals_TwoLinesDiffrentObj;
+import commonGoal.CommonGoals_fiveX;
+import commonGoal.CommonGoals_Stairs;
 public class Extratcards {
 	
 	//private static Random RANDOM = new Random();
 	
-	//to be used in main program 
+	//to be used in main program
+	
+	ArrayList<CommonGoal> deck = new ArrayList<>();
+	
 	public Extratcards() {
-		
+		fillDeckCards();
 	};
 	
-	public int extractedCard() {
+	public int extractedRandomIndex() {
 		Random RANDOM = new Random();
 		int extracted_num=RANDOM.nextInt(12);
 		return extracted_num;
 	}
 	
+	private void fillDeckCards() {
+		deck.add(new CommonGoals_SixSeparateGroupsOfTwoObj());
+		deck.add(new CommonGoals_FourGroupsFourObjSameObj());
+		deck.add(new CommonGoals_Corners());
+		deck.add(new CommonGoals_fourVertical());
+		deck.add(new CommonGoals_threeColumns());
+		deck.add(new CommonGoals_eightEqual());
+		deck.add(new CommonGoals_Diagonal());
+		deck.add(new CommonGoals_FourLinesThreeDiffrentObj());
+		deck.add(new CommonGoals_TwoColumsSixDiffrentObj());
+		deck.add(new CommonGoals_TwoLinesDiffrentObj());
+		deck.add(new CommonGoals_threeColumns());
+		deck.add(new CommonGoals_fourVertical());
+	}
 	
-	public CommonGoal extractCommon() {
-		int c=0; 
-		c=extractedCard();
-		System.out.println("card"+c);
-		CommonGoal goal = null;
-		switch (c) {
-		case 0:
-			goal=new A();
-			break;
-			
-		case 1:
-			goal=new B();
-			break;
-	
-		case 2:
-			goal=new C();
-			break;
-			
-		case 3:
-			goal=new CommonGoals_fourVertical();
-			break;
-			
-		case 4:
-			goal=new CommonGoals_threeColumns();
-			break;
-			
-		case 5:
-			goal=new F();
-			break;
-
-		case 6:
-			goal=new G();
-			break;
-			
-		case 7:
-			goal=new H();
-			break;
-			
-		case 8:
-			goal=new I();
-			break;
-			
-		case 9:
-			goal=new L();
-			break;
-			
-		case 10:
-			goal=new M();
-			break;
-			
-		case 11:
-			goal=new N();
-			break;
-		}
+	public CommonGoal extractCommonGoal() {
 		
+		int c=extractedRandomIndex(); 
+		
+		System.out.println("card"+c);
+		CommonGoal goal = deck.get(c);
 		
 		return goal;
-		
-
 	}
 	
 	public BookshelfObject[][] extractPersonalcard() {
-		int b=0; 
-		b=extractedCard();
+		int b=extractedRandomIndex(); 
+		
 		System.out.println("card"+b);
-		BookshelfObject[][] library = {
-			{null,	null,	null,	null,	null},
-			{null,	null,	null,	null,	null},
-			{null,	null,	null,	null,	null},
-			{null,	null,	null,	null,	null},
-			{null,	null,	null,	null,	null},
-			{null,	null,	null,	null,	null},
-		};
+		BookshelfObject[][] library=null;
 		
 		BookshelfObject cat = BookshelfObject.CAT;
 		BookshelfObject book = BookshelfObject.BOOK;
@@ -111,7 +71,7 @@ public class Extratcards {
 		BookshelfObject trophy = BookshelfObject.TROPHY;
 		BookshelfObject plant = BookshelfObject.PLANT;
 		
-		
+		/*
 		switch (b) {
 		case 0:
 			library [0][0]=plant;
@@ -220,12 +180,8 @@ public class Extratcards {
 			library [4][4]=game;
 			library [5][0]=cat;
 			break;
-		}
-		
-		
+		}*/
 		return library;
-		
-
 	}
 	
 	
@@ -243,15 +199,10 @@ public int checkPersonal(BookshelfObject[][] finishedLib,BookshelfObject[][] ext
 				if(object0!=null && object1!=null) {
 					
 					if(object0.name()==object1.name()) {
-						cont++;
-						
-					}
-					
-				}
-				
-			}
-		
-		
+						cont++;	
+					}	
+				}	
+			}	
 		int points=0;
 		switch(cont) {
 		
@@ -276,19 +227,7 @@ public int checkPersonal(BookshelfObject[][] finishedLib,BookshelfObject[][] ext
 		case 6:
 			points=cont+6;
 			break;
-		}
-		
+		}		
 		return points;
 	}
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
 }
