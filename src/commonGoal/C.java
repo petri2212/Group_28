@@ -1,11 +1,12 @@
 package commonGoal;
 
+import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class C implements CommonGoal {
+public class C extends CommonGoal {
 
 	@Override
-	public int Checkcommon( BookshelfObject[][] library) {
+	public int checkCommon(Bookshelf library) {
 		// TODO Auto-generated method stub
 		int cont=0;
 		BookshelfObject object0 = null;
@@ -28,10 +29,10 @@ public class C implements CommonGoal {
 	}
 
 	@Override
-	public void Description() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		System.out.println("Four tiles of the same type in the four\r\n"
-				+ "corners of the bookshelf. ");
+		String desc="Four tiles of the same type in the four\r\n"
+				+ "corners of the bookshelf.";
+		return desc;
 	}
-
 }
