@@ -3,7 +3,7 @@ package commonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class I extends CommonGoal {
+public class CommonGoals_FourLinesThreeDiffrentObj extends CommonGoal {
 
 	@Override
 	public int checkCommon(Bookshelf library) {
@@ -14,8 +14,10 @@ public class I extends CommonGoal {
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		String desc="Two columns each formed by 6\r\n"
-				+ "different types of tiles.";
+		String desc="Four lines each formed by 5 tiles of\r\n"
+				+ "maximum three different types. One\r\n"
+				+ "line can show the same or a different\r\n"
+				+ "combination of another line.";
 		return desc;
 	}
 

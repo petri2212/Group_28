@@ -3,7 +3,7 @@ package commonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class C extends CommonGoal {
+public class CommonGoals_Corners extends CommonGoal {
 
 	@Override
 	public int checkCommon(Bookshelf library) {

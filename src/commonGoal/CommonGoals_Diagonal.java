@@ -3,7 +3,7 @@ package commonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class M extends CommonGoal{
+public class CommonGoals_Diagonal extends CommonGoal{
 
 	@Override
 	public int checkCommon(Bookshelf library) {
@@ -14,8 +14,8 @@ public class M extends CommonGoal{
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		String desc="Five tiles of the same type forming an X.\r\n"
-				+ "";
+		String desc="Five tiles of the same type forming a\r\n"
+				+ "diagonal.";
 		return desc;
 	}
 
