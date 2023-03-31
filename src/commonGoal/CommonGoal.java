@@ -4,7 +4,7 @@ import myshelfie.Bookshelf;
 
 public abstract class CommonGoal {
 	
-	String description;
+	protected String description;
 	
 	public abstract int checkCommon(Bookshelf library);
 	
