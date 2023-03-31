@@ -2,8 +2,8 @@ package myshelfie;
 
 import java.util.Random;
 
-public enum BookshelfObject
-{
+public enum BookshelfObject {
+
 	CAT(),
 	BOOK(),
 	GAME(),
@@ -16,13 +16,11 @@ public enum BookshelfObject
 
 	private int instancesCounter;
 
-	private BookshelfObject()
-	{
+	private BookshelfObject() {
 		instancesCounter = 0;
 	}
 
-	private boolean reachedMaxInstances()
-	{
+	private boolean reachedMaxInstances() {
 		return (this.instancesCounter >= MAX_INSTANCES) ? true : false;
 	}
 
@@ -32,21 +30,18 @@ public enum BookshelfObject
 	 *
 	 * @return	a random available ShelfObject
 	 */
-	public static BookshelfObject getRandomObject()
-	{
+	public static BookshelfObject getRandomObject() {
 		BookshelfObject object = null;
 		BookshelfObject[] objects = values();
 		int randomIndex = RANDOM.nextInt(objects.length);
 		int indexCounter = 0;
 
-		do
-		{
+		do {
 			object = objects[randomIndex];
 			randomIndex++;
 			indexCounter++;
 
-			if(randomIndex >= objects.length)
-			{
+			if(randomIndex >= objects.length) {
 				randomIndex = 0;
 			}
 		} while(object.reachedMaxInstances() && indexCounter < objects.length);
@@ -54,4 +49,5 @@ public enum BookshelfObject
 		object.instancesCounter++;
 		return object;
 	}
+
 }

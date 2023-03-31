@@ -1,33 +1,29 @@
 package myshelfie;
 
-public class Tile
-{
+public class Tile {
+
 	private TileType type;
 	private BookshelfObject object;
 
-	public Tile(TileType type)
-	{
+	public Tile(TileType type) {
 		this.type = type;
 	}
 
-	public boolean isUsable(int playersNumber)
-	{
+	public boolean isUsable(int playersNumber) {
 		int allowedPlayers = type.getPlayersNumber();
 		return (playersNumber >= allowedPlayers) ? true : false;
 	}
 
-	public void addObject(BookshelfObject object)
-	{
+	public void addObject(BookshelfObject object) {
 		this.object = object;
 	}
 
-	public void removeObject()
-	{
+	public void removeObject() {
 		object = null;
 	}
 
-	public boolean isEmpty()
-	{
+	public boolean isEmpty() {
 		return (object == null) ? true : false;
 	}
+
 }
