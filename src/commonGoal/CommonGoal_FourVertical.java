@@ -10,6 +10,9 @@ import myshelfie.MatrixCoords;
 
 public class CommonGoal_FourVertical extends CommonGoal {
 
+	private final int MAX_SAME_ADJACENT_OBJECTS = 4;
+	private final int MAX_VALID_GROUPS = 4;
+
 	public CommonGoal_FourVertical(int playersNumber) {
 		super(playersNumber);
 		description = "Four groups each containing at least\n"
@@ -21,7 +24,14 @@ public class CommonGoal_FourVertical extends CommonGoal {
 
 	/**
 	 * Returns the points for this common goal if the player has successfully achieved it.
-	 * The points vary in base of how many players have already achieved this goal.
+	 * This method runs trough each bookshelf cell that holds an object and it has not been checked
+	 * before. It takes the object from that cell and start to check the adjacent cells.
+	 * If these cells contains the same object, their coordinates are added to a queue list and the
+	 * process repeated until the queue is empty. This means that no more adjacent cells with the
+	 * same object have been found.
+	 * If the number of same objects that are adjacent one to another is 4 then a counter is
+	 * increased. Once the entire bookshelf is parsed, if the number of valid groups of adjacent
+	 * objects is 4 than the point is given.
 	 *
 	 * @param bookshelf the player bookshelf under validation
 	 * @return 			the number of points gained from the goal check
@@ -42,6 +52,7 @@ public class CommonGoal_FourVertical extends CommonGoal {
 
 	            if((refObject != null) && (!visited[r][c])) {
 	            	queueAdjacentObjectsPosition(r, c, refObject, bookshelf, queue);
+	            	objectsCount++;
 
 	            	while(!queue.isEmpty()) {
 	            		MatrixCoords objPos = queue.poll();
@@ -50,12 +61,12 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	    				visited[objPos.r][objPos.c] = true;
 	            	}
 
-	            	if(objectsCount == 3) {
+	            	if(objectsCount == MAX_SAME_ADJACENT_OBJECTS) {
 	            		groupsCount++;
 	            	}
 	            }
 	        }
-	    return (groupsCount == 4) ? getPoints() : 0;
+	    return (groupsCount == MAX_VALID_GROUPS) ? getPoints() : 0;
 	}
 
 	/**
