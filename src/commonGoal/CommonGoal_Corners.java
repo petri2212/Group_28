@@ -3,10 +3,15 @@ package commonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class CommonGoals_Corners extends CommonGoal {
+public class CommonGoal_Corners extends CommonGoal {
+
+	protected CommonGoal_Corners(int playersNumber) {
+		super(playersNumber);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
-	public int checkCommon(Bookshelf library) {
+	public int check(Bookshelf library) {
 		// TODO Auto-generated method stub
 		int cont=0;
 		BookshelfObject object0 = null;

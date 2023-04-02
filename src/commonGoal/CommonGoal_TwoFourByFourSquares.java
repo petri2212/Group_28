@@ -3,12 +3,15 @@ package commonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
-public class CommonGoals_FourGroupsFourObjSameObj extends CommonGoal {
+public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
+
+	protected CommonGoal_TwoFourByFourSquares(int playersNumber) {
+		super(playersNumber);
+	}
 
 	@Override
-	public int checkCommon( Bookshelf library) {
+	public int check( Bookshelf library) {
 		// TODO Auto-generated method stub
-		
 		return 0;
 	}
 
