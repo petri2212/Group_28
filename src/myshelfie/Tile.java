@@ -26,4 +26,8 @@ public class Tile {
 		return (object == null) ? true : false;
 	}
 
+	public BookshelfObject getBookshelfObject() {
+		return object;
+	}
+
 }
