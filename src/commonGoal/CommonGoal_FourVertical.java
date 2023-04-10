@@ -6,7 +6,7 @@ import java.util.Queue;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.MatrixCoords;
+import utils.MatrixCoords;
 
 public class CommonGoal_FourVertical extends CommonGoal {
 

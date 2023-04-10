@@ -1,4 +1,4 @@
-package myshelfie;
+package utils;
 
 public class MatrixCoords {
 	public int r;
