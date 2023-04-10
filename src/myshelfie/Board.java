@@ -2,12 +2,23 @@ package myshelfie;
 
 import java.util.ArrayList;
 
-public class Board {
+import utils.Matrix;
+import utils.MatrixCoords;
+
+/* TODO: use proxy pattern.
+ * This class should became an interface with an a proxy implementation*/
+
+public class Board extends Matrix<Tile> {
+
+	private static final int ROW_COUNT = 9;
+	private static final int COL_COUNT = 9;
 
 	private final int playersNumber;
 
 	public Board(int playerNumber) {
+		super(ROW_COUNT, COL_COUNT);
 		this.playersNumber = playerNumber;
+		init();
 	}
 
 	/* Helper functions */
@@ -19,7 +30,7 @@ public class Board {
 	 * A Map representing the game board composed with tiles.
 	 * The livingroom indexing goes as 0,0 from top-left corner to 8,8 bottom-right corner.
 	 */
-	private final Tile[][] livingroom = {
+	private final Tile[][] livingroomTileMap = {
     	{null,	   null,	 null,	   tile3p(), tile4p(), null,     null,     null,     null    },
     	{null, 	   null,     null,     tile2p(), tile2p(), tile4p(), null,     null,     null    },
     	{null, 	   null,     tile3p(), tile2p(), tile2p(), tile2p(), tile3p(), null,     null    },
@@ -32,12 +43,28 @@ public class Board {
     };
 
 	/**
+	 * Initialize the matrix using the above tile-map.
+	 * The tile-map must be mirrored in order to assign the correct position to every tile,
+	 * starting from the bottom-left corner with the coordinates 0, 0.
+	 */
+	private void init() {
+		for(int r = 0; r < ROW_COUNT; r++)
+			for(int c = 0; c < COL_COUNT; c++) {
+				int rMirrored = (r - ROW_COUNT) * -1;
+				int cMirrored = (c - COL_COUNT) * -1;
+				Tile tile = livingroomTileMap[rMirrored][cMirrored];
+				MatrixCoords coords = new MatrixCoords(r, c);
+				items.put(coords, tile);
+			}
+	}
+
+	/**
 	 * Randomly fill the livingroom with objects picked from the pool.
 	 */
-	public void FillLivingroomWithObjects() {
-		for(int row = 0; row < livingroom.length; row++)
-			for(int col = 0; col < livingroom[0].length; col++) {
-				Tile livingroomTile = livingroom[row][col];
+	public void fillLivingroomWithObjects() {
+		for(int r = 0; r < ROW_COUNT; r++)
+			for(int c = 0; c < COL_COUNT; c++) {
+				Tile livingroomTile = items.get(new MatrixCoords(r, c));
 
 				if (livingroomTile != null && livingroomTile.isUsable(playersNumber)) {
 					BookshelfObject randomObject = BookshelfObject.getRandomObject();
@@ -47,51 +74,18 @@ public class Board {
 	}
 
 	/**
-	 * Returns the number of rows of the Board.
-	 *
-	 * @return the number of rows as an integer
-	 */
-	public int rowCount() {
-		return livingroom.length;
-	}
-
-	/**
-	 * Returns the number of columns of the Board.
-	 *
-	 * @return the number of columns as an integer
-	 */
-	public int colCount() {
-		return livingroom[0].length;
-	}
-
-    /**
-     * Returns the Tile at coordinates row and col in the livingroom 2D array.
-     *
-     * @param row the row index
-     * @param col the column index
-     * @return    the Tile at the given coordinates
-     */
-	public Tile getTile(int row, int col) {
-		return livingroom[row][col];
-	}
-
-	/**
 	 * Returns a list of BookshelfObject representing the objects selected by the user.
 	 * The coordinates are the indices row and col of the livingroom 2D array.
 	 *
 	 * @param coords a list of two integers representing row and col indices
 	 * @return 		 a list of the selected BookshelfObject
 	 */
-	public ArrayList<BookshelfObject> pickObjects(ArrayList<int[]> coords) {
-		final int rowIndex = 0;
-		final int colIndex = 1;
+	public ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList) {
 		ArrayList<BookshelfObject> objects = new ArrayList<>();
 
-		for(int[] coord : coords) {
-			int row = coord[rowIndex];
-			int col = coord[colIndex];
+		for(MatrixCoords coords : coordsList) {
 			try {
-				Tile tile = livingroom[row][col];
+				Tile tile = items.get(coords);
 
 				// TODO: adds valid pick check; rule of one-empty-space before picking an object
 
