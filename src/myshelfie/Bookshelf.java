@@ -1,21 +1,23 @@
 package myshelfie;
 
-public class Bookshelf {
+import utils.Matrix;
+import utils.MatrixCoords;
 
-	public static final int COLS_NUMBER = 5;
-	public static final int ROWS_NUMBER = 6;
-	private BookshelfObject[][] bookshelfObjects;
+public class Bookshelf extends Matrix<BookshelfObject> {
+
+	private static final int ROWS_NUMBER = 6;
+	private static final int COLS_NUMBER = 5;
 	private final int noEmptyRow=-1;
 	
 	public Bookshelf() {
-		bookshelfObjects = new BookshelfObject[ROWS_NUMBER][COLS_NUMBER];
+		super(ROWS_NUMBER, COLS_NUMBER);
 	}
 	
 	public void add (int c, BookshelfObject obj) {
 		int r = getFirstEmptyRow(c);
 		
 		if(r != noEmptyRow) {
-			bookshelfObjects[r][c] = obj;
+			items.put(new MatrixCoords(r, c), obj);
 		}else {
 			System.out.println("invalid cols!");
 		}
@@ -27,7 +29,7 @@ public class Bookshelf {
 		
 		if(r != noEmptyRow && isThereEnoughSpace(r,lenght)) {
 			for (BookshelfObject obj : objs) {
-				bookshelfObjects[r][c] = obj;
+				items.put(new MatrixCoords(r, c), obj);
 				r++;
 			}
 		}else {
@@ -45,15 +47,11 @@ public class Bookshelf {
 
 	private int getFirstEmptyRow(int c) {
 		for(int r=0; r<ROWS_NUMBER; r++) {
-			if(bookshelfObjects[r][c] == null) {
+			if(items.get(new MatrixCoords(r, c)) == null) {
 				return r;
 			}
 		}
 		return noEmptyRow;
-	}
-
-	public BookshelfObject get(int r, int c) {
-		return bookshelfObjects[r][c];
 	}
 	
 }
