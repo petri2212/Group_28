@@ -1,6 +1,4 @@
-package commonGoal;
-
-import myshelfie.Bookshelf;
+package myshelfie;
 
 public interface Goal {
 

@@ -1,5 +1,7 @@
 package commonGoal;
 
+import myshelfie.Goal;
+
 public abstract class CommonGoal implements Goal {
 
 	protected String description;
