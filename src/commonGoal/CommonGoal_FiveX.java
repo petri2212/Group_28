@@ -6,9 +6,9 @@ import utils.MatrixCoords;
 
 public class CommonGoal_FiveX extends CommonGoal{
 	
-	private final int MAX_ROWS = 5;
-	private final int MAX_COLS = 4;
-	private final int MIN_ROWS_AND_COLS = 1;
+	private static final int MAX_ROWS = 5;
+	private static final int MAX_COLS = 4;
+	private static final int MIN_ROWS_AND_COLS = 1;
 	
 	protected CommonGoal_FiveX(int playersNumber) {
 		super(playersNumber);
@@ -18,7 +18,7 @@ public class CommonGoal_FiveX extends CommonGoal{
 	@Override
 	public int check(Bookshelf library) {
 		// TODO Auto-generated method stub
-		/*the difficulties is related to the bookshelfobjects in the bookshelf because
+		/*the difficulties is related to the BookshelfObject in the bookshelf because
 		 * there could be some empty columns and aint't the rows.
 		 */
 		for(int r = MIN_ROWS_AND_COLS; r < MAX_ROWS; r++)
