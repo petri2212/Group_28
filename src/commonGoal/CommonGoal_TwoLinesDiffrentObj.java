@@ -2,8 +2,13 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import utils.MatrixCoords;
 
 public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
+	
+	private static final int ROWS_NUMBER = 6;
+	private static final int COLS_NUMBER = 5;
+	private static final int ROWS_DIFERRENT = 2;
 
 	protected CommonGoal_TwoLinesDiffrentObj(int playersNumber) {
 		super(playersNumber);
@@ -12,7 +17,30 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 
 	@Override
 	public int check(Bookshelf library) {
-		// TODO Auto-generated method stub
+		int cont = 0;
+		int tmpCols = 0;
+		
+		for(int r = 0; r < ROWS_NUMBER; r++) {
+			if(!library.emptyCol(r)) {
+				for(int c = 0; c < COLS_NUMBER; c++) {
+					BookshelfObject tmpVar = library.get(new MatrixCoords(r, c));
+					do {
+						if(tmpCols != c) {
+							if(tmpVar == library.get(new MatrixCoords(r, tmpCols))) {
+								break;
+							}
+						}
+						tmpCols++;
+					}while(tmpCols < COLS_NUMBER);
+					if(tmpCols == COLS_NUMBER) {
+						cont++;
+					}
+				}
+			}
+			if(cont == ROWS_DIFERRENT) {
+				return getPoints();
+			}
+		}
 		return 0;
 	}
 
