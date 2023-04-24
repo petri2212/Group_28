@@ -15,7 +15,7 @@ public class MatrixCoords {
 	 * @param c									is the column index
 	 * @throws NegativeMatrixCoordsException 	if one of the arguments is negative
 	 */
-	public MatrixCoords(int r, int c) throws NegativeMatrixCoordsException {
+	public MatrixCoords(int r, int c) {
 		if (r < 0 || c < 0) {
 			throw new NegativeMatrixCoordsException("One of the arguments used to create a matrix"
 					                              + "coordinate is negative: " + r + ", " + c);

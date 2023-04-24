@@ -1,7 +1,8 @@
 package utils;
 
-@SuppressWarnings("serial")
-public class NegativeMatrixCoordsException extends Exception {
+public class NegativeMatrixCoordsException extends RuntimeException {
+
+	private static final long serialVersionUID = 8626401769613794717L;
 
 	public NegativeMatrixCoordsException(String message) {
 		super(message);
