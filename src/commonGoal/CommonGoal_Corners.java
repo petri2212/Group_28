@@ -10,6 +10,12 @@ public class CommonGoal_Corners extends CommonGoal {
 		super(playersNumber);
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * This method takes the four objects in the corners of the library and checks that they are all the same.
+	 *
+	 * @param bookshelf the player bookshelf under validation
+	 * @return 			the number of points gained from the goal check
+	 */
 
 	@Override
 	public int check(Bookshelf bookshelf) {

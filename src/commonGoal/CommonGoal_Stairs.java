@@ -11,6 +11,14 @@ public class CommonGoal_Stairs extends CommonGoal {
 		super(playersNumber);
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * This method verifies that the player has created an ascending or descending stair form with his tiles.
+	 * Check that the first row is empty, if this happens the tiles are counted using a counter, 
+	 * if the counter is equal to 15 it means that the player has formed a stair form with his tiles.
+	 *
+	 * @param bookshelf the player bookshelf under validation
+	 * @return 			the number of points gained from the goal check
+	 */
 
 	@Override
 	public int check(Bookshelf bookshelf) {

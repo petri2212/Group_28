@@ -10,6 +10,13 @@ public class CommonGoal_EightEqual extends CommonGoal {
 		super(playersNumber);
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * This method checks that a library has at least 8 tiles of the same type, it works by checking each cell of the library, 
+	 * each time a tile is found it increases a counter 
+	 *
+	 * @param bookshelf the player bookshelf under validation
+	 * @return 			the number of points gained from the goal check
+	 */
 
 	@Override
 	public int check(Bookshelf bookshelf) {
