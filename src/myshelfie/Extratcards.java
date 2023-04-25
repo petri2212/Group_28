@@ -2,30 +2,37 @@ package myshelfie;
 
 import java.util.ArrayList;
 import java.util.Random;
+import utils.MatrixCoords;
 import commonGoal.CommonGoal;
-import commonGoal.CommonGoals_SixSeparateGroupsOfTwoObj;
-import commonGoal.CommonGoals_FourGroupsFourObjSameObj;
-import commonGoal.CommonGoals_Corners;
-import commonGoal.CommonGoals_fourVertical;
-import commonGoal.CommonGoals_threeColumns;
-import commonGoal.CommonGoals_eightEqual;
-import commonGoal.CommonGoals_Diagonal;
-import commonGoal.CommonGoals_FourLinesThreeDiffrentObj;
-import commonGoal.CommonGoals_TwoColumsSixDiffrentObj;
-import commonGoal.CommonGoals_TwoLinesDiffrentObj;
-import commonGoal.CommonGoals_fiveX;
-import commonGoal.CommonGoals_Stairs;
+import commonGoal.CommonGoal_SixSeparateGroupsOfTwoObj;
+import commonGoal.CommonGoal_TwoFourByFourSquares;
+import commonGoal.CommonGoal_Corners;
+import commonGoal.CommonGoal_FourVertical;
+import commonGoal.CommonGoal_ThreeColumns;
+import commonGoal.CommonGoal_EightEqual;
+import commonGoal.CommonGoal_Diagonal;
+import commonGoal.CommonGoal_FourLinesThreeDiffrentObj;
+import commonGoal.CommonGoal_TwoColumsSixDiffrentObj;
+import commonGoal.CommonGoal_TwoLinesDiffrentObj;
+import commonGoal.CommonGoal_FiveX;
+import commonGoal.CommonGoal_Stairs;
+
 public class Extratcards {
 	
 	//private static Random RANDOM = new Random();
 	
 	//to be used in main program
-	
-	ArrayList<CommonGoal> deck = new ArrayList<>();
+	ArrayList<CommonGoal> deckcommon = new ArrayList<>();
+	//ArrayList<MatrixCoords[]> deckpersonal = new ArrayList<>();
 	
 	public Extratcards() {
-		fillDeckCards();
+		fillDeckCardsP();
 	};
+	
+	/*
+	public Extratcards(int c) {
+		fillDeckCardsC();
+	};*/
 	
 	public int extractedRandomIndex() {
 		Random RANDOM = new Random();
@@ -33,31 +40,36 @@ public class Extratcards {
 		return extracted_num;
 	}
 	
-	private void fillDeckCards() {
-		deck.add(new CommonGoals_SixSeparateGroupsOfTwoObj());
-		deck.add(new CommonGoals_FourGroupsFourObjSameObj());
-		deck.add(new CommonGoals_Corners());
-		deck.add(new CommonGoals_fourVertical());
-		deck.add(new CommonGoals_threeColumns());
-		deck.add(new CommonGoals_eightEqual());
-		deck.add(new CommonGoals_Diagonal());
-		deck.add(new CommonGoals_FourLinesThreeDiffrentObj());
-		deck.add(new CommonGoals_TwoColumsSixDiffrentObj());
-		deck.add(new CommonGoals_TwoLinesDiffrentObj());
-		deck.add(new CommonGoals_threeColumns());
-		deck.add(new CommonGoals_fourVertical());
+	private void fillDeckCardsP() {
+		deckcommon.add(new CommonGoal_SixSeparateGroupsOfTwoObj());
+		deckcommon.add(new CommonGoal_TwoFourByFourSquares());
+		deckcommon.add(new CommonGoal_Corners());
+		deckcommon.add(new CommonGoal_FourVertical());
+		deckcommon.add(new CommonGoal_ThreeColumns());
+		deckcommon.add(new CommonGoal_EightEqual());
+		deckcommon.add(new CommonGoal_Diagonal());
+		deckcommon.add(new CommonGoal_FourLinesThreeDiffrentObj());
+		deckcommon.add(new CommonGoal_TwoColumsSixDiffrentObj());
+		deckcommon.add(new CommonGoal_TwoLinesDiffrentObj());
+		deckcommon.add(new CommonGoal_FiveX());
+		deckcommon.add(new CommonGoal_Stairs());
+	}
+	/*
+	private void fillDeckCardsC() {
+		deckpersonal.add(new MatrixCoords(0, 0));
 	}
 	
+	*/
 	public CommonGoal extractCommonGoal() {
 		
 		int c=extractedRandomIndex(); 
 		
 		System.out.println("card"+c);
-		CommonGoal goal = deck.get(c);
+		CommonGoal goal = deckcommon.get(c);
 		
 		return goal;
 	}
-	
+	/*
 	public BookshelfObject[][] extractPersonalcard() {
 		int b=extractedRandomIndex(); 
 		
@@ -71,7 +83,11 @@ public class Extratcards {
 		BookshelfObject trophy = BookshelfObject.TROPHY;
 		BookshelfObject plant = BookshelfObject.PLANT;
 		
-		/*
+		
+		MatrixCoords[] list;
+		
+		new MatrixCoords(0, 0);
+		
 		switch (b) {
 		case 0:
 			library [0][0]=plant;
@@ -180,7 +196,7 @@ public class Extratcards {
 			library [4][4]=game;
 			library [5][0]=cat;
 			break;
-		}*/
+		}
 		return library;
 	}
 	
@@ -229,5 +245,5 @@ public int checkPersonal(BookshelfObject[][] finishedLib,BookshelfObject[][] ext
 			break;
 		}		
 		return points;
-	}
+	}*/
 }
