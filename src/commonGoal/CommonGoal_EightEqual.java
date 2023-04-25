@@ -15,7 +15,7 @@ public class CommonGoal_EightEqual extends CommonGoal {
 	 * each time a tile is found it increases a counter 
 	 *
 	 * @param bookshelf the player bookshelf under validation
-	 * @return 			the number of points gained from the goal check
+	 * @return 			a number representing whether the player was first, second or third etc. to complete the goal
 	 */
 
 	@Override

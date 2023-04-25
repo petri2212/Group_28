@@ -14,7 +14,7 @@ public class CommonGoal_Corners extends CommonGoal {
 	 * This method takes the four objects in the corners of the library and checks that they are all the same.
 	 *
 	 * @param bookshelf the player bookshelf under validation
-	 * @return 			the number of points gained from the goal check
+	 * @return 			a number representing whether the player was first, second or third etc. to complete the goal
 	 */
 
 	@Override

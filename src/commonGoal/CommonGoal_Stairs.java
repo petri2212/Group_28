@@ -17,7 +17,7 @@ public class CommonGoal_Stairs extends CommonGoal {
 	 * if the counter is equal to 15 it means that the player has formed a stair form with his tiles.
 	 *
 	 * @param bookshelf the player bookshelf under validation
-	 * @return 			the number of points gained from the goal check
+	 * @return 			a number representing whether the player was first, second or third etc. to complete the goal
 	 */
 
 	@Override
