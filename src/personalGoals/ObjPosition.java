@@ -14,7 +14,13 @@ public class ObjPosition {
 		this.object=obj;
 	};
 	
+	public MatrixCoords getCords() {
+		return this.cords;
+	}
 	
+	public BookshelfObject getObj() {
+		return this.object;
+	}
 	
 	
 }
