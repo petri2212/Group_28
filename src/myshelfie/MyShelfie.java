@@ -1,29 +1,16 @@
 package myshelfie;
 
-//import commonGoal.CommonGoal;
-//import java.util.Scanner;
-public class MyShelfie
-{
-	public static void main(String[] args)
-	{
-		
-		
-		
-		
-		
-	
+import gui.*;
+
+public class MyShelfie {
+
+	public static void main(String[] args) {
+
+		//UI ui = new ConsoleUI();
+		UI ui = new GraphicUI();
+
+		GameManager gm = new GameManager(ui);
+		gm.start();
 	}
-	
-	
+
 }
-/*
- * int a=0;
-		boolean f;
-		//a=sc.nextInt();
-		
-		Extratcards b=new Extratcards();
-		CommonGoal goal;
-		goal=b.extractCommon();
-		
-		goal.Description();*/
- 
