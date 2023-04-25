@@ -5,7 +5,7 @@ import myshelfie.BookshelfObject;
 
 public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 
-	protected CommonGoal_TwoFourByFourSquares(int playersNumber) {
+	public CommonGoal_TwoFourByFourSquares(int playersNumber) {
 		super(playersNumber);
 	}
 

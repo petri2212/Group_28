@@ -5,7 +5,7 @@ import myshelfie.BookshelfObject;
 
 public class CommonGoal_Diagonal extends CommonGoal{
 
-	protected CommonGoal_Diagonal(int playersNumber) {
+	public CommonGoal_Diagonal(int playersNumber) {
 		super(playersNumber);
 		// TODO Auto-generated constructor stub
 	}

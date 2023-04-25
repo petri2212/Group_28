@@ -8,7 +8,7 @@ public abstract class CommonGoal implements Goal {
 	protected int goalReachedCounter;
 	private int playersNumber;
 
-	protected CommonGoal(int playersNumber) {
+	public CommonGoal(int playersNumber) {
 		goalReachedCounter = 0;
 		this.playersNumber = playersNumber;
 	}

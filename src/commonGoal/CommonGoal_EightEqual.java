@@ -6,7 +6,7 @@ import utils.MatrixCoords;
 
 public class CommonGoal_EightEqual extends CommonGoal {
 
-	protected CommonGoal_EightEqual(int playersNumber) {
+	public CommonGoal_EightEqual(int playersNumber) {
 		super(playersNumber);
 		// TODO Auto-generated constructor stub
 	}
