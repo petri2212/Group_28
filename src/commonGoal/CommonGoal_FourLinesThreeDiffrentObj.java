@@ -1,6 +1,7 @@
 package commonGoal;
 
 import myshelfie.Bookshelf;
+
 import myshelfie.BookshelfObject;
 
 public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {

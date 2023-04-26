@@ -1,21 +1,9 @@
 package myshelfie;
 
 import java.util.ArrayList;
+
 import java.util.Random;
-import utils.MatrixCoords;
-import commonGoal.CommonGoal;
-import commonGoal.CommonGoal_SixSeparateGroupsOfTwoObj;
-import commonGoal.CommonGoal_TwoFourByFourSquares;
-import commonGoal.CommonGoal_Corners;
-import commonGoal.CommonGoal_FourVertical;
-import commonGoal.CommonGoal_ThreeColumns;
-import commonGoal.CommonGoal_EightEqual;
-import commonGoal.CommonGoal_Diagonal;
-import commonGoal.CommonGoal_FourLinesThreeDiffrentObj;
-import commonGoal.CommonGoal_TwoColumsSixDiffrentObj;
-import commonGoal.CommonGoal_TwoLinesDiffrentObj;
-import commonGoal.CommonGoal_FiveX;
-import commonGoal.CommonGoal_Stairs;
+import commonGoal.*;
 
 import personalGoals.personalGoals;
 import personalGoals.ObjPosition;

@@ -1,6 +1,6 @@
 package commonGoal;
 
-import javafx.print.Printer.MarginType;
+
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
