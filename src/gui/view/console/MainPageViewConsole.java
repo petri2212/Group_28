@@ -2,14 +2,9 @@ package gui.view.console;
 
 import java.util.Scanner;
 
-import gui.View;
-import gui.controller.MainPageController;
+import gui.view.MainPageView;
 
-public class MainPageView extends View <MainPageController> {
-
-	public MainPageView(MainPageController controller) {
-		super(controller);
-	}
+public class MainPageViewConsole extends MainPageView {
 
 	@Override
 	public void show() {
@@ -20,7 +15,7 @@ public class MainPageView extends View <MainPageController> {
 		String input = sc.next();
 
 		if (input.equals("yes")) {
-			controller.actionNewGame();
+			actionNewGame.actionPerformed(null);
 		}
 
 		sc.close();

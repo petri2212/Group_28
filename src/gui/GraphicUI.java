@@ -22,9 +22,9 @@ public class GraphicUI implements UI {
 
 	@Override
 	public void showMainPage(GameManager model) {
-		MainPageController controller = new MainPageController(model);
-		MainPageView view = new MainPageView(mainFrame, controller);
-		view.show();
+		MainPageViewGraphic view = new MainPageViewGraphic(mainFrame);
+		MainPageController controller = new MainPageController(model, view);
+		controller.start();
 	}
 
 }

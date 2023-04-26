@@ -9,9 +9,9 @@ public class ConsoleUI implements UI {
 
 	@Override
 	public void showMainPage(GameManager model) {
-		MainPageController controller = new MainPageController(model);
-		MainPageView view = new MainPageView(controller);
-		view.show();
+		MainPageViewConsole view = new MainPageViewConsole();
+		MainPageController controller = new MainPageController(model, view);
+		controller.start();
 	}
 
 }

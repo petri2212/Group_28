@@ -4,39 +4,28 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import gui.View;
 import gui.component.BackgroundPanel;
-import gui.controller.MainPageController;
-
+import gui.view.MainPageView;
 import myshelfie.ResourceImage;
 
-public class MainPageView extends View <MainPageController> {
+public class MainPageViewGraphic extends MainPageView {
 
 	private JFrame mainFrame;
 
-	public MainPageView(JFrame mainFrame, MainPageController controller) {
-		super(controller);
+	public MainPageViewGraphic(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}
 
 	@Override
 	public void show() {
 		JButton button = new JButton("New Game");
-		button.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.actionNewGame();
-			}
-		});
+		button.addActionListener(actionNewGame);
 
 		Image image = ResourceImage.PUBLISHER_MATERIAL_DISPLAY_1.load();
 		BackgroundPanel panel = new BackgroundPanel(image);
