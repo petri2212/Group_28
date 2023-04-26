@@ -18,10 +18,6 @@ public class Extratcards {
 	
 	public Extratcards() {
 		fillDeckCardsP();
-	};
-	
-	//this will extract common
-	public Extratcards(int c) {
 		fillDeckCardsC();
 	};
 	
