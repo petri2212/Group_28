@@ -54,9 +54,11 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return noEmptyRow;
 	}
 	
-	public boolean emptyCol(int r) {
+	public boolean notFullCol
+	
+	public boolean notFullCol(int r) {
 		for(int c=0; c<ROWS_NUMBER; c++) {
-			if(items.get(new MatrixCoords(c, r)) == null) {
+			if(items.get(new MatrixCoords(r, c)) == null) {
 				return true;
 			}
 		}
