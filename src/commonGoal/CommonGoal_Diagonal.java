@@ -25,7 +25,7 @@ public class CommonGoal_Diagonal extends CommonGoal{
 		 *two of them start form bottom left and end top right and the other two
 		 *start from bottom right and end top left. 
 		 * */		
-		if(!library.notFullCol(FRIST_COL_OR_ROW) || !library.notFullCol(SECOND_ROW)) {
+		if(library.fullCol(FRIST_COL_OR_ROW) || library.fullCol(SECOND_ROW)) {
 			BookshelfObject downLeft = library.get(new MatrixCoords(FRIST_COL_OR_ROW, FRIST_COL_OR_ROW));
 			BookshelfObject upLeft = library.get(new MatrixCoords(SECOND_ROW, FRIST_COL_OR_ROW));
 			BookshelfObject downRight = library.get(new MatrixCoords(FRIST_COL_OR_ROW, SECOND_COL));

@@ -21,7 +21,7 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 		int tmpCols = 0;
 		
 		for(int r = 0; r < ROWS_NUMBER; r++) {
-			if(!library.emptyCol(r)) {
+			if(library.fullCol(r)) {
 				for(int c = 0; c < COLS_NUMBER; c++) {
 					BookshelfObject tmpVar = library.get(new MatrixCoords(r, c));
 					do {
