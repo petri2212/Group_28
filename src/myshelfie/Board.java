@@ -48,10 +48,13 @@ public class Board extends Matrix<Tile> {
 	 * starting from the bottom-left corner with the coordinates 0, 0.
 	 */
 	private void init() {
+		int maxRowIndex = ROW_COUNT - 1;
+		int macColIndex = COL_COUNT - 1;
+
 		for(int r = 0; r < ROW_COUNT; r++)
 			for(int c = 0; c < COL_COUNT; c++) {
-				int rMirrored = (r - ROW_COUNT) * -1;
-				int cMirrored = (c - COL_COUNT) * -1;
+				int rMirrored = (maxRowIndex - r);
+				int cMirrored = (macColIndex - c);
 				Tile tile = livingroomTileMap[rMirrored][cMirrored];
 				MatrixCoords coords = new MatrixCoords(r, c);
 				items.put(coords, tile);
