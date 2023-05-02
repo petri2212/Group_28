@@ -10,8 +10,7 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 	private static final int COLS_NUMBER = 5;
 	private static final int ROWS_DIFERRENT = 2;
 
-	public CommonGoal_TwoLinesDiffrentObj(int playersNumber) {
-		super(playersNumber);
+	public CommonGoal_TwoLinesDiffrentObj() {
 		// TODO Auto-generated constructor stub
 	}
 

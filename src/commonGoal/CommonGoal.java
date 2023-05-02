@@ -6,11 +6,9 @@ public abstract class CommonGoal implements Goal {
 
 	protected String description;
 	protected int goalReachedCounter;
-	private int playersNumber;
 
-	public CommonGoal(int playersNumber) {
+	public CommonGoal() {
 		goalReachedCounter = 0;
-		this.playersNumber = playersNumber;
 	}
 
 	public String getDescription() {

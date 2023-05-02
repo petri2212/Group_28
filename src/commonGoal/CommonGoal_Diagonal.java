@@ -13,8 +13,7 @@ public class CommonGoal_Diagonal extends CommonGoal{
 	private static final int SECOND_ROW = 1;
 	private static final int DIAGONAL_LENGHT = 5;
 
-	public CommonGoal_Diagonal(int playersNumber) {
-		super(playersNumber);
+	public CommonGoal_Diagonal() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -41,7 +40,7 @@ public class CommonGoal_Diagonal extends CommonGoal{
 			int c = FRIST_COL_OR_ROW;
 			boolean value = false;
 			
-			for(int y = 0; y < 4; y++) {
+			for(int y = 0; y < tiles.size(); y++) {
 				if(y < 2) {
 					if(y == 1) {
 						r = SECOND_ROW;

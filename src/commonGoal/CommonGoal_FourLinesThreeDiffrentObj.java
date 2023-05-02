@@ -7,13 +7,10 @@ import utils.MatrixCoords;
 
 public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 	
-	private static final int ROWS_NUMBER = 6;
-	private static final int COLS_NUMBER = 5;
 	private static final int ROWS_NEEDED = 4;
 	private static final int MAX_TAILS = 3;
 
-	public CommonGoal_FourLinesThreeDiffrentObj(int playersNumber) {
-		super(playersNumber);
+	public CommonGoal_FourLinesThreeDiffrentObj() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -25,21 +22,14 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 		 * */
 		int cont = 0;
 		
-		for(int r = 0; r < ROWS_NUMBER; r++) {
+		for(int r = 0; r < library.getRows(); r++) {
 			if(library.fullCol(r)) {
-				BookshelfObject first = library.get(new MatrixCoords(r, COLS_NUMBER-5));
-				BookshelfObject second = library.get(new MatrixCoords(r, COLS_NUMBER-4));
-				BookshelfObject third = library.get(new MatrixCoords(r, COLS_NUMBER-3));
-				BookshelfObject fourth = library.get(new MatrixCoords(r, COLS_NUMBER-2));
-				BookshelfObject fifth = library.get(new MatrixCoords(r, COLS_NUMBER-1));
-				
 				HashSet<BookshelfObject> tiles = new HashSet<BookshelfObject>();
-				tiles.add(first);
-				tiles.add(second);
-				tiles.add(third);
-				tiles.add(fourth);
-				tiles.add(fifth);
 				
+				for(int i = 0; i < library.getCols(); i++) {
+					BookshelfObject tmp_tile = library.get(new MatrixCoords(r, i));
+					tiles.add(tmp_tile);
+				}
 				if(tiles.size() <= MAX_TAILS) {
 					cont++;
 				}

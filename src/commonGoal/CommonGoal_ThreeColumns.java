@@ -11,8 +11,7 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 	private final int MAX_DIFFERENT_OBJECTS = 3;
 	private final int MAX_VALID_COLUMNS = 3;
 
-	public CommonGoal_ThreeColumns(int playersNumber) {
-		super(playersNumber);
+	public CommonGoal_ThreeColumns() {
 		description = "Three columns each formed by 6 tiles\n"
 				+ "of maximum three different types. One\n"
 				+ "column can show the same or a different\n"

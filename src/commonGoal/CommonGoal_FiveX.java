@@ -10,8 +10,7 @@ public class CommonGoal_FiveX extends CommonGoal{
 	private static final int MAX_COLS = 4;
 	private static final int MIN_ROWS_AND_COLS = 1;
 	
-	public CommonGoal_FiveX(int playersNumber) {
-		super(playersNumber);
+	public CommonGoal_FiveX() {
 		// TODO Auto-generated constructor stub
 	}
 

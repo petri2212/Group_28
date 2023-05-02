@@ -5,8 +5,7 @@ import myshelfie.BookshelfObject;
 
 public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 
-	public CommonGoal_TwoColumsSixDiffrentObj(int playersNumber) {
-		super(playersNumber);
+	public CommonGoal_TwoColumsSixDiffrentObj() {
 		// TODO Auto-generated constructor stub
 	}
 

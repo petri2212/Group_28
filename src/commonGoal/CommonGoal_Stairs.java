@@ -7,8 +7,7 @@ import utils.MatrixCoords;
 
 public class CommonGoal_Stairs extends CommonGoal {
 
-	public CommonGoal_Stairs(int playersNumber) {
-		super(playersNumber);
+	public CommonGoal_Stairs() {
 		// TODO Auto-generated constructor stub
 	}
 	/**
