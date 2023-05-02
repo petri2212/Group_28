@@ -38,11 +38,14 @@ public class CommonGoal_Diagonal extends CommonGoal{
 			
 			int r = FRIST_COL_OR_ROW;
 			int c = FRIST_COL_OR_ROW;
+			int donwleft_diagonal_position = 1;
+			int upLeft_diagonal_position = 2;
+			int donwright_diagonal_position = 3;
 			boolean value = false;
 			
 			for(int y = 0; y < tiles.size(); y++) {
-				if(y < 2) {
-					if(y == 1) {
+				if(y < upLeft_diagonal_position) {
+					if(y == donwleft_diagonal_position) {
 						r = SECOND_ROW;
 					}
 					BookshelfObject start = tiles.get(y);
@@ -58,10 +61,13 @@ public class CommonGoal_Diagonal extends CommonGoal{
 				}else {
 					r = FRIST_COL_OR_ROW;
 					c = SECOND_COL;
-					if(y == 3) {
+					if(y == donwright_diagonal_position) {
 						r = SECOND_ROW;
 					}
 					BookshelfObject start = tiles.get(y);
+					/*in he for down below we initialize the i at 1 because
+					 * we need use that as the number to add from rows and to subtract from columns 
+					 * */
 					for(int i = 1; i < DIAGONAL_LENGHT+1; i++) {
 						BookshelfObject next = library.get(new MatrixCoords(r+i, c-i));
 						if(start == next) {
