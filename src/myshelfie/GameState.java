@@ -2,8 +2,11 @@ package myshelfie;
 
 public enum GameState
 {
-	START,
-	NEW_GAME,
-	PLAY,
+	HOME,
+	INSERT_PLAYERS,
+	INIT_GAME,
+	PICK_OBJECTS,
+	PUT_OBJECTS,
+	CONTROLS,
 	END;
 }

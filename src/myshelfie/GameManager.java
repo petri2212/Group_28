@@ -17,7 +17,7 @@ public class GameManager {
 	}
 
 	public void start() {
-		state = GameState.START;
+		state = GameState.HOME;
 		players = new ArrayList<>();
 		playerTurn = 0;
 
@@ -31,14 +31,14 @@ public class GameManager {
 
 	private void manageState() {
 		switch(state) {
-		case START:
+		case HOME:
 			ui.showMainPage(this);
 			break;
 
 		case NEW_GAME:
 			break;
 
-		case PLAY:
+		case CONTROLS:
 			board = new Board(players.size());
 			updatePlayerTurn();
 			break;

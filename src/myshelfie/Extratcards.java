@@ -28,20 +28,18 @@ public class Extratcards {
 	}
 	
 	private void fillDeckCardsP() {
-		
-		int playernum=2;
-		deckcommon.add(new CommonGoal_SixSeparateGroupsOfTwoObj(playernum));
-		deckcommon.add(new CommonGoal_TwoFourByFourSquares(playernum));
-		deckcommon.add(new CommonGoal_Corners(playernum));
-		deckcommon.add(new CommonGoal_FourVertical(playernum));
-		deckcommon.add(new CommonGoal_ThreeColumns(playernum));
-		deckcommon.add(new CommonGoal_EightEqual(playernum));
-		deckcommon.add(new CommonGoal_Diagonal(playernum));
-		deckcommon.add(new CommonGoal_FourLinesThreeDiffrentObj(playernum));
-		deckcommon.add(new CommonGoal_TwoColumsSixDiffrentObj(playernum));
-		deckcommon.add(new CommonGoal_TwoLinesDiffrentObj(playernum));
-		deckcommon.add(new CommonGoal_FiveX(playernum));
-		deckcommon.add(new CommonGoal_Stairs(playernum));
+		deckcommon.add(new CommonGoal_SixSeparateGroupsOfTwoObj());
+		deckcommon.add(new CommonGoal_TwoFourByFourSquares());
+		deckcommon.add(new CommonGoal_Corners());
+		deckcommon.add(new CommonGoal_FourVertical());
+		deckcommon.add(new CommonGoal_ThreeColumns());
+		deckcommon.add(new CommonGoal_EightEqual());
+		deckcommon.add(new CommonGoal_Diagonal());
+		deckcommon.add(new CommonGoal_FourLinesThreeDiffrentObj());
+		deckcommon.add(new CommonGoal_TwoColumsSixDiffrentObj());
+		deckcommon.add(new CommonGoal_TwoLinesDiffrentObj());
+		deckcommon.add(new CommonGoal_FiveX());
+		deckcommon.add(new CommonGoal_Stairs());
 	}
 	
 	private void fillDeckCardsC() {

@@ -55,7 +55,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 	}
 	
 	public boolean fullCol(int r) {
-		for(int c=0; c<ROWS_NUMBER; c++) {
+		for(int c=0; c<COLS_NUMBER; c++) {
 			if(items.get(new MatrixCoords(r, c)) == null) {
 				return false;
 			}
