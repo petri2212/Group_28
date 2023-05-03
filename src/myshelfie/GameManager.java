@@ -35,7 +35,7 @@ public class GameManager {
 			ui.showMainPage(this);
 			break;
 
-		case NEW_GAME:
+		case INIT_GAME:
 			break;
 
 		case CONTROLS:

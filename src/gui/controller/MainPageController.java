@@ -21,7 +21,7 @@ public class MainPageController extends Controller<MainPageView> {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.changeState(GameState.NEW_GAME);
+				model.changeState(GameState.INIT_GAME);
 			}
 		};
 	}
