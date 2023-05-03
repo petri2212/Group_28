@@ -2,17 +2,41 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import utils.MatrixCoords;
 
 public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
+	
+	private boolean forthRowfull = false;
 
 	public CommonGoal_SixSeparateGroupsOfTwoObj() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public int check( Bookshelf library) {
-		
+	public int check(Bookshelf bookshelf) {
 		// TODO Auto-generated method stub
+		if(this.forthRowfull==false){
+			this.forthRowfull=bookshelf.checkIfRowIsfull(4);
+		}
+		
+		
+		
+		if(this.forthRowfull==true) {
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		return 0;
 	}
 
@@ -26,8 +50,4 @@ public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
 				+ "from those of another group.";
 		return desc;
 	}
-
-	
-	
-
 }
