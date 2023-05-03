@@ -1,5 +1,6 @@
 package myshelfie;
-
+import commonGoal.*;
+import personalGoals.ObjPosition;
 /**
  * Represents a physical player of the game
  */
@@ -8,6 +9,7 @@ public class Player {
 	private String name;
 	private int points;
 	private Bookshelf bookshelf;
+	private ObjPosition[] personalGoalPos;
 
 	/**
 	 * To construct a player, the name is needed as identifier to allow the user understanding when
@@ -55,5 +57,13 @@ public class Player {
 	 */
 	public void addPoints(int points) {
 		this.points += points;
+	}
+	/**
+	 * This method will assign the personal card positions of the current player in the personalGoalPos attribute
+	 *
+	 * @param pers	an ObjPosition[] correspond to the positions of the personal card objects
+	 */
+	public void assignPersonalGoalPos(ObjPosition[] pers ) {
+		this.personalGoalPos=pers;
 	}
 }
