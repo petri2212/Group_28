@@ -25,4 +25,11 @@ public class MatrixCoords {
 			this.c = c;
 		}
 	}
+	
+	public boolean equalsMatCorords(MatrixCoords matrix) {
+		if(this.r==matrix.r && this.c==matrix.c) {
+			return true;
+		}
+		return false;
+	}
 }
