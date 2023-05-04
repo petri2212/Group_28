@@ -21,9 +21,17 @@ public class MainPageController extends Controller<MainPageView> {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.changeState(GameState.NEW_GAME);
+				model.changeState(GameState.INSERT_PLAYERS);
+			}
+		};
+		
+		view.actionExit = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				model.changeState(GameState.EXIT);
 			}
 		};
 	}
-
 }
