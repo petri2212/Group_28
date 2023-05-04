@@ -25,9 +25,8 @@ public class MainPageViewConsole extends MainPageView {
 				isWaiting = false;
 				actionExit.actionPerformed(null);
 			}
+			sc.close();
 		}while(isWaiting);
-
-		sc.close();
 	}
 
 }
