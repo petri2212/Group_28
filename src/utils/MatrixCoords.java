@@ -26,7 +26,7 @@ public class MatrixCoords {
 		}
 	}
 	
-	public boolean equalsMatCorords(MatrixCoords matrix) {
+	public boolean equalsMatCoords(MatrixCoords matrix) {
 		if(this.r==matrix.r && this.c==matrix.c) {
 			return true;
 		}
