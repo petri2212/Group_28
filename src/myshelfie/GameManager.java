@@ -34,12 +34,26 @@ public class GameManager {
 		case HOME:
 			ui.showMainPage(this);
 			break;
+			
+		case EXIT:
+			System.exit(0);
+			break;
 
-		case NEW_GAME:
+		case INSERT_PLAYERS:
+			ui.showInsertPlayersPage(this);
+			break;
+			
+		case INIT_GAME:
+			board = new Board(players.size());
+			break;
+			
+		case PICK_OBJECTS:
+			break;
+			
+		case PUT_OBJECTS:
 			break;
 
 		case CONTROLS:
-			board = new Board(players.size());
 			updatePlayerTurn();
 			break;
 
