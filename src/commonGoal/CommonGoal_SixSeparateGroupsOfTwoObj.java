@@ -37,7 +37,7 @@ public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
 						}else {
 							int cont=0;
 							for (MatrixCoords posUsed : CoordsUsed) {
-								if(!(posUsed.equalsMatCoords(new MatrixCoords(row, col)) || posUsed.equalsMatCoords(new MatrixCoords(row--, col)))){
+								if(!(posUsed.equals(new MatrixCoords(row, col)) || posUsed.equals(new MatrixCoords(row--, col)))){
 									cont++;	
 								}
 							}
@@ -64,7 +64,7 @@ public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
 						}else {
 							int cont=0;
 							for (MatrixCoords posUsed : CoordsUsed) {
-								if(!(posUsed.equalsMatCoords(new MatrixCoords(row, col)) || posUsed.equalsMatCoords(new MatrixCoords(row, col++)))){
+								if(!(posUsed.equals(new MatrixCoords(row, col)) || posUsed.equals(new MatrixCoords(row, col++)))){
 									cont++;	
 								}
 							}
