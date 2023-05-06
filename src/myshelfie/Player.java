@@ -1,5 +1,4 @@
 package myshelfie;
-import commonGoal.*;
 import personalGoals.ObjPosition;
 /**
  * Represents a physical player of the game
