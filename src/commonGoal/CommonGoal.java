@@ -1,8 +1,9 @@
 package commonGoal;
 
+import gui.DrawableObject;
 import myshelfie.Goal;
 
-public abstract class CommonGoal implements Goal {
+public abstract class CommonGoal implements Goal, DrawableObject {
 
 	protected String description;
 	protected int goalReachedCounter;

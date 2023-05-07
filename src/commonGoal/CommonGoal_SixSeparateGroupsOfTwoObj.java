@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
 	
 	private boolean forthRowfull = false;
-	
-	public CommonGoal_SixSeparateGroupsOfTwoObj() {
-		// TODO Auto-generated constructor stub
+
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_SIX_SEPARATE_GROUPS_OF_TWO_OBJ;
 	}
 
 	@Override

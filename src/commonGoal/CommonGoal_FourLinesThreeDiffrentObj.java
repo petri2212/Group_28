@@ -3,6 +3,7 @@ package commonGoal;
 import java.util.HashSet;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
@@ -10,8 +11,9 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 	private static final int ROWS_NEEDED = 4;
 	private static final int MAX_TAILS = 3;
 
-	public CommonGoal_FourLinesThreeDiffrentObj() {
-		// TODO Auto-generated constructor stub
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_FOUR_LINES_THREE_DIFFERENT_OBJ;
 	}
 
 	@Override

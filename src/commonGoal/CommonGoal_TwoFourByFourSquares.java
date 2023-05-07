@@ -2,10 +2,13 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 
 public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 
-	public CommonGoal_TwoFourByFourSquares() {
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_TWO_FOUR_BY_FOUR_SQUARES;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 import java.util.ArrayList;
@@ -16,6 +17,11 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 				+ "of maximum three different types. One\n"
 				+ "column can show the same or a different\n"
 				+ "combination of another column.";
+	}
+
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_THREE_COLUMNS;
 	}
 
 	/**
@@ -54,4 +60,5 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 
 		return (validColsCount == MAX_VALID_COLUMNS) ? getPoints() : 0;
 	}
+
 }
