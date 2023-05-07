@@ -2,6 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_FiveX extends CommonGoal{
@@ -9,9 +10,16 @@ public class CommonGoal_FiveX extends CommonGoal{
 	private static final int MAX_ROWS = 5;
 	private static final int MAX_COLS = 4;
 	private static final int MIN_ROWS_AND_COLS = 1;
+
 	private boolean isItCompleted=false;
 	public CommonGoal_FiveX() {
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_FIVE_X;
+
 	}
 
 	@Override

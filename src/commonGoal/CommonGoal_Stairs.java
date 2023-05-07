@@ -3,15 +3,18 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_Stairs extends CommonGoal {
 	
 	private boolean isItCompleted=false;
 
-	public CommonGoal_Stairs() {
-		// TODO Auto-generated constructor stub
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_STAIRS;
 	}
+
 	/**
 	 * This method verifies that the player has created an ascending or descending stair form with his tiles.
 	 * Check that the first row is empty, if this happens the tiles are counted using a counter, 

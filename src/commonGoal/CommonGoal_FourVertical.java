@@ -6,20 +6,23 @@ import java.util.Queue;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_FourVertical extends CommonGoal {
 
 	private final int MAX_SAME_ADJACENT_OBJECTS = 4;
 	private final int MAX_VALID_GROUPS = 4;
+
 	private boolean isItCompleted=false;
 	
 	public CommonGoal_FourVertical() {
-		description = "Four groups each containing at least\n"
-				+ "4 tiles of the same type (not necessarily\n"
-				+ "in the depicted shape).\n"
-				+ "The tiles of one group can be different\n"
-				+ "from those of another group.";
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_FOUR_VERTICAL;
 	}
 
 	/**
@@ -97,6 +100,15 @@ public class CommonGoal_FourVertical extends CommonGoal {
 			}
 		}
 	}
+	@Override
+	public String getDescription() {
+		return "Four groups each containing at least\n"
+				+ "4 tiles of the same type (not necessarily\n"
+				+ "in the depicted shape).\n"
+				+ "The tiles of one group can be different\n"
+				+ "from those of another group.";
+	}
+	
 	@Override
 	public boolean getIsItCompleted() {
 		// TODO Auto-generated method stub

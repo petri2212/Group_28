@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_Diagonal extends CommonGoal{
@@ -12,10 +13,15 @@ public class CommonGoal_Diagonal extends CommonGoal{
 	private static final int SECOND_COL = 4;
 	private static final int SECOND_ROW = 1;
 	private static final int DIAGONAL_LENGHT = 5;
+
 	private boolean isItCompleted=false;
 	
 	public CommonGoal_Diagonal() {
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_DIAGOONAL;
 	}
 
 	@Override

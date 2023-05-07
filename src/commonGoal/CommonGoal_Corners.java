@@ -3,15 +3,18 @@ package commonGoal;
 import myshelfie.Bookshelf;
 
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_Corners extends CommonGoal {
 	
 	private boolean isItCompleted=false;
 
-	public CommonGoal_Corners() {
-		// TODO Auto-generated constructor stub
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_CORNERS;
 	}
+
 	/**
 	 * This method takes the four objects in the corners of the library and checks that they are all the same.
 	 *

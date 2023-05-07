@@ -26,8 +26,11 @@ public class MatrixCoords {
 		}
 	}
 	
-	public boolean equalsMatCoords(MatrixCoords matrix) {
-		if(this.r==matrix.r && this.c==matrix.c) {
+	@Override
+	public boolean equals(Object obj) {
+		MatrixCoords matrixCoords = (MatrixCoords)obj;
+
+		if(this.r==matrixCoords.r && this.c==matrixCoords.c) {
 			return true;
 		}
 		return false;

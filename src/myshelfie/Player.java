@@ -1,7 +1,5 @@
 package myshelfie;
 import java.util.ArrayList;
-
-
 import commonGoal.*;
 import personalGoals.ObjPosition;
 import utils.MatrixCoords;

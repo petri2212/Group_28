@@ -2,13 +2,15 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 
 public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 	
 	private boolean isItCompleted=false;
 
-	public CommonGoal_TwoColumsSixDiffrentObj() {
-		// TODO Auto-generated constructor stub
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_TWO_COLUMNS_SIX_DIFFERENT_OBJ;
 	}
 
 	@Override

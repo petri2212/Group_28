@@ -1,10 +1,10 @@
 package commonGoal;
 
+import gui.DrawableObject;
 import myshelfie.Goal;
 
-public abstract class CommonGoal implements Goal {
+public abstract class CommonGoal implements Goal, DrawableObject {
 
-	protected String description;
 	protected int goalReachedCounter;
 	private boolean isItCompleted;
 
@@ -12,9 +12,10 @@ public abstract class CommonGoal implements Goal {
 		goalReachedCounter = 0;
 	}
 
-	public String getDescription() {
-		return this.description;
-	}
+	/**
+	 * @return the common goal description
+	 */
+	public abstract String getDescription();
 
 	/**
 	 * This method is used to understand if the commongoal of a single player has been completed or not

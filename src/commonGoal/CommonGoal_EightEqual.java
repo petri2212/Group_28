@@ -2,6 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_EightEqual extends CommonGoal {
@@ -11,6 +12,12 @@ public class CommonGoal_EightEqual extends CommonGoal {
 	public CommonGoal_EightEqual() {
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_EIGHT_EQUAL;
+	}
+
 	/**
 	 * This method checks that a library has at least 8 tiles of the same type, it works by checking each cell of the library, 
 	 * each time a tile is found it increases a counter 
