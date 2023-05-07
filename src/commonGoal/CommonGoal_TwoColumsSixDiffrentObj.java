@@ -4,6 +4,8 @@ import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
 public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
+	
+	private boolean isItCompleted=false;
 
 	public CommonGoal_TwoColumsSixDiffrentObj() {
 		// TODO Auto-generated constructor stub
@@ -21,6 +23,12 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 		String desc="Two columns each formed by 6\r\n"
 				+ "different types of tiles.";
 		return desc;
+	}
+	
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
 	}
 
 }

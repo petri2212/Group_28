@@ -9,6 +9,7 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 	private static final int ROWS_NUMBER = 6;
 	private static final int COLS_NUMBER = 5;
 	private static final int ROWS_DIFERRENT = 2;
+	private boolean isItCompleted=false;
 
 	public CommonGoal_TwoLinesDiffrentObj() {
 		// TODO Auto-generated constructor stub
@@ -37,7 +38,8 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 				}
 			}
 			if(cont == ROWS_DIFERRENT) {
-				return getPoints();
+				isItCompleted = true;
+				return 1;
 			}
 		}
 		return 0;
@@ -51,6 +53,12 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 				+ "same or a different combination of the\r\n"
 				+ "other line.";
 		return desc;
+	}
+	
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
 	}
 
 }

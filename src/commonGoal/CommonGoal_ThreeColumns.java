@@ -10,6 +10,7 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 
 	private final int MAX_DIFFERENT_OBJECTS = 3;
 	private final int MAX_VALID_COLUMNS = 3;
+	private boolean isItCompleted=false;
 
 	public CommonGoal_ThreeColumns() {
 		description = "Three columns each formed by 6 tiles\n"
@@ -52,6 +53,15 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 			objects.clear();
 		}
 
-		return (validColsCount == MAX_VALID_COLUMNS) ? getPoints() : 0;
+		 if (validColsCount == MAX_VALID_COLUMNS) {
+			 isItCompleted=true;
+			 return 1;
+		 }
+		 return 0;
+	}
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
 	}
 }

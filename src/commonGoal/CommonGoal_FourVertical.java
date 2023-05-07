@@ -12,7 +12,8 @@ public class CommonGoal_FourVertical extends CommonGoal {
 
 	private final int MAX_SAME_ADJACENT_OBJECTS = 4;
 	private final int MAX_VALID_GROUPS = 4;
-
+	private boolean isItCompleted=false;
+	
 	public CommonGoal_FourVertical() {
 		description = "Four groups each containing at least\n"
 				+ "4 tiles of the same type (not necessarily\n"
@@ -65,7 +66,11 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	            	}
 	            }
 	        }
-	    return (groupsCount == MAX_VALID_GROUPS) ? getPoints() : 0;
+	    if (groupsCount == MAX_VALID_GROUPS) {
+	    	isItCompleted=true;
+	    	return 1;
+	    }
+	    return 0;
 	}
 
 	/**
@@ -91,6 +96,11 @@ public class CommonGoal_FourVertical extends CommonGoal {
 				queue.add(pos);
 			}
 		}
+	}
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
 	}
 
 }

@@ -7,12 +7,13 @@ import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
 public class CommonGoal_Diagonal extends CommonGoal{
-	
+
 	private static final int FRIST_COL_OR_ROW = 0;
 	private static final int SECOND_COL = 4;
 	private static final int SECOND_ROW = 1;
 	private static final int DIAGONAL_LENGHT = 5;
-
+	private boolean isItCompleted=false;
+	
 	public CommonGoal_Diagonal() {
 		// TODO Auto-generated constructor stub
 	}
@@ -73,7 +74,8 @@ public class CommonGoal_Diagonal extends CommonGoal{
 					}
 				}
 				if(value)
-					return getPoints();
+					return 1;
+				    isItCompleted=true;
 			}			
 		}
 		return 0;
@@ -85,6 +87,12 @@ public class CommonGoal_Diagonal extends CommonGoal{
 		String desc="Five tiles of the same type forming a\r\n"
 				+ "diagonal.";
 		return desc;
+	}
+	
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
 	}
 
 }

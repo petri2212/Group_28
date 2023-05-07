@@ -4,6 +4,8 @@ import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 
 public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
+	
+	private boolean isItCompleted=false;
 
 	public CommonGoal_TwoFourByFourSquares() {
 	}
@@ -24,5 +26,11 @@ public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 				+ "from those of another group.";
 		return desc;
 	}
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
+	}
+	
 
 }

@@ -9,7 +9,8 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 	
 	private static final int ROWS_NEEDED = 4;
 	private static final int MAX_TAILS = 3;
-
+	private boolean isItCompleted=false; 
+	
 	public CommonGoal_FourLinesThreeDiffrentObj() {
 		// TODO Auto-generated constructor stub
 	}
@@ -35,7 +36,8 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 				}
 			}
 			if(cont == ROWS_NEEDED) {
-				return getPoints();
+				isItCompleted=true;
+				return 1;
 			}
 		}
 		return 0;
@@ -49,6 +51,12 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 				+ "line can show the same or a different\r\n"
 				+ "combination of another line.";
 		return desc;
+	}
+	
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
 	}
 
 }
