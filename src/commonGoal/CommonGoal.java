@@ -5,16 +5,16 @@ import myshelfie.Goal;
 
 public abstract class CommonGoal implements Goal, DrawableObject {
 
-	protected String description;
 	protected int goalReachedCounter;
 
 	public CommonGoal() {
 		goalReachedCounter = 0;
 	}
 
-	public String getDescription() {
-		return this.description;
-	}
+	/**
+	 * @return the common goal description
+	 */
+	public abstract String getDescription();
 
 	/**
 	 * Returns the points gained from the achievement of the checked goal.
