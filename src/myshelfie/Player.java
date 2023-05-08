@@ -1,6 +1,5 @@
 package myshelfie;
 import java.util.ArrayList;
-import commonGoal.*;
 import personalGoals.ObjPosition;
 import utils.MatrixCoords;
 /**
@@ -12,8 +11,6 @@ public class Player {
 	private int points;
 	protected Bookshelf bookshelf;
 	private ObjPosition[] personalGoalPos;
-	protected CommonGoal commonGoal1;
-	protected CommonGoal commonGoal2;
 	/**
 	 * To construct a player, the name is needed as identifier to allow the user understanding when
 	 * it is his/her turn. A player also holds a bookshelf and has a counter for the game points.
@@ -62,15 +59,11 @@ public class Player {
 		this.points += points;
 	}
 	/**
-	 * This method will assign the personal card positions of the current player in the personalGoalPos attribute and the correspondent commonGoals
+	 * This method will assign the personal card positions of the current player 
 	 *
 	 * @param pers	an ObjPosition[] correspond to the positions of the personal card objects
-	 * @param commonGoal1 assign to the attribute commonGoal1 the first commonGoal extracted
-	 * @param commonGoal2 assign to the attribute commonGoal2 the second commonGoal extracted
 	 */
-	public void assignPersonalGoalPos(ObjPosition[] pers, CommonGoal commonGoal1, CommonGoal commonGoal2 ) {
+	public void assignPersonalGoalPos(ObjPosition[] pers) {
 		this.personalGoalPos=pers;
-		this.commonGoal1=commonGoal1;
-		this.commonGoal1=commonGoal2;
 	}
 }
