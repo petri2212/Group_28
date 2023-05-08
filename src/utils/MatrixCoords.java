@@ -25,4 +25,14 @@ public class MatrixCoords {
 			this.c = c;
 		}
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		MatrixCoords matrixCoords = (MatrixCoords)obj;
+
+		if(this.r==matrixCoords.r && this.c==matrixCoords.c) {
+			return true;
+		}
+		return false;
+	}
 }

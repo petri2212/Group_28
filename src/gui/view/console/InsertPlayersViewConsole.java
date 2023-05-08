@@ -2,13 +2,18 @@ package gui.view.console;
 
 import java.util.Scanner;
 
-import gui.view.MainPageView;
+import gui.view.InsertPlayersView;
 
-public class MainPageViewConsole extends MainPageView {
+public class InsertPlayersViewConsole extends InsertPlayersView {
 
 	@Override
 	public void show() {
-
+		// TODO Auto-generated method stub
+		System.out.println("Inserisci un giocatore");
+		System.out.println("nome: ");
+		Scanner nome = new Scanner(System.in);
+		System.out.println("cognome");
+		
 		boolean isWaiting = true;
 		
 		do {
@@ -27,6 +32,8 @@ public class MainPageViewConsole extends MainPageView {
 			}
 			sc.close();
 		}while(isWaiting);
+
+
 	}
 
 }

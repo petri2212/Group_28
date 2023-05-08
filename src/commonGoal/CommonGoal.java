@@ -1,29 +1,30 @@
 package commonGoal;
 
+import gui.DrawableObject;
 import myshelfie.Goal;
 
-public abstract class CommonGoal implements Goal {
+public abstract class CommonGoal implements Goal, DrawableObject {
 
-	protected String description;
 	protected int goalReachedCounter;
+	private boolean isItCompleted;
 
 	public CommonGoal() {
 		goalReachedCounter = 0;
 	}
 
-	public String getDescription() {
-		return this.description;
-	}
+	/**
+	 * @return the common goal description
+	 */
+	public abstract String getDescription();
 
 	/**
-	 * Returns the points gained from the achievement of the checked goal.
-	 * The points vary in base of how many players have already achieved this goal.
+	 * This method is used to understand if the commongoal of a single player has been completed or not
 	 *
-	 * @return the number of points gained
+	 * @return whether the state of the commongoal, true-->finisched, false -->not finisced
+
 	 */
-	protected int getPoints() {
-		int points = 0;
-		return points;
+	public boolean getIsItCompleted() {
+		return this.isItCompleted;
 	}
 
 }

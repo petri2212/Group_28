@@ -2,6 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 import java.util.ArrayList;
@@ -10,12 +11,19 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 
 	private final int MAX_DIFFERENT_OBJECTS = 3;
 	private final int MAX_VALID_COLUMNS = 3;
+	private boolean isItCompleted=false;
 
-	public CommonGoal_ThreeColumns() {
-		description = "Three columns each formed by 6 tiles\n"
+	@Override
+	public String getDescription() {
+		return "Three columns each formed by 6 tiles\n"
 				+ "of maximum three different types. One\n"
 				+ "column can show the same or a different\n"
 				+ "combination of another column.";
+	}
+
+	@Override
+	public ResourceImage getImage() {
+		return ResourceImage.COMMON_GOAL_THREE_COLUMNS;
 	}
 
 	/**
@@ -52,6 +60,16 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 			objects.clear();
 		}
 
-		return (validColsCount == MAX_VALID_COLUMNS) ? getPoints() : 0;
+		 if (validColsCount == MAX_VALID_COLUMNS) {
+			 isItCompleted=true;
+			 return 1;
+		 }
+		 return 0;
 	}
+	@Override
+	public boolean getIsItCompleted() {
+		// TODO Auto-generated method stub
+		return isItCompleted;
+	}
+
 }
