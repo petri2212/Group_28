@@ -14,5 +14,7 @@ public interface UI {
 	 * 					controller to the game manager to allow state changes.
 	 */
 	void showMainPage(GameManager model);
+	
+	void showInsertPlayersPage(GameManager model);
 
 }

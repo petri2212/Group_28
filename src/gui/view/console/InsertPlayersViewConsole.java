@@ -10,13 +10,12 @@ public class MainPageViewConsole extends MainPageView {
 	public void show() {
 
 		boolean isWaiting = true;
-		Scanner sc = new Scanner(System.in);
-
 		
 		do {
 			System.out.println("\033[H\033[2J");
 			System.out.println("Welcome!");
 			System.out.println("Press n to start a new game or press e to exit");
+			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine();
 			
 			if (input.equalsIgnoreCase("n")) {
@@ -26,10 +25,8 @@ public class MainPageViewConsole extends MainPageView {
 				isWaiting = false;
 				actionExit.actionPerformed(null);
 			}
+			sc.close();
 		}while(isWaiting);
-		
-		sc.close();
-
 	}
 
 }

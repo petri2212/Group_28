@@ -62,5 +62,14 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		}
 		return true;
 	}
+	public boolean checkIfRowIsfull(int row) {
+		
+		for(int c=0; c<4; c++) {
+			if(items.get(new MatrixCoords(row, c)) == null) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 }
