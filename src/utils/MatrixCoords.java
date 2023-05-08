@@ -25,6 +25,10 @@ public class MatrixCoords {
 			this.c = c;
 		}
 	}
+	@Override
+	public int hashCode() {
+		return r+c;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
