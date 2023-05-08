@@ -14,8 +14,6 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	private final int MAX_SAME_ADJACENT_OBJECTS = 4;
 	private final int MAX_VALID_GROUPS = 4;
 
-	private boolean isItCompleted=false;
-	
 	public CommonGoal_FourVertical() {
 		// TODO Auto-generated constructor stub
 	}
@@ -70,7 +68,6 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	            }
 	        }
 	    if (groupsCount == MAX_VALID_GROUPS) {
-	    	isItCompleted=true;
 	    	return 1;
 	    }
 	    return 0;
@@ -108,11 +105,4 @@ public class CommonGoal_FourVertical extends CommonGoal {
 				+ "The tiles of one group can be different\n"
 				+ "from those of another group.";
 	}
-	
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-
 }

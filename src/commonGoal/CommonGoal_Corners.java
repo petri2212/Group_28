@@ -8,8 +8,6 @@ import utils.MatrixCoords;
 
 public class CommonGoal_Corners extends CommonGoal {
 	
-	private boolean isItCompleted=false;
-
 	@Override
 	public ResourceImage getImage() {
 		return ResourceImage.COMMON_GOAL_CORNERS;
@@ -25,7 +23,6 @@ public class CommonGoal_Corners extends CommonGoal {
 	@Override
 	public int check(Bookshelf bookshelf) {
 		// TODO Auto-generated method stub
-		if(!isItCompleted) {
 			BookshelfObject object0 = bookshelf.get(new MatrixCoords(0, 0));
 			BookshelfObject object1 = bookshelf.get(new MatrixCoords(0, 4));
 			BookshelfObject object2 = bookshelf.get(new MatrixCoords(5, 0));
@@ -34,12 +31,10 @@ public class CommonGoal_Corners extends CommonGoal {
 			if(object0!=null && object1!=null && object2!=null && object3!=null) {
 			
 				if(object0.name()==object1.name()&&object1.name()==object2.name()&&object2.name()==object3.name()) {
-					isItCompleted=true;
+					return 1;
 				}	
 			}
 			return 0;
-		}
-		return 1;
 	}
 
 	@Override
@@ -48,10 +43,5 @@ public class CommonGoal_Corners extends CommonGoal {
 		String desc="Four tiles of the same type in the four\r\n"
 				+ "corners of the bookshelf.";
 		return desc;
-	}
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
 	}
 }

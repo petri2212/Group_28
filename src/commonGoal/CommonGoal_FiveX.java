@@ -11,7 +11,6 @@ public class CommonGoal_FiveX extends CommonGoal{
 	private static final int MAX_COLS = 4;
 	private static final int MIN_ROWS_AND_COLS = 1;
 
-	private boolean isItCompleted=false;
 	public CommonGoal_FiveX() {
 		// TODO Auto-generated constructor stub
 	}
@@ -38,7 +37,6 @@ public class CommonGoal_FiveX extends CommonGoal{
 				
 				if(center != null) {
 					if(center == upLeft && center == upRight && center == downLeft && center == downRight) {
-							isItCompleted=true;
 							return 1;
 						}
 				}
@@ -54,10 +52,4 @@ public class CommonGoal_FiveX extends CommonGoal{
 				+ "";
 		return desc;
 	}
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-
 }

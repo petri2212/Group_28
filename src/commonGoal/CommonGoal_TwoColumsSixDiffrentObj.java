@@ -6,8 +6,6 @@ import myshelfie.ResourceImage;
 
 public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 	
-	private boolean isItCompleted=false;
-
 	@Override
 	public ResourceImage getImage() {
 		return ResourceImage.COMMON_GOAL_TWO_COLUMNS_SIX_DIFFERENT_OBJ;
@@ -26,11 +24,4 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 				+ "different types of tiles.";
 		return desc;
 	}
-	
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-
 }

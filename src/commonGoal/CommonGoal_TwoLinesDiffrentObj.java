@@ -10,7 +10,6 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 	private static final int ROWS_NUMBER = 6;
 	private static final int COLS_NUMBER = 5;
 	private static final int ROWS_DIFERRENT = 2;
-	private boolean isItCompleted=false;
 
 	@Override
 	public ResourceImage getImage() {
@@ -40,7 +39,6 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 				}
 			}
 			if(cont == ROWS_DIFERRENT) {
-				isItCompleted = true;
 				return 1;
 			}
 		}
@@ -56,11 +54,4 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 				+ "other line.";
 		return desc;
 	}
-	
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-
 }

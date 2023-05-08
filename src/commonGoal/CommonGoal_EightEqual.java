@@ -7,8 +7,6 @@ import utils.MatrixCoords;
 
 public class CommonGoal_EightEqual extends CommonGoal {
 	
-	private boolean isItCompleted=false;
-	
 	public CommonGoal_EightEqual() {
 		// TODO Auto-generated constructor stub
 	}
@@ -29,7 +27,6 @@ public class CommonGoal_EightEqual extends CommonGoal {
 	@Override
 	public int check(Bookshelf bookshelf) {
 		// TODO Auto-generated method stub
-		if(!isItCompleted) {
 			int contCats=0;
 			int contBooks=0;
 			int contGames=0;
@@ -60,19 +57,13 @@ public class CommonGoal_EightEqual extends CommonGoal {
 					 		}else {	
 					 			contPlants++;
 					 		}
-					 	
 				 	}	
-				 
-				 
 				}	
-			
 			}
 			
 			if(contCats==8||contBooks==8||contGames==8||contFrames==8||contTrophy==8||contPlants==8) {
-				isItCompleted=true;
 				return 1;
 			}
-		}
 		return 0;
 	}
 
@@ -83,10 +74,5 @@ public class CommonGoal_EightEqual extends CommonGoal {
 				+ "restriction about the position of these\r\n"
 				+ "tiles.";
 		return desc;
-	}
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
 	}
 }

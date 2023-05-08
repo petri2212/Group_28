@@ -11,7 +11,6 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 
 	private final int MAX_DIFFERENT_OBJECTS = 3;
 	private final int MAX_VALID_COLUMNS = 3;
-	private boolean isItCompleted=false;
 
 	@Override
 	public String getDescription() {
@@ -61,15 +60,8 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 		}
 
 		 if (validColsCount == MAX_VALID_COLUMNS) {
-			 isItCompleted=true;
 			 return 1;
 		 }
 		 return 0;
 	}
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-
 }

@@ -14,8 +14,6 @@ public class CommonGoal_Diagonal extends CommonGoal{
 	private static final int SECOND_ROW = 1;
 	private static final int DIAGONAL_LENGHT = 5;
 
-	private boolean isItCompleted=false;
-	
 	public CommonGoal_Diagonal() {
 		// TODO Auto-generated constructor stub
 	}
@@ -87,7 +85,6 @@ public class CommonGoal_Diagonal extends CommonGoal{
 				}
 				if(value)
 					return 1;
-				    isItCompleted=true;
 			}			
 		}
 		return 0;
@@ -100,11 +97,4 @@ public class CommonGoal_Diagonal extends CommonGoal{
 				+ "diagonal.";
 		return desc;
 	}
-	
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-
 }
