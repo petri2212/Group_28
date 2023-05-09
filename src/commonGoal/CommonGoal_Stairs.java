@@ -7,8 +7,6 @@ import myshelfie.ResourceImage;
 import utils.MatrixCoords;
 
 public class CommonGoal_Stairs extends CommonGoal {
-	
-	private boolean isItCompleted=false;
 
 	@Override
 	public ResourceImage getImage() {
@@ -27,7 +25,6 @@ public class CommonGoal_Stairs extends CommonGoal {
 	@Override
 	public int check(Bookshelf bookshelf) {
 		// TODO Auto-generated method stub
-		if(!isItCompleted) {
 			int cont=0;
 			BookshelfObject object0 = null;
 			BookshelfObject object1 = null;
@@ -79,18 +76,12 @@ public class CommonGoal_Stairs extends CommonGoal {
 						j--;
 				
 						}
-				}	
-			
+					}	
 			}
-		
 			if(cont==15) {
-				isItCompleted=true;
 				return 1;
 			}
-		}
-		
 		return 0;
-		
 	}
 
 	@Override
@@ -103,11 +94,4 @@ public class CommonGoal_Stairs extends CommonGoal {
 				+ "Tiles can be of any type. ";
 		return desc;
 	}
-	
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-
 }

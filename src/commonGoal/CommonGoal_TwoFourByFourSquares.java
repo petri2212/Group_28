@@ -6,8 +6,6 @@ import myshelfie.ResourceImage;
 
 public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 	
-	private boolean isItCompleted=false;
-
 	@Override
 	public ResourceImage getImage() {
 		return ResourceImage.COMMON_GOAL_TWO_FOUR_BY_FOUR_SQUARES;
@@ -28,11 +26,4 @@ public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 
 		return desc;
 	}
-	@Override
-	public boolean getIsItCompleted() {
-		// TODO Auto-generated method stub
-		return isItCompleted;
-	}
-	
-
 }
