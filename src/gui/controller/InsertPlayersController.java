@@ -2,12 +2,14 @@ package gui.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import gui.Controller;
 import gui.view.InsertPlayersView;
-
+import gui.view.console.InsertPlayersViewConsole;
 import myshelfie.GameManager;
 import myshelfie.GameState;
+import myshelfie.Player;
 
 public class InsertPlayersController extends Controller<InsertPlayersView> {
 
@@ -31,7 +33,6 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				model.changeState(GameState.INIT_GAME);
 			}
 		};
@@ -40,8 +41,16 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				model.changeState(GameState.INIT_GAME);
+				ArrayList<Player> players = model.getPlayers();
+				int maxplayers = 4;
+				String name = "ciao";
+				int i = 0;
+					if(name == players.get(i).getName()) {
+						throw new NullPointerException("Due player non possono avere lo stesso nome");
+						model.changeState(GameState.INSERT_PLAYERS);
+					}
+				}
+				
 			}
 		};
 	}
