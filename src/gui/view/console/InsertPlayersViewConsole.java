@@ -6,7 +6,6 @@ import gui.view.InsertPlayersView;
 
 public class InsertPlayersViewConsole extends InsertPlayersView {
 
-	public String input = null;
 	@Override
 	public void show() {
 		Scanner sc = new Scanner(System.in);
@@ -21,7 +20,7 @@ public class InsertPlayersViewConsole extends InsertPlayersView {
 			String input = sc.nextLine();
 			
 			if (input.isBlank()) {
-				throw new NullPointerException("Il comando non può essere nullo");
+				System.out.println("Il comando non può essere nullo");
 				
 			}else if(input.equalsIgnoreCase("rm")){
 				actionReturnMainPage.actionPerformed(null);
@@ -38,14 +37,6 @@ public class InsertPlayersViewConsole extends InsertPlayersView {
 		}while(isWaiting);
 
 		sc.close();
-	}
-	
-	public void setInput(String input) {
-		this.input = input; 
-	}
-	
-	public String getInput() {
-		return this.input;
 	}
 
 }

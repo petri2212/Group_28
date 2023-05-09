@@ -66,4 +66,18 @@ public class Player {
 	public void assignPersonalGoalPos(ObjPosition[] pers) {
 		this.personalGoalPos=pers;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Player)) {
+			throw new IllegalArgumentException("You must pass a player!!");
+		}
+		Player player = (Player) obj;
+		return name == player.getName();
+	}
+	
+	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
 }

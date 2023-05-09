@@ -71,10 +71,13 @@ public class GameManager {
 		playerTurn = (playerTurn >= players.size() - 1) ? playerTurn++ : 0;
 	}
 	
+	public void setPlayer(Player player) {
+		this.players.add(player);
+	}
+	
 	public ArrayList<Player> getPlayers(){
-		ArrayList<Player> players = null;
-		if(this.players != null) {
-			players.addAll(this.players);
+		if(players == null) {
+			throw new NullPointerException("You must first initialize the ArrayList!!");
 		}
 		return players;
 	}
