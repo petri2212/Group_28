@@ -17,7 +17,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		int r = getFirstEmptyRow(c);
 		
 		if(r != noEmptyRow) {
-			items.put(new MatrixCoords(r, c), obj);
+			this.add(r, c, obj);
 		}else {
 			System.out.println("invalid cols!");
 		}
@@ -29,7 +29,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		
 		if(r != noEmptyRow && isThereEnoughSpace(r,lenght)) {
 			for (BookshelfObject obj : objs) {
-				items.put(new MatrixCoords(r, c), obj);
+				this.add(r, c, obj);
 				r++;
 			}
 		}else {
@@ -47,7 +47,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 
 	private int getFirstEmptyRow(int c) {
 		for(int r=0; r<ROWS_NUMBER; r++) {
-			if(items.get(new MatrixCoords(r, c)) == null) {
+			if(this.get(new MatrixCoords(r, c)) == null) {
 				return r;
 			}
 		}
@@ -56,7 +56,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 	
 	public boolean fullCol(int r) {
 		for(int c=0; c<COLS_NUMBER; c++) {
-			if(items.get(new MatrixCoords(r, c)) == null) {
+			if(this.get(new MatrixCoords(r, c)) == null) {
 				return false;
 			}
 		}
@@ -65,7 +65,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 	public boolean checkIfRowIsfull(int row) {
 		
 		for(int c=0; c<4; c++) {
-			if(items.get(new MatrixCoords(row, c)) == null) {
+			if(this.get(new MatrixCoords(row, c)) == null) {
 				return false;
 			}
 		}
