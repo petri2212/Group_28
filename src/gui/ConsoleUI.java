@@ -14,4 +14,10 @@ public class ConsoleUI implements UI {
 		controller.start();
 	}
 
+	@Override
+	public void showInsertPlayersPage(GameManager model) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

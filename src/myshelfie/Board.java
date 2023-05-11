@@ -19,6 +19,7 @@ public class Board extends Matrix<Tile> {
 		super(ROW_COUNT, COL_COUNT);
 		this.playersNumber = playerNumber;
 		init();
+		fillLivingroomWithObjects();
 	}
 
 	/* Helper functions */

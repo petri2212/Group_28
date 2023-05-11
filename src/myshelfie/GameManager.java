@@ -40,7 +40,7 @@ public class GameManager {
 		case EXIT:
 			System.exit(0);
 			break;
-
+ 
 		case INSERT_PLAYERS:
 			ui.showInsertPlayersPage(this);
 			break;
