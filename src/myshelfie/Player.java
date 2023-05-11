@@ -1,7 +1,7 @@
 package myshelfie;
-import java.util.ArrayList;
-import personalGoals.ObjPosition;
-import utils.MatrixCoords;
+
+import goal.PersonalGoal;
+
 /**
  * Represents a physical player of the game
  */
@@ -10,7 +10,7 @@ public class Player {
 	private String name;
 	private int points;
 	protected Bookshelf bookshelf;
-	private ObjPosition[] personalGoalPos;
+	private PersonalGoal personalGoal;
 	/**
 	 * To construct a player, the name is needed as identifier to allow the user understanding when
 	 * it is his/her turn. A player also holds a bookshelf and has a counter for the game points.
@@ -61,10 +61,10 @@ public class Player {
 	/**
 	 * This method will assign the personal card positions of the current player 
 	 *
-	 * @param pers	an ObjPosition[] correspond to the positions of the personal card objects
+	 * @param pers	is the personal goal to assign to the player
 	 */
-	public void assignPersonalGoalPos(ObjPosition[] pers) {
-		this.personalGoalPos=pers;
+	public void assignPersonalGoal(PersonalGoal pers) {
+		this.personalGoal = pers;
 	}
 	
 	@Override
@@ -79,5 +79,12 @@ public class Player {
 	@Override
 	public int hashCode() {
 		return name.hashCode();
+	}
+
+	/**
+	 * @return the personalGoal
+	 */
+	public PersonalGoal getPersonalGoal() {
+		return personalGoal;
 	}
 }

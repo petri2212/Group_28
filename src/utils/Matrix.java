@@ -9,9 +9,9 @@ import java.util.HashMap;
  */
 public abstract class Matrix<T> {
 
-	protected final int rows;
-	protected final int cols;
-	protected HashMap<MatrixCoords, T> items = new HashMap<MatrixCoords, T>();
+	private final int rows;
+	private final int cols;
+	private HashMap<MatrixCoords, T> items = new HashMap<MatrixCoords, T>();
 
 	/**
 	 * To be constructed, a matrix needs to know its dimensions specified by the rows count and
@@ -22,10 +22,9 @@ public abstract class Matrix<T> {
 	 * @throws NegativeArraySizeException	if one of the argument is negative
 	 */
 	protected Matrix(int rows, int cols) {
-		if(rows < 0 || cols < 0) {
+		if (rows < 0 || cols < 0) {
 			throw new NegativeArraySizeException("The matrix dimensions cannot be negative.");
-		}
-		else {
+		} else {
 			this.rows = rows;
 			this.cols = cols;
 		}
@@ -57,5 +56,22 @@ public abstract class Matrix<T> {
 	 */
 	public int getRows() {
 		return rows;
+	}
+
+	/**
+	 * Adds the specified item to the matrix at the given coordinates. If the
+	 * coordinates are outside the bounds of the matrix, an IllegalArgumentException
+	 * is thrown.
+	 *
+	 * @param row  is the row coordinate
+	 * @param col  is the column coordinate
+	 * @param item is the object that needs to be added to the matrix
+	 */
+	public void add(int row, int col, T item) {
+		if (row < rows && col < cols) {
+			items.put(new MatrixCoords(row, col), item);
+		} else {
+			throw new IllegalArgumentException("Invalid coordinates");
+		}
 	}
 }

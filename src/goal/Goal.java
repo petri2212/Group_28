@@ -1,4 +1,6 @@
-package myshelfie;
+package goal;
+
+import myshelfie.Bookshelf;
 
 public interface Goal {
 

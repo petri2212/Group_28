@@ -57,8 +57,7 @@ public class Board extends Matrix<Tile> {
 				int rMirrored = (maxRowIndex - r);
 				int cMirrored = (macColIndex - c);
 				Tile tile = livingroomTileMap[rMirrored][cMirrored];
-				MatrixCoords coords = new MatrixCoords(r, c);
-				items.put(coords, tile);
+				this.add(r, c, tile);
 			}
 	}
 
@@ -68,7 +67,7 @@ public class Board extends Matrix<Tile> {
 	public void fillLivingroomWithObjects() {
 		for(int r = 0; r < ROW_COUNT; r++)
 			for(int c = 0; c < COL_COUNT; c++) {
-				Tile livingroomTile = items.get(new MatrixCoords(r, c));
+				Tile livingroomTile = this.get(new MatrixCoords(r, c));
 
 				if (livingroomTile != null && livingroomTile.isUsable(playersNumber)) {
 					BookshelfObject randomObject = BookshelfObject.getRandomObject();
@@ -89,7 +88,7 @@ public class Board extends Matrix<Tile> {
 
 		for(MatrixCoords coords : coordsList) {
 			try {
-				Tile tile = items.get(coords);
+				Tile tile = this.get(coords);
 
 				// TODO: adds valid pick check; rule of one-empty-space before picking an object
 
