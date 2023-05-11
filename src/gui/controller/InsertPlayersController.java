@@ -61,17 +61,20 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 				ArrayList<Player> players = model.getPlayers();
 				String input = view.getInput();
 				Player player = new Player(input);
-
 				
 				if(players.contains(player)) {
 						System.out.println("Non puoi inserire due nomi uguali!!");
 						view.setWaiting(true);
 					}
 				
-				if(players.size() == MAX_PLAYERS) {
+				/*the reason of the addition of one
+				 * at players.size it is done because
+				 * we don t want print again the insertPlayerViewConsole*/
+				if(players.size()+1 == MAX_PLAYERS) {
+					model.setPlayer(player);
 					System.out.println("\033[H\033[2J");
 					System.out.println("Attention!!");
-					System.out.println("You reached the maximum number of players, the will start soon!!");
+					System.out.println("You reached the maximum number of players, the game will start soon!!");
 					model.changeState(GameState.INIT_GAME);
 					view.setWaiting(false);
 				}else {
