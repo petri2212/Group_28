@@ -1,13 +1,11 @@
 package myshelfie;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import gui.UI;
 
 public class GameManager {
 	
-	private static final int MAX_NUMBER_OF_PLAYERS = 4;
 	private GameState state;
 	private UI ui;
 	private ArrayList<Player> players;
