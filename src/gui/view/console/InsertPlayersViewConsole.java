@@ -9,10 +9,10 @@ public class InsertPlayersViewConsole extends InsertPlayersView {
 	@Override
 	public void show() {
 		Scanner sc = new Scanner(System.in);
-		boolean isWaiting = true;
+		isWaiting = true;
 
 		do {
-			System.out.println("\033[H\033[2J");
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
 			System.out.println("Inserisci rm per tornare alla schermata home");
 			System.out.println("Inserisci init se non vuoi inserire nessun altro giocatore");
 			System.out.println("Inserisci il nome di un giocatore per crearne un altro");
@@ -23,16 +23,12 @@ public class InsertPlayersViewConsole extends InsertPlayersView {
 				System.out.println("Il comando non può essere nullo");
 				
 			}else if(input.equalsIgnoreCase("rm")){
-				actionReturnMainPage.actionPerformed(null);
-				isWaiting = false;
-				
+				actionReturnMainPage.actionPerformed(null);				
 			}else if(input.equalsIgnoreCase("init")){
 				actionInitGame.actionPerformed(null);
-				isWaiting = false;
 			}else {
 				setInput(input);
 				actionInsertPlayer.actionPerformed(null);
-				isWaiting = false;
 			}
 		}while(isWaiting);
 

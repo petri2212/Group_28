@@ -1,5 +1,7 @@
 package gui;
 
+import javax.management.InstanceAlreadyExistsException;
+
 import gui.controller.*;
 import gui.view.console.*;
 
@@ -16,8 +18,9 @@ public class ConsoleUI implements UI {
 
 	@Override
 	public void showInsertPlayersPage(GameManager model) {
-		// TODO Auto-generated method stub
-		
+		InsertPlayersViewConsole view = new InsertPlayersViewConsole();
+		InsertPlayersController controller = new InsertPlayersController(model, view);
+		controller.start();
 	}
 
 }

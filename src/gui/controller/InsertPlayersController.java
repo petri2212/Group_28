@@ -32,6 +32,7 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				model.changeState(GameState.HOME);
+				view.setWaiting(false);
 			}
 		};
 		
@@ -44,8 +45,11 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 				if(players.size() < MIN_PLAYERS) {
 					System.out.println("Attention!!");
 					System.out.println("You must insert at least two players!!");
+					view.setWaiting(true);
 				}else {
 					model.changeState(GameState.INIT_GAME);
+					view.setWaiting(false);
+
 				}
 			}
 		};
@@ -61,6 +65,7 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 				
 				if(players.contains(player)) {
 						System.out.println("Non puoi inserire due nomi uguali!!");
+						view.setWaiting(true);
 					}
 				
 				if(players.size() == MAX_PLAYERS) {
@@ -68,8 +73,10 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 					System.out.println("Attention!!");
 					System.out.println("You reached the maximum number of players, the will start soon!!");
 					model.changeState(GameState.INIT_GAME);
+					view.setWaiting(false);
 				}else {
 					model.setPlayer(player);
+					view.setWaiting(true);
 				}
 			}
 		};

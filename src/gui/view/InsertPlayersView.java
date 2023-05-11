@@ -7,7 +7,12 @@ import gui.View;
 public abstract class InsertPlayersView implements View {
 	
 	protected String input;
+	protected boolean isWaiting;
 	
+	public void setWaiting(boolean isWaiting) {
+		this.isWaiting = isWaiting;
+	}
+
 	public ActionListener actionReturnMainPage;
 	
 	public ActionListener actionInsertPlayer;
