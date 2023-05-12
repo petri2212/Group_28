@@ -47,6 +47,7 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 					System.out.println("You must insert at least two players!!");
 					view.setWaiting(true);
 				}else {
+					System.out.println("The game will start  soon!!");
 					model.changeState(GameState.INIT_GAME);
 					view.setWaiting(false);
 
@@ -64,6 +65,8 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 				
 				if(players.contains(player)) {
 						System.out.println("Non puoi inserire due nomi uguali!!");
+						int i = players.size()-1;
+						players.remove(i);
 						view.setWaiting(true);
 					}
 				

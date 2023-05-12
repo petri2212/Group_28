@@ -73,7 +73,7 @@ public class Player {
 			throw new IllegalArgumentException("You must pass a player!!");
 		}
 		Player player = (Player) obj;
-		return name == player.getName();
+		return name.equalsIgnoreCase(player.getName());
 	}
 	
 	@Override
