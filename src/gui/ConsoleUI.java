@@ -23,4 +23,11 @@ public class ConsoleUI implements UI {
 		controller.start();
 	}
 
+	@Override
+	public void showBoardPage(GameManager model) {
+		BoardViewConsole view = new BoardViewConsole();
+		BoardController controller = new BoardController(model, view);
+		controller.start();
+	}
+
 }

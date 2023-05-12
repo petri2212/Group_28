@@ -47,6 +47,8 @@ public class GameManager {
 			
 		case INIT_GAME:
 			board = new Board(players.size());
+			board.printBoards();
+			ui.showBoardPage(this);
 			break;
 			
 		case PICK_OBJECTS:
@@ -80,6 +82,10 @@ public class GameManager {
 			throw new NullPointerException("You must first initialize the ArrayList!!");
 		}
 		return players;
+	}
+	
+	public void printBoard(Board board) {
+		board.printBoards();
 	}
 	
 }

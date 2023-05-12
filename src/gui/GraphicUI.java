@@ -33,4 +33,10 @@ public class GraphicUI implements UI {
 		
 	}
 
+	@Override
+	public void showBoardPage(GameManager model) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
