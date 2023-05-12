@@ -81,9 +81,4 @@ public class GameManager {
 		}
 		return players;
 	}
-	
-	public void printBoard(Board board) {
-		board.printBoards();
-	}
-	
 }
