@@ -4,11 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
 import gui.Controller;
 import gui.view.InsertPlayersView;
-import gui.view.console.InsertPlayersViewConsole;
 import myshelfie.GameManager;
 import myshelfie.GameState;
 import myshelfie.Player;
