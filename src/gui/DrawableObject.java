@@ -1,6 +1,6 @@
 package gui;
 
-import myshelfie.ResourceImage;
+import resource.Images;
 
 /**
  * Can be used to assign a ResourceImage to an object.
@@ -11,5 +11,5 @@ public interface DrawableObject {
 	/**
 	 * @return the object image as a ResourceImage
 	 */
-	public ResourceImage getImage();
+	public Images getImage();
 }

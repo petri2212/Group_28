@@ -5,14 +5,14 @@ import java.util.Map;
 
 import goal.PersonalGoal;
 import myshelfie.BookshelfObject;
-import myshelfie.ResourceImage;
+import resource.Images;
 import utils.MatrixCoords;
 
 public class PersonalGoal9 extends PersonalGoal {
 
 	@Override
-	public ResourceImage getImage() {
-		return ResourceImage.PERSONAL_GOAL_9;
+	public Images getImage() {
+		return Images.PERSONAL_GOAL_9;
 	}
 
 	@Override

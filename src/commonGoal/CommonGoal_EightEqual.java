@@ -2,7 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.ResourceImage;
+import resource.Images;
 import utils.MatrixCoords;
 
 public class CommonGoal_EightEqual extends CommonGoal {
@@ -12,8 +12,8 @@ public class CommonGoal_EightEqual extends CommonGoal {
 	}
 
 	@Override
-	public ResourceImage getImage() {
-		return ResourceImage.COMMON_GOAL_EIGHT_EQUAL;
+	public Images getImage() {
+		return Images.COMMON_GOAL_EIGHT_EQUAL;
 	}
 
 	/**

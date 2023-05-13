@@ -2,7 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.ResourceImage;
+import resource.Images;
 import utils.MatrixCoords;
 
 import java.util.ArrayList;
@@ -21,8 +21,8 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 	}
 
 	@Override
-	public ResourceImage getImage() {
-		return ResourceImage.COMMON_GOAL_THREE_COLUMNS;
+	public Images getImage() {
+		return Images.COMMON_GOAL_THREE_COLUMNS;
 	}
 
 	/**

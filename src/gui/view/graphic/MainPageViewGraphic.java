@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import gui.component.BackgroundPanel;
 import gui.view.MainPageView;
-import myshelfie.ResourceImage;
+import resource.Images;
 
 public class MainPageViewGraphic extends MainPageView {
 

@@ -1,4 +1,4 @@
-package myshelfie;
+package resource;
 
 public interface Resource<T> {
 

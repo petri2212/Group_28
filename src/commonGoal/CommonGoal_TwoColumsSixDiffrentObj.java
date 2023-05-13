@@ -5,7 +5,7 @@ import java.util.Set;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.ResourceImage;
+import resource.Images;
 import utils.MatrixCoords;
 
 public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
@@ -19,8 +19,8 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 	}
 
 	@Override
-	public ResourceImage getImage() {
-		return ResourceImage.COMMON_GOAL_TWO_COLUMNS_SIX_DIFFERENT_OBJ;
+	public Images getImage() {
+		return Images.COMMON_GOAL_TWO_COLUMNS_SIX_DIFFERENT_OBJ;
 	}
 
 	@Override

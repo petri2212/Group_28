@@ -1,4 +1,4 @@
-package myshelfie;
+package resource;
 
 import java.awt.Image;
 import java.io.File;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public enum ResourceImage implements Resource<Image> {
+public enum Images implements Resource<Image> {
 	PERSONAL_GOAL_1("./resourcespersonal_goal_cards/Personal_Goals.png"),
 	PERSONAL_GOAL_2("./resourcespersonal_goal_cards/Personal_Goals2.png"),
 	PERSONAL_GOAL_3("./resourcespersonal_goal_cards/Personal_Goals3.png"),
@@ -33,11 +33,13 @@ public enum ResourceImage implements Resource<Image> {
 	COMMON_GOAL_THREE_COLUMNS("./resourcescommon_goal_cards/ThreeColumns.jpg"),
 	COMMON_GOAL_TWO_LINES_DIFFERENT_OBJ("./resources/common_goal_cards/TwoLinesDiffrentObj.jpg"),
 
-	PUBLISHER_MATERIAL_DISPLAY_1("./resources/publisher_material/Display_1.jpg");
+	PUBLISHER_MATERIAL_DISPLAY_1("./resources/publisher_material/Display_1.jpg"),
+	PUBLISHER_MATERIAL_DISPLAY_1_BLURRED("./resources/publisher_material/Display_1_Blurred.jpg"),
+	ICON_MY_SHELFIE("./resources/publisher_material/Icon 50x50px.png");
 
 	private String path;
 
-	private ResourceImage(String path) {
+	private Images(String path) {
 		this.path = path;
 	}
 

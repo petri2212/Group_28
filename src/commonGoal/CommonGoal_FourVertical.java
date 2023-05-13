@@ -6,7 +6,7 @@ import java.util.Queue;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.ResourceImage;
+import resource.Images;
 import utils.MatrixCoords;
 
 public class CommonGoal_FourVertical extends CommonGoal {
@@ -19,8 +19,8 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	}
 
 	@Override
-	public ResourceImage getImage() {
-		return ResourceImage.COMMON_GOAL_FOUR_VERTICAL;
+	public Images getImage() {
+		return Images.COMMON_GOAL_FOUR_VERTICAL;
 	}
 
 	/**

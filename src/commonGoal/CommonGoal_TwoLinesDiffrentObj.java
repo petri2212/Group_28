@@ -2,7 +2,7 @@ package commonGoal;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.ResourceImage;
+import resource.Images;
 import utils.MatrixCoords;
 
 public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
@@ -12,8 +12,8 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 	private static final int ROWS_DIFERRENT = 2;
 
 	@Override
-	public ResourceImage getImage() {
-		return ResourceImage.COMMON_GOAL_TWO_LINES_DIFFERENT_OBJ;
+	public Images getImage() {
+		return Images.COMMON_GOAL_TWO_LINES_DIFFERENT_OBJ;
 	}
 
 	@Override
