@@ -1,11 +1,14 @@
 package gui;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 import gui.controller.*;
 import gui.view.graphic.*;
 
 import myshelfie.GameManager;
+import resource.Images;
 
 public class GraphicUI implements UI {
 
@@ -13,11 +16,15 @@ public class GraphicUI implements UI {
 
 	public GraphicUI() {
 		mainFrame = new JFrame();
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setTitle("My Shelfy");
-		//mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		mainFrame.setResizable(true);
+		mainFrame.setMaximumSize(new Dimension(1140, 760));
+		mainFrame.setMinimumSize(new Dimension(1140, 760));
+		mainFrame.setPreferredSize(new Dimension(1140, 760));
+		mainFrame.setSize(new Dimension(1140, 760));
+		mainFrame.setIconImage(Images.ICON_MY_SHELFIE.load());
+		mainFrame.setTitle("My Shelfie");
+		mainFrame.setResizable(false);
 		mainFrame.setVisible(true);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	@Override
@@ -29,14 +36,16 @@ public class GraphicUI implements UI {
 
 	@Override
 	public void showInsertPlayersPage(GameManager model) {
-		// TODO Auto-generated method stub
-		
+		InsertPlayersViewGraphic view = new InsertPlayersViewGraphic(mainFrame);
+		InsertPlayersController controller = new InsertPlayersController(model, view);
+		controller.start();
+
 	}
 
 	@Override
 	public void showBoardPage(GameManager model) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
