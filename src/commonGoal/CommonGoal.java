@@ -5,10 +5,8 @@ import goal.Goal;
 
 public abstract class CommonGoal implements Goal, DrawableObject {
 
-	protected int goalReachedCounter;
-
 	public CommonGoal() {
-		goalReachedCounter = 0;
+		
 	}
 
 	/**
