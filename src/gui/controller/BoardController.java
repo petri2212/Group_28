@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import gui.Controller;
 import gui.view.BoardView;
-import gui.view.InsertPlayersView;
+import myshelfie.Board;
 import myshelfie.GameManager;
 import myshelfie.GameState;
 
@@ -26,6 +26,17 @@ public class BoardController extends Controller<BoardView>{
 				model.changeState(GameState.HOME);
 			}
 		};
+		
+		view.actionPrintBoard = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Board board = model.getBoard();
+				view.setBoard(board); 
+			}
+		};
 	}
+	
+	
 
 }

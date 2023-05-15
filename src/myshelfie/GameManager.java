@@ -45,7 +45,6 @@ public class GameManager {
 			
 		case INIT_GAME:
 			board = new Board(players.size());
-			board.printBoards();
 			ui.showBoardPage(this);
 			break;
 			
@@ -65,6 +64,10 @@ public class GameManager {
 		default:
 			break;
 		}
+	}
+
+	public Board getBoard() {
+		return board;
 	}
 
 	private void updatePlayerTurn() {
