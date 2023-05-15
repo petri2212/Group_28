@@ -11,10 +11,6 @@ public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
 	
 	private boolean forthRowfull = false;
 	private boolean isItCompleted=false;
-	
-	public CommonGoal_SixSeparateGroupsOfTwoObj() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public Images getImage() {
@@ -23,7 +19,7 @@ public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
 
 	@Override
 	public int check(Bookshelf bookshelf) {
-		// TODO Auto-generated method stub
+		
 		if(!isItCompleted) {
 		if(this.forthRowfull==false){
 			this.forthRowfull=bookshelf.checkIfRowIsfull(4);

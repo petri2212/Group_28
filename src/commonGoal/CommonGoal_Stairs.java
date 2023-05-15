@@ -24,7 +24,7 @@ public class CommonGoal_Stairs extends CommonGoal {
 
 	@Override
 	public int check(Bookshelf bookshelf) {
-		// TODO Auto-generated method stub
+	
 			int cont=0;
 			BookshelfObject object0 = null;
 			BookshelfObject object1 = null;

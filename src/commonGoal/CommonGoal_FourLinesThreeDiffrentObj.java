@@ -11,10 +11,6 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 	private static final int ROWS_NEEDED = 4;
 	private static final int MAX_TAILS = 3;
 
-	public CommonGoal_FourLinesThreeDiffrentObj() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Images getImage() {
 		return Images.COMMON_GOAL_FOUR_LINES_THREE_DIFFERENT_OBJ;
@@ -22,7 +18,7 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 
 	@Override
 	public int check(Bookshelf library) {
-		// TODO Auto-generated method stub
+		
 		/*In this method i used the HasSet and tried this version
 		 * of the algorithm.
 		 * */

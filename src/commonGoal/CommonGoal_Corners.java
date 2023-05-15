@@ -22,7 +22,7 @@ public class CommonGoal_Corners extends CommonGoal {
 
 	@Override
 	public int check(Bookshelf bookshelf) {
-		// TODO Auto-generated method stub
+		
 			BookshelfObject object0 = bookshelf.get(new MatrixCoords(0, 0));
 			BookshelfObject object1 = bookshelf.get(new MatrixCoords(0, 4));
 			BookshelfObject object2 = bookshelf.get(new MatrixCoords(5, 0));
