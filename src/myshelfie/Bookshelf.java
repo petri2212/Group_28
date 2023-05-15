@@ -45,9 +45,18 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return (rIndex <= rMaxIndex) ? true : false;
 	}
 
-	private int getFirstEmptyRow(int c) {
+	public int getFirstEmptyRow(int c) {
 		for(int r=0; r<ROWS_NUMBER; r++) {
 			if(this.get(new MatrixCoords(r, c)) == null) {
+				return r;
+			}
+		}
+		return noEmptyRow;
+	}
+	
+	public int getFirstFilledRow(int c) {
+		for(int r=0; r<ROWS_NUMBER; r++) {
+			if(this.get(new MatrixCoords(r, c)) != null) {
 				return r;
 			}
 		}

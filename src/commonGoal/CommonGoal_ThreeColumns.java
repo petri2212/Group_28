@@ -13,14 +13,6 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 	private final int MAX_VALID_COLUMNS = 3;
 
 	@Override
-	public String getDescription() {
-		return "Three columns each formed by 6 tiles\n"
-				+ "of maximum three different types. One\n"
-				+ "column can show the same or a different\n"
-				+ "combination of another column.";
-	}
-
-	@Override
 	public Images getImage() {
 		return Images.COMMON_GOAL_THREE_COLUMNS;
 	}
@@ -63,5 +55,13 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 			 return 1;
 		 }
 		 return 0;
+	}
+	
+	@Override
+	public String getDescription() {
+		return "Three columns each formed by 6 tiles\n"
+				+ "of maximum three different types. One\n"
+				+ "column can show the same or a different\n"
+				+ "combination of another column.";
 	}
 }

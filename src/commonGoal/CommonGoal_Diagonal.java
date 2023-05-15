@@ -14,9 +14,6 @@ public class CommonGoal_Diagonal extends CommonGoal{
 	private static final int SECOND_ROW = 1;
 	private static final int DIAGONAL_LENGHT = 5;
 
-	public CommonGoal_Diagonal() {
-		// TODO Auto-generated constructor stub
-	}
 	@Override
 	public Images getImage() {
 		return Images.COMMON_GOAL_DIAGOONAL;
@@ -24,7 +21,7 @@ public class CommonGoal_Diagonal extends CommonGoal{
 
 	@Override
 	public int check(Bookshelf library) {
-		// TODO Auto-generated method stub
+		
 		/*This CommonGoal has only four possible tile to start from, because
 		 *two of them start form bottom left and end top right and the other two
 		 *start from bottom right and end top left. 

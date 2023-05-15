@@ -1,8 +1,10 @@
 package commonGoal;
 
 import myshelfie.Bookshelf;
+import java.util.ArrayList;
 import myshelfie.BookshelfObject;
 import resource.Images;
+import utils.*;
 
 public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 	
@@ -12,9 +14,55 @@ public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 	}
 
 	@Override
-	public int check( Bookshelf library) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int check( Bookshelf bookshelf) {
+		int cont = 0;
+		ArrayList<MatrixCoords> CoordsUsed = new ArrayList<>();
+		for(int row=5; row > bookshelf.getRows()-6; row--) {
+			for(int col = 0; col < bookshelf.getCols()-2; col++) {
+				int CURRENT_COLLUMN=col;
+				int UPPER_ROW=row-1;
+				int ADIACENT_COLLUMN_RIGHT=col+1;
+				int CURRENT_ROW=row;
+				
+				BookshelfObject objCornerLeftDown = bookshelf.get(new MatrixCoords(CURRENT_ROW, CURRENT_COLLUMN));
+				BookshelfObject objCornerLefttUp = bookshelf.get(new MatrixCoords(UPPER_ROW, CURRENT_COLLUMN));
+				BookshelfObject objCornerRightDown = bookshelf.get(new MatrixCoords(CURRENT_ROW, ADIACENT_COLLUMN_RIGHT));
+				BookshelfObject objCornerRightUp = bookshelf.get(new MatrixCoords(UPPER_ROW, ADIACENT_COLLUMN_RIGHT));
+				
+				if(objCornerLeftDown!=null && objCornerLefttUp!=null && objCornerRightDown!=null && objCornerRightUp!=null) {
+					
+					if(objCornerLeftDown.name() == objCornerLefttUp.name() && objCornerRightDown.name()==objCornerRightUp.name() && objCornerLeftDown.name() ==objCornerRightUp.name()) {
+						if(CoordsUsed.isEmpty()) {
+							CoordsUsed.add(new MatrixCoords(CURRENT_ROW, CURRENT_COLLUMN));
+							CoordsUsed.add(new MatrixCoords(UPPER_ROW, CURRENT_COLLUMN));
+							CoordsUsed.add(new MatrixCoords(CURRENT_ROW, ADIACENT_COLLUMN_RIGHT));
+							CoordsUsed.add(new MatrixCoords(UPPER_ROW, ADIACENT_COLLUMN_RIGHT));	
+						}else {
+							for (MatrixCoords posUsed : CoordsUsed) {
+								if(posUsed.equals(new MatrixCoords(CURRENT_ROW, CURRENT_COLLUMN))!=true && posUsed.equals(new MatrixCoords(UPPER_ROW, CURRENT_COLLUMN))!=true&& posUsed.equals(new MatrixCoords(CURRENT_ROW, ADIACENT_COLLUMN_RIGHT))!=true&& posUsed.equals(new MatrixCoords(UPPER_ROW, ADIACENT_COLLUMN_RIGHT))!=true){
+									cont=1;	
+								}else {
+									cont=0;;
+								}
+							}
+							if(cont==1){
+								CoordsUsed.add(new MatrixCoords(CURRENT_ROW, CURRENT_COLLUMN));
+								CoordsUsed.add(new MatrixCoords(UPPER_ROW, CURRENT_COLLUMN));
+								CoordsUsed.add(new MatrixCoords(CURRENT_ROW, ADIACENT_COLLUMN_RIGHT));
+								CoordsUsed.add(new MatrixCoords(UPPER_ROW, ADIACENT_COLLUMN_RIGHT));	
+							}
+							cont=0;
+						}
+					}
+				}	
+				}
+			}
+		if(CoordsUsed.size()>=8) {
+				return 1;
+				
+			}else {
+				return 0;
+			}
 	}
 
 	@Override

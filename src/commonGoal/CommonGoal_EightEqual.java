@@ -7,10 +7,6 @@ import utils.MatrixCoords;
 
 public class CommonGoal_EightEqual extends CommonGoal {
 	
-	public CommonGoal_EightEqual() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Images getImage() {
 		return Images.COMMON_GOAL_EIGHT_EQUAL;
@@ -26,7 +22,7 @@ public class CommonGoal_EightEqual extends CommonGoal {
 
 	@Override
 	public int check(Bookshelf bookshelf) {
-		// TODO Auto-generated method stub
+		
 			int contCats=0;
 			int contBooks=0;
 			int contGames=0;
@@ -61,7 +57,7 @@ public class CommonGoal_EightEqual extends CommonGoal {
 				}	
 			}
 			
-			if(contCats==8||contBooks==8||contGames==8||contFrames==8||contTrophy==8||contPlants==8) {
+			if(contCats>=8||contBooks>=8||contGames>=8||contFrames>=8||contTrophy>=8||contPlants>=8) {
 				return 1;
 			}
 		return 0;

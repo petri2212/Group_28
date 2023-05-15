@@ -11,10 +11,6 @@ public class CommonGoal_FiveX extends CommonGoal{
 	private static final int MAX_COLS = 4;
 	private static final int MIN_ROWS_AND_COLS = 1;
 
-	public CommonGoal_FiveX() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Images getImage() {
 		return Images.COMMON_GOAL_FIVE_X;
@@ -23,7 +19,7 @@ public class CommonGoal_FiveX extends CommonGoal{
 
 	@Override
 	public int check(Bookshelf library) {
-		// TODO Auto-generated method stub
+	
 		/*the difficulties is related to the BookshelfObject in the bookshelf because
 		 * there could be some empty columns and aint't the rows.
 		 */
