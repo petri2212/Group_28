@@ -1,4 +1,4 @@
-package commonGoal;
+package goal.common;
 
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
@@ -6,6 +6,8 @@ import resource.Images;
 import utils.MatrixCoords;
 
 import java.util.ArrayList;
+
+import goal.CommonGoal;
 
 public class CommonGoal_ThreeColumns extends CommonGoal {
 

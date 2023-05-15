@@ -1,7 +1,8 @@
 package myshelfie;
 
 import java.util.ArrayList;
-import commonGoal.*;
+
+import goal.CommonGoal;
 
 public class CommonGoalManager {
 

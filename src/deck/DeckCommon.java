@@ -1,6 +1,7 @@
 package deck;
 
-import commonGoal.*;
+import goal.CommonGoal;
+import goal.common.*;
 import utils.UniqueList;
 
 public class DeckCommon extends Deck<CommonGoal> {

@@ -1,7 +1,8 @@
-package commonGoal;
+package goal.common;
 
 import java.util.ArrayList;
 
+import goal.CommonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import resource.Images;

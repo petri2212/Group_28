@@ -1,6 +1,7 @@
-package commonGoal;
+package goal.common;
 
 
+import goal.CommonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import resource.Images;
