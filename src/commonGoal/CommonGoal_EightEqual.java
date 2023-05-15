@@ -57,7 +57,7 @@ public class CommonGoal_EightEqual extends CommonGoal {
 				}	
 			}
 			
-			if(contCats==8||contBooks==8||contGames==8||contFrames==8||contTrophy==8||contPlants==8) {
+			if(contCats>=8||contBooks>=8||contGames>=8||contFrames>=8||contTrophy>=8||contPlants>=8) {
 				return 1;
 			}
 		return 0;
