@@ -1,9 +1,8 @@
 package resource;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public enum Icons implements Resource<Icons> {
+public enum Icons implements Resource<ImageIcon> {
 
 	BUTTON_NEW_GAME("./resources/buttons/btnNewGame.png"),
 	BUTTON_NEW_GAME_PRESSED("./resources/buttons/btnNewGamePressed.png"),
@@ -16,7 +15,7 @@ public enum Icons implements Resource<Icons> {
 	}
 
 	@Override
-	public Icons load() {
+	public ImageIcon load() {
 		return new ImageIcon(path);
 	}
 
