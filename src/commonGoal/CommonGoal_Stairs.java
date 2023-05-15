@@ -25,63 +25,42 @@ public class CommonGoal_Stairs extends CommonGoal {
 	@Override
 	public int check(Bookshelf bookshelf) {
 	
-			int cont=0;
-			BookshelfObject object0 = null;
-			BookshelfObject object1 = null;
-			int i=1;
-			int j=3;
-			BookshelfObject objA = bookshelf.get(new MatrixCoords(0, 0));
-			BookshelfObject objB = bookshelf.get(new MatrixCoords(0, 4));
-			BookshelfObject objC = bookshelf.get(new MatrixCoords(1, 4));
-			BookshelfObject objD = bookshelf.get(new MatrixCoords(1, 0));
+	 	int cont=0;
+		
+		int i=5;
+		BookshelfObject objA = bookshelf.get(new MatrixCoords(0, 0));
+		BookshelfObject objB = bookshelf.get(new MatrixCoords(0, 4));
+		BookshelfObject objC = bookshelf.get(new MatrixCoords(1, 4));
+		BookshelfObject objD = bookshelf.get(new MatrixCoords(1, 0));
 
-			if(objA == null && objB == null) {
-				if(objC == null) {
-					for(int row = 1; row < bookshelf.getRows(); row++) {
-						for(int col = 0; col < i; col++) {
-							object0 = bookshelf.get(new MatrixCoords(row, col));
-							if (i<5) {
-							object1 = bookshelf.get(new MatrixCoords(row, i));
-							}else {
-								object1=null;
-							}
-								if(object0!=null && object1==null) {
-									cont++;
-									}else {
-										return 0;
-									}
-							}
-						i++;
+		if(objA == null && objB == null) {
+			if(objC == null) {
+				for(int c=4;c>=0;c--) {
+					int RowemptyNumber=bookshelf.getFirstFilledRow(c);
+					if(RowemptyNumber==i) {
+						cont=1;	
+					}else {
+						return 0;
+					}
+					i--;
+				}
 				
-						}
 				
-				}else if(objD == null) {
-					for(int row = 1; row < 6; row++) {
-						for(int col = 4; col > j; col--) {
-							object0 = bookshelf.get(new MatrixCoords(row, col));
-						
-							if (j>=0) {
-								object1 = bookshelf.get(new MatrixCoords(row, j));
-							}else {
-								object1=null;
-							}
-								
-							if(object0!=null && object1==null) {
-								cont++;
-							}else {
-								return 0;
-								}
-						
-						}
-						j--;
 				
-						}
-					}	
-			}
-			if(cont==15) {
-				return 1;
-			}
-		return 0;
+			
+			}else if(objD == null) {
+				for(int c=0;c<bookshelf.getCols();c++) {
+					int RowemptyNumber=bookshelf.getFirstFilledRow(c);
+					if(RowemptyNumber==i) {
+						cont=1;	
+					}else {
+						return 0;
+					}
+					i--;
+				}
+			}	
+		}
+		return cont;
 	}
 
 	@Override
