@@ -32,7 +32,8 @@ public class BoardController extends Controller<BoardView>{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Board board = model.getBoard();
-				view.setBoard(board); 
+				view.setPlayersNumber(model.getPlayersNumber());
+				view.setBoard(board);
 			}
 		};
 	}

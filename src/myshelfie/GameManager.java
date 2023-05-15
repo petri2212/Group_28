@@ -69,6 +69,10 @@ public class GameManager {
 	public Board getBoard() {
 		return board;
 	}
+	
+	public int getPlayersNumber() {
+		return this.players.size();
+	}
 
 	private void updatePlayerTurn() {
 		playerTurn = (playerTurn >= players.size() - 1) ? playerTurn++ : 0;

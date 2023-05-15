@@ -2,7 +2,11 @@ package gui.view.console;
 
 import java.util.Scanner;
 
+import javax.lang.model.type.TypeMirror;
+
 import gui.view.BoardView;
+import myshelfie.Tile;
+import myshelfie.TileType;
 import utils.MatrixCoords;
 
 public class BoardViewConsole extends BoardView{
@@ -55,10 +59,10 @@ public class BoardViewConsole extends BoardView{
 					
 				case 2:
 					while(tmpcont < COL_COUNT) {
-						if(board.get(new MatrixCoords(i, tmpcont)) == null) {
-							System.out.print(b);
-						}else {
+						if(checkTile(i, tmpcont)) {
 							System.out.print(c);
+						}else {
+							System.out.print(b);
 						}
 						tmpcont++;
 					}
