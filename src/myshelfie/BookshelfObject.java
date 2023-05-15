@@ -4,19 +4,21 @@ import java.util.Random;
 
 public enum BookshelfObject {
 
-	CAT(),
-	BOOK(),
-	GAME(),
-	FRAME(),
-	TROPHY(),
-	PLANT();
+	CAT(3),
+	BOOK(4),
+	GAME(4),
+	FRAME(5),
+	TROPHY(6),
+	PLANT(5);
 
+	private int lenghtOfBookshelfObject;
 	public static final int MAX_INSTANCES = 22;
 	private static final Random RANDOM = new Random();
 
 	private int instancesCounter;
 
-	private BookshelfObject() {
+	private BookshelfObject(int lenghtOfBookshelfObject) {
+		this.lenghtOfBookshelfObject = lenghtOfBookshelfObject;
 		instancesCounter = 0;
 	}
 
@@ -48,6 +50,10 @@ public enum BookshelfObject {
 
 		object.instancesCounter++;
 		return object;
+	}
+	
+	public int getLenghtOfBookshelfObject() {
+		return this.lenghtOfBookshelfObject;
 	}
 
 }

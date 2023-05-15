@@ -31,10 +31,35 @@ public class BoardViewConsole extends BoardView{
 
 	}
 	
+	public void printBookshelfObject() {
+		final int lenght1 = 3;
+		final int lenght2 = 4;
+		final int lenght3 = 5;
+		final int lenght4 = 6;
+		int lenght = bookshelfObjectToPrint.getLenghtOfBookshelfObject();
+		switch (lenght) {
+		case lenght1:
+			System.out.print("|  "+bookshelfObjectToPrint+"   |");
+			break;
+			
+		case lenght2:
+			System.out.print("|  "+bookshelfObjectToPrint+"  |");
+			break;
+			
+		case lenght3:
+			System.out.print("| "+bookshelfObjectToPrint+"  |");
+			break;
+			
+		case lenght4:
+			System.out.print("| "+bookshelfObjectToPrint+" |");
+			break;
+		}
+		
+	}
+	
 	public void printBoard() {
-		String a = "------ ";
-		String b = "|     |";
-		String c = "|  t  |";
+		String a = "----------";
+		String b = "|        |";
 		int numberofacard = 5;
 		for (int i = 0; i < ROW_COUNT; i++) {
 			int cont = 0;
@@ -60,7 +85,7 @@ public class BoardViewConsole extends BoardView{
 				case 2:
 					while(tmpcont < COL_COUNT) {
 						if(checkTile(i, tmpcont)) {
-							System.out.print(c);
+							printBookshelfObject();
 						}else {
 							System.out.print(b);
 						}

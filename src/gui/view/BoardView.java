@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import gui.View;
 import myshelfie.Board;
+import myshelfie.BookshelfObject;
 import myshelfie.Tile;
 import utils.MatrixCoords;
 
@@ -11,6 +12,7 @@ public abstract class BoardView implements View {
 	
 	protected Board board;
 	protected int playersnumber;
+	protected BookshelfObject bookshelfObjectToPrint;
 	
 	public ActionListener actionReturnMainPage;
 	
@@ -27,9 +29,15 @@ public abstract class BoardView implements View {
 	public boolean checkTile(int r, int c) {
 		Tile tile = board.get(new MatrixCoords(r ,c));
 		if(tile != null && tile.isUsable(playersnumber)) {
+			BookshelfObject tmpTile = tile.getBookshelfObject();
+			setTileToPrint(tmpTile);
 			return true;
 		}
 		return false;
 	}
-
+	
+	public void setTileToPrint(BookshelfObject bookshelfObject) {
+		this.bookshelfObjectToPrint = bookshelfObject;
+	}
+	
 }
