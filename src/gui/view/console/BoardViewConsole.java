@@ -52,7 +52,8 @@ public class BoardViewConsole extends BoardView{
 
 		String partOfCard_a = " --------- ";
 		String partOfCard_b = "|         |";
-		String[] arrOfDownCoords = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+		String[] arrOfDownCoord = board.getDownCoord();
+		int [] arrOfRightCoords = board.getRightCoord();
 		int numberOfPartsInCard = 5;
 		for (int i = 0; i < ROW_COUNT; i++) {
 			int cont = 0;
@@ -86,7 +87,7 @@ public class BoardViewConsole extends BoardView{
 						}
 						tmpcont++;
 					}
-					System.out.println("  | "+(i+1));
+					System.out.println("  | "+(arrOfRightCoords[i]));
 					break;
 					
 				case voidDownCard:
@@ -109,8 +110,8 @@ public class BoardViewConsole extends BoardView{
 				cont++;
 			}
 		}
-		for (int j = 0; j < arrOfDownCoords.length; j++) {
-			System.out.print(" ----"+arrOfDownCoords[j]+"---- ");
+		for (int j = 0; j < arrOfDownCoord.length; j++) {
+			System.out.print(" ----"+arrOfDownCoord[j]+"---- ");
 		}
 	}
 

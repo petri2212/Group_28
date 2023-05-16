@@ -12,7 +12,9 @@ public class Board extends Matrix<Tile> {
 
 	private static final int ROW_COUNT = 9;
 	private static final int COL_COUNT = 9;
-
+	private static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	private static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	
 	private final int playersNumber;
 
 	public Board(int playerNumber) {
@@ -100,6 +102,14 @@ public class Board extends Matrix<Tile> {
 		}
 
 		return objects;
+	}
+	
+	public String[] getDownCoord() {
+		return DOWN_COOORDS;
+	}
+	
+	public int[] getRightCoord() {
+		return RIGHT_COORDS;
 	}
 	
 }

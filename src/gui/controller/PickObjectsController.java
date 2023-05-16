@@ -32,6 +32,15 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 			}
 		};
 		
+		view.actionPutObjects = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.setDownCoords(model.getDownCools());
+				view.setRightCoords(model.getRightCools());
+			}
+		};
+		
 	}
 
 }
