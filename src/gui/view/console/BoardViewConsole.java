@@ -13,19 +13,11 @@ public class BoardViewConsole extends BoardView{
 
 	@Override
 	public void show() {
-		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("benvenuto in MyShelife!!");
-		System.out.println("primi s per stampare la board");
-		String input = sc.nextLine();
-
-		if(input.equalsIgnoreCase("s")){
-			actionPrintBoard.actionPerformed(null);
-		}
+		System.out.println("Welcome in MyShelife!!");
+		actionPrintBoard.actionPerformed(null);
 		printBoard();
 		
-		sc.close();
-
 	}
 	
 	public void printBookshelfObject() {

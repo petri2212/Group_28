@@ -13,9 +13,7 @@ public abstract class BoardView implements View {
 	protected Board board;
 	protected int playersnumber;
 	protected BookshelfObject bookshelfObjectToPrint;
-	
-	public ActionListener actionReturnMainPage;
-	
+		
 	public ActionListener actionPrintBoard;
 	
 	public void setBoard(Board board) {

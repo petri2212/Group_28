@@ -19,14 +19,6 @@ public class BoardController extends Controller<BoardView>{
 	@Override
 	protected void initViewListeners() {
 		
-		view.actionReturnMainPage = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				model.changeState(GameState.HOME);
-			}
-		};
-		
 		view.actionPrintBoard = new ActionListener() {
 
 			@Override
