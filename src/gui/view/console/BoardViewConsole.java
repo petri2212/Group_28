@@ -11,9 +11,6 @@ import utils.MatrixCoords;
 
 public class BoardViewConsole extends BoardView{
 
-	private static final int ROW_COUNT = 9;
-	private static final int COL_COUNT = 9;
-
 	@Override
 	public void show() {
 		Scanner sc = new Scanner(System.in);
@@ -32,25 +29,25 @@ public class BoardViewConsole extends BoardView{
 	}
 	
 	public void printBookshelfObject() {
-		final int lenght1 = 3;
-		final int lenght2 = 4;
-		final int lenght3 = 5;
-		final int lenght4 = 6;
-		int lenght = bookshelfObjectToPrint.getLenghtOfBookshelfObject();
+		final int lenght3Char = 3;
+		final int lenght4Char = 4;
+		final int lenght5Char = 5;
+		final int lenght6Char = 6;
+		int lenght = bookshelfObjectToPrint.name().length();
 		switch (lenght) {
-		case lenght1:
+		case lenght3Char:
 			System.out.print("|   "+bookshelfObjectToPrint+"   |");
 			break;
 			
-		case lenght2:
+		case lenght4Char:
 			System.out.print("|  "+bookshelfObjectToPrint+"   |");
 			break;
 			
-		case lenght3:
+		case lenght5Char:
 			System.out.print("|  "+bookshelfObjectToPrint+"  |");
 			break;
 			
-		case lenght4:
+		case lenght6Char:
 			System.out.print("|  "+bookshelfObjectToPrint+" |");
 			break;
 		}
@@ -58,6 +55,8 @@ public class BoardViewConsole extends BoardView{
 	}
 	
 	public void printBoard() {
+		final int ROW_COUNT = board.getRows();
+		final int COL_COUNT = board.getCols();
 		final int upCard = 0;
 		final int voidUpCard = 1;
 		final int centerCard = 2;
