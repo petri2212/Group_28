@@ -7,7 +7,7 @@ public class PickObjectsViewConsole extends PickObjectsView{
 	@Override
 	public void show() {
 		
-		actionPickNameTag.actionPerformed(null);
+		actionPickPlayerName.actionPerformed(null);
 		System.out.println("This is your turn: "+playerName);
 		
 	}

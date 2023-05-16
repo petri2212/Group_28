@@ -1,13 +1,6 @@
 package gui.view.console;
 
-import java.util.Scanner;
-
-import javax.lang.model.type.TypeMirror;
-
 import gui.view.BoardView;
-import myshelfie.Tile;
-import myshelfie.TileType;
-import utils.MatrixCoords;
 
 public class BoardViewConsole extends BoardView{
 

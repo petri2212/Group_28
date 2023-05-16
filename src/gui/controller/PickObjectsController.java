@@ -20,7 +20,7 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 	@Override
 	protected void initViewListeners() {
 		
-		view.actionPickNameTag = new ActionListener() {
+		view.actionPickPlayerName = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
