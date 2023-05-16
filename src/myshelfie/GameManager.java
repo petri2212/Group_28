@@ -45,10 +45,15 @@ public class GameManager {
 			
 		case INIT_GAME:
 			board = new Board(players.size());
+			changeState(GameState.PRINT_BOARD);
+			break;
+			
+		case PRINT_BOARD:
 			ui.showBoardPage(this);
 			break;
 			
 		case PICK_OBJECTS:
+			ui.showPickObjectsPage(this);
 			break;
 			
 		case PUT_OBJECTS:
@@ -72,6 +77,10 @@ public class GameManager {
 	
 	public int getPlayersNumber() {
 		return this.players.size();
+	}
+	
+	public int getPlayerTurn() {
+		return this.playerTurn;
 	}
 
 	private void updatePlayerTurn() {
