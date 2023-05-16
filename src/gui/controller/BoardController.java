@@ -28,6 +28,14 @@ public class BoardController extends Controller<BoardView>{
 				view.setBoard(board);
 			}
 		};
+		
+		view.actionPickObjects = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.changeState(GameState.PICK_OBJECTS);
+			}
+		};
 	}
 	
 	

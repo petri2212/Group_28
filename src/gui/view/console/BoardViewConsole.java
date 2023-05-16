@@ -17,6 +17,8 @@ public class BoardViewConsole extends BoardView{
 		System.out.println("Welcome in MyShelife!!");
 		actionPrintBoard.actionPerformed(null);
 		printBoard();
+		System.out.println("\n\n");
+		actionPickObjects.actionPerformed(null);
 		
 	}
 	
