@@ -30,4 +30,11 @@ public class ConsoleUI implements UI {
 		controller.start();
 	}
 
+	@Override
+	public void showPickObjectsPage(GameManager model) {
+		PickObjectsViewConsole view = new PickObjectsViewConsole();
+		PickObjectsController controller = new PickObjectsController(model, view);
+		controller.start();
+	}
+
 }
