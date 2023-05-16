@@ -1,9 +1,10 @@
-package commonGoal;
+package goal.common;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import goal.CommonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import resource.Images;
