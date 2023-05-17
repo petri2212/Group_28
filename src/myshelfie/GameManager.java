@@ -1,6 +1,7 @@
 package myshelfie;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import gui.UI;
 
@@ -95,14 +96,8 @@ public class GameManager {
 		playerTurn = (playerTurn >= players.size() - 1) ? playerTurn++ : 0;
 	}
 	
-	public void setPlayer(Player player) {
-		this.players.add(player);
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
-	
-	public ArrayList<Player> getPlayers(){
-		if(players == null) {
-			throw new NullPointerException("You must first initialize the ArrayList!!");
-		}
-		return players;
-	}
+
 }

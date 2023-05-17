@@ -259,4 +259,38 @@ public class InsertPlayersViewGraphic extends InsertPlayersView {
 		mainFrame.repaint();
 	}
 
+	@Override
+	public void showTooFewPlayersWarning() {
+		panelWarning.setVisible(true);
+		lblWarning.setText("You must insert at least two players.");
+	}
+
+	@Override
+	public void showTooManyPlayersWarning() {
+		panelWarning.setVisible(true);
+		lblWarning.setText("You reached the maximum number of player.");
+	}
+
+	@Override
+	public void showDoublePlayersWarning() {
+		panelWarning.setVisible(true);
+		lblWarning.setText("This player name has already been taken, please choose another name.");
+	}
+
+	@Override
+	public void showInvalidInputWarning() {
+		panelWarning.setVisible(true);
+		lblWarning.setText("Invalid player name, please type a name long at least one character.");
+	}
+
+	@Override
+	public void showInseredPlayer() {
+		ArrayList<Player> players = getInseredPlayers();
+
+		for (int i = 0; i < players.size(); i++) {
+			String playerName = players.get(i).getName();
+			lblPlayers[i].setText(playerName);
+		}
+	}
+
 }
