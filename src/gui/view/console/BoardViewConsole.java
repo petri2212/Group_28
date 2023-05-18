@@ -52,8 +52,8 @@ public class BoardViewConsole extends BoardView{
 
 		String partOfCard_a = " --------- ";
 		String partOfCard_b = "|         |";
-		String[] arrOfDownCoord = board.getDownCoord();
-		int [] arrOfRightCoords = board.getRightCoord();
+		String[] arrOfDownCoord = board.getDownCoords();
+		int [] arrOfRightCoords = board.getRightCoords();
 		int numberOfPartsInCard = 5;
 		for (int i = 0; i < ROW_COUNT; i++) {
 			int cont = 0;
