@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import utils.Matrix;
 import utils.MatrixCoords;
 
-public class BoardInstance extends Matrix<Tile> implements Board<Tile>{
+public class BoardInstance extends Matrix<Tile> implements Board {
 	private final int playersNumber;
 	
 	public BoardInstance(int playersNumber) {
@@ -71,19 +71,4 @@ public final Tile[][] livingroomTileMap = {
 		
 	}
 
-
-
-	@Override
-	public String[] getDownCoords() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	@Override
-	public int[] getRightCoords() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

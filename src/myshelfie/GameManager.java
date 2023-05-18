@@ -74,14 +74,6 @@ public class GameManager {
 		return board;
 	}
 	
-	public String[] getDownCoords() {
-		return board.getDownCoords();
-	}
-	
-	public int[] getRightCoords() {
-		return board.getRightCoords();
-	}
-	
 	public int getPlayersNumber() {
 		return this.players.size();
 	}

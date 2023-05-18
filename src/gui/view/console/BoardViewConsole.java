@@ -1,6 +1,7 @@
 package gui.view.console;
 
 import gui.view.BoardView;
+import myshelfie.Board;
 
 public class BoardViewConsole extends BoardView{
 
@@ -40,8 +41,8 @@ public class BoardViewConsole extends BoardView{
 	}
 	
 	public void printBoard() {
-		final int ROW_COUNT = board.ROW_COUNT;
-		final int COL_COUNT = board.COL_COUNT;
+		final int ROW_COUNT = Board.ROW_COUNT;
+		final int COL_COUNT = Board.COL_COUNT;
 		final int upCard = 0;
 		final int voidUpCard = 1;
 		final int centerCard = 2;
@@ -50,8 +51,8 @@ public class BoardViewConsole extends BoardView{
 
 		String partOfCard_a = " --------- ";
 		String partOfCard_b = "|         |";
-		String[] arrOfDownCoord = board.getDownCoords();
-		int [] arrOfRightCoords = board.getRightCoords();
+		String[] arrOfDownCoord = Board.DOWN_COOORDS;
+		int [] arrOfRightCoords = Board.RIGHT_COORDS;
 		int numberOfPartsInCard = 5;
 		for (int i = 0; i < ROW_COUNT; i++) {
 			int cont = 0;

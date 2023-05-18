@@ -10,7 +10,7 @@ import utils.MatrixCoords;
 
 public abstract class BoardView implements View {
 	
-	protected Board<Tile> board;
+	protected Board board;
 	protected int playersnumber;
 	protected BookshelfObject bookshelfObjectToPrint;
 		

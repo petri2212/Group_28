@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import gui.Controller;
 import gui.view.PickObjectsView;
+import myshelfie.Board;
 import myshelfie.GameManager;
 import myshelfie.GameState;
 import myshelfie.Player;
@@ -36,8 +37,8 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.setDownCoords(model.getDownCoords());
-				view.setRightCoords(model.getRightCoords());
+				view.setDownCoords(Board.DOWN_COOORDS);
+				view.setRightCoords(Board.RIGHT_COORDS);
 			}
 		};
 		
@@ -57,9 +58,9 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 					view.setWaiting(true);
 				}
 				
-				for (int i = 0; i < model.getDownCoords().length; i++) {
-					downCoordsList.add(model.getDownCoords()[i]);
-					rightCoordsList.add(model.getRightCoords()[i]);
+				for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
+					downCoordsList.add(Board.DOWN_COOORDS[i]);
+					rightCoordsList.add(Board.RIGHT_COORDS[i]);
 				}
 				
 				if(downCoordsList.contains(input[downCoordsPosition]) && rightCoordsList.contains(input[rightCoordsPosition])) {

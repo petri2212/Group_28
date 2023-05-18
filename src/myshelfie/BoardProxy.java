@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import utils.MatrixCoords;
 
-public class BoardProxy implements Board<BookshelfObject>{
+public class BoardProxy implements Board {
 	public BoardInstance instance;
 
 	public BoardProxy(int playersnumber) {
 		instance=new BoardInstance(playersnumber);
+		init();
 	}
 	
 	/**
@@ -33,26 +34,15 @@ public class BoardProxy implements Board<BookshelfObject>{
 	public void fillLivingRoomWithObjects() {
 		instance.fillLivingRoomWithObjects();
 	}
-	
-	@Override
-	public String[] getDownCoords() {
-		return DOWN_COOORDS;
-	}
 
 	@Override
-	public int[] getRightCoords() {
-		return RIGHT_COORDS;
-	}
-	@Override
-	public BookshelfObject get(MatrixCoords coords) {
-		// TODO Auto-generated method stub
-		return this.get(coords);
+	public Tile get(MatrixCoords coords) {
+		return instance.get(coords);
 	}
 
 	@Override
 	public ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList) {
-		// TODO Auto-generated method stub
-		return null;
+		return instance.pickObjects(coordsList);
 	}
 
 }
