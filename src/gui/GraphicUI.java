@@ -49,7 +49,7 @@ public class GraphicUI implements UI {
 	}
 
 	@Override
-	public void showPickObjectPage(GameManager model) {
+	public void showPickObjectsPage(GameManager model) {
 		// TODO Auto-generated method stub
 		
 	}
