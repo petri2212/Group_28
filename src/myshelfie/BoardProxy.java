@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import utils.MatrixCoords;
 
-public class BoardProxy implements Board<Tile>{
+public class BoardProxy implements Board<BookshelfObject>{
 	public BoardInstance instance;
 
 	public BoardProxy(int playersnumber) {
@@ -44,7 +44,7 @@ public class BoardProxy implements Board<Tile>{
 		return RIGHT_COORDS;
 	}
 	@Override
-	public Tile get(MatrixCoords coords) {
+	public BookshelfObject get(MatrixCoords coords) {
 		// TODO Auto-generated method stub
 		return this.get(coords);
 	}

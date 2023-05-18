@@ -86,6 +86,4 @@ public final Tile[][] livingroomTileMap = {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }
