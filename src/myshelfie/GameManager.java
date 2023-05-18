@@ -45,7 +45,7 @@ public class GameManager {
 			break;
 			
 		case INIT_GAME:
-			board = new Board(players.size());
+			board = new BoardProxy(players.size());
 			changeState(GameState.PRINT_BOARD);
 			break;
 			

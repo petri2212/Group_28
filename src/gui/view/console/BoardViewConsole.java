@@ -42,8 +42,8 @@ public class BoardViewConsole extends BoardView{
 	}
 	
 	public void printBoard() {
-		final int ROW_COUNT = board.getRows();
-		final int COL_COUNT = board.getCols();
+		final int ROW_COUNT = board.ROW_COUNT;
+		final int COL_COUNT = board.COL_COUNT;
 		final int upCard = 0;
 		final int voidUpCard = 1;
 		final int centerCard = 2;
