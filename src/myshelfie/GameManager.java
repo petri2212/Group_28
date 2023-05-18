@@ -100,4 +100,9 @@ public class GameManager {
 		this.players = players;
 	}
 
+	public ArrayList<Player> getPlayers() {
+		// TODO Auto-generated method stub
+		return this.players;
+	}
+
 }
