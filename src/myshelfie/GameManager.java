@@ -46,14 +46,12 @@ public class GameManager {
 			
 		case INIT_GAME:
 			board = new BoardProxy(players.size());
-			changeState(GameState.PRINT_BOARD);
+			changeState(GameState.PICK_OBJECTS_FROM_BOARD);
+
 			break;
 			
-		case PRINT_BOARD:
+		case PICK_OBJECTS_FROM_BOARD:
 			ui.showBoardPage(this);
-			break;
-			
-		case PICK_OBJECTS:
 			ui.showPickObjectsPage(this);
 			break;
 			
@@ -104,5 +102,4 @@ public class GameManager {
 		// TODO Auto-generated method stub
 		return this.players;
 	}
-	
 }

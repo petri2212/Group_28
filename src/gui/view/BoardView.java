@@ -15,9 +15,7 @@ public abstract class BoardView implements View {
 	protected BookshelfObject bookshelfObjectToPrint;
 		
 	public ActionListener actionPrintBoard;
-	
-	public ActionListener actionPickObjects;
-	
+		
 	public void setBoard(Board board) {
 		this.board = board;
 	}
