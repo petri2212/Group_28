@@ -104,11 +104,11 @@ public class Board extends Matrix<Tile> {
 		return objects;
 	}
 	
-	public String[] getDownCoord() {
+	public String[] getDownCoords() {
 		return DOWN_COOORDS;
 	}
 	
-	public int[] getRightCoord() {
+	public int[] getRightCoords() {
 		return RIGHT_COORDS;
 	}
 	

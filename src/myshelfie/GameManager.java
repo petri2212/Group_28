@@ -75,12 +75,12 @@ public class GameManager {
 		return board;
 	}
 	
-	public String[] getDownCools() {
-		return board.getDownCoord();
+	public String[] getDownCoords() {
+		return board.getDownCoords();
 	}
 	
-	public int[] getRightCools() {
-		return board.getRightCoord();
+	public int[] getRightCoords() {
+		return board.getRightCoords();
 	}
 	
 	public int getPlayersNumber() {
@@ -105,4 +105,5 @@ public class GameManager {
 		}
 		return players;
 	}
+	
 }
