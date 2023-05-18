@@ -81,4 +81,8 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return true;
 	}
 	
+	public void add(int row, int col, BookshelfObject object) {
+		super.add(row, col, object);
+	}
+	
 }
