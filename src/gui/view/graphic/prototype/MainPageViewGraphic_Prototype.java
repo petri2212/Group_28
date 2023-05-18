@@ -4,31 +4,23 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.FlowLayout;
 import java.awt.Component;
-import javax.swing.Box;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-import java.awt.Rectangle;
 import javax.swing.SwingConstants;
 import java.awt.Insets;
-import java.awt.Canvas;
 import java.awt.Toolkit;
-import javax.swing.BoxLayout;
-import java.awt.BorderLayout;
-import java.awt.Frame;
 import javax.swing.JLabel;
 import java.awt.Cursor;
+import java.awt.Font;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class MainPageViewGraphic_Prototype extends JFrame {
 
+	private static final long serialVersionUID = 1567108229753700100L;
 	private JPanel contentPane;
 
 	/**
@@ -55,7 +47,8 @@ public class MainPageViewGraphic_Prototype extends JFrame {
 		setMinimumSize(new Dimension(1140, 760));
 		setPreferredSize(new Dimension(1140, 760));
 		setSize(new Dimension(1140, 760));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("/home/azanetti6/projects/Group_28/resources/publisher_material/Icon 50x50px.png"));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage("/home/azanetti6/projects/Group_28/resources/publisher_material/Icon 50x50px.png"));
 		setTitle("MY SHELFIE");
 		setResizable(false);
 		setVisible(true);
@@ -66,61 +59,45 @@ public class MainPageViewGraphic_Prototype extends JFrame {
 		contentPane.setForeground(new Color(255, 255, 255));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panelMain = new JPanel();
-		panelMain.setBorder(new EmptyBorder(20, 20, 50, 20));
-		panelMain.setOpaque(false);
-		contentPane.add(panelMain, BorderLayout.SOUTH);
-		panelMain.setLayout(new GridLayout(2, 1, 0, 50));
-		
-		JPanel panelNewGame = new JPanel();
-		panelNewGame.setOpaque(false);
-		panelMain.add(panelNewGame);
-		
-		JButton btnNewGame = new JButton("");
-		panelNewGame.add(btnNewGame);
-		btnNewGame.setBorder(null);
+		contentPane.setLayout(null);
+
+		JButton btnNewGame = new JButton("New Game");
+		btnNewGame.setOpaque(false);
+		btnNewGame.setFocusPainted(false);
+		btnNewGame.setFont(new Font("Purisa", Font.BOLD, 18));
+		btnNewGame.setBounds(37, 232, 185, 62);
+		contentPane.add(btnNewGame);
+		btnNewGame.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewGame.setMaximumSize(new Dimension(174, 62));
 		btnNewGame.setMinimumSize(new Dimension(174, 62));
 		btnNewGame.setPreferredSize(new Dimension(174, 62));
 		btnNewGame.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewGame.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnNewGame.setOpaque(false);
-		btnNewGame.setFocusPainted(false);
-		btnNewGame.setSelectedIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/buttons/btnNewGamePressed.png"));
-		btnNewGame.setPressedIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/buttons/btnNewGamePressed.png"));
 		btnNewGame.setMargin(new Insets(0, 0, 0, 0));
-		btnNewGame.setBorderPainted(false);
-		btnNewGame.setContentAreaFilled(false);
-		btnNewGame.setHideActionText(true);
 		btnNewGame.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnNewGame.setIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/buttons/btnNewGame.png"));
 		btnNewGame.setBackground(new Color(255, 255, 255));
 		btnNewGame.setForeground(new Color(255, 255, 255));
-		
-		JPanel panelExit = new JPanel();
-		panelExit.setOpaque(false);
-		panelMain.add(panelExit);
-		
-		JButton btnExit = new JButton("");
-		panelExit.add(btnExit);
+
+		JButton btnExit = new JButton("Exit");
+		btnExit.setPreferredSize(new Dimension(174, 62));
+		btnExit.setOpaque(false);
 		btnExit.setMinimumSize(new Dimension(174, 62));
 		btnExit.setMaximumSize(new Dimension(174, 62));
-		btnExit.setPreferredSize(new Dimension(174, 62));
-		btnExit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnExit.setPressedIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/buttons/btnExitPressed.png"));
-		btnExit.setSelectedIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/buttons/btnExitPressed.png"));
-		btnExit.setIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/buttons/btnExit.png"));
-		btnExit.setOpaque(false);
 		btnExit.setMargin(new Insets(0, 0, 0, 0));
 		btnExit.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnExit.setHideActionText(true);
 		btnExit.setForeground(Color.WHITE);
+		btnExit.setFont(new Font("Purisa", Font.BOLD, 18));
 		btnExit.setFocusPainted(false);
-		btnExit.setContentAreaFilled(false);
-		btnExit.setBorderPainted(false);
-		btnExit.setBorder(null);
-		btnExit.setBackground(new Color(255, 255, 255));
+		btnExit.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnExit.setBackground(Color.WHITE);
+		btnExit.setAlignmentX(0.5f);
+		btnExit.setBounds(37, 365, 185, 62);
+		contentPane.add(btnExit);
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(
+				new ImageIcon("/media/sf_Unibg_Shared/resources/publisher_material/Display_1_Main_Page_4.png"));
+		lblNewLabel.setBounds(0, 0, 1140, 737);
+		contentPane.add(lblNewLabel);
 	}
 }

@@ -4,9 +4,10 @@ import javax.swing.ImageIcon;
 
 public enum Icons implements Resource<ImageIcon> {
 
-	BUTTON_NEW_GAME("./resources/buttons/btnNewGame.png"),
-	BUTTON_NEW_GAME_PRESSED("./resources/buttons/btnNewGamePressed.png"),
-	BUTTON_EXIT("./resources/buttons/btnExitPressed.png"), BUTTON_EXIT_PRESSED("./resources/buttons/btnExit.png");
+	ICON_CAT("./resources/icon_tiles/icon_cat.png"),
+	ICON_TROPHY("./resources/icon_tiles/icon_trophy.png"),
+	ICON_GAME("./resources/icon_tiles/icon_game.png"),
+	ICON_PLANT("./resources/icon_tiles/icon_plant.png");
 
 	private String path;
 
