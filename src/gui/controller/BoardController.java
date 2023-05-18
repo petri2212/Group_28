@@ -29,13 +29,6 @@ public class BoardController extends Controller<BoardView>{
 			}
 		};
 		
-		view.actionPickObjects = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				model.changeState(GameState.PICK_OBJECTS);
-			}
-		};
 	}
 	
 	
