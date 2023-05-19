@@ -1,5 +1,6 @@
 package gui.view.console;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import gui.view.PickObjectsView;
@@ -23,6 +24,15 @@ public class PickObjectsViewConsole extends PickObjectsView{
 		System.out.println("insert enter to put the tiles in your BookShelf");
 		
 		do {
+			if(savedCoords != null) {
+				System.out.print("Inserted Coords: ");
+				for (int i = 0; i < savedCoords.size(); i++) {
+					tmpCoords = savedCoords.get(i);
+					System.out.print(tmpCoords+" ");
+				}
+				System.out.println();
+
+			}
 			System.out.println("Coords: ");
 			String input = sc.nextLine();
 			
@@ -34,8 +44,15 @@ public class PickObjectsViewConsole extends PickObjectsView{
 			}else if(input.length() == inputLenght){
 				setInput(input);
 				actionVerifyObject.actionPerformed(null);
+				if(verifier) {
+					if(savedCoords == null) {
+						savedCoords = new ArrayList<>();
+					}
+					savedCoords.add(input);
+					
+				}
 			}else {
-				System.out.println("You must insert coords like this (A,0)");
+				System.out.println("You must insert coords like this (A,0)!!");
 			}
 		}while(isWaiting);
 		

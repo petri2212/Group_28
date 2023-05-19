@@ -73,11 +73,11 @@ public class GameManager {
 		return board;
 	}
 	
-	public String[] getDownCoords() {
+	public char[] getDownCoords() {
 		return board.getDownCoords();
 	}
 	
-	public int[] getRightCoords() {
+	public char[] getRightCoords() {
 		return board.getRightCoords();
 	}
 	
