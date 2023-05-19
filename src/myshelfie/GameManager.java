@@ -45,8 +45,9 @@ public class GameManager {
 			break;
 			
 		case INIT_GAME:
-			board = new Board(players.size());
+			board = new BoardProxy(players.size());
 			changeState(GameState.PICK_OBJECTS_FROM_BOARD);
+
 			break;
 			
 		case PICK_OBJECTS_FROM_BOARD:
@@ -73,6 +74,7 @@ public class GameManager {
 		return board;
 	}
 	
+<<<<<<< HEAD
 	public char[] getDownCoords() {
 		return board.getDownCoords();
 	}
@@ -81,6 +83,8 @@ public class GameManager {
 		return board.getRightCoords();
 	}
 	
+=======
+>>>>>>> f0ed29ab417dc3e10dffe39d4f5c057b570dffe5
 	public int getPlayersNumber() {
 		return this.players.size();
 	}

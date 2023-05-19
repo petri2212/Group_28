@@ -1,8 +1,7 @@
 package myshelfie;
 
-import java.util.ArrayList;
 
-import utils.Matrix;
+import java.util.ArrayList;
 import utils.MatrixCoords;
 
 /* TODO: use proxy pattern.
@@ -112,4 +111,148 @@ public class Board extends Matrix<Tile> {
 		return RIGHT_COORDS;
 	}
 	
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
+public interface Board {
+	public static final String[] DOWN_COOORDS = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+	public static final int[] RIGHT_COORDS = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	public static final int ROW_COUNT = 9;
+	public static final int COL_COUNT = 9;
+	void fillLivingRoomWithObjects();
+	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public Tile get(MatrixCoords coords);
 }

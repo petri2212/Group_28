@@ -7,6 +7,7 @@ import java.util.HashSet;
 
 import gui.Controller;
 import gui.view.PickObjectsView;
+import myshelfie.Board;
 import myshelfie.GameManager;
 import myshelfie.GameState;
 import myshelfie.Player;
@@ -38,8 +39,8 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.setDownCoords(model.getDownCoords());
-				view.setRightCoords(model.getRightCoords());
+				view.setDownCoords(Board.DOWN_COOORDS);
+				view.setRightCoords(Board.RIGHT_COORDS);
 			}
 		};
 		
@@ -61,6 +62,7 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 				ArrayList<Character> rightCoordsList = new ArrayList<>();
 				HashSet<MatrixCoords> coords = new HashSet<>();
 				
+<<<<<<< HEAD
 				if(input[commaPosition] == ',') {
 					try {
 						column = input[downCoordsPosition];
@@ -73,6 +75,20 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 						downCoordsList.add(model.getDownCoords()[i]);
 						rightCoordsList.add(model.getRightCoords()[i]);
 					}
+=======
+				if(input[commaPosition] != ",") {
+					System.out.println("You must insert coords with this sintax (A,0)");
+					view.setWaiting(true);
+				}
+				
+				for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
+					downCoordsList.add(Board.DOWN_COOORDS[i]);
+					rightCoordsList.add(Board.RIGHT_COORDS[i]);
+				}
+				
+				if(downCoordsList.contains(input[downCoordsPosition]) && rightCoordsList.contains(input[rightCoordsPosition])) {
+					int indexOfDownCoords = downCoordsList.indexOf(input[downCoordsPosition]);
+>>>>>>> f0ed29ab417dc3e10dffe39d4f5c057b570dffe5
 					
 					if(downCoordsList.contains(column) && rightCoordsList.contains(row)) {
 						indexOfColumn = column - letterToSubtract;
