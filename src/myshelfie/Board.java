@@ -9,9 +9,9 @@ public interface Board {
 	public static final int ROW_COUNT = 9;
 	public static final int COL_COUNT = 9;
 
-	void fillLivingRoomWithObjects();
+	public void fillLivingRoomWithObjects();
 
-	ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
 
 	public Tile get(MatrixCoords coords);
 }
