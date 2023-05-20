@@ -6,21 +6,36 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import gui.Controller;
-import gui.view.PickObjectsView;
+import gui.view.PickObjectsFromBoardView;
 import myshelfie.Board;
 import myshelfie.GameManager;
 import myshelfie.Player;
 import utils.MatrixCoords;
 
-public class PickObjectsController extends Controller<PickObjectsView> {
+public class PickObjectsFromBoardController extends Controller<PickObjectsFromBoardView> {
 
-	public PickObjectsController(GameManager model, PickObjectsView view) {
+	public PickObjectsFromBoardController(GameManager model, PickObjectsFromBoardView view) {
 		super(model, view);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected void initViewListeners() {
+		
+		//Board
+		
+		view.actionPrintBoard = new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Board board = model.getBoard();
+				view.setPlayersNumber(model.getPlayersNumber());
+				view.setBoard(board);
+			}
+		};
+		
+		//PickObjects
+		
 		view.actionPickPlayerName = new ActionListener() {
 
 			@Override
@@ -86,6 +101,7 @@ public class PickObjectsController extends Controller<PickObjectsView> {
 
 					} else {
 						System.out.println("Attention you insert coords that are not in the board!!");
+						view.setVerifier(false);
 						view.setWaiting(true);
 					}
 				} else {
@@ -95,7 +111,7 @@ public class PickObjectsController extends Controller<PickObjectsView> {
 
 			}
 		};
-
+		
 	}
 
 }

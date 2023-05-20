@@ -10,6 +10,7 @@ public class BoardProxy implements Board {
 	public BoardProxy(int playersnumber) {
 		instance=new BoardInstance(playersnumber);
 		init();
+		fillLivingRoomWithObjects();
 	}
 	
 	/**

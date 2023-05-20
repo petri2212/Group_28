@@ -43,13 +43,7 @@ public class GraphicUI implements UI {
 	}
 
 	@Override
-	public void showBoardPage(GameManager model) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void showPickObjectsPage(GameManager model) {
+	public void showPickObjectsFromBoardPage(GameManager model) {
 		// TODO Auto-generated method stub
 		
 	}

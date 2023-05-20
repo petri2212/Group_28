@@ -51,8 +51,7 @@ public class GameManager {
 			break;
 			
 		case PICK_OBJECTS_FROM_BOARD:
-			ui.showBoardPage(this);
-			ui.showPickObjectsPage(this);
+			ui.showPickObjectsFromBoardPage(this);
 			break;
 			
 		case PUT_OBJECTS:
