@@ -3,17 +3,17 @@ package gui.view.console;
 import gui.view.BoardView;
 import myshelfie.Board;
 
-public class BoardViewConsole extends BoardView{
+public class BoardViewConsole extends BoardView {
 
 	@Override
 	public void show() {
-		
+
 		System.out.println("Welcome in MyShelife!!");
 		actionPrintBoard.actionPerformed(null);
 		printBoard();
-		System.out.println("\n\n");		
+		System.out.println("\n\n");
 	}
-	
+
 	public void printBookshelfObject() {
 		final int lenght3Char = 3;
 		final int lenght4Char = 4;
@@ -22,24 +22,24 @@ public class BoardViewConsole extends BoardView{
 		int lenght = bookshelfObjectToPrint.name().length();
 		switch (lenght) {
 		case lenght3Char:
-			System.out.print("|   "+bookshelfObjectToPrint+"   |");
+			System.out.print("|   " + bookshelfObjectToPrint + "   |");
 			break;
-			
+
 		case lenght4Char:
-			System.out.print("|  "+bookshelfObjectToPrint+"   |");
+			System.out.print("|  " + bookshelfObjectToPrint + "   |");
 			break;
-			
+
 		case lenght5Char:
-			System.out.print("|  "+bookshelfObjectToPrint+"  |");
+			System.out.print("|  " + bookshelfObjectToPrint + "  |");
 			break;
-			
+
 		case lenght6Char:
-			System.out.print("|  "+bookshelfObjectToPrint+" |");
+			System.out.print("|  " + bookshelfObjectToPrint + " |");
 			break;
 		}
-		
+
 	}
-	
+
 	public void printBoard() {
 		final int ROW_COUNT = Board.ROW_COUNT;
 		final int COL_COUNT = Board.COL_COUNT;
@@ -51,71 +51,66 @@ public class BoardViewConsole extends BoardView{
 
 		String partOfCard_a = " --------- ";
 		String partOfCard_b = "|         |";
-<<<<<<< HEAD
-		char[] arrOfDownCoord = board.getDownCoords();
-		char [] arrOfRightCoords = board.getRightCoords();
-=======
-		String[] arrOfDownCoord = Board.DOWN_COOORDS;
-		int [] arrOfRightCoords = Board.RIGHT_COORDS;
->>>>>>> f0ed29ab417dc3e10dffe39d4f5c057b570dffe5
+		char[] arrOfDownCoord = Board.DOWN_COOORDS;
+		char[] arrOfRightCoords = Board.RIGHT_COORDS;
 		int numberOfPartsInCard = 5;
 		for (int i = 0; i < ROW_COUNT; i++) {
 			int cont = 0;
-			while(cont < numberOfPartsInCard) {
+			while (cont < numberOfPartsInCard) {
 				int tmpcont = 0;
-				
+
 				switch (cont) {
-				
+
 				case upCard:
-					while(tmpcont < COL_COUNT) {
+					while (tmpcont < COL_COUNT) {
 						System.out.print(partOfCard_a);
 						tmpcont++;
 					}
 					System.out.println("   |");
 					break;
-					
+
 				case voidUpCard:
-					while(tmpcont < COL_COUNT) {
+					while (tmpcont < COL_COUNT) {
 						System.out.print(partOfCard_b);
 						tmpcont++;
 					}
 					System.out.println("   |");
 					break;
-					
+
 				case centerCard:
-					while(tmpcont < COL_COUNT) {
-						if(checkTile(i, tmpcont)) {
+					while (tmpcont < COL_COUNT) {
+						if (checkTile(i, tmpcont)) {
 							printBookshelfObject();
-						}else {
+						} else {
 							System.out.print(partOfCard_b);
 						}
 						tmpcont++;
 					}
-					System.out.println("  | "+(arrOfRightCoords[i]));
+					System.out.println("  | " + (arrOfRightCoords[i]));
 					break;
-					
+
 				case voidDownCard:
-					while(tmpcont < COL_COUNT) {
+					while (tmpcont < COL_COUNT) {
 						System.out.print(partOfCard_b);
 						tmpcont++;
 					}
 					System.out.println("   |");
 					break;
-					
+
 				case downCard:
-					while(tmpcont < COL_COUNT) {
+					while (tmpcont < COL_COUNT) {
 						System.out.print(partOfCard_a);
 						tmpcont++;
 					}
 					System.out.println("   |");
 					break;
 				}
-				
+
 				cont++;
 			}
 		}
 		for (int j = 0; j < arrOfDownCoord.length; j++) {
-			System.out.print(" ----"+arrOfDownCoord[j]+"---- ");
+			System.out.print(" ----" + arrOfDownCoord[j] + "---- ");
 		}
 	}
 

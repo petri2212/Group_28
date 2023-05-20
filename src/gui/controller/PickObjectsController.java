@@ -9,20 +9,18 @@ import gui.Controller;
 import gui.view.PickObjectsView;
 import myshelfie.Board;
 import myshelfie.GameManager;
-import myshelfie.GameState;
 import myshelfie.Player;
 import utils.MatrixCoords;
 
-public class PickObjectsController extends Controller<PickObjectsView>{
+public class PickObjectsController extends Controller<PickObjectsView> {
 
 	public PickObjectsController(GameManager model, PickObjectsView view) {
 		super(model, view);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected void initViewListeners() {
-		
+
 		view.actionPickPlayerName = new ActionListener() {
 
 			@Override
@@ -34,7 +32,7 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 				view.setPlayerName(playerName);
 			}
 		};
-		
+
 		view.actionPutObjects = new ActionListener() {
 
 			@Override
@@ -43,7 +41,7 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 				view.setRightCoords(Board.RIGHT_COORDS);
 			}
 		};
-		
+
 		view.actionVerifyObject = new ActionListener() {
 
 			@Override
@@ -61,58 +59,43 @@ public class PickObjectsController extends Controller<PickObjectsView>{
 				ArrayList<Character> downCoordsList = new ArrayList<>();
 				ArrayList<Character> rightCoordsList = new ArrayList<>();
 				HashSet<MatrixCoords> coords = new HashSet<>();
-				
-<<<<<<< HEAD
-				if(input[commaPosition] == ',') {
+
+				if (input[commaPosition] == ',') {
 					try {
 						column = input[downCoordsPosition];
 						row = input[rightCoordsPosition];
 					} catch (Exception e2) {
 						view.setWaiting(true);
 					}
-					
-					for (int i = 0; i < model.getDownCoords().length; i++) {
-						downCoordsList.add(model.getDownCoords()[i]);
-						rightCoordsList.add(model.getRightCoords()[i]);
+
+					for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
+						downCoordsList.add(Board.DOWN_COOORDS[i]);
+						rightCoordsList.add(Board.RIGHT_COORDS[i]);
 					}
-=======
-				if(input[commaPosition] != ",") {
-					System.out.println("You must insert coords with this sintax (A,0)");
-					view.setWaiting(true);
-				}
-				
-				for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
-					downCoordsList.add(Board.DOWN_COOORDS[i]);
-					rightCoordsList.add(Board.RIGHT_COORDS[i]);
-				}
-				
-				if(downCoordsList.contains(input[downCoordsPosition]) && rightCoordsList.contains(input[rightCoordsPosition])) {
-					int indexOfDownCoords = downCoordsList.indexOf(input[downCoordsPosition]);
->>>>>>> f0ed29ab417dc3e10dffe39d4f5c057b570dffe5
-					
-					if(downCoordsList.contains(column) && rightCoordsList.contains(row)) {
+
+					if (downCoordsList.contains(column) && rightCoordsList.contains(row)) {
 						indexOfColumn = column - letterToSubtract;
 						indexOfRow = (int) row - numberToSubtract;
 						MatrixCoords tmpCoord = new MatrixCoords(indexOfRow, indexOfColumn);
-						if(coords.add(tmpCoord)) {
+						if (coords.add(tmpCoord)) {
 							view.setVerifier(true);
-						}else {
+						} else {
 							System.out.println("You've already selected this coords!!");
 						}
 						view.setWaiting(true);
-						
-					}else {
+
+					} else {
 						System.out.println("Attention you insert coords that are not in the board!!");
 						view.setWaiting(true);
 					}
-				}else {
+				} else {
 					System.out.println("You must insert coords with this sintax (A,0)");
 					view.setWaiting(true);
 				}
-				
+
 			}
 		};
-		
+
 	}
 
 }

@@ -74,17 +74,6 @@ public class GameManager {
 		return board;
 	}
 	
-<<<<<<< HEAD
-	public char[] getDownCoords() {
-		return board.getDownCoords();
-	}
-	
-	public char[] getRightCoords() {
-		return board.getRightCoords();
-	}
-	
-=======
->>>>>>> f0ed29ab417dc3e10dffe39d4f5c057b570dffe5
 	public int getPlayersNumber() {
 		return this.players.size();
 	}
@@ -102,7 +91,6 @@ public class GameManager {
 	}
 
 	public ArrayList<Player> getPlayers() {
-		// TODO Auto-generated method stub
 		return this.players;
 	}
 }
