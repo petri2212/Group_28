@@ -63,6 +63,7 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 			public void actionPerformed(ActionEvent e) {
 				int downCoordsPosition = 0;
 				int rightCoordsPosition = 2;
+				int maxCoords = 3;
 				char column = 0;
 				char row = 0;
 				char letterToSubtract = 'A';
@@ -73,10 +74,16 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 				ArrayList<Character> downCoordsList = new ArrayList<>();
 				ArrayList<Character> rightCoordsList = new ArrayList<>();
 				HashSet<MatrixCoords> coords = new HashSet<>();
+				
+				if(coords.size() == maxCoords) {
+					view.showChangeStateWarning();
+				}
 
-				for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
-					downCoordsList.add(Board.DOWN_COOORDS[i]);
-					rightCoordsList.add(Board.RIGHT_COORDS[i]);
+				if(downCoordsList.isEmpty()) {
+					for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
+						downCoordsList.add(Board.DOWN_COOORDS[i]);
+						rightCoordsList.add(Board.RIGHT_COORDS[i]);
+					}
 				}
 				
 				column = input[downCoordsPosition];
@@ -87,7 +94,9 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 					indexOfRow = (int) row - numberToSubtract;
 					MatrixCoords tmpCoord = new MatrixCoords(indexOfRow, indexOfColumn);
 					view.setVerifier(true);
-					if (!coords.add(tmpCoord)) {
+					if (coords.add(tmpCoord)) {
+						view.setVerifier(true);
+					}else {
 						view.showAlreadySelectedCoordsWarning();
 						view.setVerifier(false);
 					}

@@ -52,7 +52,7 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 
 			} else if (input.equalsIgnoreCase("enter")) {
 				actionPutObjects.actionPerformed(null);
-			} else if (commaandLenghtVerifier()) {
+			} else if (commaAndLenghtVerifier()) {
 				actionVerifyObject.actionPerformed(null);
 				if (verifier) {
 					if (savedCoords == null) {
@@ -60,8 +60,6 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 					}
 					savedCoords.add(input);
 				}
-			} else {
-				System.out.println("You must insert coords like this (A,0)!!");
 			}
 		} while (isWaiting);
 
@@ -185,7 +183,14 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 		isWaiting = true;
 	}
 	
-	public boolean commaandLenghtVerifier() {
+	public void showChangeStateWarning() {
+		System.out.println("Attention!!");
+		System.out.println("Attention you have reached the max number of tiles!!");
+		System.out.println("You will put the tiles in your bookshelf soon!!");
+		isWaiting = true;
+	}
+	
+	public boolean commaAndLenghtVerifier() {
 		int commaPosition = 1;
 		char[] input = inputToChar(this.input);
 		

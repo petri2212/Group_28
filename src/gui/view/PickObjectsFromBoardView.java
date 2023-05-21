@@ -74,10 +74,6 @@ public abstract class PickObjectsFromBoardView implements View {
 		return this.inputArr;
 	}
 
-	public void setWaiting(boolean var) {
-		isWaiting = var;
-	}
-
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
@@ -94,5 +90,6 @@ public abstract class PickObjectsFromBoardView implements View {
 	
 	public abstract void showCoordsNotInTheBoardWarning();
 
+	public abstract void showChangeStateWarning();		
 
 }
