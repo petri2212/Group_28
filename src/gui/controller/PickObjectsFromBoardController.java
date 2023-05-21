@@ -16,7 +16,11 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 
 	public PickObjectsFromBoardController(GameManager model, PickObjectsFromBoardView view) {
 		super(model, view);
-		// TODO Auto-generated constructor stub
+
+		this.view.setCommonGoals(model.getCommonGoalManager().getCommonGoal1(),
+				model.getCommonGoalManager().getCommonGoal2());
+
+		this.view.setPlayersNumber(model.getPlayersNumber());
 	}
 
 	@Override
@@ -34,6 +38,14 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 			}
 		};
 		
+		view.actionShowBookshelf = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.showBookshelf();
+			}
+		};
+
 		//PickObjects
 		
 		view.actionPickPlayerName = new ActionListener() {
@@ -45,6 +57,7 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 				Player player = players.get(playerTurn);
 				String playerName = player.getName();
 				view.setPlayerName(playerName);
+				view.setPersonalGoal(player.getPersonalGoal());
 			}
 		};
 

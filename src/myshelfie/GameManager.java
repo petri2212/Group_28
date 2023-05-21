@@ -1,8 +1,9 @@
 package myshelfie;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import deck.DeckCommon;
+import deck.DeckPersonal;
 import gui.UI;
 
 public class GameManager {
@@ -13,6 +14,7 @@ public class GameManager {
 	private Board board;
 	private int playerTurn;
 	private Points points;
+	private CommonGoalManager commonGoalManager;
 
 	public GameManager(UI ui) {
 		this.ui = ui;
@@ -48,8 +50,18 @@ public class GameManager {
 		case INIT_GAME:
 			points = new Points(players.size());
 			board = new BoardProxy(players.size());
-			changeState(GameState.PICK_OBJECTS_FROM_BOARD);
 
+			DeckPersonal deckPersonal = new DeckPersonal();
+
+			for(Player player: players) {
+				player.assignPersonalGoal(deckPersonal.extractGoal());
+			}
+
+			DeckCommon deckCommon = new DeckCommon();
+			commonGoalManager = new CommonGoalManager(players, deckCommon.extractGoal(),
+					deckCommon.extractGoal());
+
+			changeState(GameState.PICK_OBJECTS_FROM_BOARD);
 			break;
 			
 		case PICK_OBJECTS_FROM_BOARD:
@@ -120,5 +132,12 @@ public class GameManager {
 					System.out.println(e);
 				}
 		  }
+
+	/**
+	 * @return the commonGoalManager
+	 */
+	public CommonGoalManager getCommonGoalManager() {
+		return commonGoalManager;
+	}
 	
 }

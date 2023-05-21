@@ -168,6 +168,11 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 			System.out.print(" ----" + arrOfDownCoord[j] + "---- ");
 		}
 	}
+
+	@Override
+	public void showBookshelf() {
+		// TODO Auto-generated method stub
+	}
 	
 	//pickObjectsMethods
 	

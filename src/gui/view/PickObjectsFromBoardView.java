@@ -3,6 +3,8 @@ package gui.view;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import goal.CommonGoal;
+import goal.PersonalGoal;
 import gui.View;
 import myshelfie.Board;
 import myshelfie.BookshelfObject;
@@ -27,6 +29,9 @@ public abstract class PickObjectsFromBoardView implements View {
 	protected ArrayList<String> savedCoords;
 	protected String tmpCoords;
 	protected boolean verifier;
+	protected PersonalGoal personalGoal;
+	protected CommonGoal commonGoal1;
+	protected CommonGoal commonGoal2;
 	
 	//Board
 		
@@ -40,6 +45,8 @@ public abstract class PickObjectsFromBoardView implements View {
 
 	public ActionListener actionVerifyObject;
 	
+	public ActionListener actionShowBookshelf;
+
 	//Board
 		
 	public void setBoard(Board board) {
@@ -50,6 +57,15 @@ public abstract class PickObjectsFromBoardView implements View {
 		this.playersnumber = players;
 	}
 	
+	public void setPersonalGoal(PersonalGoal personalGoal) {
+		this.personalGoal = personalGoal;
+	}
+
+	public void setCommonGoals(CommonGoal commonGoal1, CommonGoal commonGoal2) {
+		this.commonGoal1 = commonGoal1;
+		this.commonGoal2 = commonGoal2;
+	}
+
 	public boolean checkTile(int r, int c) {
 		Tile tile = board.get(new MatrixCoords(r ,c));
 		if(tile != null && tile.isUsable(playersnumber)) {
@@ -92,4 +108,5 @@ public abstract class PickObjectsFromBoardView implements View {
 
 	public abstract void showChangeStateWarning();		
 
+	public abstract void showBookshelf();
 }

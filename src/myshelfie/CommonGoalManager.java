@@ -46,5 +46,19 @@ public class CommonGoalManager {
 			}
 		}
 	}
+
+	/**
+	 * @return the commonGoal1
+	 */
+	public CommonGoal getCommonGoal1() {
+		return commonGoal1;
+	}
+
+	/**
+	 * @return the commonGoal2
+	 */
+	public CommonGoal getCommonGoal2() {
+		return commonGoal2;
+	}
 	
 }
