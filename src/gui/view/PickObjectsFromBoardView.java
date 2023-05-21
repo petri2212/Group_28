@@ -19,8 +19,7 @@ public abstract class PickObjectsFromBoardView implements View {
 	
 	//PickObjects
 	
-	protected String input;
-	protected int inputLenght;
+	protected char[] inputArr;
 	protected boolean isWaiting;
 	protected String playerName;
 	protected char[] downCoords;
@@ -70,17 +69,9 @@ public abstract class PickObjectsFromBoardView implements View {
 	public void setVerifier(Boolean verifier) {
 		this.verifier = verifier;
 	}
-
-	public void setInput(String input) {
-		this.input = input;
-	}
-
-	public char[] getInput() {
-		char[] inputChar = { ' ', ' ', ' ' };
-		for (int i = 0; i < input.length(); i++) {
-			inputChar[i] = input.charAt(i);
-		}
-		return inputChar;
+	
+	public char[] getInputArr() {
+		return this.inputArr;
 	}
 
 	public void setWaiting(boolean var) {
@@ -98,5 +89,10 @@ public abstract class PickObjectsFromBoardView implements View {
 	public void setRightCoords(char[] rightCoords) {
 		this.rightCoords = rightCoords;
 	}
+	
+	public abstract void showAlreadySelectedCoordsWarning();
+	
+	public abstract void showCoordsNotInTheBoardWarning();
+
 
 }

@@ -63,50 +63,38 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 			public void actionPerformed(ActionEvent e) {
 				int downCoordsPosition = 0;
 				int rightCoordsPosition = 2;
-				int commaPosition = 1;
 				char column = 0;
 				char row = 0;
 				char letterToSubtract = 'A';
 				int numberToSubtract = 49;
-				int indexOfColumn;
 				int indexOfRow;
-				char[] input = view.getInput();
+				int indexOfColumn;
+				char[] input = view.getInputArr();
 				ArrayList<Character> downCoordsList = new ArrayList<>();
 				ArrayList<Character> rightCoordsList = new ArrayList<>();
 				HashSet<MatrixCoords> coords = new HashSet<>();
 
-				if (input[commaPosition] == ',') {
-					try {
-						column = input[downCoordsPosition];
-						row = input[rightCoordsPosition];
-					} catch (Exception e2) {
-						view.setWaiting(true);
-					}
+				for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
+					downCoordsList.add(Board.DOWN_COOORDS[i]);
+					rightCoordsList.add(Board.RIGHT_COORDS[i]);
+				}
+				
+				column = input[downCoordsPosition];
+				row = input[rightCoordsPosition];
 
-					for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
-						downCoordsList.add(Board.DOWN_COOORDS[i]);
-						rightCoordsList.add(Board.RIGHT_COORDS[i]);
-					}
-
-					if (downCoordsList.contains(column) && rightCoordsList.contains(row)) {
-						indexOfColumn = column - letterToSubtract;
-						indexOfRow = (int) row - numberToSubtract;
-						MatrixCoords tmpCoord = new MatrixCoords(indexOfRow, indexOfColumn);
-						if (coords.add(tmpCoord)) {
-							view.setVerifier(true);
-						} else {
-							System.out.println("You've already selected this coords!!");
-						}
-						view.setWaiting(true);
-
-					} else {
-						System.out.println("Attention you insert coords that are not in the board!!");
+				if (downCoordsList.contains(column) && rightCoordsList.contains(row)) {
+					indexOfColumn = column - letterToSubtract;
+					indexOfRow = (int) row - numberToSubtract;
+					MatrixCoords tmpCoord = new MatrixCoords(indexOfRow, indexOfColumn);
+					view.setVerifier(true);
+					if (!coords.add(tmpCoord)) {
+						view.showAlreadySelectedCoordsWarning();
 						view.setVerifier(false);
-						view.setWaiting(true);
 					}
+					
 				} else {
-					System.out.println("You must insert coords with this sintax (A,0)");
-					view.setWaiting(true);
+					view.showCoordsNotInTheBoardWarning();
+					view.setVerifier(false);
 				}
 
 			}

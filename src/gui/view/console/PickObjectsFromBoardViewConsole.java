@@ -7,6 +7,9 @@ import gui.view.PickObjectsFromBoardView;
 import myshelfie.Board;
 
 public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
+	
+	private static  int INPUT_LENGHT = 3;
+	private String input;
 
 	@Override
 	public void show() {
@@ -23,7 +26,6 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 		actionPickPlayerName.actionPerformed(null);
 		System.out.println("This is your turn: " + playerName + "\n");
 
-		inputLenght = 3;
 		boolean isWaiting = true;
 		Scanner sc = new Scanner(System.in);
 
@@ -43,21 +45,20 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 			}
 			System.out.println("Coords: ");
 			String input = sc.nextLine();
+			this.input = input;
 
 			if (input.isBlank()) {
 				System.out.println("The command cannot be null");
 
 			} else if (input.equalsIgnoreCase("enter")) {
 				actionPutObjects.actionPerformed(null);
-			} else if (input.length() == inputLenght) {
-				setInput(input);
+			} else if (commaandLenghtVerifier()) {
 				actionVerifyObject.actionPerformed(null);
 				if (verifier) {
 					if (savedCoords == null) {
 						savedCoords = new ArrayList<>();
 					}
 					savedCoords.add(input);
-
 				}
 			} else {
 				System.out.println("You must insert coords like this (A,0)!!");
@@ -171,5 +172,40 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 	}
 	
 	//pickObjectsMethods
+	
+	public void showAlreadySelectedCoordsWarning() {
+		System.out.println("Attention!!");
+		System.out.println("You've already selected this coords!!");
+		isWaiting = true;
+	}
+	
+	public void showCoordsNotInTheBoardWarning() {
+		System.out.println("Attention!!");
+		System.out.println("Attention you insert coords that are not in the board!!");
+		isWaiting = true;
+	}
+	
+	public boolean commaandLenghtVerifier() {
+		int commaPosition = 1;
+		char[] input = inputToChar(this.input);
+		
+		if(input.length == INPUT_LENGHT) {
+			if(input[commaPosition] == ',') {
+				return true;
+			}
+		}
+		System.out.println("You must insert coords with this sintax (A,0)");
+		return false;
+
+	}
+
+	public char[] inputToChar(String input) {
+		char[] inputChar = { ' ', ' ', ' ' };
+		for (int i = 0; i < input.length(); i++) {
+			inputChar[i] = input.charAt(i);
+		}
+		this.inputArr = inputChar;
+		return inputChar;
+	}
 
 }
