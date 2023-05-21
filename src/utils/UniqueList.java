@@ -21,7 +21,7 @@ public class UniqueList<E> extends ArrayList<E> {
 		if (this.contains(e)) {
 			throw new IllegalArgumentException("Only unique elements can be added to the list.");
 		} else {
-			result = this.add(e);
+			result = super.add(e);
 		}
 
 		return result;
