@@ -1,6 +1,5 @@
 package myshelfie;
 
-import java.util.ArrayList;
 import utils.MatrixCoords;
 
 public interface Board {
@@ -11,7 +10,8 @@ public interface Board {
 
 	public void fillLivingRoomWithObjects();
 
-	public ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList);
+	public void pickObject(MatrixCoords coords);
 
 	public Tile get(MatrixCoords coords);
+
 }

@@ -1,7 +1,5 @@
 package myshelfie;
 
-import java.util.ArrayList;
-
 import utils.MatrixCoords;
 
 public class BoardProxy implements Board {
@@ -41,8 +39,8 @@ public class BoardProxy implements Board {
 	}
 
 	@Override
-	public ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList) {
-		return instance.pickObjects(coordsList);
+	public void pickObject(MatrixCoords coords) {
+		instance.pickObject(coords);
 	}
 
 }

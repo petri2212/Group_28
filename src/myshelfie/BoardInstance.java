@@ -1,7 +1,5 @@
 package myshelfie;
 
-import java.util.ArrayList;
-
 import utils.Matrix;
 import utils.MatrixCoords;
 
@@ -48,22 +46,15 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 	}
 
 	@Override
-	public ArrayList<BookshelfObject> pickObjects(ArrayList<MatrixCoords> coordsList) {
-			ArrayList<BookshelfObject> objects = new ArrayList<>();
-			for(MatrixCoords coords : coordsList) {
-				try {
-					Tile tile = this.get(coords);
+	public void pickObject(MatrixCoords coords) {
+		Tile tile = this.get(coords);
 
-					// TODO: adds valid pick check; rule of one-empty-space before picking an object
+		if(tile.getBookshelfObject() == null) {
+			throw new IllegalArgumentException("The coordinates passed points to an empty tile!");
+		}
 
-					objects.add(tile.getBookshelfObject());
-				}
-				catch(ArrayIndexOutOfBoundsException e) {
-					System.out.println(e);
-				}
-			}
-
-			return objects;
+		// TODO: adds valid pick check; rule of one-empty-space before picking an object
+		super.remove(coords);
 	}
 
 }
