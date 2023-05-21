@@ -6,12 +6,12 @@ import goal.CommonGoal;
 
 public class CommonGoalManager {
 
-	ArrayList<Player> players;
-	ArrayList<Player> playersGoal1Placement;
-	ArrayList<Player> playersGoal2Placement;
+	private ArrayList<Player> players;
+	private	ArrayList<Player> playersGoal1Placement;
+	private	ArrayList<Player> playersGoal2Placement;
 
-	CommonGoal commonGoal1;
-	CommonGoal commonGoal2;
+	private CommonGoal commonGoal1;
+	private CommonGoal commonGoal2;
 
 	public CommonGoalManager(ArrayList<Player> players, CommonGoal commonGoal1, CommonGoal commonGoal2) {
 		if (players == null) {
@@ -46,4 +46,5 @@ public class CommonGoalManager {
 			}
 		}
 	}
+	
 }
