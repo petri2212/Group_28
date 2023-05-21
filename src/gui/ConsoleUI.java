@@ -1,7 +1,5 @@
 package gui;
 
-import javax.management.InstanceAlreadyExistsException;
-
 import gui.controller.*;
 import gui.view.console.*;
 
