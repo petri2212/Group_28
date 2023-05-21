@@ -33,7 +33,7 @@ public enum BookshelfObject {
 	public static BookshelfObject getRandomObject() {
 		BookshelfObject object = null;
 		BookshelfObject[] objects = values();
-		int randomIndex = RANDOM.nextInt(objects.length);
+		int randomIndex = RANDOM.nextInt(objects.length - 1);
 		int indexCounter = 0;
 
 		do {
