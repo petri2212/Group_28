@@ -1,5 +1,6 @@
 package goal.common;
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 import goal.CommonGoal;
@@ -16,8 +17,8 @@ public class CommonGoal_Diagonal extends CommonGoal{
 	private static final int DIAGONAL_LENGHT = 5;
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_DIAGOONAL;
+	public Image getImage() {
+		return Images.COMMON_GOAL_DIAGOONAL.load();
 	}
 
 	@Override

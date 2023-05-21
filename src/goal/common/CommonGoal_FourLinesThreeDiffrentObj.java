@@ -1,5 +1,6 @@
 package goal.common;
 
+import java.awt.Image;
 import java.util.HashSet;
 
 import goal.CommonGoal;
@@ -14,8 +15,8 @@ public class CommonGoal_FourLinesThreeDiffrentObj extends CommonGoal {
 	private static final int MAX_TAILS = 3;
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_FOUR_LINES_THREE_DIFFERENT_OBJ;
+	public Image getImage() {
+		return Images.COMMON_GOAL_FOUR_LINES_THREE_DIFFERENT_OBJ.load();
 	}
 
 	@Override

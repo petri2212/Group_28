@@ -1,5 +1,7 @@
 package goal.common;
 
+import java.awt.Image;
+
 import goal.CommonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
@@ -13,8 +15,8 @@ public class CommonGoal_FiveX extends CommonGoal{
 	private static final int MIN_ROWS_AND_COLS = 1;
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_FIVE_X;
+	public Image getImage() {
+		return Images.COMMON_GOAL_FIVE_X.load();
 
 	}
 

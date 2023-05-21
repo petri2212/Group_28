@@ -1,5 +1,7 @@
 package goal.common;
 
+import java.awt.Image;
+
 import goal.CommonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
@@ -9,8 +11,8 @@ import utils.MatrixCoords;
 public class CommonGoal_EightEqual extends CommonGoal {
 	
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_EIGHT_EQUAL;
+	public Image getImage() {
+		return Images.COMMON_GOAL_EIGHT_EQUAL.load();
 	}
 
 	/**

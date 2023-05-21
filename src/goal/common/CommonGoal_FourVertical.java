@@ -1,5 +1,6 @@
 package goal.common;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -16,8 +17,8 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	private final int MAX_VALID_GROUPS = 4;
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_FOUR_VERTICAL;
+	public Image getImage() {
+		return Images.COMMON_GOAL_FOUR_VERTICAL.load();
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package goal.common;
 
 import myshelfie.Bookshelf;
+
+import java.awt.Image;
 import java.util.ArrayList;
 
 import goal.CommonGoal;
@@ -11,8 +13,8 @@ import utils.*;
 public class CommonGoal_TwoFourByFourSquares extends CommonGoal {
 	
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_TWO_FOUR_BY_FOUR_SQUARES;
+	public Image getImage() {
+		return Images.COMMON_GOAL_TWO_FOUR_BY_FOUR_SQUARES.load();
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package goal.common;
 
+import java.awt.Image;
+
 import goal.CommonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
@@ -13,8 +15,8 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal{
 	private static final int ROWS_DIFERRENT = 2;
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_TWO_LINES_DIFFERENT_OBJ;
+	public Image getImage() {
+		return Images.COMMON_GOAL_TWO_LINES_DIFFERENT_OBJ.load();
 	}
 
 	@Override

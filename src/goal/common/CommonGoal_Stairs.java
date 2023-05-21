@@ -1,6 +1,8 @@
 package goal.common;
 
 
+import java.awt.Image;
+
 import goal.CommonGoal;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
@@ -10,8 +12,8 @@ import utils.MatrixCoords;
 public class CommonGoal_Stairs extends CommonGoal {
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_STAIRS;
+	public Image getImage() {
+		return Images.COMMON_GOAL_STAIRS.load();
 	}
 
 	/**

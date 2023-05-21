@@ -1,5 +1,6 @@
 package goal.common;
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 import java.util.HashSet;
@@ -13,8 +14,8 @@ import utils.MatrixCoords;
 public class CommonGoal_SixSeparateGroupsOfTwoObj extends CommonGoal {
 	
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_SIX_SEPARATE_GROUPS_OF_TWO_OBJ;
+	public Image getImage() {
+		return Images.COMMON_GOAL_SIX_SEPARATE_GROUPS_OF_TWO_OBJ.load();
 	}
 
 	@Override

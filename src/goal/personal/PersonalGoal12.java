@@ -1,5 +1,6 @@
 package goal.personal;
 
+import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,8 +12,8 @@ import utils.MatrixCoords;
 public class PersonalGoal12 extends PersonalGoal {
 
 	@Override
-	public Images getImage() {
-		return Images.PERSONAL_GOAL_12;
+	public Image getImage() {
+		return Images.PERSONAL_GOAL_12.load();
 	}
 
 	@Override

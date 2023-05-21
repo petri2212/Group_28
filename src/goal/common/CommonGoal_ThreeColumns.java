@@ -5,6 +5,7 @@ import myshelfie.BookshelfObject;
 import resource.Images;
 import utils.MatrixCoords;
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 import goal.CommonGoal;
@@ -15,8 +16,8 @@ public class CommonGoal_ThreeColumns extends CommonGoal {
 	private final int MAX_VALID_COLUMNS = 3;
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_THREE_COLUMNS;
+	public Image getImage() {
+		return Images.COMMON_GOAL_THREE_COLUMNS.load();
 	}
 
 	/**

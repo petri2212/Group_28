@@ -1,5 +1,6 @@
 package goal.common;
 
+import java.awt.Image;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,8 +21,8 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 	}
 
 	@Override
-	public Images getImage() {
-		return Images.COMMON_GOAL_TWO_COLUMNS_SIX_DIFFERENT_OBJ;
+	public Image getImage() {
+		return Images.COMMON_GOAL_TWO_COLUMNS_SIX_DIFFERENT_OBJ.load();
 	}
 
 	@Override
