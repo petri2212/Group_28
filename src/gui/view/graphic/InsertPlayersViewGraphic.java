@@ -7,10 +7,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -225,6 +221,13 @@ public class InsertPlayersViewGraphic extends InsertPlayersView {
 		btnAddPlayer.setFocusPainted(false);
 		btnAddPlayer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAddPlayer.addActionListener(actionInsertPlayer);
+		btnAddPlayer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearInputField();
+			}
+		});
 
 		JButton btnHome = new JButton("<--");
 		btnHome.setBackground(new Color(255, 255, 255));
@@ -291,6 +294,10 @@ public class InsertPlayersViewGraphic extends InsertPlayersView {
 			String playerName = players.get(i).getName();
 			lblPlayers[i].setText(playerName);
 		}
+	}
+
+	private void clearInputField() {
+		txtPlayerName.setText("");
 	}
 
 }
