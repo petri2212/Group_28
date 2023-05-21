@@ -74,4 +74,12 @@ public abstract class Matrix<T> {
 			throw new IllegalArgumentException("Invalid coordinates");
 		}
 	}
+
+	public void remove(int r, int c) {
+		items.remove(new MatrixCoords(r, c));
+	}
+
+	public void remove(MatrixCoords coords) {
+		items.remove(coords);
+	}
 }
