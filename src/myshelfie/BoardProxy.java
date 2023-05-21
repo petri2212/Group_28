@@ -21,13 +21,11 @@ public class BoardProxy implements Board {
 	public void init() {
 
 		int maxRowIndex = ROW_COUNT - 1;
-		int macColIndex = COL_COUNT - 1;
 
 		for (int r = 0; r < ROW_COUNT; r++)
 			for (int c = 0; c < COL_COUNT; c++) {
 				int rMirrored = (maxRowIndex - r);
-				int cMirrored = (macColIndex - c);
-				Tile tile = instance.livingroomTileMap[rMirrored][cMirrored];
+				Tile tile = instance.livingroomTileMap[rMirrored][c];
 				instance.add(r, c, tile);
 			}
 	}
