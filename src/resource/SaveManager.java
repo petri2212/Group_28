@@ -4,7 +4,6 @@ import java.io.*;
 
 public class SaveManager {
 	
-	String File="./resources/game_saves/save.txt";
 	
 	
 	
@@ -13,7 +12,16 @@ public class SaveManager {
 	
 	
 	
-	public void loadfile() {
+	public void loadfile() throws NumberFormatException, IOException {
+		
+		String File="./resources/game_saves/save.txt";
+		int n=1;					//n: is used in the the method readfile  to read n rows of the file 
+		FileReader reader = new FileReader(File);
+		BufferedReader br = new BufferedReader(reader);
+		
+		n=Integer.parseInt(readfile(br,n));    //now n indicate the number of playe
+		
+												//P.S. aggiungere controllo su num max player
 		
 	}
 	
