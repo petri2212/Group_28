@@ -29,7 +29,6 @@ public class MainPageController extends Controller<MainPageView> {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				model.changeState(GameState.EXIT);
 			}
 		};

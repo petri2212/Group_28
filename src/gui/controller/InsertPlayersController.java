@@ -21,7 +21,6 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 
 	@Override
 	protected void initViewListeners() {
-		// TODO Auto-generated method stub
 		view.actionReturnMainPage = new ActionListener() {
 
 			@Override
