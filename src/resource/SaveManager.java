@@ -7,12 +7,19 @@ public class SaveManager {
 	String File="./resources/game_saves/save.txt";
 	
 	
+	
+	
+	
+	
+	
+	
+	public void loadfile() {
+		
+	}
+	
 	/*
 	 * method used to read the file
 	 */
-	
-	
-	
 	public static String readfile(BufferedReader br, int n) throws IOException {
 		String line="";
 		
