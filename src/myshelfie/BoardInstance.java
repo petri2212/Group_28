@@ -46,7 +46,7 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 	}
 
 	@Override
-	public void pickObject(MatrixCoords coords) {
+	public boolean tryPickObject(MatrixCoords coords) {
 		Tile tile = this.get(coords);
 
 		if(tile.getBookshelfObject() == null) {
@@ -55,6 +55,7 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 
 		// TODO: adds valid pick check; rule of one-empty-space before picking an object
 		super.remove(coords);
+		return true;
 	}
 
 }

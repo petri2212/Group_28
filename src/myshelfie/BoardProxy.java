@@ -39,8 +39,8 @@ public class BoardProxy implements Board {
 	}
 
 	@Override
-	public void pickObject(MatrixCoords coords) {
-		instance.pickObject(coords);
+	public boolean tryPickObject(MatrixCoords coords) {
+		return instance.tryPickObject(coords);
 	}
 
 }

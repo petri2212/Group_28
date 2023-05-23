@@ -10,7 +10,7 @@ public interface Board {
 
 	public void fillLivingRoomWithObjects();
 
-	public void pickObject(MatrixCoords coords);
+	public boolean tryPickObject(MatrixCoords coords);
 
 	public Tile get(MatrixCoords coords);
 
