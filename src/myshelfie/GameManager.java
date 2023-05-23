@@ -73,9 +73,13 @@ public class GameManager {
 
 		case CONTROLS:
 			updatePlayerTurn();
+			changeState(GameState.PICK_OBJECTS_FROM_BOARD);
+			// if the board is empty fill with random objects
 			break;
 
 		case END:
+			// check points
+			// show points screen
 			break;
 
 		default:
@@ -98,7 +102,7 @@ public class GameManager {
 	private void updatePlayerTurn() {
 		playerTurn = (playerTurn < players.size() - 1) ? ++playerTurn : 0;
 	}
-	
+
 	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
 	}
