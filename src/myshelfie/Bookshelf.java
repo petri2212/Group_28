@@ -68,7 +68,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		}
 		return noEmptyRow;
 	}
-	
+
 	public boolean fullCol(int r) {
 		for(int c=0; c<COLS_NUMBER; c++) {
 			if(this.get(new MatrixCoords(r, c)) == null) {
@@ -86,9 +86,23 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		}
 		return true;
 	}
-	
+
 	public void add(int row, int col, BookshelfObject object) {
 		super.add(row, col, object);
 	}
-	
+
+	public boolean isFull() {
+		for (int r = 0; r < Board.ROW_COUNT; r++) {
+			for (int c = 0; c < Board.COL_COUNT; c++) {
+				BookshelfObject object = get(new MatrixCoords(r, c));
+
+				if (object == null) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
 }
