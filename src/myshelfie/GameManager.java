@@ -96,7 +96,7 @@ public class GameManager {
 	}
 
 	private void updatePlayerTurn() {
-		playerTurn = (playerTurn >= players.size() - 1) ? playerTurn++ : 0;
+		playerTurn = (playerTurn < players.size() - 1) ? ++playerTurn : 0;
 	}
 	
 	public void setPlayers(ArrayList<Player> players) {
