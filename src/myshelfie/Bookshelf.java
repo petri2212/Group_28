@@ -39,10 +39,10 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 	}
 	
 	private boolean isThereEnoughSpace(int r, int lenght) {
-		int rMaxIndex = ROWS_NUMBER-1;
+		int rMaxObjects = ROWS_NUMBER;
 		int rIndex = r + lenght;
-		
-		return (rIndex <= rMaxIndex) ? true : false;
+
+		return (rIndex <= rMaxObjects) ? true : false;
 	}
 
 	public int getFirstEmptyRow(int c) {
