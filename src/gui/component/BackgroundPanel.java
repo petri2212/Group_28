@@ -13,6 +13,10 @@ public class BackgroundPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 	private Image background;
 
+    public BackgroundPanel() {
+        setLayout(new BorderLayout());
+    }
+
     public BackgroundPanel(Image background) {
         this.background = background;
         setLayout(new BorderLayout());
@@ -35,4 +39,9 @@ public class BackgroundPanel extends JPanel {
         return new Dimension(background.getWidth(this), background.getHeight(this));
     }
 
+    public void setBackground(Image background) {
+    	this.background = background;
+    	this.revalidate();
+    	this.repaint();
+    }
 }
