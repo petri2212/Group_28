@@ -7,56 +7,33 @@ import goal.CommonGoal;
 import goal.PersonalGoal;
 import gui.View;
 import myshelfie.Board;
+import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.Tile;
-import utils.MatrixCoords;
 
 public abstract class PickObjectsFromBoardView implements View {
-	
-	//Board
-	
+
+	protected static final int MAX_PICKED_OBJECTS = 3;
+
 	protected Board board;
-	protected int playersnumber;
-	protected BookshelfObject bookshelfObjectToPrint;
-	
-	//PickObjects
-	
-	protected char[] inputArr;
-	protected boolean isWaiting;
 	protected String playerName;
-	protected char[] downCoords;
-	protected char[] rightCoords;
-	protected ArrayList<String> savedCoords;
-	protected String tmpCoords;
-	protected boolean verifier;
+	protected ArrayList<BookshelfObject> pickedObjects = new ArrayList<>();
 	protected PersonalGoal personalGoal;
 	protected CommonGoal commonGoal1;
 	protected CommonGoal commonGoal2;
-	
-	//Board
-		
-	public ActionListener actionPrintBoard;
-	
-	//PickObjects
-	
-	public ActionListener actionPickPlayerName;
+	protected Bookshelf bookshelf;
 
-	public ActionListener actionPutObjects;
+	public ActionListener actionEndTurn;
 
-	public ActionListener actionVerifyObject;
-	
-	public ActionListener actionShowBookshelf;
+	public ActionListener actionReturnMainPage;
 
-	//Board
-		
 	public void setBoard(Board board) {
 		this.board = board;
 	}
-	
-	public void setPlayersNumber(int players) {
-		this.playersnumber = players;
+
+	public void setBookshelf(Bookshelf bookshelf) {
+		this.bookshelf = bookshelf;
 	}
-	
+
 	public void setPersonalGoal(PersonalGoal personalGoal) {
 		this.personalGoal = personalGoal;
 	}
@@ -66,47 +43,8 @@ public abstract class PickObjectsFromBoardView implements View {
 		this.commonGoal2 = commonGoal2;
 	}
 
-	public boolean checkTile(int r, int c) {
-		Tile tile = board.get(new MatrixCoords(r ,c));
-		if(tile != null && tile.isUsable(playersnumber)) {
-			BookshelfObject tmpTile = tile.getBookshelfObject();
-			setTileToPrint(tmpTile);
-			return true;
-		}
-		return false;
-	}
-	
-	public void setTileToPrint(BookshelfObject bookshelfObject) {
-		this.bookshelfObjectToPrint = bookshelfObject;
-	}
-	
-	//PickObjects
-	
-	public void setVerifier(Boolean verifier) {
-		this.verifier = verifier;
-	}
-	
-	public char[] getInputArr() {
-		return this.inputArr;
-	}
-
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
 
-	public void setDownCoords(char[] downCoords) {
-		this.downCoords = downCoords;
-	}
-
-	public void setRightCoords(char[] rightCoords) {
-		this.rightCoords = rightCoords;
-	}
-	
-	public abstract void showAlreadySelectedCoordsWarning();
-	
-	public abstract void showCoordsNotInTheBoardWarning();
-
-	public abstract void showChangeStateWarning();		
-
-	public abstract void showBookshelf();
 }

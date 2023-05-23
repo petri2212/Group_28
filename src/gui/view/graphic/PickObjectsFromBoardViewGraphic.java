@@ -6,7 +6,11 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,19 +23,33 @@ import javax.swing.border.SoftBevelBorder;
 
 import gui.component.BackgroundPanel;
 import gui.component.BookshelfObjectButton;
+import gui.component.ColumnButton;
 import gui.view.PickObjectsFromBoardView;
 import myshelfie.Board;
 import myshelfie.BookshelfObject;
 import myshelfie.Tile;
 import resource.Icons;
-import resource.Images;
 import utils.MatrixCoords;
 
 public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 
+	private static final int PICKED_OBJECT_1_INDEX = 0;
+	private static final int PICKED_OBJECT_2_INDEX = 1;
+	private static final int PICKED_OBJECT_3_INDEX = 2;
+
+	private static final int TILE_HEIGHT = 67;
+	private static final int TILE_WIDTH = 67;
 	private static final int TILE_ORIGIN_X = 221;
 	private static final int TILE_ORIGIN_Y = 646;
 	private static final int TILE_OFFSET = 10;
+
+	private static final int BOOKSHELF_SQUARE_SIZE = 67;
+
+	private static final int BOOKSHELF_ORIGIN_X = 57;
+	private static final int BOOKSHELF_ORIGIN_Y = 377;
+	private static final int BOOKSHELF_OFFSET_X = 13;
+	private static final int BOOKSHELF_OFFSET_Y = 2;
+
 	private JFrame mainFrame;
 	private JLabel lblWarningHeader;
 	private JLabel lblWarning;
@@ -45,16 +63,51 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 	private JButton btnHideBookshelf;
 	private JPanel contentPane;
 	private JPanel panelObjects;
+	private JPanel panelWarning;
+	private JPanel panelGuide;
+	private JButton btnHelp;
+	private JButton btnEndTurn;
+	private JButton btnAcknowledge;
+	private JButton btnAccept;
+	private JButton btnCancel;
+	private BackgroundPanel[] panelPickedObjects = new BackgroundPanel[3];
 
+	/* private action listeners */
+	private MouseListener actionMouseOnBookshelf;
+
+	private ActionListener actionHideGuidePanel;
+
+	private ActionListener actionHideWarningPanel;
+
+	private ActionListener actionShowHelpDialog;
+
+	private ActionListener actionShowReturnHomeDialog;
+
+	private ActionListener actionHideReturnMainPage;
+
+	public ActionListener actionShowBookshelf;
+
+	private ActionListener actionHideBookshelf;
+
+	/**
+	 * 
+	 *
+	 * @param mainFrame
+	 */
 	public PickObjectsFromBoardViewGraphic(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
+		actionMouseOnBookshelf = initActionMouseOnBookshelf();
+		actionHideGuidePanel = initActionHideGuidePanel();
+		actionHideWarningPanel = initActionHideWarningPanel();
+		actionShowHelpDialog = initActionShowHelpDialog();
+		actionShowReturnHomeDialog = initActionShowReturnHomeDialog();
+		actionHideReturnMainPage = initActionHideReturnMainPage();
+		actionShowBookshelf = initActionShowBookshelf();
+		actionHideBookshelf = initActionHideBookshelf();
 	}
 
 	@Override
 	public void show() {
-		actionPrintBoard.actionPerformed(null);
-		actionPickPlayerName.actionPerformed(null);
-
 		contentPane = new JPanel();
 		contentPane.setOpaque(false);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,10 +119,39 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		panelObjects.setLayout(null);
 		panelObjects.setVisible(false);
 		panelObjects.setEnabled(false);
-		printAllBookshelfObjects();
+		printBoardObjects();
 		contentPane.add(panelObjects);
 
-		JPanel panelWarning = new JPanel();
+		/* ********************* GUIDE DIALOG ************************ */
+		panelGuide = new JPanel();
+		panelGuide.setVisible(false);
+		panelGuide.setEnabled(false);
+		panelGuide.setBounds(288, 185, 537, 346);
+		contentPane.add(panelGuide);
+		panelGuide.setLayout(null);
+
+		JLabel lblGuideHeader = new JLabel("Quick Guide");
+		lblGuideHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGuideHeader.setBounds(0, 0, 537, 41);
+		panelGuide.add(lblGuideHeader);
+
+		JLabel lblGuide = new JLabel("<html>You can pick up to three objects from the board.<br><br>"
+				+ "Every object you pick must have at least one edge not connected to other objects.<br>"
+				+ "Once you have choosen your objects, click them in the order you want to put them in the shelf.<br>"
+				+ "Be aware! Once you have picked an object you can't put it back, so choose wisely.<br><br>"
+				+ "After that you can click on the 'show shelf' button and select the column where you want to put all your objects.<br>"
+				+ "You cannot divide the objects in more than one column.</html>");
+		lblGuide.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGuide.setBounds(10, 40, 515, 230);
+		panelGuide.add(lblGuide);
+
+		JButton btnGuideAcknowledge = new JButton("Ok");
+		btnGuideAcknowledge.setBounds(208, 293, 117, 25);
+		btnGuideAcknowledge.addActionListener(actionHideGuidePanel);
+		panelGuide.add(btnGuideAcknowledge);
+
+		/* ********************* WARNING DIALOG ************************ */
+		panelWarning = new JPanel();
 		panelWarning.setVisible(true);
 		panelWarning.setEnabled(true);
 		panelWarning.setBounds(288, 285, 537, 246);
@@ -86,27 +168,83 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		lblWarning.setBounds(10, 53, 515, 128);
 		panelWarning.add(lblWarning);
 
-		JButton btnAcknowledge = new JButton("Ok");
+		btnAcknowledge = new JButton("Ok");
 		btnAcknowledge.setBounds(208, 193, 117, 25);
-		btnAcknowledge.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				panelWarning.setVisible(false);
-				panelWarning.setEnabled(false);
-				panelObjects.setVisible(true);
-				panelObjects.setEnabled(true);
-			}
-		});
+		btnAcknowledge.addActionListener(actionHideWarningPanel);
 		panelWarning.add(btnAcknowledge);
 
-		panelBookshelf = new BackgroundPanel(Images.BOOKSHELF.load());
+		btnAccept = new JButton("Ok");
+		btnAccept.setVisible(false);
+		btnAccept.setEnabled(false);
+		btnAccept.setBounds(300, 193, 117, 25);
+		btnAccept.addActionListener(actionReturnMainPage);
+		panelWarning.add(btnAccept);
+
+		btnCancel = new JButton("Cancel");
+		btnCancel.setVisible(false);
+		btnCancel.setEnabled(false);
+		btnCancel.setBounds(100, 193, 117, 25);
+		btnCancel.addActionListener(actionHideReturnMainPage);
+		panelWarning.add(btnCancel);
+
+		/* ********************* BOOKSHELF PANEL ************************ */
+		panelBookshelf = new JPanel();
+		panelBookshelf.setLayout(null);
 		panelBookshelf.setVisible(false);
 		panelBookshelf.setEnabled(false);
 		panelBookshelf.setOpaque(false);
 		panelBookshelf.setBounds(310, 104, 500, 500);
 		contentPane.add(panelBookshelf);
 
+		ColumnButton btnCol0 = new ColumnButton(0);
+		btnCol0.setBorder(null);
+		btnCol0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCol0.setContentAreaFilled(false);
+		btnCol0.setBounds(57, 34, 65, 412);
+		btnCol0.addMouseListener(actionMouseOnBookshelf);
+		panelBookshelf.add(btnCol0);
+
+		ColumnButton btnCol1 = new ColumnButton(1);
+		btnCol1.setBorder(null);
+		btnCol1.setContentAreaFilled(false);
+		btnCol1.setBounds(137, 34, 65, 412);
+		btnCol1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCol1.addMouseListener(actionMouseOnBookshelf);
+		panelBookshelf.add(btnCol1);
+
+		ColumnButton btnCol2 = new ColumnButton(2);
+		btnCol2.setBorder(null);
+		btnCol2.setContentAreaFilled(false);
+		btnCol2.setBounds(217, 34, 65, 412);
+		btnCol2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCol2.addMouseListener(actionMouseOnBookshelf);
+		panelBookshelf.add(btnCol2);
+
+		ColumnButton btnCol3 = new ColumnButton(3);
+		btnCol3.setBorder(null);
+		btnCol3.setContentAreaFilled(false);
+		btnCol3.setBounds(297, 34, 65, 412);
+		btnCol3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCol3.addMouseListener(actionMouseOnBookshelf);
+		panelBookshelf.add(btnCol3);
+
+		ColumnButton btnCol4 = new ColumnButton(4);
+		btnCol4.setBorder(null);
+		btnCol4.setContentAreaFilled(false);
+		btnCol4.setBounds(378, 34, 65, 412);
+		btnCol4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCol4.addMouseListener(actionMouseOnBookshelf);
+		panelBookshelf.add(btnCol4);
+
+		JLabel lblBookshelf = new JLabel("");
+		lblBookshelf.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		lblBookshelf.setBounds(0, 5, 500, 500);
+		lblBookshelf.setIcon(Icons.BOOKSHELF.load());
+		panelBookshelf.add(lblBookshelf);
+
+		printBookshelfObjects();
+
+		/* ********************* GOALS PANEL ************************ */
 		panelPersonalGoal = new BackgroundPanel(personalGoal.getImage());
 		panelPersonalGoal.setBounds(10, 113, 165, 250);
 		contentPane.add(panelPersonalGoal);
@@ -146,7 +284,73 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		lblPlayerTurn.setBounds(0, 47, 189, 42);
 		contentPane.add(lblPlayerTurn);
 
-		JButton btnEndTurn = new JButton("End Turn");
+		JLabel lblPickedObjects = new JLabel("Picked Objects");
+		lblPickedObjects.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblPickedObjects.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblPickedObjects.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPickedObjects.setForeground(Color.WHITE);
+		lblPickedObjects.setFont(new Font("Purisa", Font.BOLD, 16));
+		lblPickedObjects.setBounds(954, 345, 167, 46);
+		contentPane.add(lblPickedObjects);
+
+		/* ********************* PICKED OBJECTS ************************ */
+		panelPickedObjects[PICKED_OBJECT_1_INDEX] = new BackgroundPanel();
+		BackgroundPanel panelObject1 = panelPickedObjects[PICKED_OBJECT_1_INDEX];
+		panelObject1.setBounds(953, 399, 67, 67);
+		panelObject1.setVisible(false);
+		panelObject1.setLayout(new BorderLayout(0, 0));
+		contentPane.add(panelObject1);
+
+		JLabel lblObject1 = new JLabel("1");
+		lblObject1.setFont(new Font("Purisa", Font.BOLD, 60));
+		lblObject1.setForeground(new Color(237, 51, 59));
+		lblObject1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblObject1.setHorizontalTextPosition(SwingConstants.CENTER);
+		panelObject1.add(lblObject1);
+
+		panelPickedObjects[PICKED_OBJECT_2_INDEX] = new BackgroundPanel();
+		BackgroundPanel panelObject2 = panelPickedObjects[PICKED_OBJECT_2_INDEX];
+		panelObject2.setBounds(1050, 399, 67, 67);
+		panelObject2.setVisible(false);
+		panelObject2.setLayout(new BorderLayout(0, 0));
+		contentPane.add(panelObject2);
+
+		JLabel lblObject2 = new JLabel("2");
+		lblObject2.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblObject2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblObject2.setFont(new Font("Purisa", Font.BOLD, 60));
+		lblObject2.setForeground(new Color(237, 51, 59));
+		panelObject2.add(lblObject2);
+
+		panelPickedObjects[PICKED_OBJECT_3_INDEX] = new BackgroundPanel();
+		BackgroundPanel panelObject3 = panelPickedObjects[PICKED_OBJECT_3_INDEX];
+		panelObject3.setBounds(1000, 481, 67, 67);
+		panelObject3.setVisible(false);
+		panelObject3.setLayout(new BorderLayout(0, 0));
+		contentPane.add(panelObject3);
+
+		JLabel lblObject3 = new JLabel("3");
+		lblObject3.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblObject3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblObject3.setFont(new Font("Purisa", Font.BOLD, 60));
+		lblObject3.setForeground(new Color(237, 51, 59));
+		panelObject3.add(lblObject3);
+
+		btnHelp = new JButton("Help");
+		btnHelp.setBackground(new Color(255, 255, 255));
+		btnHelp.setOpaque(false);
+		btnHelp.setFocusPainted(false);
+		btnHelp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnHelp.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnHelp.setForeground(new Color(255, 255, 255));
+		btnHelp.setFont(new Font("Purisa", Font.BOLD, 16));
+		btnHelp.setBounds(965, 645, 142, 57);
+		btnHelp.addActionListener(actionShowHelpDialog);
+
+		contentPane.add(btnHelp);
+
+		btnEndTurn = new JButton("End Turn");
+		btnEndTurn.setEnabled(false);
 		btnEndTurn.setVisible(false);
 		btnEndTurn.setBackground(new Color(255, 255, 255));
 		btnEndTurn.setOpaque(false);
@@ -156,18 +360,20 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		btnEndTurn.setForeground(new Color(255, 255, 255));
 		btnEndTurn.setFont(new Font("Purisa", Font.BOLD, 16));
 		btnEndTurn.setBounds(965, 645, 142, 57);
+		btnEndTurn.addActionListener(actionEndTurn);
 		contentPane.add(btnEndTurn);
 
-		JButton btnPickObjects = new JButton("Pick Objects");
-		btnPickObjects.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnPickObjects.setOpaque(false);
-		btnPickObjects.setForeground(Color.WHITE);
-		btnPickObjects.setFont(new Font("Purisa", Font.BOLD, 16));
-		btnPickObjects.setFocusPainted(false);
-		btnPickObjects.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPickObjects.setBackground(Color.WHITE);
-		btnPickObjects.setBounds(965, 645, 142, 57);
-		contentPane.add(btnPickObjects);
+		JButton btnHome = new JButton("<--");
+		btnHome.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnHome.setOpaque(false);
+		btnHome.setForeground(Color.WHITE);
+		btnHome.setFont(new Font("Purisa", Font.BOLD, 16));
+		btnHome.setFocusPainted(false);
+		btnHome.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnHome.setBackground(Color.WHITE);
+		btnHome.setBounds(20, 645, 142, 57);
+		btnHome.addActionListener(actionShowReturnHomeDialog);
+		contentPane.add(btnHome);
 
 		btnShowBookshelf = new JButton("Show Shelf");
 		btnShowBookshelf.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -182,7 +388,7 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		contentPane.add(btnShowBookshelf);
 
 		btnHideBookshelf = new JButton("Hide Shelf");
-		btnShowBookshelf.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnHideBookshelf.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnHideBookshelf.setVisible(false);
 		btnHideBookshelf.setEnabled(false);
 		btnHideBookshelf.setOpaque(false);
@@ -192,13 +398,7 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		btnHideBookshelf.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnHideBookshelf.setBackground(Color.WHITE);
 		btnHideBookshelf.setBounds(20, 385, 142, 57);
-		btnHideBookshelf.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				hideBookshelf();
-			}
-		});
+		btnHideBookshelf.addActionListener(actionHideBookshelf);
 		contentPane.add(btnHideBookshelf);
 
 		JPanel panelBoard = new JPanel();
@@ -219,7 +419,10 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		mainFrame.repaint();
 	}
 
-	private void printAllBookshelfObjects() {
+	/**
+	 * 
+	 */
+	private void printBoardObjects() {
 		for (int r = 0; r < Board.ROW_COUNT; r++) {
 			for (int c = 0; c < Board.COL_COUNT; c++) {
 				Tile tile = board.get(new MatrixCoords(r, c));
@@ -229,21 +432,31 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 
 					if (object != null) {
 						BookshelfObjectButton objectButton = new BookshelfObjectButton(object, new MatrixCoords(r, c));
+						objectButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
 						// calculate the absolute position of the object from the relative coordinates
-						int w = BookshelfObjectButton.WIDTH;
-						int h = BookshelfObjectButton.HEIGHT;
-						int x = TILE_ORIGIN_X + c * (BookshelfObjectButton.WIDTH + TILE_OFFSET);
-						int y = TILE_ORIGIN_Y - r * (BookshelfObjectButton.HEIGHT + TILE_OFFSET);
+						int w = TILE_WIDTH;
+						int h = TILE_HEIGHT;
+						int x = TILE_ORIGIN_X + c * (w + TILE_OFFSET);
+						int y = TILE_ORIGIN_Y - r * (h + TILE_OFFSET);
 						objectButton.setBounds(x, y, w, h);
 						objectButton.addActionListener(new ActionListener() {
 
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								if (!objectButton.isSelected) {
-									board.pickObject(objectButton.getCoords());
-									objectButton.setBorder(new LineBorder(new Color(87, 227, 137), 5));
-									objectButton.isSelected = true;
+								if (pickedObjects.size() < MAX_PICKED_OBJECTS) {
+									boolean objectPicked = board.tryPickObject(objectButton.getCoords());
+
+									if (objectPicked) {
+										BookshelfObject object = objectButton.getObject();
+										pickedObjects.add(object);
+										int objectIndex = pickedObjects.size() - 1;
+										panelPickedObjects[objectIndex].setBackground(object.getImage());
+										panelPickedObjects[objectIndex].setVisible(true);
+										panelObjects.remove(objectButton);
+										panelObjects.revalidate();
+										panelObjects.repaint();
+									}
 								}
 							}
 						});
@@ -255,8 +468,26 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		}
 	}
 
-	@Override
-	public void showBookshelf() {
+	private void printBookshelfObjects() {
+		for (int r = 0; r < Board.ROW_COUNT; r++) {
+			for (int c = 0; c < Board.COL_COUNT; c++) {
+				BookshelfObject object = bookshelf.get(new MatrixCoords(r, c));
+
+				if (object != null) {
+					BackgroundPanel objectPanel = new BackgroundPanel(object.getImage());
+					int s = BOOKSHELF_SQUARE_SIZE;
+					int x = BOOKSHELF_ORIGIN_X + c * (s + BOOKSHELF_OFFSET_X);
+					int y = BOOKSHELF_ORIGIN_Y - r * (s + BOOKSHELF_OFFSET_Y);
+					objectPanel.setBounds(x, y, s, s);
+					panelBookshelf.add(objectPanel);
+					panelBookshelf.revalidate();
+					panelBookshelf.repaint();
+				}
+			}
+		}
+	}
+
+	private void showBookshelf() {
 		panelBookshelf.setVisible(true);
 		lblBoard.setIcon(Icons.BOARD_BLURRED.load());
 		panelObjects.setVisible(false);
@@ -265,6 +496,7 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		btnShowBookshelf.setEnabled(false);
 		btnHideBookshelf.setVisible(true);
 		btnHideBookshelf.setEnabled(true);
+		btnHelp.setEnabled(false);
 	}
 
 	private void hideBookshelf() {
@@ -276,24 +508,230 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		btnShowBookshelf.setEnabled(true);
 		btnHideBookshelf.setVisible(false);
 		btnHideBookshelf.setEnabled(false);
+		btnHelp.setEnabled(true);
 	}
 
-	@Override
-	public void showAlreadySelectedCoordsWarning() {
-		// TODO Auto-generated method stub
-
+	private void showHelpDialog() {
+		panelGuide.setVisible(true);
+		panelObjects.setVisible(false);
+		panelObjects.setEnabled(false);
 	}
 
-	@Override
-	public void showCoordsNotInTheBoardWarning() {
-		// TODO Auto-generated method stub
-
+	private void showColWarning() {
+		panelWarning.setVisible(true);
+		panelWarning.setEnabled(true);
+		lblWarningHeader.setText("Warning");
+		lblWarning.setText("Invalid column, please choose another one.");
 	}
 
-	@Override
-	public void showChangeStateWarning() {
-		// TODO Auto-generated method stub
+	private void showEndTurnButton() {
+		btnHideBookshelf.setVisible(false);
+		btnHideBookshelf.setEnabled(false);
+		btnHelp.setVisible(false);
+		btnEndTurn.setVisible(true);
+		btnEndTurn.setEnabled(true);
+	}
 
+	private void hidePickedObjectsPanel() {
+		for (BackgroundPanel panel : panelPickedObjects) {
+			panel.setVisible(false);
+		}
+	}
+
+	private void hideWarningPanel() {
+		panelWarning.setVisible(false);
+		panelWarning.setEnabled(false);
+
+		if (!panelBookshelf.isVisible()) {
+			panelObjects.setVisible(true);
+			panelObjects.setEnabled(true);
+		}
+	}
+
+	private void hideGuidePanel() {
+		panelGuide.setVisible(false);
+		panelGuide.setEnabled(false);
+		panelObjects.setVisible(true);
+		panelObjects.setEnabled(true);
+	}
+
+	private void showReturnHomeDialog() {
+		panelWarning.setVisible(true);
+		panelWarning.setEnabled(true);
+		lblWarningHeader.setText("Warning");
+		lblWarning.setText("<html>Are you sure you want to exit to the main menu?<br>All progress will be lost.");
+		btnAcknowledge.setVisible(false);
+		btnAcknowledge.setEnabled(false);
+		btnAccept.setVisible(true);
+		btnAccept.setEnabled(true);
+		btnCancel.setVisible(true);
+		btnCancel.setEnabled(true);
+		panelObjects.setVisible(false);
+		panelObjects.setEnabled(false);
+	}
+
+	private void hideReturnHomeDialog() {
+		panelWarning.setVisible(false);
+		panelWarning.setEnabled(false);
+		btnAcknowledge.setVisible(true);
+		btnAcknowledge.setEnabled(true);
+		btnAccept.setVisible(false);
+		btnAccept.setEnabled(false);
+		btnCancel.setVisible(false);
+		btnCancel.setEnabled(false);
+
+		if (!panelBookshelf.isVisible()) {
+			panelObjects.setVisible(true);
+			panelObjects.setEnabled(true);
+		}
+	}
+
+	/* Private action listeners initialization */
+
+	/**
+	 * 
+	 * @return
+	 */
+	private MouseListener initActionMouseOnBookshelf() {
+		return new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ColumnButton button = (ColumnButton) e.getSource();
+				button.setBorder(null);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				if (pickedObjects.size() > 0) {
+					ColumnButton button = (ColumnButton) e.getSource();
+					button.setBorder(new LineBorder(new Color(87, 227, 137), 4));
+				}
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (pickedObjects.size() > 0) {
+					ColumnButton button = (ColumnButton) e.getSource();
+					boolean success = bookshelf.tryAdd(button.getColIndex(), pickedObjects);
+
+					if (!success) {
+						showColWarning();
+					} else {
+						pickedObjects = new ArrayList<>();
+						hidePickedObjectsPanel();
+						printBookshelfObjects();
+						showEndTurnButton();
+					}
+				}
+			}
+		};
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ActionListener initActionHideGuidePanel() {
+		return new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				hideGuidePanel();
+			}
+		};
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ActionListener initActionHideWarningPanel() {
+		return new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				hideWarningPanel();
+			}
+		};
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ActionListener initActionShowReturnHomeDialog() {
+		return new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				showReturnHomeDialog();
+			}
+		};
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ActionListener initActionShowHelpDialog() {
+		return new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				showHelpDialog();
+			}
+		};
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ActionListener initActionHideReturnMainPage() {
+		return new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				hideReturnHomeDialog();
+			}
+		};
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ActionListener initActionShowBookshelf() {
+		return actionShowBookshelf = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				showBookshelf();
+			}
+		};
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ActionListener initActionHideBookshelf() {
+		return new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				hideBookshelf();
+			}
+		};
 	}
 
 }

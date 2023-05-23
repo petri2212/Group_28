@@ -52,8 +52,6 @@ public enum Images implements Resource<Image> {
 	COMMON_GOAL_STAIRS("./resources/common_goal_cards/resized/Stairs.jpg"),
 	COMMON_GOAL_THREE_COLUMNS("./resources/common_goal_cards/resized/ThreeColumns.jpg"),
 	COMMON_GOAL_TWO_LINES_DIFFERENT_OBJ("./resources/common_goal_cards/resized/TwoLinesDiffrentObj.jpg"),
-	
-	BOOKSHELF("./resources/boards/bookshelf_orth_edited.png"),
 
 	PUBLISHER_MATERIAL_DISPLAY_1("./resources/publisher_material/Display_1.jpg"),
 	PUBLISHER_MATERIAL_DISPLAY_1_BLURRED("./resources/publisher_material/Display_1_Blurred.jpg"),

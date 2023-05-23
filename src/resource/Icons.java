@@ -9,7 +9,8 @@ public enum Icons implements Resource<ImageIcon> {
 	ICON_GAME("./resources/icon_tiles/icon_game.png"),
 	ICON_PLANT("./resources/icon_tiles/icon_plant.png"),
 	BOARD("./resources/boards/livingroom_reduced.png"),
-	BOARD_BLURRED("./resources/boards/livingroom_reduced_blurred.png");
+	BOARD_BLURRED("./resources/boards/livingroom_reduced_blurred.png"),
+	BOOKSHELF("./resources/boards/bookshelf_orth_edited.png");
 
 	private String path;
 

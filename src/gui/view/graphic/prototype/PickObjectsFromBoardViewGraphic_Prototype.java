@@ -12,12 +12,13 @@ import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Cursor;
+import javax.swing.border.LineBorder;
 
 public class PickObjectsFromBoardViewGraphic_Prototype extends JFrame {
 
@@ -55,36 +56,107 @@ public class PickObjectsFromBoardViewGraphic_Prototype extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panelWarning = new JPanel();
-		panelWarning.setVisible(false);
+		panelWarning.setVisible(true);
+		panelWarning.setEnabled(true);
 		panelWarning.setBounds(288, 285, 537, 246);
 		contentPane.add(panelWarning);
 		panelWarning.setLayout(null);
 
-		JLabel lblWarningHeader = new JLabel("");
+		JLabel lblWarningHeader = new JLabel("Warning");
 		lblWarningHeader.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWarningHeader.setBounds(0, 0, 537, 41);
 		panelWarning.add(lblWarningHeader);
 
-		JLabel lblWarning = new JLabel("");
+		JLabel lblWarning = new JLabel("Warning message.");
 		lblWarning.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWarning.setBounds(10, 53, 515, 128);
 		panelWarning.add(lblWarning);
 
 		JButton btnAcknowledge = new JButton("Ok");
 		btnAcknowledge.setBounds(208, 193, 117, 25);
-		btnAcknowledge.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				panelWarning.setVisible(false);
-			}
-		});
 		panelWarning.add(btnAcknowledge);
 
+		JButton btnAccept = new JButton("Ok");
+		btnAccept.setVisible(false);
+		btnAccept.setBounds(300, 193, 117, 25);
+		panelWarning.add(btnAccept);
+
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setVisible(false);
+		btnCancel.setBounds(100, 193, 117, 25);
+		panelWarning.add(btnCancel);
+
 		JPanel panelBookshelf = new JPanel();
-		panelBookshelf.setVisible(false);
+		panelBookshelf.setOpaque(false);
 		panelBookshelf.setBounds(310, 104, 500, 500);
 		contentPane.add(panelBookshelf);
+		panelBookshelf.setLayout(null);
+
+		JButton btnCol0 = new JButton("");
+		btnCol0.setBorder(null);
+		btnCol0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCol0.setContentAreaFilled(false);
+		btnCol0.setBounds(70, 34, 65, 412);
+		btnCol0.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnCol0.setBorder(null);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnCol0.setBorder(new LineBorder(new Color(87, 227, 137), 4));
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		panelBookshelf.add(btnCol0);
+
+		JButton btnCol1 = new JButton("");
+		btnCol1.setBorder(null);
+		btnCol1.setContentAreaFilled(false);
+		btnCol1.setBounds(137, 34, 65, 412);
+		btnCol0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panelBookshelf.add(btnCol1);
+
+		JButton btnCol2 = new JButton("");
+		btnCol2.setBorder(null);
+		btnCol2.setContentAreaFilled(false);
+		btnCol2.setBounds(217, 34, 65, 412);
+		btnCol0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panelBookshelf.add(btnCol2);
+
+		JButton btnCol3 = new JButton("");
+		btnCol3.setBorder(null);
+		btnCol3.setContentAreaFilled(false);
+		btnCol3.setBounds(297, 34, 65, 412);
+		btnCol0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panelBookshelf.add(btnCol3);
+
+		JButton btnCol4 = new JButton("");
+		btnCol4.setBorder(null);
+		btnCol4.setContentAreaFilled(false);
+		btnCol4.setBounds(378, 34, 65, 412);
+		btnCol0.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panelBookshelf.add(btnCol4);
+
+		JLabel lblBookshelf = new JLabel("");
+		lblBookshelf.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		lblBookshelf.setBounds(0, 5, 500, 500);
+		lblBookshelf
+				.setIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/boards/bookshelf_orth_edited.png"));
+		panelBookshelf.add(lblBookshelf);
 
 		JPanel panelPersonalGoal = new JPanel();
 		panelPersonalGoal.setBounds(10, 113, 165, 250);
@@ -125,8 +197,60 @@ public class PickObjectsFromBoardViewGraphic_Prototype extends JFrame {
 		lblPlayerTurn.setBounds(0, 47, 189, 42);
 		contentPane.add(lblPlayerTurn);
 
+		JLabel lblPickedObjects = new JLabel("Picked Objects");
+		lblPickedObjects.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblPickedObjects.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblPickedObjects.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPickedObjects.setForeground(Color.WHITE);
+		lblPickedObjects.setFont(new Font("Purisa", Font.BOLD, 16));
+		lblPickedObjects.setBounds(954, 345, 167, 46);
+		contentPane.add(lblPickedObjects);
+
+		JPanel panelObject1 = new JPanel();
+		panelObject1.setBounds(953, 399, 67, 67);
+		contentPane.add(panelObject1);
+		panelObject1.setLayout(null);
+
+		JLabel lblObject1 = new JLabel("1");
+		lblObject1.setBounds(0, 0, 67, 67);
+		lblObject1.setFont(new Font("Purisa", Font.BOLD, 60));
+		lblObject1.setForeground(new Color(237, 51, 59));
+		lblObject1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblObject1.setHorizontalTextPosition(SwingConstants.CENTER);
+		panelObject1.add(lblObject1);
+
+		JLabel lblIconTest = new JLabel("");
+		lblIconTest.setBounds(0, 0, 67, 67);
+		lblIconTest
+				.setIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/item_tiles/resized/Giochi1.2.png"));
+		panelObject1.add(lblIconTest);
+
+		JPanel panelObject2 = new JPanel();
+		panelObject2.setBounds(1050, 399, 67, 67);
+		contentPane.add(panelObject2);
+		panelObject2.setLayout(new BorderLayout(0, 0));
+
+		JLabel lblObject2 = new JLabel("2");
+		lblObject2.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblObject2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblObject2.setForeground(Color.WHITE);
+		lblObject2.setFont(new Font("Purisa", Font.BOLD, 20));
+		panelObject2.add(lblObject2);
+
+		JPanel panelObject3 = new JPanel();
+		panelObject3.setBounds(1000, 481, 67, 67);
+		contentPane.add(panelObject3);
+		panelObject3.setLayout(new BorderLayout(0, 0));
+
+		JLabel lblObject3 = new JLabel("3");
+		lblObject3.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblObject3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblObject3.setForeground(Color.WHITE);
+		lblObject3.setFont(new Font("Purisa", Font.BOLD, 20));
+		panelObject3.add(lblObject3);
+
 		JButton btnEndTurn = new JButton("End Turn");
-		btnEndTurn.setVisible(false);
+		btnEndTurn.setEnabled(false);
 		btnEndTurn.setBackground(new Color(255, 255, 255));
 		btnEndTurn.setOpaque(false);
 		btnEndTurn.setFocusPainted(false);
@@ -136,17 +260,6 @@ public class PickObjectsFromBoardViewGraphic_Prototype extends JFrame {
 		btnEndTurn.setFont(new Font("Purisa", Font.BOLD, 16));
 		btnEndTurn.setBounds(965, 645, 142, 57);
 		contentPane.add(btnEndTurn);
-
-		JButton btnPickObjects = new JButton("Pick Objects");
-		btnPickObjects.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnPickObjects.setOpaque(false);
-		btnPickObjects.setForeground(Color.WHITE);
-		btnPickObjects.setFont(new Font("Purisa", Font.BOLD, 16));
-		btnPickObjects.setFocusPainted(false);
-		btnPickObjects.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnPickObjects.setBackground(Color.WHITE);
-		btnPickObjects.setBounds(965, 645, 142, 57);
-		contentPane.add(btnPickObjects);
 
 		JButton btnShowBookshelf = new JButton("Show Shelf");
 		btnShowBookshelf.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -169,6 +282,17 @@ public class PickObjectsFromBoardViewGraphic_Prototype extends JFrame {
 		btnHideBookshelf.setBackground(Color.WHITE);
 		btnHideBookshelf.setBounds(20, 385, 142, 57);
 		contentPane.add(btnHideBookshelf);
+
+		JButton btnHome = new JButton("<--");
+		btnHome.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnHome.setOpaque(false);
+		btnHome.setForeground(Color.WHITE);
+		btnHome.setFont(new Font("Purisa", Font.BOLD, 16));
+		btnHome.setFocusPainted(false);
+		btnHome.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnHome.setBackground(Color.WHITE);
+		btnHome.setBounds(20, 645, 142, 57);
+		contentPane.add(btnHome);
 
 		JPanel panelBoard = new JPanel();
 		panelBoard.setOpaque(false);
