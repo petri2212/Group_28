@@ -1,5 +1,7 @@
 package myshelfie;
 
+import java.util.List;
+
 import utils.Matrix;
 import utils.MatrixCoords;
 
@@ -13,29 +15,33 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		super(ROWS_NUMBER, COLS_NUMBER);
 	}
 	
-	public void add (int c, BookshelfObject obj) {
+	public boolean tryAdd (int c, BookshelfObject obj) {
 		int r = getFirstEmptyRow(c);
-		
+		boolean result = false;
+
 		if(r != noEmptyRow) {
 			this.add(r, c, obj);
-		}else {
-			System.out.println("invalid cols!");
+			result  =true;
 		}
+
+		return result;
 	}
 	
-	public void add (int c, BookshelfObject[] objs) {
-		int lenght = objs.length;
+	public boolean tryAdd (int c, List<BookshelfObject> objs) {
+		int lenght = objs.size();
 		int r = getFirstEmptyRow(c);
-		
+		boolean result = false;
+
 		if(r != noEmptyRow && isThereEnoughSpace(r,lenght)) {
 			for (BookshelfObject obj : objs) {
 				this.add(r, c, obj);
 				r++;
 			}
-		}else {
-			System.out.println("invalid cols!");
+
+			result = true;
 		}
-		
+
+		return result;
 	}
 	
 	private boolean isThereEnoughSpace(int r, int lenght) {
