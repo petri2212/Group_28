@@ -25,6 +25,8 @@ public abstract class GameStageView implements View {
 	
 	public ActionListener actionEndTurn;
 
+	public ActionListener actionEndTurn;
+
 	public ActionListener actionReturnMainPage;
 
 	public void setBoard(Board board) {

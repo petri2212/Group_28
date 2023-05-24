@@ -56,6 +56,18 @@ public class GameStageController extends Controller<GameStageView> {
 				model.changeState(GameState.HOME);
 			}
 		};
+
+		view.actionEndTurn = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (player.getBookshelf().isFull()) {
+					model.changeState(GameState.END);
+				} else {
+					model.changeState(GameState.CONTROLS);
+				}
+			}
+		};
 	}
 
 }
