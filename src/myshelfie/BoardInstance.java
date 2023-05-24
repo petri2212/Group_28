@@ -142,6 +142,7 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 					int absolute_difference = Math.abs(coords1.r - coords2.r);
 					if (absolute_difference == 1) {
 						result = true;
+						break;
 					} else {
 						result = false;
 					}
@@ -150,6 +151,7 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 					int absolute_difference = Math.abs(coords1.c - coords2.c);
 					if (absolute_difference == 1) {
 						result = true;
+						break;
 					} else {
 						result = false;
 					}
