@@ -9,6 +9,7 @@ import gui.View;
 import myshelfie.Board;
 import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
+import utils.MatrixCoords;
 
 public abstract class PickObjectsFromBoardView implements View {
 
@@ -16,7 +17,7 @@ public abstract class PickObjectsFromBoardView implements View {
 
 	protected Board board;
 	protected String playerName;
-	protected ArrayList<BookshelfObject> pickedObjects = new ArrayList<>();
+	protected ArrayList<MatrixCoords> pickedObjButtoncoords = new ArrayList<>();
 	protected PersonalGoal personalGoal;
 	protected CommonGoal commonGoal1;
 	protected CommonGoal commonGoal2;

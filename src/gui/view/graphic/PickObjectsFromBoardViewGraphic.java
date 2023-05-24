@@ -423,6 +423,7 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 	 * 
 	 */
 	private void printBoardObjects() {
+
 		for (int r = 0; r < Board.ROW_COUNT; r++) {
 			for (int c = 0; c < Board.COL_COUNT; c++) {
 				Tile tile = board.get(new MatrixCoords(r, c));
@@ -444,13 +445,13 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								if (pickedObjects.size() < MAX_PICKED_OBJECTS) {
-									boolean objectPicked = board.tryPickObject(objectButton.getCoords());
+								if (pickedObjButtoncoords.size() < MAX_PICKED_OBJECTS) {
+									boolean objectPicked = board.isObjectPickable(pickedObjButtoncoords,
+											objectButton.getCoords());
 
 									if (objectPicked) {
-										BookshelfObject object = objectButton.getObject();
-										pickedObjects.add(object);
-										int objectIndex = pickedObjects.size() - 1;
+										pickedObjButtoncoords.add(objectButton.getCoords());
+										int objectIndex = pickedObjButtoncoords.size() - 1;
 										panelPickedObjects[objectIndex].setBackground(object.getImage());
 										panelPickedObjects[objectIndex].setVisible(true);
 										panelObjects.remove(objectButton);
@@ -611,7 +612,7 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				if (pickedObjects.size() > 0) {
+				if (pickedObjButtoncoords.size() > 0) {
 					ColumnButton button = (ColumnButton) e.getSource();
 					button.setBorder(new LineBorder(new Color(87, 227, 137), 4));
 				}
@@ -619,14 +620,21 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (pickedObjects.size() > 0) {
+				ArrayList<BookshelfObject> obj = new ArrayList<>();
+
+				if (pickedObjButtoncoords.size() > 0) {
 					ColumnButton button = (ColumnButton) e.getSource();
-					boolean success = bookshelf.tryAdd(button.getColIndex(), pickedObjects);
+
+					for (MatrixCoords coords : pickedObjButtoncoords) {
+						obj.add(board.tryPickObject(coords));
+					}
+
+					boolean success = bookshelf.tryAdd(button.getColIndex(), obj);
 
 					if (!success) {
 						showColWarning();
 					} else {
-						pickedObjects = new ArrayList<>();
+						pickedObjButtoncoords = new ArrayList<>();
 						hidePickedObjectsPanel();
 						printBookshelfObjects();
 						showEndTurnButton();
