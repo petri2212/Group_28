@@ -22,16 +22,9 @@ public class ConsoleUI implements UI {
 	}
 
 	@Override
-	public void showPickObjectsFromBoardPage(GameManager model) {
-		PickObjectsFromBoardViewConsole view = new PickObjectsFromBoardViewConsole();
-		PickObjectsFromBoardController controller = new PickObjectsFromBoardController(model, view);
-		controller.start();
-	}
-
-	@Override
-	public void showPutObjectsPage(GameManager model) {
-		PutObjectsViewConsole view = new PutObjectsViewConsole();
-		PutObjectsController controller = new PutObjectsController(model, view);
+	public void showGameStagePage(GameManager model) {
+		GameStageViewConsole view = new GameStageViewConsole();
+		GameStageController controller = new GameStageController(model, view);
 		controller.start();
 	}
 

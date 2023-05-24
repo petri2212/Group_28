@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import gui.view.PickObjectsFromBoardView;
+import gui.view.GameStageView;
 import myshelfie.Board;
 import myshelfie.BookshelfObject;
 import myshelfie.Tile;
 import utils.MatrixCoords;
 
-public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
+public class GameStageViewConsole extends GameStageView {
 
 	private static int INPUT_LENGHT = 3;
 	private String input;
@@ -50,10 +50,7 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 					System.out.print(tmpCoords + " ");
 				}
 				System.out.println();
-				if(savedCoords.size() == INPUT_LENGHT) {
-					System.out.println("Max number of coords reached!!");
-					actionPutObjects.actionPerformed(null);
-				}
+
 
 			}
 			System.out.println("Coords: ");
@@ -65,7 +62,6 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 
 			} else if (input.equalsIgnoreCase("enter")) {
 				putObjects();
-				actionPutObjects.actionPerformed(null);
 			} else if (commaAndLenghtVerifier()) {
 				verifyObject();
 				if (verifier) {
@@ -75,7 +71,13 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 					savedCoords.add(input);
 				}
 			}
+			if(savedCoords.size() == INPUT_LENGHT) {
+				System.out.println("Max number of coords reached!!");
+				break;
+			}
 		} while (isWaiting);
+		
+		
 
 		sc.close();
 
