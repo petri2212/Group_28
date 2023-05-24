@@ -86,14 +86,26 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 		int UNDER_ROW = r - 1;
 		int RIGHT_COL = c + 1;
 		int LEFT_COL = c - 1;
-
+		
+		if(LEFT_COL==-1) {
+			LEFT_COL=5;
+		}
+		
+		if(UNDER_ROW==-1) {
+			UNDER_ROW=6;
+		}
+		
+		
 		Tile tile_Up = this.get(new MatrixCoords(UPPER_ROW, c));
 
 		Tile tile_Un = this.get(new MatrixCoords(UNDER_ROW, c));
-
+		
 		Tile tile_Right = this.get(new MatrixCoords(r, RIGHT_COL));
-
+		
 		Tile tile_Left = this.get(new MatrixCoords(r, LEFT_COL));
+		
+
+		
 
 		if (tile_Up == null || tile_Up.getBookshelfObject() == null) {
 			contFull--;
