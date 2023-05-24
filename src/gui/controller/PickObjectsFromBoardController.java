@@ -37,14 +37,14 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 	@Override
 	protected void initViewListeners() {
 
-		view.actionEndTurn = new ActionListener() {
+		view.actionPutObjects = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (player.getBookshelf().isFull()) {
-					model.changeState(GameState.END);
-				} else {
 					model.changeState(GameState.CONTROLS);
+				} else {
+					model.changeState(GameState.PUT_OBJECTS);
 				}
 			}
 		};

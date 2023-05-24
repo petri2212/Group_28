@@ -23,7 +23,7 @@ public abstract class PickObjectsFromBoardView implements View {
 	protected CommonGoal commonGoal2;
 	protected Bookshelf bookshelf;
 
-	public ActionListener actionEndTurn;
+	public ActionListener actionPutObjects;
 
 	public ActionListener actionReturnMainPage;
 

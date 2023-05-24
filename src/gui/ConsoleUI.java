@@ -28,4 +28,11 @@ public class ConsoleUI implements UI {
 		controller.start();
 	}
 
+	@Override
+	public void showPutObjectsPage(GameManager model) {
+		PutObjectsViewConsole view = new PutObjectsViewConsole();
+		PutObjectsController controller = new PutObjectsController(model, view);
+		controller.start();
+	}
+
 }

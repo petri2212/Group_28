@@ -49,4 +49,10 @@ public class GraphicUI implements UI {
 		controller.start();
 	}
 
+	@Override
+	public void showPutObjectsPage(GameManager model) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -50,6 +50,10 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 					System.out.print(tmpCoords + " ");
 				}
 				System.out.println();
+				if(savedCoords.size() == INPUT_LENGHT) {
+					System.out.println("Max number of coords reached!!");
+					actionPutObjects.actionPerformed(null);
+				}
 
 			}
 			System.out.println("Coords: ");
@@ -61,6 +65,7 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 
 			} else if (input.equalsIgnoreCase("enter")) {
 				putObjects();
+				actionPutObjects.actionPerformed(null);
 			} else if (commaAndLenghtVerifier()) {
 				verifyObject();
 				if (verifier) {

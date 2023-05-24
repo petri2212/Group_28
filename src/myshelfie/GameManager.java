@@ -69,6 +69,7 @@ public class GameManager {
 			break;
 			
 		case PUT_OBJECTS:
+			ui.showPutObjectsPage(this);
 			break;
 
 		case CONTROLS:
