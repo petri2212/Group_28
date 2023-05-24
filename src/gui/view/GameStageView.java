@@ -3,10 +3,10 @@ package gui.view;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import board.Board;
 import goal.CommonGoal;
 import goal.PersonalGoal;
 import gui.View;
-import myshelfie.Board;
 import myshelfie.Bookshelf;
 import utils.MatrixCoords;
 

@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import board.Board;
+import board.Tile;
 import gui.view.GameStageView;
-import myshelfie.Board;
 import myshelfie.BookshelfObject;
-import myshelfie.Tile;
 import utils.MatrixCoords;
 import utils.UniqueList;
 

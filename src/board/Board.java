@@ -1,7 +1,8 @@
-package myshelfie;
+package board;
 
 import java.util.ArrayList;
 
+import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
 public interface Board {
@@ -17,7 +18,7 @@ public interface Board {
 	public BookshelfObject tryPickObject(MatrixCoords coords);
 
 	public Tile get(MatrixCoords coords);
-	
+
 	public boolean isObjectPickable(ArrayList<MatrixCoords> pickedObjButtoncoords, MatrixCoords coords);
 
 }

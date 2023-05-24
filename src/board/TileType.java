@@ -1,4 +1,4 @@
-package myshelfie;
+package board;
 
 public enum TileType {
 

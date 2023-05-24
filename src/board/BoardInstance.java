@@ -1,9 +1,10 @@
-package myshelfie;
+package board;
 
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
+import myshelfie.BookshelfObject;
 import utils.Matrix;
 import utils.MatrixCoords;
 
@@ -173,7 +174,6 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 
 	private boolean checkEdges(MatrixCoords coords) {
 		int contFull = 4;
-		// TODO: adds valid pick check; rule of one-empty-space before picking an object
 		int r = coords.r;
 		int c = coords.c;
 

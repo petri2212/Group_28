@@ -1,9 +1,10 @@
-package myshelfie;
+package board;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
 public class BoardProxy implements Board {

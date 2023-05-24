@@ -1,8 +1,8 @@
-package myshelfie;
+package goal;
 
 import java.util.ArrayList;
 
-import goal.CommonGoal;
+import myshelfie.Player;
 
 public class CommonGoalManager {
 
@@ -41,7 +41,7 @@ public class CommonGoalManager {
 
 	public void addPlayerToPlacement(ArrayList<Player> playersPlacement, Player player, CommonGoal commonGoal) {
 		if (!playersPlacement.contains(player)) {
-			if (commonGoal.check(player.bookshelf) == 1) {
+			if (commonGoal.check(player.getBookshelf()) == 1) {
 				playersPlacement.add(player);
 			}
 		}

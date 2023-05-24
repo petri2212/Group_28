@@ -1,4 +1,6 @@
-package myshelfie;
+package board;
+
+import myshelfie.BookshelfObject;
 
 public class Tile {
 

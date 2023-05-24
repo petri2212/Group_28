@@ -2,8 +2,11 @@ package myshelfie;
 
 import java.util.ArrayList;
 
+import board.Board;
+import board.BoardProxy;
 import deck.DeckCommon;
 import deck.DeckPersonal;
+import goal.CommonGoalManager;
 import gui.UI;
 
 public class GameManager {
