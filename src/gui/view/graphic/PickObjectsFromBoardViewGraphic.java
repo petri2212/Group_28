@@ -360,7 +360,7 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 		btnEndTurn.setForeground(new Color(255, 255, 255));
 		btnEndTurn.setFont(new Font("Purisa", Font.BOLD, 16));
 		btnEndTurn.setBounds(965, 645, 142, 57);
-		btnEndTurn.addActionListener(actionPutObjects);
+		btnEndTurn.addActionListener(actionEndTurn);
 		contentPane.add(btnEndTurn);
 
 		JButton btnHome = new JButton("<--");
