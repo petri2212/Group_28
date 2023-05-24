@@ -8,7 +8,6 @@ import goal.PersonalGoal;
 import gui.View;
 import myshelfie.Board;
 import myshelfie.Bookshelf;
-import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
 public abstract class GameStageView implements View {
@@ -23,8 +22,6 @@ public abstract class GameStageView implements View {
 	protected CommonGoal commonGoal2;
 	protected Bookshelf bookshelf;
 	
-	public ActionListener actionEndTurn;
-
 	public ActionListener actionEndTurn;
 
 	public ActionListener actionReturnMainPage;
