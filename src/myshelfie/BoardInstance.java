@@ -141,7 +141,6 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 					if (absolute_difference == 1) {
 						cont_col++;
 						result = true;
-						break;
 					} else {
 						cont_col++;
 						result = false;
@@ -152,7 +151,6 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 					if (absolute_difference == 1) {
 						cont_row++;
 						result = true;
-						break;
 					} else {
 						cont_row++;
 						result = false;
