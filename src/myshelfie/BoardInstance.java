@@ -86,26 +86,22 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 		int UNDER_ROW = r - 1;
 		int RIGHT_COL = c + 1;
 		int LEFT_COL = c - 1;
-		
-		if(LEFT_COL==-1) {
-			LEFT_COL=5;
+
+		if (LEFT_COL == -1) {
+			LEFT_COL = 5;
 		}
-		
-		if(UNDER_ROW==-1) {
-			UNDER_ROW=6;
+
+		if (UNDER_ROW == -1) {
+			UNDER_ROW = 6;
 		}
-		
-		
+
 		Tile tile_Up = this.get(new MatrixCoords(UPPER_ROW, c));
 
 		Tile tile_Un = this.get(new MatrixCoords(UNDER_ROW, c));
-		
-		Tile tile_Right = this.get(new MatrixCoords(r, RIGHT_COL));
-		
-		Tile tile_Left = this.get(new MatrixCoords(r, LEFT_COL));
-		
 
-		
+		Tile tile_Right = this.get(new MatrixCoords(r, RIGHT_COL));
+
+		Tile tile_Left = this.get(new MatrixCoords(r, LEFT_COL));
 
 		if (tile_Up == null || tile_Up.getBookshelfObject() == null) {
 			contFull--;
@@ -133,28 +129,48 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 
 	private boolean checkDistance(ArrayList<MatrixCoords> pickedObjButtoncoords, MatrixCoords objcoords) {
 		boolean result = true;
+		int cont_row = 0;
+		int cont_col = 0;
 		if (!(pickedObjButtoncoords.isEmpty())) {
-
 			for (MatrixCoords coordsUsed : pickedObjButtoncoords) {
 				MatrixCoords coords1 = objcoords;
 				MatrixCoords coords2 = coordsUsed;
+
 				if (coords1.c == coords2.c) {
 					int absolute_difference = Math.abs(coords1.r - coords2.r);
 					if (absolute_difference == 1) {
+						cont_col++;
 						result = true;
 					} else {
+						cont_col++;
 						result = false;
 					}
 
 				} else if (coords1.r == coords2.r) {
 					int absolute_difference = Math.abs(coords1.c - coords2.c);
 					if (absolute_difference == 1) {
+						cont_row++;
 						result = true;
 					} else {
+						cont_row++;
 						result = false;
 					}
+
 				} else {
 					result = false;
+				}
+			}
+
+			if (pickedObjButtoncoords.size() == 2) {
+				if (cont_col != 0) {
+					if (cont_col != 2) {
+						result = false;
+					}
+
+				} else if (cont_row != 0) {
+					if (cont_row != 2) {
+						result = false;
+					}
 				}
 			}
 		}
