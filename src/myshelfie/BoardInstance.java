@@ -165,11 +165,15 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 				if (cont_col != 0) {
 					if (cont_col != 2) {
 						result = false;
+					}else {
+						result = true;//if u dont do this u cant pick in a row of objects the middle one and then both of the adjacent object because the last result set result false, because the distance isnt one as compared to the last MatrixCoords
 					}
 
 				} else if (cont_row != 0) {
 					if (cont_row != 2) {
 						result = false;
+					}else {
+						result = true;//
 					}
 				}
 			}
