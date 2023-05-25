@@ -24,14 +24,14 @@ import javax.swing.border.SoftBevelBorder;
 import gui.component.BackgroundPanel;
 import gui.component.BookshelfObjectButton;
 import gui.component.ColumnButton;
-import gui.view.PickObjectsFromBoardView;
+import gui.view.GameStageView;
 import myshelfie.Board;
 import myshelfie.BookshelfObject;
 import myshelfie.Tile;
 import resource.Icons;
 import utils.MatrixCoords;
 
-public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
+public class GameStageViewGraphic extends GameStageView {
 
 	private static final int PICKED_OBJECT_1_INDEX = 0;
 	private static final int PICKED_OBJECT_2_INDEX = 1;
@@ -94,7 +94,7 @@ public class PickObjectsFromBoardViewGraphic extends PickObjectsFromBoardView {
 	 *
 	 * @param mainFrame
 	 */
-	public PickObjectsFromBoardViewGraphic(JFrame mainFrame) {
+	public GameStageViewGraphic(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		actionMouseOnBookshelf = initActionMouseOnBookshelf();
 		actionHideGuidePanel = initActionHideGuidePanel();

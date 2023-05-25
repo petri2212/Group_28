@@ -43,16 +43,10 @@ public class GraphicUI implements UI {
 	}
 
 	@Override
-	public void showPickObjectsFromBoardPage(GameManager model) {
-		PickObjectsFromBoardViewGraphic view = new PickObjectsFromBoardViewGraphic(mainFrame);
-		PickObjectsFromBoardController controller = new PickObjectsFromBoardController(model, view);
+	public void showGameStagePage(GameManager model) {
+		GameStageViewGraphic view = new GameStageViewGraphic(mainFrame);
+		GameStageController controller = new GameStageController(model, view);
 		controller.start();
-	}
-
-	@Override
-	public void showPutObjectsPage(GameManager model) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

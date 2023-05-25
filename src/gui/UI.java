@@ -17,8 +17,6 @@ public interface UI {
 	
 	void showInsertPlayersPage(GameManager model);
 	
-	void showPickObjectsFromBoardPage(GameManager model);
-	
-	void showPutObjectsPage(GameManager model);
-	
+	void showGameStagePage(GameManager model);
+		
 }

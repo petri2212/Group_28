@@ -8,10 +8,9 @@ import goal.PersonalGoal;
 import gui.View;
 import myshelfie.Board;
 import myshelfie.Bookshelf;
-import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
-public abstract class PickObjectsFromBoardView implements View {
+public abstract class GameStageView implements View {
 
 	protected static final int MAX_PICKED_OBJECTS = 3;
 
@@ -22,9 +21,7 @@ public abstract class PickObjectsFromBoardView implements View {
 	protected CommonGoal commonGoal1;
 	protected CommonGoal commonGoal2;
 	protected Bookshelf bookshelf;
-
-	public ActionListener actionPutObjects;
-
+	
 	public ActionListener actionEndTurn;
 
 	public ActionListener actionReturnMainPage;

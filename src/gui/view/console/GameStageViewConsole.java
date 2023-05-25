@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import gui.view.PickObjectsFromBoardView;
+import gui.view.GameStageView;
 import myshelfie.Board;
+import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import myshelfie.Tile;
 import utils.MatrixCoords;
 
-public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
+public class GameStageViewConsole extends GameStageView {
 
 	private static int INPUT_LENGHT = 3;
 	private String input;
+	private int intInput;
 	private boolean isWaiting;
 	protected char[] inputArr;
 	protected char[] downCoords;
@@ -50,10 +52,6 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 					System.out.print(tmpCoords + " ");
 				}
 				System.out.println();
-				if(savedCoords.size() == INPUT_LENGHT) {
-					System.out.println("Max number of coords reached!!");
-					actionPutObjects.actionPerformed(null);
-				}
 
 			}
 			System.out.println("Coords: ");
@@ -65,7 +63,6 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 
 			} else if (input.equalsIgnoreCase("enter")) {
 				putObjects();
-				actionPutObjects.actionPerformed(null);
 			} else if (commaAndLenghtVerifier()) {
 				verifyObject();
 				if (verifier) {
@@ -75,6 +72,37 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 					savedCoords.add(input);
 				}
 			}
+			if(savedCoords != null) {
+				if (savedCoords.size() == INPUT_LENGHT) {
+					System.out.println("Max number of coords reached!!");
+					setIsWaiting(false);
+				}
+			}
+
+		} while (isWaiting);
+
+		// show PutObjects
+
+		isWaiting = true;
+		printBookshelf();
+
+		System.out.println("Insert the column where you want to insert the tile");
+
+		do {
+
+			System.out.println("Column :");
+			String input = sc.nextLine();
+			this.input = input;
+			intInput = inputToInt(input);
+
+			if (input.isBlank()) {
+				System.out.println("The command cannot be null");
+
+			} else if (intInput != 0) {
+				
+				
+			}
+
 		} while (isWaiting);
 
 		sc.close();
@@ -132,6 +160,10 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 	private void putObjects() {
 		setDownCoords(Board.DOWN_COOORDS);
 		setRightCoords(Board.RIGHT_COORDS);
+	}
+	
+	private boolean setIsWaiting(boolean value) {
+		return this.isWaiting = value;
 	}
 
 	// BoardMethods
@@ -307,6 +339,108 @@ public class PickObjectsFromBoardViewConsole extends PickObjectsFromBoardView {
 		}
 
 		return object;
+	}
+
+	// put objects methods
+
+	public int inputToInt(String input) {
+		int inputLenght = 1;
+		int maxColumnNumber = 5;
+		int minColumnNumber = 1;
+
+		if (input.length() == inputLenght) {
+			int intInput = Integer.parseInt(input);
+			if (intInput >= minColumnNumber && intInput <= maxColumnNumber) {
+				return intInput;
+			}
+		}
+		return 0;
+	}
+
+	public BookshelfObject checkBookshelfObjects(int r, int c) {
+		BookshelfObject obj = bookshelf.get(new MatrixCoords(r, c));
+		BookshelfObject object = null;
+
+		if (obj != null) {
+			return obj;
+		}
+
+		return object;
+	}
+
+	public void printBookshelf() {
+		final int ROW_COUNT = bookshelf.getRows();
+		final int COL_COUNT = bookshelf.getCols();
+		final int upCard = 0;
+		final int voidUpCard = 1;
+		final int centerCard = 2;
+		final int voidDownCard = 3;
+		final int downCard = 4;
+
+		String partOfCard_a = " --------- ";
+		String partOfCard_b = "|         |";
+		int numberOfPartsInCard = 5;
+
+		for (int i = 0; i < ROW_COUNT; i++) {
+			int cont = 0;
+			while (cont < numberOfPartsInCard) {
+				int tmpcont = 0;
+
+				switch (cont) {
+
+				case upCard:
+					while (tmpcont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpcont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case voidUpCard:
+					while (tmpcont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpcont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case centerCard:
+					while (tmpcont < COL_COUNT) {
+						BookshelfObject object = checkBookshelfObjects(i, tmpcont);
+						if (object != null) {
+							printBookshelfObject(object);
+						} else {
+							System.out.print(partOfCard_b);
+						}
+						tmpcont++;
+					}
+					System.out.println("  | " + (i + 1));
+					break;
+
+				case voidDownCard:
+					while (tmpcont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpcont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case downCard:
+					while (tmpcont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpcont++;
+					}
+					System.out.println("   |");
+					break;
+				}
+
+				cont++;
+			}
+		}
+		for (int j = 0; j < COL_COUNT; j++) {
+			System.out.print(" ----" + (j + 1) + "---- ");
+		}
+		System.out.println("\n");
 	}
 
 }

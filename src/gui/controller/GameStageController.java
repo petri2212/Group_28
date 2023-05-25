@@ -5,16 +5,16 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import gui.Controller;
-import gui.view.PickObjectsFromBoardView;
+import gui.view.GameStageView;
 import myshelfie.GameManager;
 import myshelfie.GameState;
 import myshelfie.Player;
 
-public class PickObjectsFromBoardController extends Controller<PickObjectsFromBoardView> {
+public class GameStageController extends Controller<GameStageView> {
 
 	private Player player;
 
-	public PickObjectsFromBoardController(GameManager model, PickObjectsFromBoardView view) {
+	public GameStageController(GameManager model, GameStageView view) {
 		super(model, view);
 
 		ArrayList<Player> players = model.getPlayers();
@@ -37,14 +37,14 @@ public class PickObjectsFromBoardController extends Controller<PickObjectsFromBo
 	@Override
 	protected void initViewListeners() {
 
-		view.actionPutObjects = new ActionListener() {
+		view.actionEndTurn = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (player.getBookshelf().isFull()) {
-					model.changeState(GameState.CONTROLS);
+					model.changeState(GameState.END);
 				} else {
-					model.changeState(GameState.PUT_OBJECTS);
+					model.changeState(GameState.CONTROLS);
 				}
 			}
 		};

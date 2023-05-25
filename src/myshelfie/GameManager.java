@@ -61,20 +61,16 @@ public class GameManager {
 			commonGoalManager = new CommonGoalManager(players, deckCommon.extractGoal(),
 					deckCommon.extractGoal());
 
-			changeState(GameState.PICK_OBJECTS_FROM_BOARD);
+			changeState(GameState.GAME_STAGE);
 			break;
 			
-		case PICK_OBJECTS_FROM_BOARD:
-			ui.showPickObjectsFromBoardPage(this);
+		case GAME_STAGE:
+			ui.showGameStagePage(this);
 			break;
 			
-		case PUT_OBJECTS:
-			ui.showPutObjectsPage(this);
-			break;
-
 		case CONTROLS:
 			updatePlayerTurn();
-			changeState(GameState.PICK_OBJECTS_FROM_BOARD);
+			changeState(GameState.GAME_STAGE);
 			// if the board is empty fill with random objects
 			break;
 
