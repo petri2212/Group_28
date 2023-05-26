@@ -2,6 +2,7 @@ package gui.view.console;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 
 import gui.view.GameStageView;
@@ -10,6 +11,7 @@ import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import myshelfie.Tile;
 import utils.MatrixCoords;
+import utils.UniqueList;
 
 public class GameStageViewConsole extends GameStageView {
 
@@ -20,7 +22,9 @@ public class GameStageViewConsole extends GameStageView {
 	protected char[] inputArr;
 	protected char[] downCoords;
 	protected char[] rightCoords;
-	protected ArrayList<String> savedCoords;
+	protected ArrayList<Character> downCoordsList = new ArrayList<>();
+	protected ArrayList<Character> rightCoordsList = new ArrayList<>();
+	protected List<String> savedCoords = new UniqueList<>();
 	protected String tmpCoords;
 	protected boolean verifier;
 
@@ -41,11 +45,12 @@ public class GameStageViewConsole extends GameStageView {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Insert the coordinates of the tiles that you whant to pick" + " (first: col, second: row)");
+		System.out.println("Remembre that the tiles will be inserted in the order that you pick them!!");
 		System.out.println("example(A,0)");
 		System.out.println("insert enter to put the tiles in your BookShelf");
 
 		do {
-			if (savedCoords != null) {
+			if (!savedCoords.isEmpty()) {
 				System.out.print("Inserted Coords: ");
 				for (int i = 0; i < savedCoords.size(); i++) {
 					tmpCoords = savedCoords.get(i);
@@ -62,21 +67,16 @@ public class GameStageViewConsole extends GameStageView {
 				System.out.println("The command cannot be null");
 
 			} else if (input.equalsIgnoreCase("enter")) {
-				putObjects();
+				enterVerifier();
 			} else if (commaAndLenghtVerifier()) {
 				verifyObject();
 				if (verifier) {
-					if (savedCoords == null) {
-						savedCoords = new ArrayList<>();
-					}
 					savedCoords.add(input);
 				}
 			}
-			if(savedCoords != null) {
-				if (savedCoords.size() == INPUT_LENGHT) {
-					System.out.println("Max number of coords reached!!");
-					setIsWaiting(false);
-				}
+			if (savedCoords.size() == INPUT_LENGHT) {
+				System.out.println("Max number of coords reached!!");
+				setIsWaiting(false);
 			}
 
 		} while (isWaiting);
@@ -89,7 +89,6 @@ public class GameStageViewConsole extends GameStageView {
 		System.out.println("Insert the column where you want to insert the tile");
 
 		do {
-
 			System.out.println("Column :");
 			String input = sc.nextLine();
 			this.input = input;
@@ -99,8 +98,11 @@ public class GameStageViewConsole extends GameStageView {
 				System.out.println("The command cannot be null");
 
 			} else if (intInput != 0) {
-				
-				
+				System.out.println("those are your coords!!");
+				for (int i = 0; i < savedCoords.size(); i++) {
+					tmpCoords = savedCoords.get(i);
+					System.out.print("|" + (i + 1) + ": " + tmpCoords + "|" + " ");
+				}
 			}
 
 		} while (isWaiting);
@@ -112,7 +114,6 @@ public class GameStageViewConsole extends GameStageView {
 	private void verifyObject() {
 		int downCoordsPosition = 0;
 		int rightCoordsPosition = 2;
-		int maxCoords = 3;
 		char column = 0;
 		char row = 0;
 		char letterToSubtract = 'A';
@@ -120,13 +121,6 @@ public class GameStageViewConsole extends GameStageView {
 		int indexOfRow;
 		int indexOfColumn;
 		char[] input = getInputArr();
-		ArrayList<Character> downCoordsList = new ArrayList<>();
-		ArrayList<Character> rightCoordsList = new ArrayList<>();
-		HashSet<MatrixCoords> coords = new HashSet<>();
-
-		if (coords.size() == maxCoords) {
-			showChangeStateWarning();
-		}
 
 		if (downCoordsList.isEmpty()) {
 			for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
@@ -142,11 +136,17 @@ public class GameStageViewConsole extends GameStageView {
 			indexOfColumn = column - letterToSubtract;
 			indexOfRow = (int) row - numberToSubtract;
 			MatrixCoords tmpCoord = new MatrixCoords(indexOfRow, indexOfColumn);
-			setVerifier(true);
-			if (coords.add(tmpCoord)) {
+			Tile tmpTile = board.get(tmpCoord);
+			if (tmpTile != null) {
 				setVerifier(true);
+				if (!savedMatrixCoords.contains(tmpCoord)) {
+					savedMatrixCoords.add(tmpCoord);
+				} else {
+					showAlreadySelectedCoordsWarning();
+					setVerifier(false);
+				}
 			} else {
-				showAlreadySelectedCoordsWarning();
+				showNullTileSelectedWarning();
 				setVerifier(false);
 			}
 
@@ -157,11 +157,12 @@ public class GameStageViewConsole extends GameStageView {
 
 	}
 
-	private void putObjects() {
-		setDownCoords(Board.DOWN_COOORDS);
-		setRightCoords(Board.RIGHT_COORDS);
+	private void enterVerifier() {
+		if (savedCoords != null && savedCoords.size() <= MAX_PICKED_OBJECTS) {
+			setIsWaiting(false);
+		}
 	}
-	
+
 	private boolean setIsWaiting(boolean value) {
 		return this.isWaiting = value;
 	}
@@ -272,6 +273,12 @@ public class GameStageViewConsole extends GameStageView {
 
 	// pickObjectsMethods
 
+	void showNullTileSelectedWarning() {
+		System.out.println("Attention!!");
+		System.out.println("This Tile is null!!");
+		isWaiting = true;
+	}
+
 	public void showAlreadySelectedCoordsWarning() {
 		System.out.println("Attention!!");
 		System.out.println("You've already selected this coords!!");
@@ -281,13 +288,6 @@ public class GameStageViewConsole extends GameStageView {
 	public void showCoordsNotInTheBoardWarning() {
 		System.out.println("Attention!!");
 		System.out.println("Attention you insert coords that are not in the board!!");
-		isWaiting = true;
-	}
-
-	public void showChangeStateWarning() {
-		System.out.println("Attention!!");
-		System.out.println("Attention you have reached the max number of tiles!!");
-		System.out.println("You will put the tiles in your bookshelf soon!!");
 		isWaiting = true;
 	}
 
@@ -322,14 +322,6 @@ public class GameStageViewConsole extends GameStageView {
 		return this.inputArr;
 	}
 
-	private void setDownCoords(char[] downCoords) {
-		this.downCoords = downCoords;
-	}
-
-	private void setRightCoords(char[] rightCoords) {
-		this.rightCoords = rightCoords;
-	}
-
 	public BookshelfObject checkTile(int r, int c) {
 		Tile tile = board.get(new MatrixCoords(r, c));
 		BookshelfObject object = null;
@@ -347,14 +339,40 @@ public class GameStageViewConsole extends GameStageView {
 		int inputLenght = 1;
 		int maxColumnNumber = 5;
 		int minColumnNumber = 1;
+		int intInput = 0;
 
 		if (input.length() == inputLenght) {
-			int intInput = Integer.parseInt(input);
-			if (intInput >= minColumnNumber && intInput <= maxColumnNumber) {
-				return intInput;
+			try {
+				intInput = Integer.parseInt(input);
+
+				if (intInput >= minColumnNumber && intInput <= maxColumnNumber) {
+					return intInput;
+				} else {
+					System.out.println("You inserted a wrong input!!");
+				}
+
+			} catch (Exception e) {
+				System.out.println("You inserted a wrong input!!");
 			}
+
 		}
 		return 0;
+	}
+
+	public int[] arrInputToInt(String input) {
+		int zeroAsciiValue = 48;
+		int[] inputToInt = { 0, 0, 0 };
+
+		for (int i = 0; i < input.length(); i++) {
+			try {
+				inputToInt[i] = input.charAt(i);
+				inputToInt[i] -= zeroAsciiValue;
+			} catch (Exception e) {
+				System.out.println("You insert something wrong!!");
+			}
+		}
+
+		return inputToInt;
 	}
 
 	public BookshelfObject checkBookshelfObjects(int r, int c) {

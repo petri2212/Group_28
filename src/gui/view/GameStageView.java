@@ -2,6 +2,7 @@ package gui.view;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import goal.CommonGoal;
 import goal.PersonalGoal;
@@ -16,7 +17,7 @@ public abstract class GameStageView implements View {
 
 	protected Board board;
 	protected String playerName;
-	protected ArrayList<MatrixCoords> pickedObjButtoncoords = new ArrayList<>();
+	protected ArrayList<MatrixCoords> savedMatrixCoords = new ArrayList<>();
 	protected PersonalGoal personalGoal;
 	protected CommonGoal commonGoal1;
 	protected CommonGoal commonGoal2;

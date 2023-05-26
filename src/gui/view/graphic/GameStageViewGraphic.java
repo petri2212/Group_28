@@ -445,13 +445,13 @@ public class GameStageViewGraphic extends GameStageView {
 
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								if (pickedObjButtoncoords.size() < MAX_PICKED_OBJECTS) {
-									boolean objectPicked = board.isObjectPickable(pickedObjButtoncoords,
+								if (savedMatrixCoords.size() < MAX_PICKED_OBJECTS) {
+									boolean objectPicked = board.isObjectPickable(savedMatrixCoords,
 											objectButton.getCoords());
 
 									if (objectPicked) {
-										pickedObjButtoncoords.add(objectButton.getCoords());
-										int objectIndex = pickedObjButtoncoords.size() - 1;
+										savedMatrixCoords.add(objectButton.getCoords());
+										int objectIndex = savedMatrixCoords.size() - 1;
 										panelPickedObjects[objectIndex].setBackground(object.getImage());
 										panelPickedObjects[objectIndex].setVisible(true);
 										panelObjects.remove(objectButton);
@@ -612,7 +612,7 @@ public class GameStageViewGraphic extends GameStageView {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				if (pickedObjButtoncoords.size() > 0) {
+				if (savedMatrixCoords.size() > 0) {
 					ColumnButton button = (ColumnButton) e.getSource();
 					button.setBorder(new LineBorder(new Color(87, 227, 137), 4));
 				}
@@ -622,10 +622,10 @@ public class GameStageViewGraphic extends GameStageView {
 			public void mouseClicked(MouseEvent e) {
 				ArrayList<BookshelfObject> obj = new ArrayList<>();
 
-				if (pickedObjButtoncoords.size() > 0) {
+				if (savedMatrixCoords.size() > 0) {
 					ColumnButton button = (ColumnButton) e.getSource();
 
-					for (MatrixCoords coords : pickedObjButtoncoords) {
+					for (MatrixCoords coords : savedMatrixCoords) {
 						obj.add(board.tryPickObject(coords));
 					}
 
@@ -634,7 +634,7 @@ public class GameStageViewGraphic extends GameStageView {
 					if (!success) {
 						showColWarning();
 					} else {
-						pickedObjButtoncoords = new ArrayList<>();
+						savedMatrixCoords = new ArrayList<>();
 						hidePickedObjectsPanel();
 						printBookshelfObjects();
 						showEndTurnButton();
