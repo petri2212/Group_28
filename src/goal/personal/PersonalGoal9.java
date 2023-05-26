@@ -15,6 +15,10 @@ public class PersonalGoal9 extends PersonalGoal {
 	public Image getImage() {
 		return Images.PERSONAL_GOAL_9.load();
 	}
+	
+	public Map<MatrixCoords, BookshelfObject> getMap(){
+		return initGoalObjects();
+	}
 
 	@Override
 	protected Map<MatrixCoords, BookshelfObject> initGoalObjects() {

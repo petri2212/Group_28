@@ -22,6 +22,8 @@ public abstract class PersonalGoal implements Goal, DrawableObject {
 	 * @return
 	 */
 	protected abstract Map<MatrixCoords, BookshelfObject> initGoalObjects();
+	
+	public abstract Map<MatrixCoords, BookshelfObject> getMap();
 
 	@Override
 	public int check(Bookshelf bookshelf) {

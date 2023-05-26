@@ -2,7 +2,6 @@ package gui.view;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import goal.CommonGoal;
 import goal.PersonalGoal;

@@ -1,8 +1,10 @@
 package gui.view.console;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import gui.view.GameStageView;
@@ -33,10 +35,15 @@ public class GameStageViewConsole extends GameStageView {
 
 		// show board
 
-		System.out.println("Welcome in MyShelife!!");
+		System.out.println("Board");
 		printBoard();
-		System.out.println("\n\n");
-
+		System.out.println("\nBookshlef");
+		printBookshelf();
+		System.out.println("\nPersonalGoal");
+		printPersonalGoals();
+		System.out.println();
+		printCommonGoals();
+		
 		// show PickObjects
 
 		System.out.println("This is your turn: " + playerName + "\n");
@@ -84,9 +91,8 @@ public class GameStageViewConsole extends GameStageView {
 		// show PutObjects
 
 		isWaiting = true;
-		printBookshelf();
 
-		System.out.println("Insert the column where you want to insert the tile");
+		System.out.println("Insert the column where you want to insert the tile in the BookShelf");
 
 		do {
 			System.out.println("Column :");
@@ -103,12 +109,103 @@ public class GameStageViewConsole extends GameStageView {
 					tmpCoords = savedCoords.get(i);
 					System.out.print("|" + (i + 1) + ": " + tmpCoords + "|" + " ");
 				}
+				setIsWaiting(true);
 			}
 
 		} while (isWaiting);
 
 		sc.close();
 
+	}
+	
+	public void printCommonGoals(){
+		System.out.println("CommonGoal 1:\n");
+		String description = commonGoal1.getDescription();
+		System.out.println(description);
+		System.out.println("CommonGoal 2:\n");
+		description = commonGoal2.getDescription();
+		System.out.println(description);
+		System.out.println();
+	}
+	
+	public void printPersonalGoals() {
+		Map<MatrixCoords, BookshelfObject> map = personalGoal.getMap();
+		final int ROW_COUNT = bookshelf.getRows();
+		final int COL_COUNT = bookshelf.getCols();
+		final int upCard = 0;
+		final int voidUpCard = 1;
+		final int centerCard = 2;
+		final int voidDownCard = 3;
+		final int downCard = 4;
+
+		String partOfCard_a = " --------- ";
+		String partOfCard_b = "|         |";
+		int numberOfPartsInCard = 5;
+
+		for (int r = 0; r < ROW_COUNT; r++) {
+			int cont = 0;
+			while (cont < numberOfPartsInCard) {
+				int tmpCont = 0;
+
+				switch (cont) {
+
+				case upCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case voidUpCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case centerCard:
+					while (tmpCont < COL_COUNT) {
+						MatrixCoords tmpCoords = new MatrixCoords(r, tmpCont);
+						BookshelfObject object = map.get(tmpCoords);
+						if (object != null) {
+							printBookshelfObject(object);
+						} else {
+							System.out.print(partOfCard_b);
+						}
+						tmpCont++;
+					}
+					System.out.println("  | " + (r + 1));
+					break;
+
+				case voidDownCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case downCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+				}
+
+				cont++;
+			}
+		}
+		for (int j = 0; j < COL_COUNT; j++) {
+			System.out.print(" ----" + (j + 1) + "---- ");
+		}
+		System.out.println("\n");
+		
+		
+		
 	}
 
 	private void verifyObject() {
@@ -121,7 +218,8 @@ public class GameStageViewConsole extends GameStageView {
 		int indexOfRow;
 		int indexOfColumn;
 		char[] input = getInputArr();
-
+		BookshelfObject tmpObject = null;
+		
 		if (downCoordsList.isEmpty()) {
 			for (int i = 0; i < Board.DOWN_COOORDS.length; i++) {
 				downCoordsList.add(Board.DOWN_COOORDS[i]);
@@ -131,13 +229,16 @@ public class GameStageViewConsole extends GameStageView {
 
 		column = input[downCoordsPosition];
 		row = input[rightCoordsPosition];
-
+			
 		if (downCoordsList.contains(column) && rightCoordsList.contains(row)) {
 			indexOfColumn = column - letterToSubtract;
 			indexOfRow = (int) row - numberToSubtract;
 			MatrixCoords tmpCoord = new MatrixCoords(indexOfRow, indexOfColumn);
 			Tile tmpTile = board.get(tmpCoord);
-			if (tmpTile != null) {
+			if(tmpTile != null) {
+				tmpObject = tmpTile.getBookshelfObject();
+			}
+			if (tmpObject != null && board.isObjectPickable(savedMatrixCoords, tmpCoord)) {
 				setVerifier(true);
 				if (!savedMatrixCoords.contains(tmpCoord)) {
 					savedMatrixCoords.add(tmpCoord);
@@ -146,7 +247,7 @@ public class GameStageViewConsole extends GameStageView {
 					setVerifier(false);
 				}
 			} else {
-				showNullTileSelectedWarning();
+				showNotUsableOrNullWarning();
 				setVerifier(false);
 			}
 
@@ -213,51 +314,51 @@ public class GameStageViewConsole extends GameStageView {
 		for (int i = 0; i < ROW_COUNT; i++) {
 			int cont = 0;
 			while (cont < numberOfPartsInCard) {
-				int tmpcont = 0;
+				int tmpCont = 0;
 
 				switch (cont) {
 
 				case upCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_a);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
 
 				case voidUpCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_b);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
 
 				case centerCard:
-					while (tmpcont < COL_COUNT) {
-						BookshelfObject object = checkTile(i, tmpcont);
+					while (tmpCont < COL_COUNT) {
+						BookshelfObject object = checkTile(i, tmpCont);
 						if (object != null) {
 							printBookshelfObject(object);
 						} else {
 							System.out.print(partOfCard_b);
 						}
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("  | " + (arrOfRightCoords[i]));
 					break;
 
 				case voidDownCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_b);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
 
 				case downCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_a);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
@@ -273,9 +374,9 @@ public class GameStageViewConsole extends GameStageView {
 
 	// pickObjectsMethods
 
-	void showNullTileSelectedWarning() {
+	public void showNotUsableOrNullWarning() {
 		System.out.println("Attention!!");
-		System.out.println("This Tile is null!!");
+		System.out.println("Not usable Tile !!");
 		isWaiting = true;
 	}
 
@@ -402,51 +503,51 @@ public class GameStageViewConsole extends GameStageView {
 		for (int i = 0; i < ROW_COUNT; i++) {
 			int cont = 0;
 			while (cont < numberOfPartsInCard) {
-				int tmpcont = 0;
+				int tmpCont = 0;
 
 				switch (cont) {
 
 				case upCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_a);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
 
 				case voidUpCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_b);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
 
 				case centerCard:
-					while (tmpcont < COL_COUNT) {
-						BookshelfObject object = checkBookshelfObjects(i, tmpcont);
+					while (tmpCont < COL_COUNT) {
+						BookshelfObject object = checkBookshelfObjects(i, tmpCont);
 						if (object != null) {
 							printBookshelfObject(object);
 						} else {
 							System.out.print(partOfCard_b);
 						}
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("  | " + (i + 1));
 					break;
 
 				case voidDownCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_b);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
 
 				case downCard:
-					while (tmpcont < COL_COUNT) {
+					while (tmpCont < COL_COUNT) {
 						System.out.print(partOfCard_a);
-						tmpcont++;
+						tmpCont++;
 					}
 					System.out.println("   |");
 					break;
