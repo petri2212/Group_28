@@ -69,9 +69,9 @@ public class GameManager {
 			break;
 			
 		case CONTROLS:
+			board.checkIfEmpty();
 			updatePlayerTurn();
 			changeState(GameState.GAME_STAGE);
-			// if the board is empty fill with random objects
 			break;
 
 		case END:

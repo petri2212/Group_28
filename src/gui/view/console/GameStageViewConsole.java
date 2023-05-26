@@ -1,15 +1,12 @@
 package gui.view.console;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import gui.view.GameStageView;
 import myshelfie.Board;
-import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import myshelfie.Tile;
 import utils.MatrixCoords;
@@ -113,6 +110,8 @@ public class GameStageViewConsole extends GameStageView {
 			}
 
 		} while (isWaiting);
+		
+		actionEndTurn.actionPerformed(null);
 
 		sc.close();
 

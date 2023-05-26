@@ -11,6 +11,8 @@ public interface Board {
 	public static final int COL_COUNT = 9;
 
 	public void fillLivingRoomWithObjects();
+	
+	public void checkIfEmpty();
 
 	public BookshelfObject tryPickObject(MatrixCoords coords);
 

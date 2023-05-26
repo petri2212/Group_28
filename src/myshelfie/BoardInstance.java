@@ -53,6 +53,25 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 			}
 	}
 
+	public void checkIfEmpty() {
+		boolean var = true;
+		for (int r = 0; r < ROW_COUNT; r++) {
+			for (int c = 0; c < COL_COUNT; c++) {
+				Tile livingroomTile = this.get(new MatrixCoords(r, c));
+				
+				if(livingroomTile != null) {
+					BookshelfObject Object = livingroomTile.getBookshelfObject();
+					if(Object != null) {
+						var = false;
+					}
+				}
+			}
+		}
+		if(var) {
+			fillLivingRoomWithObjects();
+		}
+	}
+
 	public boolean isObjectPickable(ArrayList<MatrixCoords> pickedObjButtoncoords, MatrixCoords coords) {
 		checkEmptyTile(coords);
 		boolean result1 = checkEdges(coords);
@@ -165,14 +184,16 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 				if (cont_col != 0) {
 					if (cont_col != 2) {
 						result = false;
-					}else {
-						result = true;//if u dont do this u cant pick in a row of objects the middle one and then both of the adjacent object because the last result set result false, because the distance isnt one as compared to the last MatrixCoords
+					} else {
+						result = true;// if u dont do this u cant pick in a row of objects the middle one and then
+										// both of the adjacent object because the last result set result false, because
+										// the distance isnt one as compared to the last MatrixCoords
 					}
 
 				} else if (cont_row != 0) {
 					if (cont_row != 2) {
 						result = false;
-					}else {
+					} else {
 						result = true;//
 					}
 				}

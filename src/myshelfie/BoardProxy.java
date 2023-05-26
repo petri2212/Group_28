@@ -34,7 +34,11 @@ public class BoardProxy implements Board {
 	public void fillLivingRoomWithObjects() {
 		instance.fillLivingRoomWithObjects();
 	}
-
+	
+	public void checkIfEmpty() {
+		instance.checkIfEmpty();
+	}
+ 
 	@Override
 	public Tile get(MatrixCoords coords) {
 		return instance.get(coords);
