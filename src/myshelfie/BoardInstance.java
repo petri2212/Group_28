@@ -58,16 +58,55 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 		for (int r = 0; r < ROW_COUNT; r++) {
 			for (int c = 0; c < COL_COUNT; c++) {
 				Tile livingroomTile = this.get(new MatrixCoords(r, c));
-				
-				if(livingroomTile != null) {
-					BookshelfObject Object = livingroomTile.getBookshelfObject();
-					if(Object != null) {
-						var = false;
+
+				int UPPER_ROW = r + 1;
+				int UNDER_ROW = r - 1;
+				int RIGHT_COL = c + 1;
+				int LEFT_COL = c - 1;
+
+				if (LEFT_COL == -1) {
+					LEFT_COL = 5;
+				}
+
+				if (UNDER_ROW == -1) {
+					UNDER_ROW = 6;
+				}
+
+				Tile TileUpper = this.get(new MatrixCoords(UPPER_ROW, c));
+				Tile TileUnder = this.get(new MatrixCoords(UNDER_ROW, c));
+				Tile TileRight = this.get(new MatrixCoords(r, RIGHT_COL));
+				Tile TileLeft = this.get(new MatrixCoords(r, LEFT_COL));
+
+				if (livingroomTile != null) {
+					
+					if (livingroomTile.getBookshelfObject() != null) {
+
+						if (TileUpper != null) {
+							if (TileUpper.getBookshelfObject() != null) {
+								var = false;
+							}
+
+						} else if (TileUnder != null) {
+							if (TileUnder.getBookshelfObject() != null) {
+								var = false;
+							}
+
+						} else if (TileRight != null) {
+							if (TileRight.getBookshelfObject() != null) {
+								var = false;
+							}
+
+						} else if (TileLeft != null) {
+							if (TileLeft.getBookshelfObject() != null) {
+								var = false;
+							}
+						}
 					}
+
 				}
 			}
 		}
-		if(var) {
+		if (var) {
 			fillLivingRoomWithObjects();
 		}
 	}
