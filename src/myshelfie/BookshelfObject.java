@@ -45,7 +45,7 @@ public enum BookshelfObject implements DrawableObject {
 	public static BookshelfObject getRandomObject() {
 		BookshelfObject object = null;
 		BookshelfObject[] objects = values();
-		int randomIndex = RANDOM.nextInt(objects.length - 1);
+		int randomIndex = RANDOM.nextInt(objects.length);
 		int indexCounter = 0;
 
 		do {
