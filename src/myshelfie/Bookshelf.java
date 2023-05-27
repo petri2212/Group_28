@@ -33,7 +33,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		int r = getFirstEmptyRow(c);
 		boolean result = false;
 
-		if(r != noEmptyRow && isThereEnoughSpace(r,lenght)) {
+		if(r != noEmptyRow && isThereEnoughSpace(c, lenght)) {
 			for (BookshelfObject obj : objs) {
 				this.add(r, c, obj);
 				r++;
@@ -45,11 +45,12 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return result;
 	}
 	
-	private boolean isThereEnoughSpace(int r, int lenght) {
+	public boolean isThereEnoughSpace(int c, int lenght) {
 		int rMaxObjects = ROWS_NUMBER;
-		int rIndex = r + lenght;
+		int firstRow = getFirstEmptyRow(c);
+		int rIndex = firstRow + lenght;
 
-		return (rIndex <= rMaxObjects) ? true : false;
+		return ((rIndex <= rMaxObjects) && (firstRow != noEmptyRow)) ? true : false;
 	}
 
 	public int getFirstEmptyRow(int c) {

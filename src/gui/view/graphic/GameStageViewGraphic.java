@@ -624,11 +624,15 @@ public class GameStageViewGraphic extends GameStageView {
 				if (savedMatrixCoords.size() > 0) {
 					ColumnButton button = (ColumnButton) e.getSource();
 
-					for (MatrixCoords coords : savedMatrixCoords) {
-						obj.add(board.tryPickObject(coords));
-					}
+					boolean success = false;
 
-					boolean success = bookshelf.tryAdd(button.getColIndex(), obj);
+					if (bookshelf.isThereEnoughSpace(button.getColIndex(), savedMatrixCoords.size())) {
+						for (MatrixCoords coords : savedMatrixCoords) {
+							obj.add(board.tryPickObject(coords));
+						}
+
+						success = bookshelf.tryAdd(button.getColIndex(), obj);
+					}
 
 					if (!success) {
 						showColWarning();
