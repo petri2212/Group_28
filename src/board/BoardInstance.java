@@ -1,8 +1,7 @@
 package board;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.List;
 
 import myshelfie.BookshelfObject;
 import utils.Matrix;
@@ -57,97 +56,42 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 			}
 	}
 
-	public boolean checkIfEmpty() {
-		boolean var = true;
+	public boolean areAllObjectsIsolated() {
 		for (int r = 0; r < ROW_COUNT; r++) {
 			for (int c = 0; c < COL_COUNT; c++) {
 				Tile livingroomTile = this.get(new MatrixCoords(r, c));
 
-				int UPPER_ROW = r + 1;
-				int UNDER_ROW = r - 1;
-				int RIGHT_COL = c + 1;
-				int LEFT_COL = c - 1;
+				if ((livingroomTile != null) && (livingroomTile.getBookshelfObject() != null)) {
 
-				if (LEFT_COL == -1) {
-					LEFT_COL = 10;
-				}
+					List<BookshelfObject> adjacentObjects = getAjacentObjects(r, c);
 
-				if (UNDER_ROW == -1) {
-					UNDER_ROW = 10;
-				}
-
-				Tile TileUpper = this.get(new MatrixCoords(UPPER_ROW, c));
-				Tile TileUnder = this.get(new MatrixCoords(UNDER_ROW, c));
-				Tile TileRight = this.get(new MatrixCoords(r, RIGHT_COL));
-				Tile TileLeft = this.get(new MatrixCoords(r, LEFT_COL));
-
-				if (livingroomTile != null) {
-					
-					if (livingroomTile.getBookshelfObject() != null) {
-
-						if (TileUpper != null) {
-							if (TileUpper.getBookshelfObject() != null) {
-								var = false;
-							}
-
-						} 
-						if (TileUnder != null) {
-							if (TileUnder.getBookshelfObject() != null) {
-								var = false;
-							}
-
+					for (BookshelfObject object : adjacentObjects) {
+						if (object != null) {
+							return false;
 						}
-							
-						if (TileRight != null) {
-							if (TileRight.getBookshelfObject() != null) {
-								var = false;
-							}
-
-						} 
-						if (TileLeft != null) {
-							if (TileLeft.getBookshelfObject() != null) {
-								var = false;
-							}
-						}
-						
 					}
-
 				}
 			}
 		}
-		return var;
-	}
-	
-	public Map<MatrixCoords, Tile> getRemanentObjectsBeforeReinitialize(){
-		Map<MatrixCoords, Tile> remanentObj=new HashMap<>();
-		for (int r = 0; r < ROW_COUNT; r++) {
-			for (int c = 0; c < COL_COUNT; c++) {
-				Tile livingroomTile = this.get(new MatrixCoords(r, c));
-				if (livingroomTile != null) {
-					if(livingroomTile.getBookshelfObject() != null) {
-						remanentObj.put(new MatrixCoords(r, c), livingroomTile);
-					}
-				}
 
+		return true;
+	}
+
+	private ArrayList<BookshelfObject> getAjacentObjects(int r, int c) {
+		ArrayList<BookshelfObject> objects = new ArrayList<>();
+		MatrixCoords[] adjacentCoords = { new MatrixCoords(r + 1, c), new MatrixCoords(r - 1, c),
+				new MatrixCoords(r, c + 1), new MatrixCoords(r, c - 1) };
+
+		for (MatrixCoords coords : adjacentCoords) {
+			Tile tile = this.get(coords);
+
+			if ((tile != null)) {
+				objects.add(tile.getBookshelfObject());
 			}
 		}
-		return remanentObj;
+
+		return objects;
 	}
-	public void InsertRemanentObjectsAfterBoardReinitialize(Map<MatrixCoords, Tile> objects){
-		
-		for(Map.Entry<MatrixCoords, Tile> obj : objects.entrySet()) {
-			MatrixCoords coords=obj.getKey();
-			Tile tile=obj.getValue();
-			this.add(coords.r, coords.c, tile);
-			
-		}
-		
-	}
-	
-	
-	
-	
-	
 
 	public boolean isObjectPickable(ArrayList<MatrixCoords> pickedObjButtoncoords, MatrixCoords coords) {
 		checkEmptyTile(coords);
@@ -161,7 +105,7 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 		checkEmptyTile(coords);
 		BookshelfObject object = super.get(coords).getBookshelfObject();
 
-		super.remove(coords);
+		super.get(coords).removeObject();
 		return object;
 	}
 

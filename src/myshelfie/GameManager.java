@@ -72,7 +72,10 @@ public class GameManager {
 			break;
 			
 		case CONTROLS:
-			board.checkIfEmpty();
+			if (board.areAllObjectsIsolated()) {
+				board.fillLivingRoomWithObjects();
+			}
+
 			updatePlayerTurn();
 			changeState(GameState.GAME_STAGE);
 			break;

@@ -13,7 +13,7 @@ public interface Board {
 
 	public void fillLivingRoomWithObjects();
 	
-	public boolean checkIfEmpty();
+	public boolean areAllObjectsIsolated();
 
 	public BookshelfObject tryPickObject(MatrixCoords coords);
 
