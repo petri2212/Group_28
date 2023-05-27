@@ -620,6 +620,7 @@ public class GameStageViewGraphic extends GameStageView {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				board.checkIfEmpty();
 				ArrayList<BookshelfObject> obj = new ArrayList<>();
 
 				if (savedMatrixCoords.size() > 0) {

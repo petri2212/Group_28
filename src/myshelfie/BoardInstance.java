@@ -1,6 +1,8 @@
 package myshelfie;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import utils.Matrix;
 import utils.MatrixCoords;
@@ -30,7 +32,8 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 	 * A Map representing the game board composed with tiles. The livingroom
 	 * indexing goes as 0,0 from top-left corner to 8,8 bottom-right corner.
 	 */
-	public final Tile[][] livingroomTileMap = { { null, null, null, tile3p(), tile4p(), null, null, null, null },
+	public final Tile[][] livingroomTileMap = { 
+			{ null, null, null, tile3p(), tile4p(), null, null, null, null },
 			{ null, null, null, tile2p(), tile2p(), tile4p(), null, null, null },
 			{ null, null, tile3p(), tile2p(), tile2p(), tile2p(), tile3p(), null, null },
 			{ null, tile4p(), tile2p(), tile2p(), tile2p(), tile2p(), tile2p(), tile2p(), tile3p() },
@@ -53,7 +56,7 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 			}
 	}
 
-	public void checkIfEmpty() {
+	public boolean checkIfEmpty() {
 		boolean var = true;
 		for (int r = 0; r < ROW_COUNT; r++) {
 			for (int c = 0; c < COL_COUNT; c++) {
@@ -106,10 +109,39 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 				}
 			}
 		}
-		if (var) {
-			fillLivingRoomWithObjects();
-		}
+		return var;
 	}
+	
+	public Map<MatrixCoords, Tile> getRemanentObjectsBeforeReinitialize(){
+		Map<MatrixCoords, Tile> remanentObj=new HashMap<>();
+		for (int r = 0; r < ROW_COUNT; r++) {
+			for (int c = 0; c < COL_COUNT; c++) {
+				Tile livingroomTile = this.get(new MatrixCoords(r, c));
+				if (livingroomTile != null) {
+					if(livingroomTile.getBookshelfObject() != null) {
+						remanentObj.put(new MatrixCoords(r, c), livingroomTile);
+					}
+				}
+
+			}
+		}
+		return remanentObj;
+	}
+	public void InsertRemanentObjectsAfterBoardReinitialize(Map<MatrixCoords, Tile> objects){
+		
+		for(Map.Entry<MatrixCoords, Tile> obj : objects.entrySet()) {
+			MatrixCoords coords=obj.getKey();
+			Tile tile=obj.getValue();
+			this.add(coords.r, coords.c, tile);
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
 
 	public boolean isObjectPickable(ArrayList<MatrixCoords> pickedObjButtoncoords, MatrixCoords coords) {
 		checkEmptyTile(coords);

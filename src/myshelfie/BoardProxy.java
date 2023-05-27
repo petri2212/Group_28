@@ -1,14 +1,19 @@
 package myshelfie;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import utils.MatrixCoords;
 
 public class BoardProxy implements Board {
 	public BoardInstance instance;
+	public int playersnumber;
+
 
 	public BoardProxy(int playersnumber) {
-		instance = new BoardInstance(playersnumber);
+		this.playersnumber=playersnumber;
+		instance = new BoardInstance(this.playersnumber);
 		init();
 		fillLivingRoomWithObjects();
 	}
@@ -35,8 +40,18 @@ public class BoardProxy implements Board {
 		instance.fillLivingRoomWithObjects();
 	}
 	
-	public void checkIfEmpty() {
-		instance.checkIfEmpty();
+	public boolean checkIfEmpty() {
+		if(instance.checkIfEmpty()==true) {
+			Map<MatrixCoords, Tile> remanentObj=new HashMap<>();
+			remanentObj=instance.getRemanentObjectsBeforeReinitialize();
+			instance = new BoardInstance(this.playersnumber);
+			init();
+			fillLivingRoomWithObjects();
+			instance.InsertRemanentObjectsAfterBoardReinitialize(remanentObj);
+		}   
+		
+		
+		return instance.checkIfEmpty();
 	}
  
 	@Override
