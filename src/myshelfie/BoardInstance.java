@@ -68,11 +68,11 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 				int LEFT_COL = c - 1;
 
 				if (LEFT_COL == -1) {
-					LEFT_COL = 5;
+					LEFT_COL = 10;
 				}
 
 				if (UNDER_ROW == -1) {
-					UNDER_ROW = 6;
+					UNDER_ROW = 10;
 				}
 
 				Tile TileUpper = this.get(new MatrixCoords(UPPER_ROW, c));
@@ -89,21 +89,26 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 								var = false;
 							}
 
-						} else if (TileUnder != null) {
+						} 
+						if (TileUnder != null) {
 							if (TileUnder.getBookshelfObject() != null) {
 								var = false;
 							}
 
-						} else if (TileRight != null) {
+						}
+							
+						if (TileRight != null) {
 							if (TileRight.getBookshelfObject() != null) {
 								var = false;
 							}
 
-						} else if (TileLeft != null) {
+						} 
+						if (TileLeft != null) {
 							if (TileLeft.getBookshelfObject() != null) {
 								var = false;
 							}
 						}
+						
 					}
 
 				}
