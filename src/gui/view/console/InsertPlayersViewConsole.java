@@ -31,7 +31,6 @@ public class InsertPlayersViewConsole extends InsertPlayersView {
 				isWaiting = false;
 			}else if(input.equalsIgnoreCase("init")){
 				actionInitGame.actionPerformed(null);
-				isWaiting = false;
 			}else {
 				setInput(input);
 				actionInsertPlayer.actionPerformed(null);
