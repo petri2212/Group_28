@@ -14,13 +14,25 @@ import myshelfie.Player;
 public class GameStageController extends Controller<GameStageView> {
 
 	private Player player;
+	
 
 	public GameStageController(GameManager model, GameStageView view) {
 		super(model, view);
 
 		ArrayList<Player> players = model.getPlayers();
 		int playerTurn = model.getPlayerTurn();
+		
 		this.player = players.get(playerTurn);
+		if(this.player.getBookshelf().isFull()) {
+			for(int i=0; i<players.size();i++) {
+				
+					model.updatePlayerTurn();
+					this.player=players.get(playerTurn = model.getPlayerTurn());
+					if(!(this.player.getBookshelf().isFull())) {
+						break;
+					}
+			}
+		}
 		String playerName = player.getName();
 
 		this.view.setCommonGoals(model.getCommonGoalManager().getCommonGoal1(),
@@ -43,7 +55,7 @@ public class GameStageController extends Controller<GameStageView> {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (player.getBookshelf().isFull()) {
-					model.changeState(GameState.END);
+					model.changeState(GameState.BOOKSHELF_COMPLETED);
 				} else {
 					model.changeState(GameState.CONTROLS);
 				}
