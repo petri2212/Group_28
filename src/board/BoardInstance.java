@@ -79,8 +79,21 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 
 	private ArrayList<BookshelfObject> getAjacentObjects(int r, int c) {
 		ArrayList<BookshelfObject> objects = new ArrayList<>();
-		MatrixCoords[] adjacentCoords = { new MatrixCoords(r + 1, c), new MatrixCoords(r - 1, c),
-				new MatrixCoords(r, c + 1), new MatrixCoords(r, c - 1) };
+		
+		int UPPER_COORDS=r-1;
+		int LEFT_COORDS=c-1;
+		
+		if(UPPER_COORDS == -1) {
+			UPPER_COORDS=10;
+		}
+		
+		if(LEFT_COORDS == -1) {
+			LEFT_COORDS=10;
+		}
+		
+		
+		MatrixCoords[] adjacentCoords = { new MatrixCoords(r + 1, c), new MatrixCoords(UPPER_COORDS, c),
+				new MatrixCoords(r, c + 1), new MatrixCoords(r, LEFT_COORDS) };
 
 		for (MatrixCoords coords : adjacentCoords) {
 			Tile tile = this.get(coords);
