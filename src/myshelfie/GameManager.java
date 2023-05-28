@@ -75,7 +75,7 @@ public class GameManager {
 			if (board.areAllObjectsIsolated()) {
 				board.fillLivingRoomWithObjects();
 			}
-
+			
 			updatePlayerTurn();
 			changeState(GameState.GAME_STAGE);
 			break;

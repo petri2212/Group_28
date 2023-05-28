@@ -94,8 +94,8 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 	}
 
 	public boolean isFull() {
-		for (int r = 0; r < Board.ROW_COUNT; r++) {
-			for (int c = 0; c < Board.COL_COUNT; c++) {
+		for (int r = 0; r < ROWS_NUMBER; r++) {
+			for (int c = 0; c < COLS_NUMBER; c++) {
 				BookshelfObject object = get(new MatrixCoords(r, c));
 
 				if (object == null) {
