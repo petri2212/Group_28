@@ -27,7 +27,6 @@ public class GameManager {
 		state = GameState.HOME;
 		players = new ArrayList<>();
 		playerTurn = 0;
-
 		manageState();
 	}
 
@@ -75,12 +74,25 @@ public class GameManager {
 			if (board.areAllObjectsIsolated()) {
 				board.fillLivingRoomWithObjects();
 			}
-			
 			updatePlayerTurn();
 			changeState(GameState.GAME_STAGE);
 			break;
-
+		case BOOKSHELF_COMPLETED:
+			int contFinishedBooshelf = 0;
+			for(Player player : players) {
+				if(player.getBookshelf().isFull()) {
+					contFinishedBooshelf++;
+				}
+			}
+			
+			if(contFinishedBooshelf==players.size()) {
+				changeState(GameState.END);
+			}else {
+				changeState(GameState.GAME_STAGE);
+			}
+			break;
 		case END:
+			System.out.println("finito");
 			// check points
 			// show points screen
 			break;
@@ -102,7 +114,7 @@ public class GameManager {
 		return this.playerTurn;
 	}
 
-	private void updatePlayerTurn() {
+	public void updatePlayerTurn() {
 		playerTurn = (playerTurn < players.size() - 1) ? ++playerTurn : 0;
 	}
 
