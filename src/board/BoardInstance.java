@@ -49,7 +49,7 @@ public class BoardInstance extends Matrix<Tile> implements Board {
 			for (int c = 0; c < COL_COUNT; c++) {
 				Tile livingroomTile = this.get(new MatrixCoords(r, c));
 
-				if (livingroomTile != null && livingroomTile.isUsable(playersNumber)) {
+				if (livingroomTile != null && livingroomTile.isUsable(playersNumber) && livingroomTile.getBookshelfObject()==null) {
 					BookshelfObject randomObject = BookshelfObject.getRandomObject();
 					livingroomTile.addObject(randomObject);
 				}
