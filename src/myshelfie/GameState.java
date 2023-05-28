@@ -8,5 +8,6 @@ public enum GameState
 	INIT_GAME,
 	GAME_STAGE,
 	CONTROLS,
+	BOOKSHELF_COMPLETED,
 	END;
 }
