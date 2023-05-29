@@ -28,4 +28,11 @@ public class ConsoleUI implements UI {
 		controller.start();
 	}
 
+	@Override
+	public void showPointsPage(GameManager model) {
+		PointsPageViewConsole view = new PointsPageViewConsole();
+		PointsPageController controller = new PointsPageController(model, view);
+		controller.start();
+	}
+
 }

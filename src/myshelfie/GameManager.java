@@ -94,7 +94,7 @@ public class GameManager {
 		case END:
 			System.out.println("finito");
 			// check points
-			// show points screen
+			ui.showPointsPage(this);
 			break;
 
 		default:

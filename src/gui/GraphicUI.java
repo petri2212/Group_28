@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import gui.controller.*;
+import gui.view.console.PointsPageViewConsole;
 import gui.view.graphic.*;
 
 import myshelfie.GameManager;
@@ -46,6 +47,13 @@ public class GraphicUI implements UI {
 	public void showGameStagePage(GameManager model) {
 		GameStageViewGraphic view = new GameStageViewGraphic(mainFrame);
 		GameStageController controller = new GameStageController(model, view);
+		controller.start();
+	}
+
+	@Override
+	public void showPointsPage(GameManager model) {
+		PointsPageViewGraphic view = new PointsPageViewGraphic(mainFrame);
+		PointsPageController controller = new PointsPageController(model, view);
 		controller.start();
 	}
 
