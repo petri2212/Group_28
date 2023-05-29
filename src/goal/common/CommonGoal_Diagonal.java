@@ -34,7 +34,11 @@ public class CommonGoal_Diagonal extends CommonGoal {
 		 * them start form bottom left and end top right and the other two start from
 		 * bottom right and end top left.
 		 */
-		ArrayList<BookshelfObject> tiles = new ArrayList<BookshelfObject>();
+
+		boolean value = false;
+		BookshelfObject next;
+		int r = FRIST_COL_OR_ROW;
+		int c = FRIST_COL_OR_ROW;
 
 		BookshelfObject downLeft = library.get(new MatrixCoords(FRIST_COL_OR_ROW, FRIST_COL_OR_ROW));
 		BookshelfObject upLeft = library.get(new MatrixCoords(SECOND_ROW, FRIST_COL_OR_ROW));
@@ -42,78 +46,83 @@ public class CommonGoal_Diagonal extends CommonGoal {
 		BookshelfObject upRight = library.get(new MatrixCoords(SECOND_ROW, SECOND_COL));
 
 		if (downLeft != null) {
-			tiles.add(downLeft);
-		}
-		if (upLeft != null) {
-			tiles.add(upLeft);
-		}
-		if (downRight != null) {
-			tiles.add(downRight);
-		}
-		if (upRight != null) {
-			tiles.add(upRight);
-		}
-
-		if (tiles.size() != 0) {
-
-			int r = FRIST_COL_OR_ROW;
-			int c = FRIST_COL_OR_ROW;
-			int donwleft_diagonal_position = 1;
-			int upLeft_diagonal_position = 2;
-			int donwright_diagonal_position = 3;
-			boolean value = false;
-
-			for (int y = 0; y < tiles.size(); y++) {
-				if (y < upLeft_diagonal_position) {
-					if (y == donwleft_diagonal_position) {
-						r = SECOND_ROW;
-					}
-					BookshelfObject start = tiles.get(y);
-					for (int i = 1; i < DIAGONAL_LENGHT; i++) {
-						BookshelfObject next = library.get(new MatrixCoords(r + i, c + i));
-						if (next != null) {
-							if (start.name() == next.name()) {
-								value = true;
-							} else {
-								value = false;
-								break;
-							}
-						} else {
-							value = false;
-							break;
-						}
-
-					}
+			for (int i = 1; i < DIAGONAL_LENGHT; i++) {
+				try {
+					next = library.get(new MatrixCoords(r + i, c + i));
+				} catch (Exception e) {
+					value = false;
+					break;
+				}
+				if (downLeft.name() != next.name()) {
+					value = false;
+					break;
 				} else {
-					r = FRIST_COL_OR_ROW;
-					c = SECOND_COL;
-					if (y == donwright_diagonal_position) {
-						r = SECOND_ROW;
-					}
-					BookshelfObject start = tiles.get(y);
-					/*
-					 * in he for down below we initialize the i at 1 because we need use that as the
-					 * number to add from rows and to subtract from columns
-					 */
-					for (int i = 1; i < DIAGONAL_LENGHT; i++) {
-						BookshelfObject next = library.get(new MatrixCoords(r + i, c - i));
-						if (next != null) {
-							if (start.name() == next.name()) {
-								value = true;
-							} else {
-								value = false;
-								break;
-							}
-						} else {
-							value = false;
-							break;
-						}
-					}
+					value = true;
 				}
+			}
+			if (value) {
+				return 1;
+			}
 
-				if (value) {
-					return 1;
+		}
+
+		if (upLeft != null) {
+			for (int i = 1; i < DIAGONAL_LENGHT; i++) {
+				try {
+					next = library.get(new MatrixCoords(r + i, c + i));
+				} catch (Exception e) {
+					value = false;
+					break;
 				}
+				if (downLeft.name() != next.name()) {
+					value = false;
+					break;
+				} else {
+					value = true;
+				}
+			}
+			if (value) {
+				return 1;
+			}
+		}
+
+		if (downRight != null) {
+			for (int i = 1; i < DIAGONAL_LENGHT; i++) {
+				try {
+					next = library.get(new MatrixCoords(r + i, c - i));
+				} catch (Exception e) {
+					value = false;
+					break;
+				}
+				if (downLeft.name() != next.name()) {
+					value = false;
+					break;
+				} else {
+					value = true;
+				}
+			}
+			if (value) {
+				return 1;
+			}
+		}
+
+		if (upRight != null) {
+			for (int i = 1; i < DIAGONAL_LENGHT; i++) {
+				try {
+					next = library.get(new MatrixCoords(r + i, c - i));
+				} catch (Exception e) {
+					value = false;
+					break;
+				}
+				if (downLeft.name() != next.name()) {
+					value = false;
+					break;
+				} else {
+					value = true;
+				}
+			}
+			if (value) {
+				return 1;
 			}
 		}
 
