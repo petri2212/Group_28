@@ -2,7 +2,6 @@ package myshelfie;
 
 import java.util.List;
 
-import board.Board;
 import utils.Matrix;
 import utils.MatrixCoords;
 
