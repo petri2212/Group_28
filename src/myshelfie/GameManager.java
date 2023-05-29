@@ -10,7 +10,7 @@ import goal.CommonGoalManager;
 import gui.UI;
 
 public class GameManager {
-	
+
 	private GameState state;
 	private UI ui;
 	private ArrayList<Player> players;
@@ -18,9 +18,11 @@ public class GameManager {
 	private int playerTurn;
 	private Points points;
 	private CommonGoalManager commonGoalManager;
+	private boolean isLastTurn;
 
 	public GameManager(UI ui) {
 		this.ui = ui;
+		isLastTurn = false;
 	}
 
 	public void start() {
@@ -74,23 +76,14 @@ public class GameManager {
 			if (board.areAllObjectsIsolated()) {
 				board.fillLivingRoomWithObjects();
 			}
+
+			if (players.get(playerTurn).getBookshelf().isFull()) {
+				isLastTurn = true;
+			}
 			updatePlayerTurn();
 			changeState(GameState.GAME_STAGE);
 			break;
-		case BOOKSHELF_COMPLETED:
-			int contFinishedBooshelf = 0;
-			for(Player player : players) {
-				if(player.getBookshelf().isFull()) {
-					contFinishedBooshelf++;
-				}
-			}
-			
-			if(contFinishedBooshelf==players.size()) {
-				changeState(GameState.END);
-			}else {
-				changeState(GameState.GAME_STAGE);
-			}
-			break;
+
 		case END:
 			System.out.println("finito");
 			// check points
@@ -105,17 +98,25 @@ public class GameManager {
 	public Board getBoard() {
 		return board;
 	}
-	
+
 	public int getPlayersNumber() {
 		return this.players.size();
 	}
-	
+
 	public int getPlayerTurn() {
 		return this.playerTurn;
 	}
 
 	public void updatePlayerTurn() {
-		playerTurn = (playerTurn < players.size() - 1) ? ++playerTurn : 0;
+		if (playerTurn < players.size() - 1) {
+			playerTurn++;
+		} else {
+			if (isLastTurn) {
+				changeState(GameState.END);
+			} else {
+				playerTurn = 0;
+			}
+		}
 	}
 
 	public void setPlayers(ArrayList<Player> players) {

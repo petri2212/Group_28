@@ -54,11 +54,7 @@ public class GameStageController extends Controller<GameStageView> {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (player.getBookshelf().isFull()) {
-					model.changeState(GameState.BOOKSHELF_COMPLETED);
-				} else {
-					model.changeState(GameState.CONTROLS);
-				}
+				model.changeState(GameState.CONTROLS);
 			}
 		};
 
