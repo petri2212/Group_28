@@ -28,10 +28,8 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 	@Override
 	public int check(Bookshelf library) {
 		int colsWithDifferentObj = 0;
-
 		for (int c = 0; c < library.getCols(); c++) {
 			Set<BookshelfObject> columnObjects = new HashSet<>();
-
 			for (int r = 0; r < library.getRows(); r++) {
 				BookshelfObject obj = library.get(new MatrixCoords(r, c));
 
@@ -39,10 +37,10 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 					break;
 				}
 			}
-
-			colsWithDifferentObj++;
+			if (columnObjects.size() == 6) {
+				colsWithDifferentObj++;
+			}
 		}
-
 		if (colsWithDifferentObj >= MIN_COL_NUMBER) {
 			return 1;
 		} else {
