@@ -9,7 +9,7 @@ import myshelfie.BookshelfObject;
 import resource.Images;
 import utils.MatrixCoords;
 
-public class CommonGoal_Diagonal extends CommonGoal{
+public class CommonGoal_Diagonal extends CommonGoal {
 
 	private static final int FRIST_COL_OR_ROW = 0;
 	private static final int SECOND_COL = 4;
@@ -23,77 +23,107 @@ public class CommonGoal_Diagonal extends CommonGoal{
 
 	@Override
 	public int check(Bookshelf library) {
-		
-		/*This CommonGoal has only four possible tile to start from, because
-		 *two of them start form bottom left and end top right and the other two
-		 *start from bottom right and end top left. 
-		 * */		
-		if(library.fullCol(FRIST_COL_OR_ROW) || library.fullCol(SECOND_ROW)) {
-			BookshelfObject downLeft = library.get(new MatrixCoords(FRIST_COL_OR_ROW, FRIST_COL_OR_ROW));
-			BookshelfObject upLeft = library.get(new MatrixCoords(SECOND_ROW, FRIST_COL_OR_ROW));
-			BookshelfObject downRight = library.get(new MatrixCoords(FRIST_COL_OR_ROW, SECOND_COL));
-			BookshelfObject upRight = library.get(new MatrixCoords(SECOND_ROW, SECOND_COL));
-			
-			ArrayList<BookshelfObject> tiles = new ArrayList<BookshelfObject>();
+
+		/*
+		 * This CommonGoal has only four possible tile to start from, because two of
+		 * them start form bottom left and end top right and the other two start from
+		 * bottom right and end top left.
+		 */
+		/*
+		 * This CommonGoal has only four possible tile to start from, because two of
+		 * them start form bottom left and end top right and the other two start from
+		 * bottom right and end top left.
+		 */
+		ArrayList<BookshelfObject> tiles = new ArrayList<BookshelfObject>();
+
+		BookshelfObject downLeft = library.get(new MatrixCoords(FRIST_COL_OR_ROW, FRIST_COL_OR_ROW));
+		BookshelfObject upLeft = library.get(new MatrixCoords(SECOND_ROW, FRIST_COL_OR_ROW));
+		BookshelfObject downRight = library.get(new MatrixCoords(FRIST_COL_OR_ROW, SECOND_COL));
+		BookshelfObject upRight = library.get(new MatrixCoords(SECOND_ROW, SECOND_COL));
+
+		if (downLeft != null) {
 			tiles.add(downLeft);
+		}
+		if (upLeft != null) {
 			tiles.add(upLeft);
+		}
+		if (downRight != null) {
 			tiles.add(downRight);
+		}
+		if (upRight != null) {
 			tiles.add(upRight);
-			
+		}
+
+		if (tiles.size() != 0) {
+
 			int r = FRIST_COL_OR_ROW;
 			int c = FRIST_COL_OR_ROW;
 			int donwleft_diagonal_position = 1;
 			int upLeft_diagonal_position = 2;
 			int donwright_diagonal_position = 3;
 			boolean value = false;
-			
-			for(int y = 0; y < tiles.size(); y++) {
-				if(y < upLeft_diagonal_position) {
-					if(y == donwleft_diagonal_position) {
+
+			for (int y = 0; y < tiles.size(); y++) {
+				if (y < upLeft_diagonal_position) {
+					if (y == donwleft_diagonal_position) {
 						r = SECOND_ROW;
 					}
 					BookshelfObject start = tiles.get(y);
-					for(int i = 1; i < DIAGONAL_LENGHT+1; i++) {
-						BookshelfObject next = library.get(new MatrixCoords(r+i, c+i));
-						if(start == next) {
-							value = true;
-						}else {
+					for (int i = 1; i < DIAGONAL_LENGHT; i++) {
+						BookshelfObject next = library.get(new MatrixCoords(r + i, c + i));
+						if (next != null) {
+							if (start.name() == next.name()) {
+								value = true;
+							} else {
+								value = false;
+								break;
+							}
+						} else {
 							value = false;
 							break;
 						}
+
 					}
-				}else {
+				} else {
 					r = FRIST_COL_OR_ROW;
 					c = SECOND_COL;
-					if(y == donwright_diagonal_position) {
+					if (y == donwright_diagonal_position) {
 						r = SECOND_ROW;
 					}
 					BookshelfObject start = tiles.get(y);
-					/*in he for down below we initialize the i at 1 because
-					 * we need use that as the number to add from rows and to subtract from columns 
-					 * */
-					for(int i = 1; i < DIAGONAL_LENGHT+1; i++) {
-						BookshelfObject next = library.get(new MatrixCoords(r+i, c-i));
-						if(start == next) {
-							value = true;
-						}else {
+					/*
+					 * in he for down below we initialize the i at 1 because we need use that as the
+					 * number to add from rows and to subtract from columns
+					 */
+					for (int i = 1; i < DIAGONAL_LENGHT; i++) {
+						BookshelfObject next = library.get(new MatrixCoords(r + i, c - i));
+						if (next != null) {
+							if (start.name() == next.name()) {
+								value = true;
+							} else {
+								value = false;
+								break;
+							}
+						} else {
 							value = false;
 							break;
 						}
 					}
 				}
-				if(value)
+
+				if (value) {
 					return 1;
-			}			
+				}
+			}
 		}
+
 		return 0;
 	}
 
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		String desc="Five tiles of the same type forming a\r\n"
-				+ "diagonal.";
+		String desc = "Five tiles of the same type forming a\r\n" + "diagonal.";
 		return desc;
 	}
 }
