@@ -5,7 +5,7 @@ import goal.PersonalGoal;
 /**
  * Represents a physical player of the game
  */
-public class Player {
+public class Player /*implements Comparable<Player>*/ {
 
 	private String name;
 	private int points;
@@ -87,4 +87,15 @@ public class Player {
 	public PersonalGoal getPersonalGoal() {
 		return personalGoal;
 	}
+
+	/*@Override
+	public int compareTo(Player player) {
+		if (points == player.getPoints()) {
+			return 0;
+		} else if (points > player.getPoints()) {
+			return -1;
+		} else {
+			return 1;
+		}
+	}*/
 }
