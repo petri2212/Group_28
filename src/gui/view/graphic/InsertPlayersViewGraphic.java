@@ -22,8 +22,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 
 import gui.component.BackgroundPanel;
-import gui.controller.InsertPlayersController;
 import gui.view.InsertPlayersView;
+import myshelfie.MyShelfie;
 import myshelfie.Player;
 import resource.Icons;
 import resource.Images;
@@ -39,7 +39,7 @@ public class InsertPlayersViewGraphic extends InsertPlayersView {
 	private JTextField txtPlayerName;
 	private JPanel panelWarning;
 	private JLabel lblWarning;
-	private JLabel[] lblPlayers = new JLabel[InsertPlayersController.MAX_PLAYERS];
+	private JLabel[] lblPlayers = new JLabel[MyShelfie.MAX_PLAYERS];
 
 	public InsertPlayersViewGraphic(JFrame mainFrame) {
 		this.mainFrame = mainFrame;

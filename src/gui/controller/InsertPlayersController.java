@@ -8,6 +8,7 @@ import gui.Controller;
 import gui.view.InsertPlayersView;
 import myshelfie.GameManager;
 import myshelfie.GameState;
+import myshelfie.MyShelfie;
 import myshelfie.Player;
 
 public class InsertPlayersController extends Controller<InsertPlayersView> {
@@ -15,9 +16,6 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 	public InsertPlayersController(GameManager model, InsertPlayersView view) {
 		super(model, view);
 	}
-
-	private static final int MIN_PLAYERS = 2;
-	public static final int MAX_PLAYERS = 4;
 
 	@Override
 	protected void initViewListeners() {
@@ -35,7 +33,7 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Player> players = view.getInseredPlayers();
 
-				if (players.size() < MIN_PLAYERS) {
+				if (players.size() < MyShelfie.MIN_PLAYERS) {
 					view.showTooFewPlayersWarning();
 				} else {
 					model.setPlayers(view.getInseredPlayers());
@@ -58,7 +56,7 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 				} else if (players.contains(player)) {
 					view.showDoublePlayersWarning();
 					return;
-				} else if (players.size() == MAX_PLAYERS) {
+				} else if (players.size() == MyShelfie.MAX_PLAYERS) {
 					view.showTooManyPlayersWarning();
 				} else {
 					view.insertPlayers(player);

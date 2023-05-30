@@ -4,6 +4,9 @@ import gui.*;
 
 public class MyShelfie {
 
+	public static final int MIN_PLAYERS = 2;
+	public static final int MAX_PLAYERS = 4;
+
 	public static void main(String[] args) {
 
 		//UI ui = new ConsoleUI();
