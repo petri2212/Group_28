@@ -445,10 +445,10 @@ public class GameStageViewGraphic extends GameStageView {
 							@Override
 							public void actionPerformed(ActionEvent e) {
 								if (savedMatrixCoords.size() < MAX_PICKED_OBJECTS) {
-									boolean objectPicked = board.isObjectPickable(savedMatrixCoords,
+									boolean objectPickable = board.isObjectPickable(savedMatrixCoords,
 											objectButton.getCoords());
 
-									if (objectPicked) {
+									if (objectPickable && bookshelf.isThereEnoughSpace(savedMatrixCoords.size())) {
 										savedMatrixCoords.add(objectButton.getCoords());
 										int objectIndex = savedMatrixCoords.size() - 1;
 										panelPickedObjects[objectIndex].setBackground(object.getImage());

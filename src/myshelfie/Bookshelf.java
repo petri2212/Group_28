@@ -44,6 +44,20 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return result;
 	}
 	
+	public boolean isThereEnoughSpace(int lenght) {
+		for(int c = 0; c < COLS_NUMBER; c++) {
+			int rMaxObjects = ROWS_NUMBER;
+			int firstRow = getFirstEmptyRow(c);
+			int rIndex = firstRow + lenght;
+
+			if((rIndex < rMaxObjects) && (firstRow != noEmptyRow)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public boolean isThereEnoughSpace(int c, int lenght) {
 		int rMaxObjects = ROWS_NUMBER;
 		int firstRow = getFirstEmptyRow(c);
