@@ -81,8 +81,7 @@ public class GameManager {
 
 			}
 			commonGoalManager.CheckPlacementPlayer();
-			updatePlayerTurn();
-			changeState(GameState.GAME_STAGE);
+			updatePlayerTurnAndChangeState();
 			break;
 
 		case END:
@@ -90,9 +89,6 @@ public class GameManager {
 				player.addPoints(player.getPersonalGoal().check(player.bookshelf));
 			}
 			assignPoints(commonGoalManager.playersGoal1Placement(), commonGoalManager.playersGoal2Placement());
-			for (Player player : players) {
-				System.out.println("name: " + player.getName() + "    points: " + player.getPoints());
-			}
 
 			ui.showPointsPage(this);
 			break;
@@ -114,14 +110,16 @@ public class GameManager {
 		return this.playerTurn;
 	}
 
-	public void updatePlayerTurn() {
+	public void updatePlayerTurnAndChangeState() {
 		if (playerTurn < players.size() - 1) {
 			playerTurn++;
+			changeState(GameState.GAME_STAGE);
 		} else {
 			if (isLastTurn) {
 				changeState(GameState.END);
 			} else {
 				playerTurn = 0;
+				changeState(GameState.GAME_STAGE);
 			}
 		}
 	}

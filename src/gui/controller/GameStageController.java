@@ -26,7 +26,7 @@ public class GameStageController extends Controller<GameStageView> {
 		if(this.player.getBookshelf().isFull()) {
 			for(int i=0; i<players.size();i++) {
 				
-					model.updatePlayerTurn();
+					model.updatePlayerTurnAndChangeState();
 					this.player=players.get(playerTurn = model.getPlayerTurn());
 					if(!(this.player.getBookshelf().isFull())) {
 						break;
