@@ -27,7 +27,7 @@ public class GameManager {
 	}
 
 	public void start() {
-		state = GameState.HOME;
+		state = GameState.END;
 		players = new ArrayList<>();
 		playerTurn = 0;
 		manageState();
@@ -88,15 +88,15 @@ public class GameManager {
 			break;
 
 		case END:
-			for(Player player:players) {
+			/*for(Player player:players) {
 				player.addPoints(player.getPersonalGoal().check(player.bookshelf));
 			}
 			assignPoints(commonGoalManager.playersGoal1Placement(), commonGoalManager.playersGoal2Placement());
 			for(Player player:players) {
 				System.out.println("name: "+player.getName()+"    points: "+player.getPoints());
 			}
-			// check points
-			//ui.showPointsPage(this);
+			*/
+			ui.showPointsPage(this);
 			break;
 		default:
 			break;
