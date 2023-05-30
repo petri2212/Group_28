@@ -28,13 +28,13 @@ public abstract class PersonalGoal implements Goal, DrawableObject {
 	@Override
 	public int check(Bookshelf bookshelf) {
 		int cont = 0;
-
 		for (Map.Entry<MatrixCoords, BookshelfObject> item : this.goalObjects.entrySet()) {
 			BookshelfObject bookshelfObject = bookshelf.get(item.getKey());
 			BookshelfObject goalObject = item.getValue();
-
-			if (bookshelfObject == goalObject) {
-				cont++;
+			if(bookshelfObject!=null && goalObject!=null ) {
+				if (bookshelfObject.name() == goalObject.name()) {
+					cont++;
+				}
 			}
 		}
 
