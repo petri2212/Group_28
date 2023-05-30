@@ -23,12 +23,12 @@ public class PersonalGoal12 extends PersonalGoal {
 	@Override
 	protected Map<MatrixCoords, BookshelfObject> initGoalObjects() {
 		Map<MatrixCoords, BookshelfObject> map = new HashMap<>();
-		map.put(new MatrixCoords(1, 2), BookshelfObject.BOOK);
-		map.put(new MatrixCoords(1, 1), BookshelfObject.PLANT);
-		map.put(new MatrixCoords(2, 2), BookshelfObject.FRAME);
-		map.put(new MatrixCoords(3, 3), BookshelfObject.TROPHY);
-		map.put(new MatrixCoords(4, 4), BookshelfObject.GAME);
-		map.put(new MatrixCoords(5, 0), BookshelfObject.CAT);
+		map.put(new MatrixCoords(5, 2), BookshelfObject.BOOK);
+		map.put(new MatrixCoords(4, 1), BookshelfObject.PLANT);
+		map.put(new MatrixCoords(3, 2), BookshelfObject.FRAME);
+		map.put(new MatrixCoords(2, 3), BookshelfObject.TROPHY);
+		map.put(new MatrixCoords(1, 4), BookshelfObject.GAME);
+		map.put(new MatrixCoords(0, 0), BookshelfObject.CAT);
 		return map;
 	}
 
