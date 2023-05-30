@@ -49,7 +49,7 @@ Some methods have been overloaded like the "isThereEnoughSpace" method of the
 Bookshelf class. Futhermore, there are some methods that have been overrided
 to do specific tasks such as the "fillDeckGoals" abstract method of the Deck class.
 
-The poject has been organized in small packages to ease the code maintenance
+The project has been organized in small packages to ease the code maintenance
 and readability.
 
 Since this project is based on the object programming paradigma, the use of
