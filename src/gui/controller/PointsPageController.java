@@ -14,15 +14,25 @@ public class PointsPageController extends Controller<PointsPageView> {
 
 	public PointsPageController(GameManager model, PointsPageView view) {
 		super(model, view);
-		
+
 		ArrayList<Player> players = model.getPlayers();
+
+		players.sort((a, b) -> {
+			if (a.getPoints() == b.getPoints()) {
+				return 0;
+			} else if (a.getPoints() > b.getPoints()) {
+				return -1;
+			} else {
+				return 1;
+			}
+		});
+
 		view.setPlayers(players);
-		view.setNames();
 	}
 
 	@Override
 	protected void initViewListeners() {
-		
+
 		view.actionReturnMainPage = new ActionListener() {
 
 			@Override
