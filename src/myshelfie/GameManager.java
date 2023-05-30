@@ -2,6 +2,7 @@ package myshelfie;
 
 import java.util.ArrayList;
 
+
 import board.Board;
 import board.BoardProxy;
 import deck.DeckCommon;
@@ -79,13 +80,16 @@ public class GameManager {
 
 			if (players.get(playerTurn).getBookshelf().isFull()) {
 				isLastTurn = true;
+
 			}
 			updatePlayerTurn();
 			changeState(GameState.GAME_STAGE);
 			break;
 
 		case END:
-			System.out.println("finito");
+			for(Player player:players) {
+				player.addPoints(player.getPersonalGoal().check(player.bookshelf));
+			}
 			// check points
 			ui.showPointsPage(this);
 			break;

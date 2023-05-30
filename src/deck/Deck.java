@@ -46,10 +46,10 @@ public abstract class Deck<T extends Goal> {
 	 * @return a Goal of the specified type
 	 */
 	public T extractGoal() {
-
+		
 		int i = extractRandomIndex();
 		T goal = goals.get(i);
-
+		
 		return goal;
 	}
 
