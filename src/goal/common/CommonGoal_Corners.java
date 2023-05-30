@@ -29,7 +29,7 @@ public class CommonGoal_Corners extends CommonGoal {
 			BookshelfObject object0 = bookshelf.get(new MatrixCoords(0, 0));
 			BookshelfObject object1 = bookshelf.get(new MatrixCoords(0, 4));
 			BookshelfObject object2 = bookshelf.get(new MatrixCoords(5, 0));
-			BookshelfObject object3 = bookshelf.get(new MatrixCoords(0, 5));
+			BookshelfObject object3 = bookshelf.get(new MatrixCoords(5, 4));
 		
 			if(object0!=null && object1!=null && object2!=null && object3!=null) {
 			

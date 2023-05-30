@@ -7,8 +7,8 @@ import myshelfie.Player;
 public class CommonGoalManager {
 
 	private ArrayList<Player> players;
-	private	ArrayList<Player> playersGoal1Placement;
-	private	ArrayList<Player> playersGoal2Placement;
+	private	ArrayList<Player> playersGoal1Placement=new ArrayList<>();
+	private	ArrayList<Player> playersGoal2Placement=new ArrayList<>();
 
 	private CommonGoal commonGoal1;
 	private CommonGoal commonGoal2;
@@ -17,6 +17,7 @@ public class CommonGoalManager {
 		if (players == null) {
 			throw new NullPointerException("You must pass a list of players ...");
 		}
+		
 
 		this.players = players;
 		this.commonGoal1 = commonGoal1;
@@ -59,6 +60,19 @@ public class CommonGoalManager {
 	 */
 	public CommonGoal getCommonGoal2() {
 		return commonGoal2;
+	}
+	/**
+	 * @return the playersGoal1Placement
+	 */
+	public ArrayList<Player> playersGoal1Placement() {
+		return playersGoal1Placement;
+	}
+
+	/**
+	 * @return the playersGoal2Placement
+	 */
+	public ArrayList<Player> playersGoal2Placement() {
+		return playersGoal2Placement;
 	}
 	
 }

@@ -40,7 +40,7 @@ public class CommonGoal_EightEqual extends CommonGoal {
 					
 				 	object0 = bookshelf.get(new MatrixCoords(row, col));
 				 	
-				 	if(object0.name()!=null) {
+				 	if(object0!=null) {
 					 		
 					 	if(object0.name()=="CAT") {
 					 			contCats++;

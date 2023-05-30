@@ -37,6 +37,7 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	 */
 	@Override
 	public int check(Bookshelf bookshelf) {
+		/*
 		int rows = bookshelf.getRows();
 		int cols = bookshelf.getCols();
 		Queue<MatrixCoords> queue = new LinkedList<>();
@@ -67,7 +68,7 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	        }
 	    if (groupsCount == MAX_VALID_GROUPS) {
 	    	return 1;
-	    }
+	    }*/
 	    return 0;
 	}
 
