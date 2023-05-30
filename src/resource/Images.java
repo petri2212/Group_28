@@ -56,7 +56,8 @@ public enum Images implements Resource<Image> {
 	PUBLISHER_MATERIAL_DISPLAY_1("./resources/publisher_material/Display_1.jpg"),
 	PUBLISHER_MATERIAL_DISPLAY_1_BLURRED("./resources/publisher_material/Display_1_Blurred.jpg"),
 	ICON_MY_SHELFIE("./resources/publisher_material/Icon 50x50px.png"),
-	PUBLISHER_MATERIAL_MAIN_PAGE("./resources/publisher_material/main_page.png");
+	PUBLISHER_MATERIAL_MAIN_PAGE("./resources/publisher_material/main_page.png"),
+	PUBLISHER_MATERIAL_SCORE_PAGE("./resources/publisher_material/Display_5_blurred.png");
 
 	private String path;
 
