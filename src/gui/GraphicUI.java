@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import gui.controller.*;
-import gui.view.console.PointsPageViewConsole;
 import gui.view.graphic.*;
 
 import myshelfie.GameManager;

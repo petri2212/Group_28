@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import goal.PersonalGoal;
-import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
-import myshelfie.Player;
 import resource.Images;
 import utils.MatrixCoords;
 
