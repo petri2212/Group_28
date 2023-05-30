@@ -24,8 +24,8 @@ Import the project in Eclipse and locate the MyShelfie.java file inside the "mys
 Choose the type of user interface you want to run, e.g.:
 
 ```bash
-  UI ui = new ConsoleUI();
-//UI ui = new GraphicUI();
+// UI ui = new ConsoleUI();
+UI ui = new GraphicUI();
 ```
 
 Right click on the MyShelfie.java file and select
@@ -38,23 +38,52 @@ Run As/Java Application
 
 The main function is placed inside the MyShelfie.java class, under the "myshelfie" package.
 
-The MyShelfie.java class contains two variables which define what type of user interface will be used by the program. Right now there are two types of user interface: Console User Interface, used for debug purpouses and the Graphic User Interface, meant as final ui for the game.
+The project takes advantage of the inheritance in several occasions.
+An example could be found looking at the MVC pattern implementation, under the "gui" package or the Proxy pattern implementation, under the "board" package.
 
-This project exploits the MVC pattern to separate the business logic from the graphical implementation of the views and their respective controllers.
+The usage of the keywords "super" and "this" can be basically found anywhere
+inside the classes when needed, a quick example can be found in the constructor
+of the Bookshelf object and inside its "add" method.
 
+Some methods have been overloaded like the "isThereEnoughSpace" method of the
+Bookshelf class. Futhermore, there are some methods that have been overrided
+to do specific tasks such as the "fillDeckGoals" abstract method of the Deck class.
+
+The poject has been organized in small packages to ease the code maintenance
+and readability.
+
+Since this project is based on the object programming paradigma, the use of
+the keywords "implements" for the interfaces and "exteds" for the classes
+can be found a lot of times. The abstract CommonGoal class for example implements two interfaces: Goal and DrawableObject.
+Every other CommonGoal object derived from it extends for instance "CommonGoal".
+
+An example of enum implementation is the BookshelfObject enumerator that not only enumerates few static objects but gives them attributes and methods.
+
+Inside the "gui.view" package there are the abstract views used to implement different types of the same view. This implementation are divided in the "console" and "graphic" packages.
+
+The exception management has been used quite few times inside the project.
+An example is the class MatrixCoords inside the "utils" package, that uses
+a custom NegativeMatrixCoordsException exception derived from RuntimeException.
+Also inside the "gui" package there are two custom exceptions designed for the
+MVC pattern specifically.
+
+For the collection and generics usage the Matrix class, inside the "utils" package, can sum the both. The class has been designed to be used in any typeof program where a matrix is needed. For this reason the type of items contained inside the matrix is generic while the items themself are collected inside a Hashmap.
+
+A lot of classes define their constants like the MyShelfie class that declare the maximum number of players and the minimum.
+
+Inside the project, the attributes of the classes are often marked as "private" to avoid the direct manipulation of the data from other classes.
+Also the "private" keyword can be found, often inside abstract classes.
+
+The constructor of the PointsPageController class, placed under the "gui.controller" package sorts the list of players using the pints gained during the game. To do this we toke advantage of functional programming, using the lambda expression. In this way we avoided implementing the Comparable interface inside the Player class, or creating a dedicated Comparator.
+
+As previously said, this project exploits the MVC pattern to separate the business logic from the graphical implementation of the views and their respective controllers.
 The files views files and their respective controllers are located under the "gui" package, organized in the "view" and "controller" packages.
-
-Inside the "view" package there are the abstract views used to implement different types of the same view. This implementation are divided in the "console" and "graphic" packages.
 
 The "graphic" package also contains a package called "prototype". In here are contained the classes created with WindowBuilder plugin to generate the code automatically using the java.swing library. ATTENTION: this prototype classes should never be used inside the program!
 
-Inside the "goal" package are stored the personal and common goal cards, placed in their respective packages. The cards are instantiated inside decks, placed under the "deck"package.
-
 To handle the board, the Proxy design pattern has been used in order to mirror the indices of the initial tile map. The tile map has been written in such way that is easy for the developers to transpose the phisical game board into a bidimensional array but this cause a not-so-logical indicization of the array.
 
-The game is managed by a state machine located inside the GameManager.java class, placed inside the "myshelfie" package.
-
-Inside the "utils" package there are few generic classes that can be used outside this project and are standalone objects useful for general purposes.
+Last but not least, the game is managed by a state machine located inside the GameManager.java class, placed inside the "myshelfie" package.
 
 
 ## Authors
@@ -63,5 +92,4 @@ Inside the "utils" package there are few generic classes that can be used outsid
 - [@Andrea Rusconi ](https://github.com/andreaRusconl)
 - [@Andrea Zanetti ](https://github.com/azanetti6)
 - [@Fabio Mariani ](https://github.com/FabioMarianii)
-
 
