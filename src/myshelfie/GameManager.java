@@ -75,10 +75,12 @@ public class GameManager {
 			if (board.areAllObjectsIsolated()) {
 				board.fillLivingRoomWithObjects();
 			}
+			if(isLastTurn==false){
+				if (players.get(playerTurn).getBookshelf().isFull()) {
+					players.get(playerTurn).addPoints(1);
+					isLastTurn = true;
 
-			if (players.get(playerTurn).getBookshelf().isFull()) {
-				isLastTurn = true;
-
+				}
 			}
 			commonGoalManager.CheckPlacementPlayer();
 			updatePlayerTurnAndChangeState();
