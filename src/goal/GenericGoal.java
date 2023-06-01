@@ -64,6 +64,9 @@ public class GenericGoal implements Goal {
 								} else if (next.r == cop.r - 1 && next.c == cop.c) {
 									cont++;
 									break;
+								} else if (cop.r < next.r || cop.c < next.c) {
+									cont++;
+									break;
 								} else {
 									isEnd = true;
 									break;
