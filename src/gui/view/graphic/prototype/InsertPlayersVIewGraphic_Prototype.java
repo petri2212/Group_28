@@ -18,7 +18,10 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
-
+/**
+ * ATTENTION!!
+ * This Class is used only for ode generation
+ */
 public class InsertPlayersVIewGraphic_Prototype extends JFrame {
 
 	private static final long serialVersionUID = -3542575343207595674L;

@@ -17,7 +17,10 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
-
+/**
+ * ATTENTION!!
+ * This Class is used only for ode generation
+ */
 public class PointsPageViewGraphic_Prototype extends JFrame {
 
 	private static final long serialVersionUID = 9171068620469065779L;

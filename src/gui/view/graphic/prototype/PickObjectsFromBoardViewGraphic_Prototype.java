@@ -19,7 +19,10 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Cursor;
 import javax.swing.border.LineBorder;
-
+/**
+ * ATTENTION!!
+ * This Class is used only for ode generation
+ */
 public class PickObjectsFromBoardViewGraphic_Prototype extends JFrame {
 
 	private static final long serialVersionUID = -444958510016942089L;

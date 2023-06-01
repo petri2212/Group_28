@@ -12,6 +12,10 @@ import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 import utils.UniqueList;
 
+/**
+ * This is the view console for the game stage page and it extends the abstract
+ * view.
+ */
 public class GameStageViewConsole extends GameStageView {
 
 	private static int INPUT_LENGHT = 3;
@@ -28,10 +32,17 @@ public class GameStageViewConsole extends GameStageView {
 	protected String tmpCoords;
 	protected boolean verifier;
 
-	@Override
+	/**
+	 * This is the override of the show method. In the first part of the show method we print all the
+	 * tools to play that are board, bookshelf, personal goal and common goals.
+	 * In the second part of the show method we check let the user to insert the coordinates
+	 * and we verify them.
+	 * In the last part of the show method we let the user to insert the objects in his bookshelf
+	 * with all the checks needed.
+	 */
 	public void show() {
 
-		// show board
+		// show board, bookshelf, personal goal and common goals
 
 		System.out.println("Board");
 		printBoard();
@@ -97,7 +108,7 @@ public class GameStageViewConsole extends GameStageView {
 			String input = sc.nextLine();
 			this.input = input;
 			intInput = inputToInt(input);
-			
+
 			if (input.isBlank()) {
 				System.out.println("The command cannot be null");
 
@@ -118,17 +129,202 @@ public class GameStageViewConsole extends GameStageView {
 
 	}
 
-	public void printCommonGoals() {
-		System.out.println("CommonGoal 1:\n");
-		String description = commonGoal1.getDescription();
-		System.out.println(description + "\n");
-		System.out.println("CommonGoal 2:\n");
-		description = commonGoal2.getDescription();
-		System.out.println(description);
-		System.out.println();
+	private boolean setIsWaiting(boolean value) {
+		return this.isWaiting = value;
 	}
 
-	public void printPersonalGoals() {
+	// Board bookshelf, personal goal and common goals methods.
+
+	private void printBoard() {
+		final int ROW_COUNT = Board.ROW_COUNT;
+		final int COL_COUNT = Board.COL_COUNT;
+		final int upCard = 0;
+		final int voidUpCard = 1;
+		final int centerCard = 2;
+		final int voidDownCard = 3;
+		final int downCard = 4;
+
+		String partOfCard_a = " --------- ";
+		String partOfCard_b = "|         |";
+		char[] arrOfDownCoord = Board.DOWN_COOORDS;
+		char[] arrOfRightCoords = Board.RIGHT_COORDS;
+		int numberOfPartsInCard = 5;
+
+		for (int i = ROW_COUNT; i > 0; i--) {
+			int cont = 0;
+			while (cont < numberOfPartsInCard) {
+				int tmpCont = 0;
+
+				switch (cont) {
+
+				case upCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case voidUpCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case centerCard:
+					while (tmpCont < COL_COUNT) {
+						BookshelfObject object = checkTile(i - 1, tmpCont);
+						if (object != null) {
+							printBookshelfObject(object);
+						} else {
+							System.out.print(partOfCard_b);
+						}
+						tmpCont++;
+					}
+					System.out.println("  | " + (arrOfRightCoords[i - 1]));
+					break;
+
+				case voidDownCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case downCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+				}
+
+				cont++;
+			}
+		}
+		for (int j = 0; j < arrOfDownCoord.length; j++) {
+			System.out.print(" ----" + arrOfDownCoord[j] + "---- ");
+		}
+	}
+
+	private void printBookshelfObject(BookshelfObject object) {
+		final int lenght3Char = 3;
+		final int lenght4Char = 4;
+		final int lenght5Char = 5;
+		final int lenght6Char = 6;
+		String bookshelfObjectToPrint = object.name();
+		int lenght = bookshelfObjectToPrint.length();
+		switch (lenght) {
+		case lenght3Char:
+			System.out.print("|   " + bookshelfObjectToPrint + "   |");
+			break;
+
+		case lenght4Char:
+			System.out.print("|  " + bookshelfObjectToPrint + "   |");
+			break;
+
+		case lenght5Char:
+			System.out.print("|  " + bookshelfObjectToPrint + "  |");
+			break;
+
+		case lenght6Char:
+			System.out.print("|  " + bookshelfObjectToPrint + " |");
+			break;
+		}
+
+	}
+	
+	private BookshelfObject checkBookshelfObjects(int r, int c) {
+		BookshelfObject obj = bookshelf.get(new MatrixCoords(r, c));
+		BookshelfObject object = null;
+
+		if (obj != null) {
+			return obj;
+		}
+
+		return object;
+	}
+
+	private void printBookshelf() {
+		final int ROW_COUNT = bookshelf.getRows();
+		final int COL_COUNT = bookshelf.getCols();
+		final int upCard = 0;
+		final int voidUpCard = 1;
+		final int centerCard = 2;
+		final int voidDownCard = 3;
+		final int downCard = 4;
+
+		String partOfCard_a = " --------- ";
+		String partOfCard_b = "|         |";
+		int numberOfPartsInCard = 5;
+
+		for (int i = ROW_COUNT; i > 0; i--) {
+			int cont = 0;
+			while (cont < numberOfPartsInCard) {
+				int tmpCont = 0;
+
+				switch (cont) {
+
+				case upCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case voidUpCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case centerCard:
+					while (tmpCont < COL_COUNT) {
+						BookshelfObject object = checkBookshelfObjects(i - 1, tmpCont);
+						if (object != null) {
+							printBookshelfObject(object);
+						} else {
+							System.out.print(partOfCard_b);
+						}
+						tmpCont++;
+					}
+					System.out.println("  | " + i);
+					break;
+
+				case voidDownCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_b);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+
+				case downCard:
+					while (tmpCont < COL_COUNT) {
+						System.out.print(partOfCard_a);
+						tmpCont++;
+					}
+					System.out.println("   |");
+					break;
+				}
+
+				cont++;
+			}
+		}
+		for (int j = 0; j < COL_COUNT; j++) {
+			System.out.print(" ----" + (j + 1) + "---- ");
+		}
+		System.out.println("\n");
+	}
+
+	private void printPersonalGoals() {
 		Map<MatrixCoords, BookshelfObject> map = personalGoal.getMap();
 		final int ROW_COUNT = bookshelf.getRows();
 		final int COL_COUNT = bookshelf.getCols();
@@ -208,6 +404,58 @@ public class GameStageViewConsole extends GameStageView {
 
 	}
 
+	private void printCommonGoals() {
+		System.out.println("CommonGoal 1:\n");
+		String description = commonGoal1.getDescription();
+		System.out.println(description + "\n");
+		System.out.println("CommonGoal 2:\n");
+		description = commonGoal2.getDescription();
+		System.out.println(description);
+		System.out.println();
+	}
+
+	// Warnings
+
+	public void showNotEnoughSpaceWarning() {
+		System.out.println("Attention!!");
+		System.out.println("There is not enough space in this column!!");
+		isWaiting = true;
+	}
+
+	public void showNotUsableOrNullWarning() {
+		System.out.println("Attention!!");
+		System.out.println("Not usable Tile !!");
+		isWaiting = true;
+	}
+
+	public void showAlreadySelectedCoordsWarning() {
+		System.out.println("Attention!!");
+		System.out.println("You've already selected this coords!!");
+		isWaiting = true;
+	}
+
+	public void showCoordsNotInTheBoardWarning() {
+		System.out.println("Attention!!");
+		System.out.println("Attention you insert coords that are not in the board!!");
+		isWaiting = true;
+	}
+	
+	// pickObjectsMethods
+
+	private boolean commaAndLenghtVerifier() {
+		int commaPosition = 1;
+		char[] input = inputToChar(this.input);
+
+		if (input.length == INPUT_LENGHT) {
+			if (input[commaPosition] == ',') {
+				return true;
+			}
+		}
+		System.out.println("You must insert coords with this sintax (A,0)");
+		return false;
+
+	}
+	
 	private void verifyObject() {
 		int downCoordsPosition = 0;
 		int rightCoordsPosition = 2;
@@ -268,162 +516,7 @@ public class GameStageViewConsole extends GameStageView {
 
 	}
 
-	private void enterVerifier() {
-		if (savedCoords != null && savedCoords.size() <= MAX_PICKED_OBJECTS) {
-			setIsWaiting(false);
-		}
-	}
-
-	private boolean setIsWaiting(boolean value) {
-		return this.isWaiting = value;
-	}
-
-	// BoardMethods
-
-	public void printBookshelfObject(BookshelfObject object) {
-		final int lenght3Char = 3;
-		final int lenght4Char = 4;
-		final int lenght5Char = 5;
-		final int lenght6Char = 6;
-		String bookshelfObjectToPrint = object.name();
-		int lenght = bookshelfObjectToPrint.length();
-		switch (lenght) {
-		case lenght3Char:
-			System.out.print("|   " + bookshelfObjectToPrint + "   |");
-			break;
-
-		case lenght4Char:
-			System.out.print("|  " + bookshelfObjectToPrint + "   |");
-			break;
-
-		case lenght5Char:
-			System.out.print("|  " + bookshelfObjectToPrint + "  |");
-			break;
-
-		case lenght6Char:
-			System.out.print("|  " + bookshelfObjectToPrint + " |");
-			break;
-		}
-
-	}
-
-	public void printBoard() {
-		final int ROW_COUNT = Board.ROW_COUNT;
-		final int COL_COUNT = Board.COL_COUNT;
-		final int upCard = 0;
-		final int voidUpCard = 1;
-		final int centerCard = 2;
-		final int voidDownCard = 3;
-		final int downCard = 4;
-
-		String partOfCard_a = " --------- ";
-		String partOfCard_b = "|         |";
-		char[] arrOfDownCoord = Board.DOWN_COOORDS;
-		char[] arrOfRightCoords = Board.RIGHT_COORDS;
-		int numberOfPartsInCard = 5;
-
-		for (int i = ROW_COUNT; i > 0; i--) {
-			int cont = 0;
-			while (cont < numberOfPartsInCard) {
-				int tmpCont = 0;
-
-				switch (cont) {
-
-				case upCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_a);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-
-				case voidUpCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_b);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-
-				case centerCard:
-					while (tmpCont < COL_COUNT) {
-						BookshelfObject object = checkTile(i - 1, tmpCont);
-						if (object != null) {
-							printBookshelfObject(object);
-						} else {
-							System.out.print(partOfCard_b);
-						}
-						tmpCont++;
-					}
-					System.out.println("  | " + (arrOfRightCoords[i - 1]));
-					break;
-
-				case voidDownCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_b);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-
-				case downCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_a);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-				}
-
-				cont++;
-			}
-		}
-		for (int j = 0; j < arrOfDownCoord.length; j++) {
-			System.out.print(" ----" + arrOfDownCoord[j] + "---- ");
-		}
-	}
-
-	// pickObjectsMethods
-
-	public void showNotEnoughSpaceWarning() {
-		System.out.println("Attention!!");
-		System.out.println("There is not enough space in this column!!");
-		isWaiting = true;
-	}
-
-	public void showNotUsableOrNullWarning() {
-		System.out.println("Attention!!");
-		System.out.println("Not usable Tile !!");
-		isWaiting = true;
-	}
-
-	public void showAlreadySelectedCoordsWarning() {
-		System.out.println("Attention!!");
-		System.out.println("You've already selected this coords!!");
-		isWaiting = true;
-	}
-
-	public void showCoordsNotInTheBoardWarning() {
-		System.out.println("Attention!!");
-		System.out.println("Attention you insert coords that are not in the board!!");
-		isWaiting = true;
-	}
-
-	public boolean commaAndLenghtVerifier() {
-		int commaPosition = 1;
-		char[] input = inputToChar(this.input);
-
-		if (input.length == INPUT_LENGHT) {
-			if (input[commaPosition] == ',') {
-				return true;
-			}
-		}
-		System.out.println("You must insert coords with this sintax (A,0)");
-		return false;
-
-	}
-
-	public char[] inputToChar(String input) {
+	private char[] inputToChar(String input) {
 		char[] inputChar = { ' ', ' ', ' ' };
 		for (int i = 0; i < input.length(); i++) {
 			inputChar[i] = input.charAt(i);
@@ -435,12 +528,18 @@ public class GameStageViewConsole extends GameStageView {
 	private void setVerifier(Boolean verifier) {
 		this.verifier = verifier;
 	}
+	
+	private void enterVerifier() {
+		if (savedCoords != null && savedCoords.size() <= MAX_PICKED_OBJECTS) {
+			setIsWaiting(false);
+		}
+	}
 
 	private char[] getInputArr() {
 		return this.inputArr;
 	}
 
-	public BookshelfObject checkTile(int r, int c) {
+	private BookshelfObject checkTile(int r, int c) {
 		Tile tile = board.get(new MatrixCoords(r, c));
 		BookshelfObject object = null;
 
@@ -453,7 +552,7 @@ public class GameStageViewConsole extends GameStageView {
 
 	// put objects methods
 
-	public int inputToInt(String input) {
+	private int inputToInt(String input) {
 		int inputLenght = 1;
 		int maxColumnNumber = 5;
 		int minColumnNumber = 1;
@@ -477,7 +576,7 @@ public class GameStageViewConsole extends GameStageView {
 		return 0;
 	}
 
-	public void putInBookshelf(int input) {
+	private void putInBookshelf(int input) {
 		System.out.println("those are your coords!!");
 		for (int i = 0; i < savedCoords.size(); i++) {
 			tmpCoords = savedCoords.get(i);
@@ -490,92 +589,6 @@ public class GameStageViewConsole extends GameStageView {
 			System.out.println("Objects placed correctly!!");
 		}
 
-	}
-
-	public BookshelfObject checkBookshelfObjects(int r, int c) {
-		BookshelfObject obj = bookshelf.get(new MatrixCoords(r, c));
-		BookshelfObject object = null;
-
-		if (obj != null) {
-			return obj;
-		}
-
-		return object;
-	}
-
-	public void printBookshelf() {
-		final int ROW_COUNT = bookshelf.getRows();
-		final int COL_COUNT = bookshelf.getCols();
-		final int upCard = 0;
-		final int voidUpCard = 1;
-		final int centerCard = 2;
-		final int voidDownCard = 3;
-		final int downCard = 4;
-
-		String partOfCard_a = " --------- ";
-		String partOfCard_b = "|         |";
-		int numberOfPartsInCard = 5;
-
-		for (int i = ROW_COUNT; i > 0; i--) {
-			int cont = 0;
-			while (cont < numberOfPartsInCard) {
-				int tmpCont = 0;
-
-				switch (cont) {
-
-				case upCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_a);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-
-				case voidUpCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_b);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-
-				case centerCard:
-					while (tmpCont < COL_COUNT) {
-						BookshelfObject object = checkBookshelfObjects(i - 1, tmpCont);
-						if (object != null) {
-							printBookshelfObject(object);
-						} else {
-							System.out.print(partOfCard_b);
-						}
-						tmpCont++;
-					}
-					System.out.println("  | " + i);
-					break;
-
-				case voidDownCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_b);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-
-				case downCard:
-					while (tmpCont < COL_COUNT) {
-						System.out.print(partOfCard_a);
-						tmpCont++;
-					}
-					System.out.println("   |");
-					break;
-				}
-
-				cont++;
-			}
-		}
-		for (int j = 0; j < COL_COUNT; j++) {
-			System.out.print(" ----" + (j + 1) + "---- ");
-		}
-		System.out.println("\n");
 	}
 
 }

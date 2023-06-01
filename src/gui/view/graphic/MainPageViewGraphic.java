@@ -17,7 +17,10 @@ import javax.swing.border.SoftBevelBorder;
 import gui.component.BackgroundPanel;
 import gui.view.MainPageView;
 import resource.Images;
-
+/**
+ * This is the view graphic for the home page and it extends the abstract
+ * view.
+ */
 public class MainPageViewGraphic extends MainPageView {
 
 	private JFrame mainFrame;
@@ -26,7 +29,11 @@ public class MainPageViewGraphic extends MainPageView {
 		this.mainFrame = mainFrame;
 	}
 
-	@Override
+	/**
+	 * This is the override of the show method.
+	 * This method show the home page with two buttons:
+	 * the new game button and the exit button.
+	 */
 	public void show() {
 		Image image = Images.PUBLISHER_MATERIAL_MAIN_PAGE.load();
 		BackgroundPanel contentPane = new BackgroundPanel(image);

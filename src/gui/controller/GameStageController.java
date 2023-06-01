@@ -21,8 +21,8 @@ public class GameStageController extends Controller<GameStageView> {
 /**
  * This is the constructor of the class and it sets all the parameter
  * of the player that is playing.
- * @param model
- * @param view
+	 * @param model super from the controller class
+	 * @param view  super from the controller class
  */
 	public GameStageController(GameManager model, GameStageView view) {
 		super(model, view);

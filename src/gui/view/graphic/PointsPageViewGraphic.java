@@ -18,7 +18,10 @@ import gui.component.BackgroundPanel;
 import gui.view.PointsPageView;
 import resource.Icons;
 import resource.Images;
-
+/**
+ * This is the view graphic for the points page and it extends the abstract
+ * view.
+ */
 public class PointsPageViewGraphic extends PointsPageView {
 
 	private static final int PODIO_SIZE = 3;
@@ -34,7 +37,11 @@ public class PointsPageViewGraphic extends PointsPageView {
 		this.mainFrame = mainFrame;
 	}
 
-	@Override
+	/**
+	 * This is the override of the show method.
+	 * This method show podium with the points and
+	 * let the user to return into the home page.
+	 */
 	public void show() {
 
 		Image image = Images.PUBLISHER_MATERIAL_SCORE_PAGE.load();

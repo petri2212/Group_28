@@ -3,7 +3,10 @@ package gui.view.console;
 import java.util.Scanner;
 
 import gui.view.PointsPageView;
-
+/**
+ * This is the view console for the points page and it extends the abstract
+ * view.
+ */
 public class PointsPageViewConsole extends PointsPageView {
 
 	private static final int TWO_PLAYERS = 2;
@@ -11,6 +14,11 @@ public class PointsPageViewConsole extends PointsPageView {
 	private static final int FOUR_PLAYERS = 4;
 	private boolean isWaiting;
 
+	/**
+	 * This is the override of the show method.
+	 * In this method we show to the user the podium
+	 * and let him to return to the home.
+	 */
 	public void show() {
 
 		System.out.println("Congratulations!!");
@@ -42,7 +50,7 @@ public class PointsPageViewConsole extends PointsPageView {
 
 	}
 
-	public void printPodium(int playersNumber) {
+	private void printPodium(int playersNumber) {
 		String topFirst = "|-------| 1°|-------|";
 		String topSecond = "|-------| 2°|-------|";
 		String topThird = "|-------| 2°|-------|";
@@ -242,7 +250,7 @@ public class PointsPageViewConsole extends PointsPageView {
 
 	}
 
-	public static void printName(String name) {
+	private void printName(String name) {
 		final int peaceLenght = 21;
 		final int maxNameLenght = 12;
 		String firstPeace = "| ";
@@ -267,7 +275,7 @@ public class PointsPageViewConsole extends PointsPageView {
 
 	}
 
-	public static void printPoints(int points) {
+	private void printPoints(int points) {
 
 		final int peaceLenght = 21;
 		String firstPeace = "| Points: ";

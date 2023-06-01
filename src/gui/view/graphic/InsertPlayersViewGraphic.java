@@ -27,7 +27,10 @@ import myshelfie.MyShelfie;
 import myshelfie.Player;
 import resource.Icons;
 import resource.Images;
-
+/**
+ * This is the view graphic for the insert players page and it extends the abstract
+ * view.
+ */
 public class InsertPlayersViewGraphic extends InsertPlayersView {
 
 	private static final int PLAYER1_INDEX = 0;
@@ -45,7 +48,11 @@ public class InsertPlayersViewGraphic extends InsertPlayersView {
 		this.mainFrame = mainFrame;
 	}
 
-	@Override
+	/**
+	 * This is the override of the show method.
+	 *This method let the user to insert the names of  the players
+	 *and to start a new game. 
+	 */
 	public void show() {
 		Image image = Images.PUBLISHER_MATERIAL_DISPLAY_1_BLURRED.load();
 		BackgroundPanel contentPane = new BackgroundPanel(image);

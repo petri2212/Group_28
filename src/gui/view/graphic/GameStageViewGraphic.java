@@ -29,7 +29,10 @@ import gui.view.GameStageView;
 import myshelfie.BookshelfObject;
 import resource.Icons;
 import utils.MatrixCoords;
-
+/**
+ * This is the view graphic for the game stage page and it extends the abstract
+ * view.
+ */
 public class GameStageViewGraphic extends GameStageView {
 
 	private static final int PICKED_OBJECT_1_INDEX = 0;
@@ -105,7 +108,13 @@ public class GameStageViewGraphic extends GameStageView {
 		actionHideBookshelf = initActionHideBookshelf();
 	}
 
-	@Override
+	/**
+	 * This is the override of the show method.
+	 * Shows with graphic the  board, bookshelf, personal goal and common goals.
+	 * Let the user to take the objects and to place them into the bookshelf with all
+	 * the checks needed.
+	 * Let the user to Change the turn and interact with buttons.
+	 */
 	public void show() {
 		contentPane = new JPanel();
 		contentPane.setOpaque(false);

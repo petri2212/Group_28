@@ -3,10 +3,16 @@ package gui.view.console;
 import java.util.Scanner;
 
 import gui.view.MainPageView;
-
+/**
+ * This is the view console for the main page and it extends the abstract
+ * view.
+ */
 public class MainPageViewConsole extends MainPageView {
 
-	@Override
+	/**
+	 * This is the override of the show method.
+	 * In this method we let the user to start a new game or to exit the program
+	 */
 	public void show() {
 
 		boolean isWaiting = true;

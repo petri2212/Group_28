@@ -17,7 +17,10 @@ import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
-
+/**
+ * ATTENTION!!
+ * This Class is used only for ode generation
+ */
 public class MainPageViewGraphic_Prototype extends JFrame {
 
 	private static final long serialVersionUID = 1567108229753700100L;

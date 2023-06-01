@@ -5,12 +5,19 @@ import java.util.Scanner;
 
 import gui.view.InsertPlayersView;
 import myshelfie.Player;
-
+/**
+ * This is the view console for the insert players page and it extends the abstract
+ * view.
+ */
 public class InsertPlayersViewConsole extends InsertPlayersView {
 
 	protected boolean isWaiting;
 
-	@Override
+	/**
+	 * This is the override of the show method.
+	 * In this method we let the user to insert the players and we check
+	 * if they are inserted correctly.
+	 */
 	public void show() {
 		Scanner sc = new Scanner(System.in);
 		isWaiting = true;
