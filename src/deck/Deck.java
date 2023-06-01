@@ -1,5 +1,6 @@
 package deck;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import goal.Goal;
@@ -14,7 +15,7 @@ import utils.UniqueList;
 public abstract class Deck<T extends Goal> {
 
 	private UniqueList<T> goals;
-	private int uniqueRandom;
+	private int uniqueRandom=-1;
 
 	public Deck() {
 		goals = fillDeckGoals();
@@ -37,7 +38,13 @@ public abstract class Deck<T extends Goal> {
 		Random rnd = new Random();
 		int maxGoalsIndex = goals.size() - 1;
 		int randomIndex = rnd.nextInt(maxGoalsIndex);
-
+		if(randomIndex==uniqueRandom) {
+			do {
+				randomIndex = rnd.nextInt(maxGoalsIndex);
+			}while(randomIndex==uniqueRandom);
+			
+		}
+		this.uniqueRandom=randomIndex;
 		return randomIndex;
 	}
 
@@ -47,11 +54,8 @@ public abstract class Deck<T extends Goal> {
 	 * @return a Goal of the specified type
 	 */
 	public T extractGoal() {
-		int i = extractRandomIndex();
-		if (i == uniqueRandom) {
-			i = extractRandomIndex();
-			uniqueRandom = i;
-		}
+		
+		int	i = extractRandomIndex();
 		T goal = goals.get(i);
 		return goal;
 	}
