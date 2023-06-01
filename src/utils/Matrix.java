@@ -24,10 +24,10 @@ public abstract class Matrix<T> {
 	protected Matrix(int rows, int cols) {
 		if (rows < 0 || cols < 0) {
 			throw new NegativeArraySizeException("The matrix dimensions cannot be negative.");
-		} else {
-			this.rows = rows;
-			this.cols = cols;
 		}
+
+		this.rows = rows;
+		this.cols = cols;
 	}
 
 	/**
@@ -68,11 +68,11 @@ public abstract class Matrix<T> {
 	 * @param item is the object that needs to be added to the matrix
 	 */
 	public void add(int row, int col, T item) {
-		if (row < rows && col < cols) {
-			items.put(new MatrixCoords(row, col), item);
-		} else {
+		if (row >= rows && col >= cols) {
 			throw new IllegalArgumentException("Invalid coordinates");
 		}
+
+		items.put(new MatrixCoords(row, col), item);
 	}
 
 	public void remove(int r, int c) {
