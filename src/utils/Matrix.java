@@ -80,7 +80,8 @@ public abstract class Matrix<T> {
 			throw new IllegalArgumentException(
 					"The coordinates row: " + r + ", column: " + c + " are outside the matrix boundaries.");
 		}
-		items.remove(new MatrixCoords(r, c));
+
+		items.put(new MatrixCoords(r, c), null);
 	}
 
 	public void remove(MatrixCoords coords) {
@@ -88,6 +89,7 @@ public abstract class Matrix<T> {
 			throw new IllegalArgumentException("The coordinates row: " + coords.r + ", column: " + coords.c
 					+ " are outside the matrix boundaries.");
 		}
-		items.remove(coords);
+
+		items.put(coords, null);
 	}
 }
