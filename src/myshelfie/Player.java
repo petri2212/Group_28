@@ -11,6 +11,7 @@ public class Player /*implements Comparable<Player>*/ {
 	private int points;
 	protected Bookshelf bookshelf;
 	private PersonalGoal personalGoal;
+
 	/**
 	 * To construct a player, the name is needed as identifier to allow the user understanding when
 	 * it is his/her turn. A player also holds a bookshelf and has a counter for the game points.
@@ -67,6 +68,9 @@ public class Player /*implements Comparable<Player>*/ {
 		this.personalGoal = pers;
 	}
 	
+	/**
+	 * @return true if the passed player name (case insensitive) has the same name of this player.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if(!(obj instanceof Player)) {
@@ -76,6 +80,9 @@ public class Player /*implements Comparable<Player>*/ {
 		return name.equalsIgnoreCase(player.getName());
 	}
 	
+	/**
+	 * @return the player hash code extrapolated from the name
+	 */
 	@Override
 	public int hashCode() {
 		return name.hashCode();

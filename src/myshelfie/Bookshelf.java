@@ -108,7 +108,6 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 	 * @return r if the column have at least 1 row empty
 	 * @return noEmptyRow if all rows of the column are full
 	 */
-
 	public int getFirstEmptyRow(int c) {
 		for (int r = 0; r < ROWS_NUMBER; r++) {
 			if (this.get(new MatrixCoords(r, c)) == null) {
