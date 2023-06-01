@@ -43,7 +43,7 @@ An example could be found looking at the MVC pattern implementation, under the "
 
 The usage of the keywords "super" and "this" can be basically found anywhere
 inside the classes when needed, a quick example can be found in the constructor
-of the Bookshelf object and inside its "add" method.
+of the Bookshelf object and inside its "tryAdd" methods.
 
 Some methods have been overloaded like the "isThereEnoughSpace" method of the
 Bookshelf class. Futhermore, there are some methods that have been overrided
@@ -67,7 +67,7 @@ a custom NegativeMatrixCoordsException exception derived from RuntimeException.
 Also inside the "gui" package there are two custom exceptions designed for the
 MVC pattern specifically.
 
-For the collection and generics usage the Matrix class, inside the "utils" package, can sum the both. The class has been designed to be used in any typeof program where a matrix is needed. For this reason the type of items contained inside the matrix is generic while the items themself are collected inside a Hashmap.
+For the collection and generics usage the Matrix class, inside the "utils" package, can sum the both. The class has been designed to be used in any program where a matrix is needed. For this reason the type of items contained inside the matrix is generic and the items are collected inside a Hashmap.
 
 A lot of classes define their constants like the MyShelfie class that declare the maximum number of players and the minimum number of players, or simply the release version. The Board class and the Bookshelf class, beeing matrixes, declare the numer of rows and columns.
 
@@ -81,7 +81,7 @@ The files views files and their respective controllers are located under the "gu
 
 The "graphic" package also contains a package called "prototype". In here are contained the classes created with WindowBuilder plugin to generate the code automatically using the java.swing library. ATTENTION: this prototype classes should never be used inside the program!
 
-To handle the board, the Proxy design pattern has been used in order to mirror the indices of the initial tile map. The tile map has been written in such way that is easy for the developers to transpose the phisical game board into a bidimensional array but this cause a not-so-logical indicization of the array.
+To handle the board, the Proxy design pattern has been used in order to mirror the indices of the initial tile map. The tile map has been written in such way that is easy for the developers to transpose the phisical game board into a bidimensional array but this caused a not-so-logical indicization of the array.
 
 Last but not least, the game is managed by a state machine located inside the GameManager.java class, placed inside the "myshelfie" package.
 
