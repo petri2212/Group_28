@@ -94,10 +94,33 @@ public class MainPageViewGraphic_Prototype extends JFrame {
 		btnExit.setBounds(37, 365, 185, 62);
 		contentPane.add(btnExit);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(
-				new ImageIcon("/media/sf_Unibg_Shared/resources/publisher_material/Display_1_Main_Page_4.png"));
-		lblNewLabel.setBounds(0, 0, 1140, 737);
-		contentPane.add(lblNewLabel);
+		JLabel lblVersionHeader = new JLabel("Version");
+		lblVersionHeader.setForeground(Color.WHITE);
+		lblVersionHeader.setFont(new Font("Purisa", Font.BOLD, 14));
+		lblVersionHeader.setBounds(37, 696, 70, 15);
+		contentPane.add(lblVersionHeader);
+
+		JLabel lblVersion = new JLabel("0.0");
+		lblVersion.setForeground(Color.WHITE);
+		lblVersion.setFont(new Font("Purisa", Font.BOLD, 14));
+		lblVersion.setBounds(114, 696, 70, 15);
+		contentPane.add(lblVersion);
+
+		JLabel lblLogoCranioCreations = new JLabel("");
+		lblLogoCranioCreations
+				.setIcon(new ImageIcon("/home/azanetti6/projects/Group_28/resources/publisher_material/Publisher.png"));
+		lblLogoCranioCreations.setBounds(978, 561, 150, 150);
+		contentPane.add(lblLogoCranioCreations);
+
+		JLabel lblLogoUnibg = new JLabel("");
+		lblLogoUnibg.setIcon(
+				new ImageIcon("/home/azanetti6/projects/Group_28/resources/publisher_material/unibg_logo.png"));
+		lblLogoUnibg.setBounds(793, 561, 150, 150);
+		contentPane.add(lblLogoUnibg);
+
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon("/media/sf_Unibg_Shared/resources/publisher_material/Display_1_Main_Page_4.png"));
+		lblLogo.setBounds(0, 0, 1140, 737);
+		contentPane.add(lblLogo);
 	}
 }
