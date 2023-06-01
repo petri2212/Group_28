@@ -8,18 +8,31 @@ import gui.view.MainPageView;
 
 import myshelfie.GameManager;
 import myshelfie.GameState;
-
+/**
+ * This is the controller for the main page, it extends
+ * Controller because of the MVC and takes its own view as a parameter.
+ */
 public class MainPageController extends Controller<MainPageView> {
 
+	/**
+	 * This is the constructor of the class.
+	 * 
+	 * @param model super from the controller class
+	 * @param view  super from the controller class
+	 */
 	public MainPageController(GameManager model, MainPageView view) {
 		super(model, view);
 	}
 
-	@Override
+	/**
+	 * This is an override of the listener where there are the actions.
+	 */
 	public void initViewListeners() {
 		view.actionNewGame = new ActionListener() {
 
-			@Override
+			/**
+			 * This is an action form the view and it returns to the insert player page.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				model.changeState(GameState.INSERT_PLAYERS);
 			}
@@ -27,7 +40,9 @@ public class MainPageController extends Controller<MainPageView> {
 		
 		view.actionExit = new ActionListener() {
 			
-			@Override
+			/**
+			 * This is an action form the view it ends the program.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				model.changeState(GameState.EXIT);
 			}

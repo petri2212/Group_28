@@ -10,12 +10,20 @@ import gui.view.GameStageView;
 import myshelfie.GameManager;
 import myshelfie.GameState;
 import myshelfie.Player;
-
+/**
+ * This is the controller for the game stage, it extends
+ * Controller because of the MVC and takes its own view as a parameter.
+ */
 public class GameStageController extends Controller<GameStageView> {
 
 	private Player player;
 	
-
+/**
+ * This is the constructor of the class and it sets all the parameter
+ * of the player that is playing.
+ * @param model
+ * @param view
+ */
 	public GameStageController(GameManager model, GameStageView view) {
 		super(model, view);
 
@@ -47,12 +55,17 @@ public class GameStageController extends Controller<GameStageView> {
 		this.view.setBookshelf(player.getBookshelf());
 	}
 
-	@Override
+	/**
+	 * This is an override of the listener where
+	 * there are the actions.
+	 */
 	protected void initViewListeners() {
 
 		view.actionEndTurn = new ActionListener() {
 
-			@Override
+			/**
+			 * This is an action from the view and it point to the controls.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				model.changeState(GameState.CONTROLS);
 			}
@@ -60,7 +73,9 @@ public class GameStageController extends Controller<GameStageView> {
 
 		view.actionReturnMainPage = new ActionListener() {
 
-			@Override
+			/**
+			 * This is an action from the view and it return to home page.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				model.changeState(GameState.HOME);
 			}

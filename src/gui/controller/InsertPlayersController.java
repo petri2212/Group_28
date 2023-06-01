@@ -11,17 +11,32 @@ import myshelfie.GameState;
 import myshelfie.MyShelfie;
 import myshelfie.Player;
 
+/**
+ * This is the controller for the insert players, it extends Controller because
+ * of the MVC and takes its own view as a parameter.
+ */
 public class InsertPlayersController extends Controller<InsertPlayersView> {
 
+	/**
+	 * This is the constructor of the class.
+	 * 
+	 * @param model super from the controller class
+	 * @param view  super from the controller class
+	 */
 	public InsertPlayersController(GameManager model, InsertPlayersView view) {
 		super(model, view);
 	}
 
-	@Override
+	/**
+	 * This is an override of the listener where there are the actions.
+	 */
 	protected void initViewListeners() {
+		
 		view.actionReturnMainPage = new ActionListener() {
 
-			@Override
+			/**
+			 * This is an action from the view and it returns to home page.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				model.changeState(GameState.HOME);
 			}
@@ -29,7 +44,10 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 
 		view.actionInitGame = new ActionListener() {
 
-			@Override
+			/**
+			 * This is an action from the view check if there is
+			 * the minimum number of players.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Player> players = view.getInseredPlayers();
 
@@ -44,7 +62,10 @@ public class InsertPlayersController extends Controller<InsertPlayersView> {
 
 		view.actionInsertPlayer = new ActionListener() {
 
-			@Override
+			/**
+			 * This is an action from the view try to insert a new player
+			 * into he list with all the controls that it needs.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Player> players = view.getInseredPlayers();
 				String input = view.getInput();
