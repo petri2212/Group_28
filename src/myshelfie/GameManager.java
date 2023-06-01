@@ -25,13 +25,10 @@ public class GameManager {
 
 	public GameManager(UI ui) {
 		this.ui = ui;
-		isLastTurn = false;
 	}
 
 	public void start() {
 		state = GameState.HOME;
-		players = new ArrayList<>();
-		playerTurn = 0;
 		manageState();
 	}
 
@@ -43,6 +40,9 @@ public class GameManager {
 	private void manageState() {
 		switch (state) {
 		case HOME:
+			players = new ArrayList<>();
+			playerTurn = 0;
+			isLastTurn = false;
 			ui.showMainPage(this);
 			break;
 
