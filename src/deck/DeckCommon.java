@@ -4,8 +4,15 @@ import goal.CommonGoal;
 import goal.common.*;
 import utils.UniqueList;
 
+/**
+ * This class represents the deck that contains the CommonGoal cards of the game
+ */
 public class DeckCommon extends Deck<CommonGoal> {
-
+	/**
+	 * This method adds all community cards to the deck
+	 * 
+	 * @return goals
+	 */
 	@Override
 	protected UniqueList<CommonGoal> fillDeckGoals() {
 		UniqueList<CommonGoal> goals = new UniqueList<>();

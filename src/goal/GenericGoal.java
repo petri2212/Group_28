@@ -7,8 +7,16 @@ import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
+/**
+ * This class represents the Generic Goal
+ */
 public class GenericGoal implements Goal {
-
+	/**
+	 * This method checks how many points a player has made respecting the condition
+	 * of having from 3 to more adjacent cards of the same type
+	 * 
+	 * @param bookshelf the player bookshelf under validation
+	 */
 	@Override
 	public int check(Bookshelf bookshelf) {
 		int points = 0;
@@ -98,6 +106,17 @@ public class GenericGoal implements Goal {
 		return points;
 	}
 
+	/**
+	 * This recursive function will check how many adjacent cards of the same type
+	 * you have
+	 *
+	 * @param actualCoords the coordinates of the card in considered
+	 * @param Coordinate   the array containing the coordinates of the previously
+	 *                     checked cards, if empty it means that no adjacent cards
+	 *                     were found for the specific type of object
+	 * @param bookshelf    the player bookshelf under validation
+	 * @param actualObj    the object to check among the 6 types: book, cat etc.
+	 */
 	public static void ricorsive(MatrixCoords actualCoords, ArrayList<MatrixCoords> Coordinate, Bookshelf bookshelf,
 			BookshelfObject actualObj) {
 		int flag = 0;
@@ -108,7 +127,7 @@ public class GenericGoal implements Goal {
 		int jump_already_present2 = 0;
 		int jump_already_present3 = 0;
 		int jump_already_present4 = 0;
-		
+
 		int Right_col = actualCoords.c + 1;
 		BookshelfObject obj_d = bookshelf.get(new MatrixCoords(actualCoords.r, actualCoords.c + 1));
 		if (obj_d != null && obj_d.name() == actualObj.name()) {
@@ -134,8 +153,7 @@ public class GenericGoal implements Goal {
 				ricorsive(new MatrixCoords(actualCoords.r, Right_col), Coordinate, bookshelf, actualObj);
 			}
 		}
-	
-		
+
 		int Up_row = actualCoords.r + 1;
 		BookshelfObject obj_su = bookshelf.get(new MatrixCoords(Up_row, actualCoords.c));
 		if (obj_su != null && obj_su.name() == actualObj.name()) {
@@ -161,7 +179,6 @@ public class GenericGoal implements Goal {
 
 		}
 
-	
 		int R_giu = actualCoords.r - 1;
 		if (R_giu < 0) {
 			R_giu = 10;
@@ -218,5 +235,13 @@ public class GenericGoal implements Goal {
 				ricorsive(new MatrixCoords(actualCoords.r, Left), Coordinate, bookshelf, actualObj);
 			}
 		}
+	}
+
+	public String getDescription() {
+		String desc = "Groups of adjacent item tiles of the\r\n" + "same type on your bookshelf grant\r\n"
+				+ "points depending on how many\r\n" + "tiles are connected (with one side\r\n" + "touching).\r\n"
+				+ "Note: Item tiles with the same\r\n" + "background color are considered to be\r\n"
+				+ "of the same type";
+		return desc;
 	}
 }

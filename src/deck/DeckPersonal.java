@@ -4,8 +4,16 @@ import goal.PersonalGoal;
 import goal.personal.*;
 import utils.UniqueList;
 
+/**
+ * This class represents the deck that contains the PersonalGoal cards of the
+ * game
+ */
 public class DeckPersonal extends Deck<PersonalGoal> {
-
+	/**
+	 * This method adds all PersonalGoal cards to the deck
+	 * 
+	 * @return goals a unique list of PersonalGoal
+	 */
 	@Override
 	protected UniqueList<PersonalGoal> fillDeckGoals() {
 		UniqueList<PersonalGoal> goals = new UniqueList<>();

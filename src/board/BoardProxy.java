@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
+/**
+ * Creates a new Board Proxy.
+ */
 public class BoardProxy implements Board {
 	public BoardInstance instance;
 	public int playersnumber;
 
+	/**
+	 * @param playersnumber number of players who will play the game
+	 */
 	public BoardProxy(int playersnumber) {
 		this.playersnumber = playersnumber;
 		instance = new BoardInstance(this.playersnumber);

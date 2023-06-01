@@ -7,6 +7,9 @@ import myshelfie.Bookshelf;
 import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
 
+/**
+ * This class represents the Personal Goal checker
+ */
 public abstract class PersonalGoal implements Goal, DrawableObject {
 
 	private Map<MatrixCoords, BookshelfObject> goalObjects;
@@ -22,16 +25,23 @@ public abstract class PersonalGoal implements Goal, DrawableObject {
 	 * @return
 	 */
 	protected abstract Map<MatrixCoords, BookshelfObject> initGoalObjects();
-	
+
 	public abstract Map<MatrixCoords, BookshelfObject> getMap();
 
+	/**
+	 * This method controls how many bookshelf positions match the positions of the
+	 * Personal Card, based on this they assign the respective points
+	 * 
+	 * @param bookshelf the player bookshelf under validation
+	 * @return points the points gained
+	 */
 	@Override
 	public int check(Bookshelf bookshelf) {
 		int cont = 0;
 		for (Map.Entry<MatrixCoords, BookshelfObject> item : this.goalObjects.entrySet()) {
 			BookshelfObject bookshelfObject = bookshelf.get(item.getKey());
 			BookshelfObject goalObject = item.getValue();
-			if(bookshelfObject!=null && goalObject!=null ) {
+			if (bookshelfObject != null && goalObject != null) {
 				if (bookshelfObject.name() == goalObject.name()) {
 					cont++;
 				}

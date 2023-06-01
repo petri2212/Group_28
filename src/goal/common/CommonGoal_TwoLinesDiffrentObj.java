@@ -19,6 +19,14 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal {
 		return Images.COMMON_GOAL_TWO_LINES_DIFFERENT_OBJ.load();
 	}
 
+	/**
+	 * The player completes the Common goal if he creates two rows with the rule
+	 * that all objects in a row must be different from each other.
+	 *
+	 * @param bookshelf the player bookshelf under validation
+	 * @return 0 not completed the Common goal, 1 completed the Common Goal
+	 */
+
 	@Override
 	public int check(Bookshelf library) {
 		int cont = 0;
@@ -26,7 +34,7 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal {
 		int col = 0;
 
 		for (int r = 0; r < ROWS_NUMBER; r++) {
-			if (library.fullCol(r)) {
+			if (library.checkIfRowIsfull(r)) {
 				for (int c = 0; c < COLS_NUMBER - 1; c++) {
 					BookshelfObject tmpVar = library.get(new MatrixCoords(r, col));
 					BookshelfObject next = library.get(new MatrixCoords(r, tmpCols));
@@ -52,7 +60,6 @@ public class CommonGoal_TwoLinesDiffrentObj extends CommonGoal {
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		String desc = "Two lines each formed by 5 different\r\n" + "types of tiles. One line can show the\r\n"
 				+ "same or a different combination of the\r\n" + "other line.";
 		return desc;
