@@ -7,7 +7,9 @@ import java.awt.Image;
 import java.awt.LayoutManager;
 
 import javax.swing.JPanel;
-
+/*+
+ * This class extends JPanel and it is used for the graphic. 
+ */
 public class BackgroundPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;

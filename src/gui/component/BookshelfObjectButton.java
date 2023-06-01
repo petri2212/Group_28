@@ -8,16 +8,16 @@ import javax.swing.JButton;
 
 import myshelfie.BookshelfObject;
 import utils.MatrixCoords;
-
+/*+
+ * This class extends JButton and it is used for the graphic,
+ * in the BookShlef. 
+ */
 public class BookshelfObjectButton extends JButton {
 
 	private static final long serialVersionUID = -725489561743165796L;
 	private Image background;
 	private BookshelfObject object;
 	private MatrixCoords coords;
-
-	public BookshelfObjectButton() {
-	}
 
 	public BookshelfObjectButton(BookshelfObject object, MatrixCoords coords) {
 		setBackground(object.getImage());
