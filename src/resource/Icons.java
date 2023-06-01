@@ -12,8 +12,10 @@ public enum Icons implements Resource<ImageIcon> {
 	BOARD_BLURRED("./resources/boards/livingroom_reduced_blurred.png"),
 	BOOKSHELF("./resources/boards/bookshelf_orth_edited.png"),
 	ICON_FIRST("./resources/scoring_tokens/resized/first_place.jpg"),
-    ICON_SECOND("./resources/scoring_tokens/resized/second_place.jpg"),
-    ICON_THIRD("./resources/scoring_tokens/resized/third_place.jpg");
+	ICON_SECOND("./resources/scoring_tokens/resized/second_place.jpg"),
+	ICON_THIRD("./resources/scoring_tokens/resized/third_place.jpg"),
+	LOGO_CRANIO("./resources/publisher_material/Publisher.png"),
+	LOGO_UNIBG("./resources/publisher_material/unibg_logo.png");
 
 	private String path;
 
