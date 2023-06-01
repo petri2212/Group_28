@@ -76,10 +76,18 @@ public abstract class Matrix<T> {
 	}
 
 	public void remove(int r, int c) {
+		if (r >= rows || c >= cols) {
+			throw new IllegalArgumentException(
+					"The coordinates row: " + r + ", column: " + c + " are outside the matrix boundaries.");
+		}
 		items.remove(new MatrixCoords(r, c));
 	}
 
 	public void remove(MatrixCoords coords) {
+		if (coords.r >= rows || coords.c >= cols) {
+			throw new IllegalArgumentException("The coordinates row: " + coords.r + ", column: " + coords.c
+					+ " are outside the matrix boundaries.");
+		}
 		items.remove(coords);
 	}
 }
