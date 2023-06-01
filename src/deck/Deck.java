@@ -15,7 +15,7 @@ import utils.UniqueList;
 public abstract class Deck<T extends Goal> {
 
 	private UniqueList<T> goals;
-	private int uniqueRandom=-1;
+	private int uniqueRandom = -1;
 
 	public Deck() {
 		goals = fillDeckGoals();
@@ -38,13 +38,13 @@ public abstract class Deck<T extends Goal> {
 		Random rnd = new Random();
 		int maxGoalsIndex = goals.size() - 1;
 		int randomIndex = rnd.nextInt(maxGoalsIndex);
-		if(randomIndex==uniqueRandom) {
+		if (randomIndex == uniqueRandom) {
 			do {
 				randomIndex = rnd.nextInt(maxGoalsIndex);
-			}while(randomIndex==uniqueRandom);
-			
+			} while (randomIndex == uniqueRandom);
+
 		}
-		this.uniqueRandom=randomIndex;
+		this.uniqueRandom = randomIndex;
 		return randomIndex;
 	}
 
@@ -54,8 +54,8 @@ public abstract class Deck<T extends Goal> {
 	 * @return a Goal of the specified type
 	 */
 	public T extractGoal() {
-		
-		int	i = extractRandomIndex();
+
+		int i = extractRandomIndex();
 		T goal = goals.get(i);
 		return goal;
 	}

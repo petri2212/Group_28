@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 import myshelfie.Player;
 
+/**
+ * This class represents the CommonGoalManager the one who manages the check
+ * that the players have actually completed one or two CommonGoals
+ */
 public class CommonGoalManager {
 
 	private ArrayList<Player> players;
-	private	ArrayList<Player> playersGoal1Placement=new ArrayList<>();
-	private	ArrayList<Player> playersGoal2Placement=new ArrayList<>();
+	private ArrayList<Player> playersGoal1Placement = new ArrayList<>();
+	private ArrayList<Player> playersGoal2Placement = new ArrayList<>();
 
 	private CommonGoal commonGoal1;
 	private CommonGoal commonGoal2;
@@ -17,7 +21,6 @@ public class CommonGoalManager {
 		if (players == null) {
 			throw new NullPointerException("You must pass a list of players ...");
 		}
-		
 
 		this.players = players;
 		this.commonGoal1 = commonGoal1;
@@ -40,6 +43,16 @@ public class CommonGoalManager {
 		}
 	}
 
+	/**
+	 * This class will insert into the Placement array the players who will have
+	 * completed a Common Goal in the respective round, if the array already
+	 * contains that player then it will skip the common goal check.
+	 * 
+	 * @param playersPlacement the array containing the players who have completed a
+	 *                         Common Goal
+	 * @param player           the player whose bookshelf we want to control
+	 * @param commonGoal       the respective common goal
+	 */
 	public void addPlayerToPlacement(ArrayList<Player> playersPlacement, Player player, CommonGoal commonGoal) {
 		if (!playersPlacement.contains(player)) {
 			if (commonGoal.check(player.getBookshelf()) == 1) {
@@ -61,6 +74,7 @@ public class CommonGoalManager {
 	public CommonGoal getCommonGoal2() {
 		return commonGoal2;
 	}
+
 	/**
 	 * @return the playersGoal1Placement
 	 */
@@ -74,5 +88,5 @@ public class CommonGoalManager {
 	public ArrayList<Player> playersGoal2Placement() {
 		return playersGoal2Placement;
 	}
-	
+
 }

@@ -86,7 +86,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 
 	/**
 	 * Returns true if there is enough space for the specified object in the
-	 * specified colum.
+	 * specified column.
 	 * 
 	 * @param c      is the column
 	 * @param lenght the number of objects that needs to be added
@@ -100,6 +100,15 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return ((rIndex <= rMaxObjects) && (firstRow != noEmptyRow)) ? true : false;
 	}
 
+	/**
+	 * Checks all rows in a given column and returns the number of the first row
+	 * that results null
+	 * 
+	 * @param c is the column
+	 * @return r if the column have at least 1 row empty
+	 * @return noEmptyRow if all rows of the column are full
+	 */
+
 	public int getFirstEmptyRow(int c) {
 		for (int r = 0; r < ROWS_NUMBER; r++) {
 			if (this.get(new MatrixCoords(r, c)) == null) {
@@ -109,6 +118,14 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return noEmptyRow;
 	}
 
+	/**
+	 * Checks all rows in a given column and returns the number of the first row
+	 * that results full
+	 * 
+	 * @param c is the column
+	 * @return r if the column have at least 1 row empty
+	 * @return noEmptyRow if all rows of the column are empty
+	 */
 	public int getFirstFilledRow(int c) {
 		for (int r = 0; r < ROWS_NUMBER; r++) {
 			if (this.get(new MatrixCoords(r, c)) != null) {
@@ -118,15 +135,12 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return noEmptyRow;
 	}
 
-	public boolean fullCol(int r) {
-		for (int c = 0; c < COLS_NUMBER; c++) {
-			if (this.get(new MatrixCoords(r, c)) == null) {
-				return false;
-			}
-		}
-		return true;
-	}
-
+	/**
+	 * Checks all cols in a given row and returns true if there are no empty cols
+	 * 
+	 * @param row is the column
+	 * @return true if the if there are no empty cols, else false
+	 */
 	public boolean checkIfRowIsfull(int row) {
 
 		for (int c = 0; c < 4; c++) {
@@ -137,10 +151,23 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		return true;
 	}
 
+	/**
+	 * Method for adding a bookshelf to the library
+	 * 
+	 * @param row    is the row
+	 * @param col    is the col
+	 * @param object is the bookshelfObject
+	 * @return true if the if there are no empty cols, else false
+	 */
 	public void add(int row, int col, BookshelfObject object) {
 		super.add(row, col, object);
 	}
 
+	/**
+	 * Method to check if the bookshelf is full or empty
+	 * 
+	 * @return true if there are at least one empty coordinate, else false
+	 */
 	public boolean isFull() {
 		for (int r = 0; r < ROWS_NUMBER; r++) {
 			for (int c = 0; c < COLS_NUMBER; c++) {

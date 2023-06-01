@@ -20,6 +20,14 @@ public class CommonGoal_Diagonal extends CommonGoal {
 		return Images.COMMON_GOAL_DIAGOONAL.load();
 	}
 
+	/**
+	 * This method checks that the player has formed a diagonal in any direction
+	 * with identical cards
+	 *
+	 * @param library the player bookshelf under validation
+	 * @return 0 not completed the Common goal, 1 completed the Common Goal
+	 */
+
 	@Override
 	public int check(Bookshelf library) {
 
@@ -144,7 +152,6 @@ public class CommonGoal_Diagonal extends CommonGoal {
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		String desc = "Five tiles of the same type forming a\r\n" + "diagonal.";
 		return desc;
 	}

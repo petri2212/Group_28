@@ -15,15 +15,17 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 	private static final int MIN_COL_NUMBER = 2;
 
 	@Override
-	public String getDescription() {
-		String desc = "Two columns each formed by 6\r\ndifferent types of tiles.";
-		return desc;
-	}
-
-	@Override
 	public Image getImage() {
 		return Images.COMMON_GOAL_TWO_COLUMNS_SIX_DIFFERENT_OBJ.load();
 	}
+
+	/**
+	 * The player completes the Common goal if he creates two columns with the rule
+	 * that all objects in a column must be different from each other.
+	 *
+	 * @param bookshelf the player bookshelf under validation
+	 * @return 0 not completed the Common goal, 1 completed the Common Goal
+	 */
 
 	@Override
 	public int check(Bookshelf library) {
@@ -47,6 +49,12 @@ public class CommonGoal_TwoColumsSixDiffrentObj extends CommonGoal {
 			return 0;
 		}
 
+	}
+
+	@Override
+	public String getDescription() {
+		String desc = "Two columns each formed by 6\r\ndifferent types of tiles.";
+		return desc;
 	}
 
 }

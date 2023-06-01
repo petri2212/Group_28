@@ -7,6 +7,7 @@ import board.BoardProxy;
 import deck.DeckCommon;
 import deck.DeckPersonal;
 import goal.CommonGoalManager;
+import goal.GenericGoal;
 import gui.UI;
 
 public class GameManager {
@@ -18,6 +19,8 @@ public class GameManager {
 	private int playerTurn;
 	private Points points;
 	private CommonGoalManager commonGoalManager;
+	private GenericGoal generic=new GenericGoal();
+	
 	private boolean isLastTurn;
 
 	public GameManager(UI ui) {
@@ -63,7 +66,6 @@ public class GameManager {
 
 			DeckCommon deckCommon = new DeckCommon();
 			commonGoalManager = new CommonGoalManager(players, deckCommon.extractGoal(), deckCommon.extractGoal());
-
 			changeState(GameState.GAME_STAGE);
 			break;
 
@@ -89,6 +91,7 @@ public class GameManager {
 		case END:
 			for (Player player : players) {
 				player.addPoints(player.getPersonalGoal().check(player.bookshelf));
+				player.addPoints(generic.check(player.bookshelf));
 			}
 			assignPoints(commonGoalManager.playersGoal1Placement(), commonGoalManager.playersGoal2Placement());
 
