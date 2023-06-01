@@ -1,6 +1,5 @@
 package goal;
 
-import java.util.HashSet;
 import java.util.ArrayList;
 
 import myshelfie.Bookshelf;
