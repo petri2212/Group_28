@@ -10,6 +10,10 @@ import goal.CommonGoalManager;
 import goal.GenericGoal;
 import gui.UI;
 
+/**
+ * General game manager, it contains the game data and the state machine that
+ * regulates the various phases of the program.
+ */
 public class GameManager {
 
 	private GameState state;
@@ -19,30 +23,46 @@ public class GameManager {
 	private int playerTurn;
 	private Points points;
 	private CommonGoalManager commonGoalManager;
-	private GenericGoal generic=new GenericGoal();
-	
+	private GenericGoal generic = new GenericGoal();
+
 	private boolean isLastTurn;
 
+	/**
+	 * Creates a new game manager specifying the user interface to use.
+	 *
+	 * @param ui is the user interface to show to the player
+	 */
 	public GameManager(UI ui) {
 		this.ui = ui;
-		isLastTurn = false;
 	}
 
+	/**
+	 * Start the state machine.
+	 */
 	public void start() {
 		state = GameState.HOME;
-		players = new ArrayList<>();
-		playerTurn = 0;
 		manageState();
 	}
 
+	/**
+	 * Change the game state and notify the state machine about the change.
+	 *
+	 * @param nextState is the state to set
+	 */
 	public void changeState(GameState nextState) {
 		state = nextState;
 		manageState();
 	}
 
+	/**
+	 * Main state machine.
+	 */
 	private void manageState() {
 		switch (state) {
 		case HOME:
+			players = new ArrayList<>();
+			playerTurn = 0;
+			isLastTurn = false;
 			ui.showMainPage(this);
 			break;
 
@@ -77,7 +97,7 @@ public class GameManager {
 			if (board.areAllObjectsIsolated()) {
 				board.fillLivingRoomWithObjects();
 			}
-			if(isLastTurn==false){
+			if (isLastTurn == false) {
 				if (players.get(playerTurn).getBookshelf().isFull()) {
 					players.get(playerTurn).addPoints(1);
 					isLastTurn = true;
@@ -103,18 +123,23 @@ public class GameManager {
 		}
 	}
 
+	/**
+	 * @return the instantiated game board
+	 */
 	public Board getBoard() {
 		return board;
 	}
 
-	public int getPlayersNumber() {
-		return this.players.size();
-	}
-
+	/**
+	 * @return the player turn
+	 */
 	public int getPlayerTurn() {
 		return this.playerTurn;
 	}
 
+	/**
+	 * Updates the player turn and checks if this is the last turn to be done.
+	 */
 	public void updatePlayerTurnAndChangeState() {
 		if (playerTurn < players.size() - 1) {
 			playerTurn++;
@@ -129,10 +154,18 @@ public class GameManager {
 		}
 	}
 
+	/**
+	 * Set the current players.
+	 *
+	 * @param players is a list of players
+	 */
 	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
 	}
 
+	/**
+	 * @return the current playing players
+	 */
 	public ArrayList<Player> getPlayers() {
 		return this.players;
 	}
@@ -145,7 +178,7 @@ public class GameManager {
 	 * @param playersGoal1Placement first array of players to check
 	 * @param playersGoal2Placement second array of players to check
 	 */
-	public void assignPoints(ArrayList<Player> playersGoal1Placement, ArrayList<Player> playersGoal2Placement) {
+	private void assignPoints(ArrayList<Player> playersGoal1Placement, ArrayList<Player> playersGoal2Placement) {
 		try {
 			for (Player player : playersGoal1Placement) {
 				player.addPoints(points.getPoint(1));

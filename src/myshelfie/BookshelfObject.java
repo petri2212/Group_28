@@ -37,10 +37,11 @@ public enum BookshelfObject implements DrawableObject {
 	}
 
 	/**
-	 * Returns a random ShelfObject if its instances number is less than the max limit.
-	 * If this method returns null it means that there are no more ShelfObject available.
+	 * Returns a random ShelfObject if its instances number is less than the max
+	 * limit. If this method returns null it means that there are no more
+	 * ShelfObject available.
 	 *
-	 * @return	a random available ShelfObject
+	 * @return a random available ShelfObject
 	 */
 	public static BookshelfObject getRandomObject() {
 		BookshelfObject object = null;
@@ -53,15 +54,18 @@ public enum BookshelfObject implements DrawableObject {
 			randomIndex++;
 			indexCounter++;
 
-			if(randomIndex >= objects.length) {
+			if (randomIndex >= objects.length) {
 				randomIndex = 0;
 			}
-		} while(object.reachedMaxInstances() && indexCounter < objects.length);
+		} while (object.reachedMaxInstances() && indexCounter < objects.length);
 
 		object.instancesCounter++;
 		return object;
 	}
 
+	/**
+	 * @return a random image between the object images
+	 */
 	@Override
 	public Image getImage() {
 		int randomIndex = RANDOM.nextInt(images.length - 1);

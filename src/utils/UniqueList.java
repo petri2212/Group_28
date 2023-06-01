@@ -11,15 +11,19 @@ public class UniqueList<E> extends ArrayList<E> {
 
 	/**
 	 * Appends the specified element to the end of this list only if it is not
-	 * already present. In case the element already exists throws an
-	 * IllegalArgumentException.
+	 * already present. The object E can override its equals() method to specify how
+	 * an object that need to be added should be considered unique.
+	 *
+	 * @throws IllegalArgumentException in case the element is already present in
+	 *                                  the list
 	 */
 	@Override
 	public boolean add(E e) {
 		boolean result = false;
 
 		if (this.contains(e)) {
-			throw new IllegalArgumentException("Only unique elements can be added to the list.");
+			throw new IllegalArgumentException(
+					"The element " + e + " is already present in the list. " + "Only unique elements can be added.");
 		} else {
 			result = super.add(e);
 		}

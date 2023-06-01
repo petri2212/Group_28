@@ -10,12 +10,15 @@ import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 
 import gui.component.BackgroundPanel;
 import gui.view.MainPageView;
+import myshelfie.MyShelfie;
+import resource.Icons;
 import resource.Images;
 /**
  * This is the view graphic for the home page and it extends the abstract
@@ -74,6 +77,28 @@ public class MainPageViewGraphic extends MainPageView {
 		btnExit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnExit.addActionListener(actionExit);
 		contentPane.add(btnExit);
+
+		JLabel lblVersionHeader = new JLabel("Version");
+		lblVersionHeader.setForeground(Color.WHITE);
+		lblVersionHeader.setFont(new Font("Purisa", Font.BOLD, 14));
+		lblVersionHeader.setBounds(37, 696, 70, 15);
+		contentPane.add(lblVersionHeader);
+
+		JLabel lblVersion = new JLabel(MyShelfie.VERSION);
+		lblVersion.setForeground(Color.WHITE);
+		lblVersion.setFont(new Font("Purisa", Font.BOLD, 14));
+		lblVersion.setBounds(114, 696, 70, 15);
+		contentPane.add(lblVersion);
+
+		JLabel lblLogoCranioCreations = new JLabel("");
+		lblLogoCranioCreations.setIcon(Icons.LOGO_CRANIO.load());
+		lblLogoCranioCreations.setBounds(978, 561, 150, 150);
+		contentPane.add(lblLogoCranioCreations);
+
+		JLabel lblLogoUnibg = new JLabel("");
+		lblLogoUnibg.setIcon(Icons.LOGO_UNIBG.load());
+		lblLogoUnibg.setBounds(793, 561, 150, 150);
+		contentPane.add(lblLogoUnibg);
 
 		mainFrame.setContentPane(contentPane);
 		mainFrame.pack();

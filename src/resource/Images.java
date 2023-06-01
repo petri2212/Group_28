@@ -6,6 +6,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Lists all the images used by the game.
+ */
 public enum Images implements Resource<Image> {
 
 	BOOKSHELF_OBJECT_FRAME_1("./resources/item_tiles/resized/Cornici1.1.png"),
@@ -65,6 +68,11 @@ public enum Images implements Resource<Image> {
 		this.path = path;
 	}
 
+	/**
+	 * Loads an image from the specified path attribute.
+	 *
+	 * @return an Image object from the java.awt package
+	 */
 	@Override
 	public Image load() {
 		try {

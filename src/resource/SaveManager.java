@@ -14,7 +14,7 @@ public class SaveManager {
 	
 	public void loadfile() throws NumberFormatException, IOException {
 		
-		String File="./resources/game_saves/save.txt";
+		/*String File="./resources/game_saves/save.txt";
 		int nplayers;
 		int rounds; 
 
@@ -24,7 +24,7 @@ public class SaveManager {
 		nplayers=Integer.parseInt(readfile(br,1));  	  //assignment of nplayers 
 																		//P.S. aggiungere controllo su num max player
 		rounds=Integer.parseInt(readfile(br,1)); 		  //assignment of round
-		
+		*/
 	}
 	
 	/*

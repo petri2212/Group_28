@@ -88,8 +88,8 @@ public class CommonGoal_FourVertical extends CommonGoal {
 	private void queueAdjacentObjectsPosition(int r, int c, BookshelfObject refObject, Bookshelf bookshelf,
 			Queue<MatrixCoords> queue) {
 		ArrayList<MatrixCoords> adjacentObjectsPos = new ArrayList<>();
-		adjacentObjectsPos.add(new MatrixCoords(r, c++));
-		adjacentObjectsPos.add(new MatrixCoords(r++, c));
+		adjacentObjectsPos.add(new MatrixCoords(r, c + 1));
+		adjacentObjectsPos.add(new MatrixCoords(r + 1, c));
 
 		for (MatrixCoords pos : adjacentObjectsPos) {
 			BookshelfObject object = bookshelf.get(pos);

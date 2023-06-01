@@ -76,4 +76,14 @@ public abstract class PersonalGoal implements Goal, DrawableObject {
 		return points;
 	}
 
+	/**
+	 * Returns true if the confronted PersonalGoal has the same name.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		String name = this.getClass().getName();
+		String objName = obj.getClass().getName();
+		return name.equals(objName);
+	}
+
 }
