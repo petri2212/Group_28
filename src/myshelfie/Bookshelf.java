@@ -31,7 +31,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 		boolean result = false;
 
 		if (r != noEmptyRow) {
-			this.add(r, c, obj);
+			super.add(r, c, obj);
 			result = true;
 		}
 
@@ -53,7 +53,7 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 
 		if (r != noEmptyRow && isThereEnoughSpace(c, lenght)) {
 			for (BookshelfObject obj : objs) {
-				this.add(r, c, obj);
+				super.add(r, c, obj);
 				r++;
 			}
 
@@ -149,18 +149,6 @@ public class Bookshelf extends Matrix<BookshelfObject> {
 			}
 		}
 		return true;
-	}
-
-	/**
-	 * Method for adding a bookshelf to the library
-	 * 
-	 * @param row    is the row
-	 * @param col    is the col
-	 * @param object is the bookshelfObject
-	 * @return true if the if there are no empty cols, else false
-	 */
-	public void add(int row, int col, BookshelfObject object) {
-		super.add(row, col, object);
 	}
 
 	/**

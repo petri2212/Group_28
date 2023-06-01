@@ -107,9 +107,6 @@ public class GameManager {
 		return board;
 	}
 
-	public int getPlayersNumber() {
-		return this.players.size();
-	}
 
 	public int getPlayerTurn() {
 		return this.playerTurn;
