@@ -4,6 +4,7 @@ import gui.*;
 
 public class MyShelfie {
 
+	public static final String VERSION = "0.0";
 	public static final int MIN_PLAYERS = 2;
 	public static final int MAX_PLAYERS = 4;
 
