@@ -227,16 +227,6 @@ public class GameStageViewConsole extends GameStageView {
 		final int lenght6Char = 6;
 		
 		String bookshelfObjectToPrint=object.name();
-		/*if(object.name()=="CAT") {
-			 bookshelfObjectToPrint=Green+object.name();
-		}else {
-			bookshelfObjectToPrint=object;
-		}
-			*/
-		
-		
-		
-		
 		int lenght = bookshelfObjectToPrint.length();
 		switch (lenght) {
 		case lenght3Char:
