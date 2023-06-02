@@ -28,7 +28,6 @@ public class GameStageViewConsole extends GameStageView {
 	protected ArrayList<Character> downCoordsList = new ArrayList<>();
 	protected ArrayList<Character> rightCoordsList = new ArrayList<>();
 	protected List<String> savedCoords = new UniqueList<>();
-	protected ArrayList<BookshelfObject> savedObjects = new ArrayList<>();
 	protected String tmpCoords;
 	protected boolean verifier;
 	
@@ -65,7 +64,7 @@ public class GameStageViewConsole extends GameStageView {
 
 		// show PickObjects
 
-		System.out.println("This is your turn: " + playerName + "\n");
+		System.out.println("This is your turn: " +Blue+ playerName +White+ "\n");
 
 		isWaiting = true;
 		Scanner sc = new Scanner(System.in);
@@ -101,12 +100,12 @@ public class GameStageViewConsole extends GameStageView {
 				}
 			}
 			if (savedCoords.size() == INPUT_LENGHT) {
-				System.out.println(Red+"Max number of coords reached!!"+White);
+				System.out.println(Cyan+"Max number of coords reached!!"+White);
 				setIsWaiting(false);
 			}
 
 		} while (isWaiting);
-
+		
 		// show PutObjects
 
 		isWaiting = true;
@@ -120,7 +119,7 @@ public class GameStageViewConsole extends GameStageView {
 			intInput = inputToInt(input);
 
 			if (input.isBlank()) {
-				System.out.println("The command cannot be null");
+				System.out.println(Red+"The command cannot be null"+White);
 
 			} else if (intInput != 0) {
 				if (bookshelf.isThereEnoughSpace((intInput - 1), savedCoords.size())) {
@@ -438,10 +437,10 @@ public class GameStageViewConsole extends GameStageView {
 	}
 
 	private void printCommonGoals() {
-		System.out.println("CommonGoal 1:\n");
+		System.out.println(Cyan+"CommonGoal 1:\n"+White);
 		String description = commonGoal1.getDescription();
 		System.out.println(description + "\n");
-		System.out.println("CommonGoal 2:\n");
+		System.out.println(Cyan+"CommonGoal 2:\n"+White);
 		description = commonGoal2.getDescription();
 		System.out.println(description);
 		System.out.println();
@@ -518,12 +517,11 @@ public class GameStageViewConsole extends GameStageView {
 
 			if (tmpTile != null) {
 				if (tmpTile.getBookshelfObject() != null) {
-					if (board.isObjectPickable(savedMatrixCoords, tmpCoord)) {
+					if (board.isObjectPickable(savedMatrixCoords, tmpCoord) && bookshelf.isThereEnoughSpace(savedMatrixCoords.size())) {
+						
 						setVerifier(true);
 						if (!savedMatrixCoords.contains(tmpCoord)) {
 							savedMatrixCoords.add(tmpCoord);
-							savedObjects.add(board.tryPickObject(tmpCoord));
-
 						} else {
 							showAlreadySelectedCoordsWarning();
 							setVerifier(false);
@@ -610,10 +608,14 @@ public class GameStageViewConsole extends GameStageView {
 	}
 
 	private void putInBookshelf(int input) {
+		ArrayList<BookshelfObject> savedObjects = new ArrayList<>();
 		System.out.println("those are your coords!!");
 		for (int i = 0; i < savedCoords.size(); i++) {
 			tmpCoords = savedCoords.get(i);
 			System.out.print("|" + (i + 1) + ": " + tmpCoords + "|" + " ");
+		}
+		for(MatrixCoords coords: savedMatrixCoords) {
+			savedObjects.add(board.tryPickObject(coords));
 		}
 
 		input--;

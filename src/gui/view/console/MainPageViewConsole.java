@@ -8,6 +8,10 @@ import gui.view.MainPageView;
  * view.
  */
 public class MainPageViewConsole extends MainPageView {
+	
+	final static String Green="\u001b[32m";
+	final static String White="\u001b[37m";
+	final static String Red="\u001b[31m"; 
 
 	/**
 	 * This is the override of the show method.
@@ -21,7 +25,7 @@ public class MainPageViewConsole extends MainPageView {
 		
 		do {
 			System.out.println("Welcome!");
-			System.out.println("Press n to start a new game or press e to exit");
+			System.out.println("Press "+Green+"n"+White+" to start a new game or press"+Red+" e"+White+" to exit");
 			String input = sc.nextLine();
 			
 			if (input.equalsIgnoreCase("n")) {
