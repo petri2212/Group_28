@@ -62,7 +62,7 @@ public enum BookshelfObject implements DrawableObject {
 		object.instancesCounter++;
 		return object;
 	}
-
+	
 	/**
 	 * @return a random image between the object images
 	 */

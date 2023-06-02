@@ -31,6 +31,16 @@ public class GameStageViewConsole extends GameStageView {
 	protected ArrayList<BookshelfObject> savedObjects = new ArrayList<>();
 	protected String tmpCoords;
 	protected boolean verifier;
+	
+	final static String Pink="\u001b[35m";  
+	final static String White="\u001b[37m";
+	final static String Green="\u001b[32m";
+	final static String Blue="\u001b[34m";
+	final static String Cyan="\u001b[36m";
+	final static String Orange="\u001b[33m";
+	final static String Red="\u001b[31m"; 
+	
+
 
 	/**
 	 * This is the override of the show method. In the first part of the show method we print all the
@@ -63,7 +73,7 @@ public class GameStageViewConsole extends GameStageView {
 		System.out.println("Insert the coordinates of the tiles that you whant to pick" + " (first: col, second: row)");
 		System.out.println("Remembre that the tiles will be inserted in the order that you pick them!!");
 		System.out.println("example(A,0)");
-		System.out.println("insert enter to put the tiles in your BookShelf");
+		System.out.println("insert "+Green+"enter"+White+" to put the tiles in your BookShelf");
 
 		do {
 			if (!savedCoords.isEmpty()) {
@@ -80,7 +90,7 @@ public class GameStageViewConsole extends GameStageView {
 			this.input = input;
 
 			if (input.isBlank()) {
-				System.out.println("The command cannot be null");
+				System.out.println(Red+"The command cannot be null"+White);
 
 			} else if (input.equalsIgnoreCase("enter")) {
 				enterVerifier();
@@ -91,7 +101,7 @@ public class GameStageViewConsole extends GameStageView {
 				}
 			}
 			if (savedCoords.size() == INPUT_LENGHT) {
-				System.out.println("Max number of coords reached!!");
+				System.out.println(Red+"Max number of coords reached!!"+White);
 				setIsWaiting(false);
 			}
 
@@ -216,23 +226,46 @@ public class GameStageViewConsole extends GameStageView {
 		final int lenght4Char = 4;
 		final int lenght5Char = 5;
 		final int lenght6Char = 6;
-		String bookshelfObjectToPrint = object.name();
+		
+		String bookshelfObjectToPrint=object.name();
+		/*if(object.name()=="CAT") {
+			 bookshelfObjectToPrint=Green+object.name();
+		}else {
+			bookshelfObjectToPrint=object;
+		}
+			*/
+		
+		
+		
+		
 		int lenght = bookshelfObjectToPrint.length();
 		switch (lenght) {
 		case lenght3Char:
-			System.out.print("|   " + bookshelfObjectToPrint + "   |");
+			
+			System.out.print("|   " + Green+bookshelfObjectToPrint +White+ "   |");
 			break;
 
 		case lenght4Char:
-			System.out.print("|  " + bookshelfObjectToPrint + "   |");
+			
+			if(bookshelfObjectToPrint.equals("BOOK")) {
+				System.out.print("|  " + White+bookshelfObjectToPrint +White+ "   |");
+			}else {
+			System.out.print("|  " + Orange+bookshelfObjectToPrint +White+ "   |");
+			}
 			break;
-
+			
 		case lenght5Char:
-			System.out.print("|  " + bookshelfObjectToPrint + "  |");
+			
+			if(bookshelfObjectToPrint.equals("PLANT")) {
+				System.out.print("|  "+ Pink+bookshelfObjectToPrint +White+ "  |");
+			}else {
+			System.out.print("|  " + Blue+bookshelfObjectToPrint +White+ "  |");
+			}
+			
 			break;
 
 		case lenght6Char:
-			System.out.print("|  " + bookshelfObjectToPrint + " |");
+			System.out.print("|  " + Cyan+bookshelfObjectToPrint +White+ " |");
 			break;
 		}
 
@@ -417,25 +450,25 @@ public class GameStageViewConsole extends GameStageView {
 	// Warnings
 
 	public void showNotEnoughSpaceWarning() {
-		System.out.println("Attention!!");
+		System.out.println(Red+"Attention!!"+White);
 		System.out.println("There is not enough space in this column!!");
 		isWaiting = true;
 	}
 
 	public void showNotUsableOrNullWarning() {
-		System.out.println("Attention!!");
+		System.out.println(Red+"Attention!!"+White);
 		System.out.println("Not usable Tile !!");
 		isWaiting = true;
 	}
 
 	public void showAlreadySelectedCoordsWarning() {
-		System.out.println("Attention!!");
+		System.out.println(Red+"Attention!!"+White);
 		System.out.println("You've already selected this coords!!");
 		isWaiting = true;
 	}
 
 	public void showCoordsNotInTheBoardWarning() {
-		System.out.println("Attention!!");
+		System.out.println(Red+"Attention!!"+White);
 		System.out.println("Attention you insert coords that are not in the board!!");
 		isWaiting = true;
 	}
@@ -451,7 +484,7 @@ public class GameStageViewConsole extends GameStageView {
 				return true;
 			}
 		}
-		System.out.println("You must insert coords with this sintax (A,0)");
+		System.out.println("You must insert coords with this sintax (A,0) or "+Green+"enter"+White+" to put objects in your bookshelf");
 		return false;
 
 	}
@@ -565,11 +598,11 @@ public class GameStageViewConsole extends GameStageView {
 				if (intInput >= minColumnNumber && intInput <= maxColumnNumber) {
 					return intInput;
 				} else {
-					System.out.println("You inserted a wrong input!!");
+					System.out.println(Red+"You inserted a wrong input!!"+White);
 				}
 
 			} catch (Exception e) {
-				System.out.println("You inserted a wrong input!!");
+				System.out.println(Red+"You inserted a wrong input!!"+White);
 			}
 
 		}
@@ -586,7 +619,7 @@ public class GameStageViewConsole extends GameStageView {
 		input--;
 		boolean value = bookshelf.tryAdd(input, savedObjects);
 		if (value) {
-			System.out.println("Objects placed correctly!!");
+			System.out.println(Green+"Objects placed correctly!!"+White);
 		}
 
 	}
